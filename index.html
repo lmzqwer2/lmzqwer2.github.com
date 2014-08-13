@@ -9,14 +9,14 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 	<base target="_blank"/>
 	<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
 	<style type="text/css">  
-		/*浮动文字  时间 背景*/
+		/*娴姩鏂囧瓧  鏃堕棿 鑳屾櫙*/
         .prespanstyle{ position:absolute; font-size:1em; font-weight:200; z-index:200; cursor:default;} 
         .bgspanstyle{ position:absolute; font-size:1em; color:#4D4556; font-weight:200; z-index:200; cursor:default;} 
 		.AdLayer { float:right; display:inline-block; right:0; z-index:3; cursor:default; padding:0.25em 0 0 0;}
 		body.bgimg {font-size:0.75em; -moz-user-select:none; }
 		.bgdiv {position:absolute; top:0; left:0; height:100%; width:100%; background-size:cover; overflow:hidden; z-index :-100;}
 		
-		/*无js布局*/
+		/*鏃爅s甯冨眬*/
 		body.bgnoimg {font-size:0.75em; background:#94BFCA;}
 		ul { list-style-position: outside; list-style:none;  margin:0.1em 0 0 0.7em; padding:0.1em 0 0 0.7em; }
         .left {display:inline; position:fixed; float:left; width:20%; left:0; top:0.5em; height:100%;}
@@ -29,12 +29,12 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 		dl dl dl dt {font-size:1.4em;}
 		dl dd {padding:0.3em 0;}
 		.content { margin-left:25%; margin-top:0.5em; width:auto; height:auto; border-left:1px solid gray;}
-        a.linker:link    {text-decoration: none; white-space:nowrap; } <!-- /*未访问的链接*/ -->
-        a.linker:visited {text-decoration: none; white-space:nowrap; } <!-- /*已访问的链接*/ -->
-        a.linker:hover   {text-decoration: none; white-space:nowrap; } <!-- /*鼠标在链接上*/ -->
-        a.linker:active  {text-decoration: none; white-space:nowrap; } <!-- /*点击激活链接*/ -->
+        a.linker:link    {text-decoration: none; white-space:nowrap; } <!-- /*鏈闂殑閾炬帴*/ -->
+        a.linker:visited {text-decoration: none; white-space:nowrap; } <!-- /*宸茶闂殑閾炬帴*/ -->
+        a.linker:hover   {text-decoration: none; white-space:nowrap; } <!-- /*榧犳爣鍦ㄩ摼鎺ヤ笂*/ -->
+        a.linker:active  {text-decoration: none; white-space:nowrap; } <!-- /*鐐瑰嚮婵€娲婚摼鎺?/ -->
 		
-		/*整体布局*/
+		/*鏁翠綋甯冨眬*/
 		.nojs {display:none;}
 		.level1_out {padding:0 5% 0; text-align:center; -moz-user-select:none; height:auto;}
 		.level1_in {display:inline-block; font-size:1.5em; font-weight:bold; padding:0 5%; text-align:center; width:100px; cursor:pointer; zoom:1;}
@@ -65,7 +65,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 	</style>
 	
 	<style type="text/css">		
-		/*浮动层*/
+		/*娴姩灞?/
 		.floatdiv{	width:60%; height:auto; display:none;
 				background:#EDF1F8;	 border: 0.2em solid #849BCA; 
 				position:absolute;
@@ -99,7 +99,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 
 <body id='body' onload="loader();" class="bgnoimg"  onmouseup="/*document.selection.empty();*/" onselectstart="return false">
 	
-	<script type="text/JavaScript" language="JavaScript"> // 全局变量及函数
+	<script type="text/JavaScript" language="JavaScript"> // 鍏ㄥ眬鍙橀噺鍙婂嚱鏁?
 		var isIE = document.all ? true : false;
 		var preinwidth,preinheight;
 		var rightlimit=71,bottomlimit=10;
@@ -110,10 +110,10 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 		var nowl1num = -1;
 		var nowl2num = -1;
 		var nowl3num = -1;
-        var x,y;	//鼠标当前在页面上的位置
+        var x,y;	//榧犳爣褰撳墠鍦ㄩ〉闈笂鐨勪綅缃?
 		var inwidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
 		var inheight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
-		var sleft=0,stop=0; //文档滚动条位置
+		var sleft=0,stop=0; //鏂囨。婊氬姩鏉′綅缃?
 		var body = document.getElementById("body");
 		
 		function movetoXY(s,x,y){
@@ -214,11 +214,11 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 			}
 		}
 		function scrollxy(){
-			sleft = window.pageXOffset  //用于FF
+			sleft = window.pageXOffset  //鐢ㄤ簬FF
                 || document.documentElement.scrollLeft
                 || document.body.scrollTop
                 || 0;
-			stop = window.pageYOffset  //用于FF
+			stop = window.pageYOffset  //鐢ㄤ簬FF
                 || document.documentElement.scrollTop  
                 || document.body.scrollTop  
                 || 0;
@@ -243,7 +243,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 			wid = sleft + inwidth;
 			hei = stop + inheight;
 		}
-        function MouseXY(e) { //从事件得到鼠标光标在页面上的位置
+        function MouseXY(e) { //浠庝簨浠跺緱鍒伴紶鏍囧厜鏍囧湪椤甸潰涓婄殑浣嶇疆
 			e=e||window.event;
 			x = isIE ? sleft + e.clientX : e.pageX;
 			y = isIE ? stop + e.clientY : e.pageY ;
@@ -251,7 +251,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
         }
 	</script>
 	
-	<script type="text/JavaScript" language="JavaScript">  // Cookie相关函数
+	<script type="text/JavaScript" language="JavaScript">  // Cookie鐩稿叧鍑芥暟
 		function getCookie(c_name) {
 			if (document.cookie.length>0) { 
 				c_start=document.cookie.indexOf(c_name + "=");
@@ -285,24 +285,24 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 		}
     </script>
 	
-	<script type="text/JavaScript" language="JavaScript">	<!--时间跳动-->
-　　    //<!--
-　　    function initAd() {
-            //document.all.AdLayer.style.posTop = -200; //设置onLoad事件激发以后，广告层相对于固定后的y方向位置
+	<script type="text/JavaScript" language="JavaScript">	<!--鏃堕棿璺冲姩-->
+銆€銆€    //<!--
+銆€銆€    function initAd() {
+            //document.all.AdLayer.style.posTop = -200; //璁剧疆onLoad浜嬩欢婵€鍙戜互鍚庯紝骞垮憡灞傜浉瀵逛簬鍥哄畾鍚庣殑y鏂瑰悜浣嶇疆
             //document.getElementById("AdLayer").style.posWidth = 150;
             //document.getElementById("AdLayer").style.posHeight = 150;
-            document.getElementById("AdLayer").style.visibility = 'visible'//设置层为可见
-            MoveLayer('AdLayer'); //调用函数MoveLayer()
+            document.getElementById("AdLayer").style.visibility = 'visible'//璁剧疆灞備负鍙
+            MoveLayer('AdLayer'); //璋冪敤鍑芥暟MoveLayer()
         }
         function MoveLayer(layerName) {
-            /*var x = document.documentElement.scrollWidth - 100 - AdLayer.style.posWidth; //  800;//浮动广告层固定于浏览器的x方向位置
+            /*var x = document.documentElement.scrollWidth - 100 - AdLayer.style.posWidth; //  800;//娴姩骞垮憡灞傚浐瀹氫簬娴忚鍣ㄧ殑x鏂瑰悜浣嶇疆
             //alert(x);
-            var y = 5; //浮动广告层固定于浏览器的y方向位置
+            var y = 5; //娴姩骞垮憡灞傚浐瀹氫簬娴忚鍣ㄧ殑y鏂瑰悜浣嶇疆
             var diff = (document.body.scrollTop + y - document.all.AdLayer.style.posTop) * .40;
             var y = document.body.scrollTop + y - diff;
             eval("document.all." + layerName + ".style.posTop = y");
-            eval("document.all." + layerName + ".style.posLeft = x"); //移动广告层
-            setTimeout("MoveLayer('AdLayer')", 20); //设置20毫秒后再调用函数MoveLayer()*/
+            eval("document.all." + layerName + ".style.posLeft = x"); //绉诲姩骞垮憡灞?
+            setTimeout("MoveLayer('AdLayer')", 20); //璁剧疆20姣鍚庡啀璋冪敤鍑芥暟MoveLayer()*/
         }
         function UpdateTime() {
             var dq = new Date();
@@ -313,65 +313,65 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
             hq = dq.getHours();
             mq = dq.getMinutes();
             sq = dq.getSeconds();
-            strq = "&nbsp;" + yyq + "年" + mmq + "月" + ddq + "日<br>&nbsp;";
+            strq = "&nbsp;" + yyq + "骞? + mmq + "鏈? + ddq + "鏃?br>&nbsp;";
             if (hq < 10) strq += "0"; strq += hq; strq += ":";
             if (mq < 10) strq += "0"; strq += mq; strq += ":";
             if (sq < 10) strq += "0"; strq += sq;
             document.getElementById("AdLayer").innerHTML = "<table border=0 cellSpacing=0 cellPadding=0 ><tr><td nowrap><font color=#110033 size=2><b>" + (strq) + "</b></font></td></tr></table>";
-            setTimeout("UpdateTime()", 507); //设置过1000毫秒就是1秒，调用UpdataTime方法
+            setTimeout("UpdateTime()", 507); //璁剧疆杩?000姣灏辨槸1绉掞紝璋冪敤UpdataTime鏂规硶
         }
         //-->
         function showdata() {
-            var date = new Date(); //日期对象
+            var date = new Date(); //鏃ユ湡瀵硅薄
             var now = "";
-            now = date.getFullYear() + "-"; //读英文就行了
-            now = now + (date.getMonth() + 1) + "-"; //取月的时候取的是当前月-1如果想取当前月+1就可以了
+            now = date.getFullYear() + "-"; //璇昏嫳鏂囧氨琛屼簡
+            now = now + (date.getMonth() + 1) + "-"; //鍙栨湀鐨勬椂鍊欏彇鐨勬槸褰撳墠鏈?1濡傛灉鎯冲彇褰撳墠鏈?1灏卞彲浠ヤ簡
             now = now + date.getDate() + " ";
             now = now + date.getHours() + ":";
             now = now + date.getMinutes() + ":";
             now = now + date.getSeconds() + "";
-            document.getElementById("AdLayer").innerHTML = "<table border=1 cellSpacing=0 cellPadding=0 width=100% borderColorDark=#ffcccc borderColorLight=whitesmoke height=100% style='BORDER-RIGHT-COLOR: #cccccc;BORDER-LEFT-COLOR: #cccccc;BORDER-TOP-COLOR: #cccccc;BORDER-BOTTOM-COLOR: #cccccc;'><tr><td valign=middle align=left nowrap><font color=#110033 size=3><b>" + (now) + "</b></font></td></tr></table>"; //div的html是now这个字符串
-            setTimeout("showdata()", 507); //设置过1000毫秒就是1秒，调用show方法
+            document.getElementById("AdLayer").innerHTML = "<table border=1 cellSpacing=0 cellPadding=0 width=100% borderColorDark=#ffcccc borderColorLight=whitesmoke height=100% style='BORDER-RIGHT-COLOR: #cccccc;BORDER-LEFT-COLOR: #cccccc;BORDER-TOP-COLOR: #cccccc;BORDER-BOTTOM-COLOR: #cccccc;'><tr><td valign=middle align=left nowrap><font color=#110033 size=3><b>" + (now) + "</b></font></td></tr></table>"; //div鐨刪tml鏄痭ow杩欎釜瀛楃涓?
+            setTimeout("showdata()", 507); //璁剧疆杩?000姣灏辨槸1绉掞紝璋冪敤show鏂规硶
         }
     </script>
 	
-	<div id="check">		<!--JS检查-->
-		<p>对不起，你的浏览器不支持JavaScript！虽然依然可以下载，可是页面将会变得很怪哦！</p>
+	<div id="check">		<!--JS妫€鏌?->
+		<p>瀵逛笉璧凤紝浣犵殑娴忚鍣ㄤ笉鏀寔JavaScript锛佽櫧鐒朵緷鐒跺彲浠ヤ笅杞斤紝鍙槸椤甸潰灏嗕細鍙樺緱寰堟€摝锛?/p>
     </div>
 	
-	<div class='bgdiv'  id='bgdiv'> <!--背景层-->
+	<div class='bgdiv'  id='bgdiv'> <!--鑳屾櫙灞?->
 	</div>
 	
-	<div id="AdLayer">		<!--右边时间-->
+	<div id="AdLayer">		<!--鍙宠竟鏃堕棿-->
 		<p></p>
     </div>
 		
-	<div id='left' class='left'>	<!--左边目录-->
+	<div id='left' class='left'>	<!--宸﹁竟鐩綍-->
 	<ul id='gameoutline' class="preoutline">
-		<li><p><a target="_self" href="#Games" class="linker" >那些游戏</a></p><hr/></li>
+		<li><p><a target="_self" href="#Games" class="linker" >閭ｄ簺娓告垙</a></p><hr/></li>
 		<li><ul>
 			<li><a target="_self" href="#Games_FreebirdGames" class="linker">FreebirdGames</a></li>
 			<li><a target="_self" href="#Games_Amanita Design" class="linker">Amanita Design</a></li>
-			<li><a target="_self" href="#Games_FlashGame" class="linker">Flash游戏</a></li>
-			<li><a target="_self" href="#Games_Small but Delicate" class="linker">小而精致</a></li>
-			<li><a target="_self" href="#Games_Grand and Magnificent" class="linker">大而完美</a></li>
-			<li><a target="_self" href="#Games_documents" class="linker">游戏存档</a></li>
+			<li><a target="_self" href="#Games_FlashGame" class="linker">Flash娓告垙</a></li>
+			<li><a target="_self" href="#Games_Small but Delicate" class="linker">灏忚€岀簿鑷?/a></li>
+			<li><a target="_self" href="#Games_Grand and Magnificent" class="linker">澶ц€屽畬缇?/a></li>
+			<li><a target="_self" href="#Games_documents" class="linker">娓告垙瀛樻。</a></li>
 		</ul></li>
 		<li><br/></li>
-		<li><p><a target="_self" href="#Software" class="linker">这些软件</a></p><hr/></li>
+		<li><p><a target="_self" href="#Software" class="linker">杩欎簺杞欢</a></p><hr/></li>
 		<li><ul>
-			<li><a target="_self" href="#Software_utility" class="linker">简洁实用</a></li>
-			<li><a target="_self" href="#Software_powerful" class="linker">功能齐全</a></li>
+			<li><a target="_self" href="#Software_utility" class="linker">绠€娲佸疄鐢?/a></li>
+			<li><a target="_self" href="#Software_powerful" class="linker">鍔熻兘榻愬叏</a></li>
 		</ul></li>
 		<li><br/></li>
-		<li><p><a target="_self" href="#Online" class="linker">乐在互联</a></p><hr/></li>
+		<li><p><a target="_self" href="#Online" class="linker">涔愬湪浜掕仈</a></p><hr/></li>
 		<li><ul>
-			<li><a target="_self" href="#Online_Game" class="linker">在线玩乐</a></li>
+			<li><a target="_self" href="#Online_Game" class="linker">鍦ㄧ嚎鐜╀箰</a></li>
 		</ul></li>
 	</ul>
 	</div>
 	
-	<div id="root" class='content'>  <!--右边具体-->
+	<div id="root" class='content'>  <!--鍙宠竟鍏蜂綋-->
 	<!--
 		<dt id=''>name</dt>
 			<dd id='_ico' class="nojs">ico.src</dd>
@@ -384,741 +384,741 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 			</dl></dd>
 	-->
 	<dl id="root_next">
-		<dt id='Games'>这些游戏</dt>
+		<dt id='Games'>杩欎簺娓告垙</dt>
 			<dd id='Games_ico' class="nojs">http://img2.ph.126.net/Fi3XOtqQPh7LETgufuC5Hw==/6597511770331646753.png</dd>
-			<dd id='Games_linker'><a href="http://yunpan.cn/QGJgigI5eXtr3">360云盘</a> <a href="http://pan.baidu.com/s/15lM5B">百度网盘</a></dd>
+			<dd id='Games_linker'><a href="http://yunpan.cn/QGJgigI5eXtr3">360浜戠洏</a> <a href="http://pan.baidu.com/s/15lM5B">鐧惧害缃戠洏</a></dd>
 			<dd id='Games_detail'></dd>
 			<dd><dl id='Games_next'>
 				<dt id='Games_FreebirdGames'>FreebirdGames</dt>
 					<dd id='Games_FreebirdGames_ico' class="nojs">http://img1.ph.126.net/tPWS5Bjk346il4qYfgNDAw==/6597621721495619224.png</dd>
 					<dd id='Games_FreebirdGames_imager' class="nojs"></dd>
 					<dd id='Games_FreebirdGames_detail'></dd>
-					<dd id='Games_FreebirdGames_linker'><a  href="http://yunpan.cn/QbzhiwDVKvfex">360云盘</a> <a href="http://pan.baidu.com/s/1gjrB9">百度网盘</a></dd>
+					<dd id='Games_FreebirdGames_linker'><a  href="http://yunpan.cn/QbzhiwDVKvfex">360浜戠洏</a> <a href="http://pan.baidu.com/s/1gjrB9">鐧惧害缃戠洏</a></dd>
 					<dd><dl id='Games_FreebirdGames_next'>
-						<dt id='Games_FreebirdGames_to the moon'>To The Moon (去月球)</dt>
+						<dt id='Games_FreebirdGames_to the moon'>To The Moon (鍘绘湀鐞?</dt>
 							<dd id='Games_FreebirdGames_to the moon_ico' class="nojs">http://img1.ph.126.net/9mcLTBda6-3Zwu7xjVdn7g==/6597787747751416498.jpg</dd>
 							<dd id='Games_FreebirdGames_to the moon_imager' class="nojs"></dd>
 							<dd id='Games_FreebirdGames_to the moon_detail'>
-								故事讲述一个博士专门为弥留之际的人们完成最后的心愿，而这回这位约翰尼老人最后的心愿竟然是——去月球。<br/>
-								它被定义为游戏，经过几个小时的“游戏”之后，或许会更觉得自己是读了一部感人至深的小说，它就是《Too the Moon》。<br/>
-								中文翻译为《去月球》，对于这个翻译我起初觉得也就只能叫做翻译，后来想想如此朴素的名字正能凸显出故事内容的感人至深，当然如果非要把其定义为游戏的话，那姑且就叫做剧情游戏吧。<br/>
-								诚然这部“游戏”的画面复古，可这丝毫不能影响游戏本身的素质，故事中多个细节使玩家潸然泪下，配合上极为动听的背景音乐，再没有理由纠结于画质之上。游戏本身没有战斗，没有支线，仅仅单纯地叙述着那个所要呈现给玩家眼前的那份感动。<br/>
-								<br/>能给一个画面粗糙、游戏性几乎没有、还有低级bug的游戏这么高的分数，这理由除了玩过的人是不会知道的。<br/>
-								——verycd:antonio3</dd>
-							<dd id='Games_FreebirdGames_to the moon_linker'><a  href="http://yunpan.cn/QbzhW4fbbict6">360云盘</a> <a href="http://pan.baidu.com/s/1oqPiR">百度网盘</a></dd>
-						<dt id='Games_FreebirdGames_DYRMLullaby'>Do You Remember My Lullaby(曾几何时的摇篮曲)</dt>
+								鏁呬簨璁茶堪涓€涓崥澹笓闂ㄤ负寮ョ暀涔嬮檯鐨勪汉浠畬鎴愭渶鍚庣殑蹇冩効锛岃€岃繖鍥炶繖浣嶇害缈板凹鑰佷汉鏈€鍚庣殑蹇冩効绔熺劧鏄€斺€斿幓鏈堢悆銆?br/>
+								瀹冭瀹氫箟涓烘父鎴忥紝缁忚繃鍑犱釜灏忔椂鐨勨€滄父鎴忊€濅箣鍚庯紝鎴栬浼氭洿瑙夊緱鑷繁鏄浜嗕竴閮ㄦ劅浜鸿嚦娣辩殑灏忚锛屽畠灏辨槸銆奣oo the Moon銆嬨€?br/>
+								涓枃缈昏瘧涓恒€婂幓鏈堢悆銆嬶紝瀵逛簬杩欎釜缈昏瘧鎴戣捣鍒濊寰椾篃灏卞彧鑳藉彨鍋氱炕璇戯紝鍚庢潵鎯虫兂濡傛鏈寸礌鐨勫悕瀛楁鑳藉嚫鏄惧嚭鏁呬簨鍐呭鐨勬劅浜鸿嚦娣憋紝褰撶劧濡傛灉闈炶鎶婂叾瀹氫箟涓烘父鎴忕殑璇濓紝閭ｅ涓斿氨鍙仛鍓ф儏娓告垙鍚с€?br/>
+								璇氱劧杩欓儴鈥滄父鎴忊€濈殑鐢婚潰澶嶅彜锛屽彲杩欎笣姣笉鑳藉奖鍝嶆父鎴忔湰韬殑绱犺川锛屾晠浜嬩腑澶氫釜缁嗚妭浣跨帺瀹舵礁鐒舵唱涓嬶紝閰嶅悎涓婃瀬涓哄姩鍚殑鑳屾櫙闊充箰锛屽啀娌℃湁鐞嗙敱绾犵粨浜庣敾璐ㄤ箣涓娿€傛父鎴忔湰韬病鏈夋垬鏂楋紝娌℃湁鏀嚎锛屼粎浠呭崟绾湴鍙欒堪鐫€閭ｄ釜鎵€瑕佸憟鐜扮粰鐜╁鐪煎墠鐨勯偅浠芥劅鍔ㄣ€?br/>
+								<br/>鑳界粰涓€涓敾闈㈢矖绯欍€佹父鎴忔€у嚑涔庢病鏈夈€佽繕鏈変綆绾ug鐨勬父鎴忚繖涔堥珮鐨勫垎鏁帮紝杩欑悊鐢遍櫎浜嗙帺杩囩殑浜烘槸涓嶄細鐭ラ亾鐨勩€?br/>
+								鈥斺€攙erycd:antonio3</dd>
+							<dd id='Games_FreebirdGames_to the moon_linker'><a  href="http://yunpan.cn/QbzhW4fbbict6">360浜戠洏</a> <a href="http://pan.baidu.com/s/1oqPiR">鐧惧害缃戠洏</a></dd>
+						<dt id='Games_FreebirdGames_DYRMLullaby'>Do You Remember My Lullaby(鏇惧嚑浣曟椂鐨勬憞绡洸)</dt>
 							<dd id='Games_FreebirdGames_DYRMLullaby_ico' class="nojs">http://img0.ph.126.net/pdSirDCDxE7rwubh0l9GoQ==/3238932557109988107.png</dd>
 							<dd id='Games_FreebirdGames_DYRMLullaby_imager' class="nojs"></dd>
 							<dd id='Games_FreebirdGames_DYRMLullaby_detail'>
-								很温情的一个小故事。</dd>
-							<dd id='Games_FreebirdGames_DYRMLullaby_linker'><a  href="http://yunpan.cn/QbzhG4DLjzIF6">360云盘</a> <a href="http://pan.baidu.com/s/13PS7W">百度网盘</a></dd>
-						<dt id='Games_FreebirdGames_QTBV'>Quintessence - The Blighted Venom(第五元素:剧毒)</dt>
+								寰堟俯鎯呯殑涓€涓皬鏁呬簨銆?/dd>
+							<dd id='Games_FreebirdGames_DYRMLullaby_linker'><a  href="http://yunpan.cn/QbzhG4DLjzIF6">360浜戠洏</a> <a href="http://pan.baidu.com/s/13PS7W">鐧惧害缃戠洏</a></dd>
+						<dt id='Games_FreebirdGames_QTBV'>Quintessence - The Blighted Venom(绗簲鍏冪礌:鍓ф瘨)</dt>
 							<dd id='Games_FreebirdGames_QTBV_ico' class="nojs">http://img2.ph.126.net/p2BNMnTqMtfXSUzqvRNkKg==/6608244103329967643.png</dd>
 							<dd id='Games_FreebirdGames_QTBV_imager' class="nojs"></dd>
 							<dd id='Games_FreebirdGames_QTBV_detail'>
-								即时类的RPG，而且游戏流程一共14章，作者现已出11章。</dd>
-							<dd id='Games_FreebirdGames_QTBV_linker'><a  href="http://yunpan.cn/QbzhUg2JL2xcp">360云盘</a> <a href="http://pan.baidu.com/s/1DtthN">百度网盘</a></dd>
-						<dt id='Games_FreebirdGames_the mirror lied'>The Mirror Lied_V2 (镜之谎言)</dt>
+								鍗虫椂绫荤殑RPG锛岃€屼笖娓告垙娴佺▼涓€鍏?4绔狅紝浣滆€呯幇宸插嚭11绔犮€?/dd>
+							<dd id='Games_FreebirdGames_QTBV_linker'><a  href="http://yunpan.cn/QbzhUg2JL2xcp">360浜戠洏</a> <a href="http://pan.baidu.com/s/1DtthN">鐧惧害缃戠洏</a></dd>
+						<dt id='Games_FreebirdGames_the mirror lied'>The Mirror Lied_V2 (闀滀箣璋庤█)</dt>
 							<dd id='Games_FreebirdGames_the mirror lied_ico' class="nojs">http://img0.ph.126.net/Nama8dmxdNn4AuEY4a4Wcg==/6597773454100251096.png</dd>
 							<dd id='Games_FreebirdGames_the mirror lied_imager' class="nojs"></dd>
 							<dd id='Games_FreebirdGames_the mirror lied_detail'>
-								故事具体剧情隐晦，但并不是恐怖片。</dd>
-							<dd id='Games_FreebirdGames_the mirror lied_linker'><a  href="http://yunpan.cn/QbzhzXsxdyfdY">360云盘</a> <a href="http://pan.baidu.com/s/1ta5e3">百度网盘</a></dd>
+								鏁呬簨鍏蜂綋鍓ф儏闅愭櫐锛屼絾骞朵笉鏄亹鎬栫墖銆?/dd>
+							<dd id='Games_FreebirdGames_the mirror lied_linker'><a  href="http://yunpan.cn/QbzhzXsxdyfdY">360浜戠洏</a> <a href="http://pan.baidu.com/s/1ta5e3">鐧惧害缃戠洏</a></dd>
 					</dl></dd>
 				<dt id='Games_Amanita Design'>Amanita Design</dt>
 					<dd id='Games_Amanita Design_ico' class="nojs">http://img1.ph.126.net/pFdsABb7yGgAGiz6ByxUsA==/6597658005379341364.png</dd>
 					<dd id='Games_Amanita Design_imager' class="nojs"></dd>
 					<dd id='Games_Amanita Design_detail'></dd>
-					<dd id='Games_Amanita Design_linker'><a  href="http://yunpan.cn/QbzCV5rUBAVwv">360云盘</a> <a href="http://pan.baidu.com/s/1uw1vQ">百度网盘</a></dd>
+					<dd id='Games_Amanita Design_linker'><a  href="http://yunpan.cn/QbzCV5rUBAVwv">360浜戠洏</a> <a href="http://pan.baidu.com/s/1uw1vQ">鐧惧害缃戠洏</a></dd>
 					<dd><dl id='Games_Amanita Design_next'>
-						<dt id='Games_Amanita Design_Machinarium'>Machinarium (机械迷城)</dt>
+						<dt id='Games_Amanita Design_Machinarium'>Machinarium (鏈烘杩峰煄)</dt>
 							<dd id='Games_Amanita Design_Machinarium_ico' class="nojs">http://img2.ph.126.net/JViQD55fqq7d0-szpo6kNQ==/3791186461416252794.png</dd>
 							<dd id='Games_Amanita Design_Machinarium_imager' class="nojs"></dd>
 							<dd id='Games_Amanita Design_Machinarium_detail'>
-								以独特的水墨风格展现给玩家的是一款含有大量工业元素的冒险解谜游戏，Machinarium中每个人都是机器人。</dd>
-							<dd id='Games_Amanita Design_Machinarium_linker'><a  href="http://yunpan.cn/QbzCA7Kkd3FxL">360云盘</a> <a href="http://pan.baidu.com/s/1oqQof">百度网盘</a></dd>
-						<dt id='Games_Amanita Design_Botanicula'>Botanicula (植物精灵)</dt>
+								浠ョ嫭鐗圭殑姘村ⅷ椋庢牸灞曠幇缁欑帺瀹剁殑鏄竴娆惧惈鏈夊ぇ閲忓伐涓氬厓绱犵殑鍐掗櫓瑙ｈ皽娓告垙锛孧achinarium涓瘡涓汉閮芥槸鏈哄櫒浜恒€?/dd>
+							<dd id='Games_Amanita Design_Machinarium_linker'><a  href="http://yunpan.cn/QbzCA7Kkd3FxL">360浜戠洏</a> <a href="http://pan.baidu.com/s/1oqQof">鐧惧害缃戠洏</a></dd>
+						<dt id='Games_Amanita Design_Botanicula'>Botanicula (妞嶇墿绮剧伒)</dt>
 							<dd id='Games_Amanita Design_Botanicula_ico' class="nojs">http://img2.ph.126.net/R-j3PsrleIlSN4fCgQyiWg==/905505000178586981.png</dd>
 							<dd id='Games_Amanita Design_Botanicula_imager' class="nojs"></dd>
 							<dd id='Games_Amanita Design_Botanicula_detail'>
-								《植物精灵》有着色彩华丽的治愈系风格，同时该作也被称作环保题材游戏，描述有害的生物威胁森林的生态，5位精灵战士前来保护森林，守护植物种子。被有害生物污染的植物会以黑白来表现，非常细腻的艺术风格。</dd>
-							<dd id='Games_Amanita Design_Botanicula_linker'><a  href="http://yunpan.cn/QbzCyfBPDp5M9">360云盘</a> <a href="http://pan.baidu.com/s/123Xi9">百度网盘</a></dd>
-						<dt id='Games_Amanita Design_1 Samorost'>1 Samorost (银河历险记1)</dt>
+								銆婃鐗╃簿鐏点€嬫湁鐫€鑹插僵鍗庝附鐨勬不鎰堢郴椋庢牸锛屽悓鏃惰浣滀篃琚О浣滅幆淇濋鏉愭父鎴忥紝鎻忚堪鏈夊鐨勭敓鐗╁▉鑳佹．鏋楃殑鐢熸€侊紝5浣嶇簿鐏垫垬澹墠鏉ヤ繚鎶ゆ．鏋楋紝瀹堟姢妞嶇墿绉嶅瓙銆傝鏈夊鐢熺墿姹℃煋鐨勬鐗╀細浠ラ粦鐧芥潵琛ㄧ幇锛岄潪甯哥粏鑵荤殑鑹烘湳椋庢牸銆?/dd>
+							<dd id='Games_Amanita Design_Botanicula_linker'><a  href="http://yunpan.cn/QbzCyfBPDp5M9">360浜戠洏</a> <a href="http://pan.baidu.com/s/123Xi9">鐧惧害缃戠洏</a></dd>
+						<dt id='Games_Amanita Design_1 Samorost'>1 Samorost (閾舵渤鍘嗛櫓璁?)</dt>
 							<dd id='Games_Amanita Design_1 Samorost_ico' class="nojs">http://img2.ph.126.net/Td3IPRswQ40FezdcIg50Og==/2457276546784354433.png</dd>
 							<dd id='Games_Amanita Design_1 Samorost_imager' class="nojs"></dd>
 							<dd id='Games_Amanita Design_1 Samorost_detail'></dd>
-							<dd id='Games_Amanita Design_1 Samorost_linker'><a  href="http://yunpan.cn/QbzCKtvDjJjbS">360云盘</a> <a href="http://pan.baidu.com/s/1rEBBO">百度网盘</a></dd>
-						<dt id='Games_Amanita Design_2 Samorost'>2 Samorost (银河历险记2)</dt>
+							<dd id='Games_Amanita Design_1 Samorost_linker'><a  href="http://yunpan.cn/QbzCKtvDjJjbS">360浜戠洏</a> <a href="http://pan.baidu.com/s/1rEBBO">鐧惧害缃戠洏</a></dd>
+						<dt id='Games_Amanita Design_2 Samorost'>2 Samorost (閾舵渤鍘嗛櫓璁?)</dt>
 							<dd id='Games_Amanita Design_2 Samorost_ico' class="nojs">http://img0.ph.126.net/WQmcGeBw7h_vfZT6NCGR8Q==/3314930800821787344.png</dd>
 							<dd id='Games_Amanita Design_2 Samorost_imager' class="nojs"></dd>
 							<dd id='Games_Amanita Design_2 Samorost_detail'></dd>
-							<dd id='Games_Amanita Design_2 Samorost_linker'><a  href="http://yunpan.cn/QbzCJepJhypcz">360云盘</a> <a href="http://pan.baidu.com/s/1gjs9o">百度网盘</a></dd>
-						<dt id='Games_Amanita Design_3 Questionaut'>3 Questionaut (银河历险记3)</dt>
+							<dd id='Games_Amanita Design_2 Samorost_linker'><a  href="http://yunpan.cn/QbzCJepJhypcz">360浜戠洏</a> <a href="http://pan.baidu.com/s/1gjs9o">鐧惧害缃戠洏</a></dd>
+						<dt id='Games_Amanita Design_3 Questionaut'>3 Questionaut (閾舵渤鍘嗛櫓璁?)</dt>
 							<dd id='Games_Amanita Design_3 Questionaut_ico' class="nojs">http://img2.ph.126.net/sSElKqeZfsFdiJ_9cLbdqg==/2118662149801870736.png</dd>
 							<dd id='Games_Amanita Design_3 Questionaut_imager' class="nojs"></dd>
 							<dd id='Games_Amanita Design_3 Questionaut_detail'></dd>
-							<dd id='Games_Amanita Design_3 Questionaut_linker'><a  href="http://yunpan.cn/QbzCmQMSipXwH">360云盘</a> <a href="http://pan.baidu.com/s/1knfSG">百度网盘</a></dd>
+							<dd id='Games_Amanita Design_3 Questionaut_linker'><a  href="http://yunpan.cn/QbzCmQMSipXwH">360浜戠洏</a> <a href="http://pan.baidu.com/s/1knfSG">鐧惧害缃戠洏</a></dd>
 						<dt id='Games_Amanita Design_others'>Amanita Design-others</dt>
 							<dd id='Games_Amanita Design_others_ico' class="nojs">http://img1.ph.126.net/pFdsABb7yGgAGiz6ByxUsA==/6597658005379341364.png</dd>
 							<dd id='Games_Amanita Design_others_imager' class="nojs"></dd>
-							<dd id='Games_Amanita Design_others_detail'>Amanita Design公司其他作品。</dd>
-							<dd id='Games_Amanita Design_others_linker'><a  href="http://yunpan.cn/QbzCFyhkem3RT">360云盘</a> <a href="http://pan.baidu.com/s/1y0mZx">百度网盘</a></dd>
+							<dd id='Games_Amanita Design_others_detail'>Amanita Design鍏徃鍏朵粬浣滃搧銆?/dd>
+							<dd id='Games_Amanita Design_others_linker'><a  href="http://yunpan.cn/QbzCFyhkem3RT">360浜戠洏</a> <a href="http://pan.baidu.com/s/1y0mZx">鐧惧害缃戠洏</a></dd>
 					</dl></dd>
 				<dt id='Games_FlashGame'>FlashGame</dt>
 					<dd id='Games_FlashGame_ico' class="nojs">http://img0.ph.126.net/CHEO-7PR6op5bSyngpLGTA==/3243717631714069464.png</dd>
 					<dd id='Games_FlashGame_imager' class="nojs"></dd>
 					<dd id='Games_FlashGame_detail'></dd>
-					<dd id='Games_FlashGame_linker'><a  href="http://yunpan.cn/QbzCqyhq4PzTI">360云盘</a> <a href="http://pan.baidu.com/s/1cf7VI">百度网盘</a></dd>
+					<dd id='Games_FlashGame_linker'><a  href="http://yunpan.cn/QbzCqyhq4PzTI">360浜戠洏</a> <a href="http://pan.baidu.com/s/1cf7VI">鐧惧害缃戠洏</a></dd>
 					<dd><dl id='Games_FlashGame_next'>
-						<dt id='Games_FlashGame_Windosill'>Windosill(玩具车大冒险)</dt>
+						<dt id='Games_FlashGame_Windosill'>Windosill(鐜╁叿杞﹀ぇ鍐掗櫓)</dt>
 							<dd id='Games_FlashGame_Windosill_ico' class="nojs">http://img1.ph.126.net/fV9CfOfOxADLdX-aC6eBkw==/2490772068930646831.png</dd>
 							<dd id='Games_FlashGame_Windosill_imager' class="nojs"></dd>
 							<dd id='Games_FlashGame_Windosill_detail'></dd>
-							<dd id='Games_FlashGame_Windosill_linker'><a  href="http://yunpan.cn/Qi2hvyWdm8W83">360云盘 f59e</a> <a href="http://pan.baidu.com/s/1qWDad68">百度网盘</a></dd>
-						<dt id='Games_FlashGame_mirrorshot'>奇妙的反射镜</dt>
+							<dd id='Games_FlashGame_Windosill_linker'><a  href="http://yunpan.cn/Qi2hvyWdm8W83">360浜戠洏 f59e</a> <a href="http://pan.baidu.com/s/1qWDad68">鐧惧害缃戠洏</a></dd>
+						<dt id='Games_FlashGame_mirrorshot'>濂囧鐨勫弽灏勯暅</dt>
 							<dd id='Games_FlashGame_mirrorshot_ico' class="nojs">http://img1.ph.126.net/sW-_j37mn7On5iimCdTDwQ==/847521154976038690.jpg</dd>
 							<dd id='Games_FlashGame_mirrorshot_imager' class="nojs"></dd>
 							<dd id='Games_FlashGame_mirrorshot_detail'></dd>
-							<dd id='Games_FlashGame_mirrorshot_linker'><a  href="http://yunpan.cn/QbzC6TPznZtFP">360云盘</a> <a href="http://pan.baidu.com/s/1JEmK">百度网盘</a></dd>
-						<dt id='Games_FlashGame_The Miller Estate'>The Miller Estate (米勒山庄疑案)</dt>
+							<dd id='Games_FlashGame_mirrorshot_linker'><a  href="http://yunpan.cn/QbzC6TPznZtFP">360浜戠洏</a> <a href="http://pan.baidu.com/s/1JEmK">鐧惧害缃戠洏</a></dd>
+						<dt id='Games_FlashGame_The Miller Estate'>The Miller Estate (绫冲嫆灞卞簞鐤戞)</dt>
 							<dd id='Games_FlashGame_The Miller Estate_ico' class="nojs">http://img2.ph.126.net/65WFYxE8v8kQsuTDXjVxfA==/777996835728466142.png</dd>
 							<dd id='Games_FlashGame_The Miller Estate_imager' class="nojs"></dd>
 							<dd id='Games_FlashGame_The Miller Estate_detail'></dd>
-							<dd id='Games_FlashGame_The Miller Estate_linker'><a  href="http://yunpan.cn/QbzCB2XwGQsXP">360云盘</a> <a href="http://pan.baidu.com/s/1mUU3c">百度网盘</a></dd>
-						<dt id='Games_FlashGame_Room Escape'>Room Escape (密室逃脱)</dt>
+							<dd id='Games_FlashGame_The Miller Estate_linker'><a  href="http://yunpan.cn/QbzCB2XwGQsXP">360浜戠洏</a> <a href="http://pan.baidu.com/s/1mUU3c">鐧惧害缃戠洏</a></dd>
+						<dt id='Games_FlashGame_Room Escape'>Room Escape (瀵嗗閫冭劚)</dt>
 							<dd id='Games_FlashGame_Room Escape_ico' class="nojs">http://img2.ph.126.net/FYK9ZevL3NwsD1tu2q2sUw==/6597888902821169933.png</dd>
 							<dd id='Games_FlashGame_Room Escape_imager' class="nojs"></dd>
 							<dd id='Games_FlashGame_Room Escape_detail'></dd>
-							<dd id='Games_FlashGame_Room Escape_linker'><a  href="http://yunpan.cn/QbzC6FWDKhQ3a">360云盘</a> <a href="http://pan.baidu.com/s/1Br0zh">百度网盘</a></dd>
-						<dt id='Games_FlashGame_Matchstick man'>小小作品</dt>
+							<dd id='Games_FlashGame_Room Escape_linker'><a  href="http://yunpan.cn/QbzC6FWDKhQ3a">360浜戠洏</a> <a href="http://pan.baidu.com/s/1Br0zh">鐧惧害缃戠洏</a></dd>
+						<dt id='Games_FlashGame_Matchstick man'>灏忓皬浣滃搧</dt>
 							<dd id='Games_FlashGame_Matchstick man_ico' class="nojs">http://img1.ph.126.net/PFWxPA-ckmZEDmSGPP8ONg==/1709116058687694508.png</dd>
 							<dd id='Games_FlashGame_Matchstick man_imager' class="nojs"></dd>
 							<dd id='Games_FlashGame_Matchstick man_detail'></dd>
-							<dd id='Games_FlashGame_Matchstick man_linker'><a  href="http://yunpan.cn/QbzCkkMwALDGm">360云盘</a> <a href="http://pan.baidu.com/s/1kTd7b">百度网盘</a></dd>
-						<dt id='Games_FlashGame_Mr.Snoozleberg'>梦游先生</dt>
+							<dd id='Games_FlashGame_Matchstick man_linker'><a  href="http://yunpan.cn/QbzCkkMwALDGm">360浜戠洏</a> <a href="http://pan.baidu.com/s/1kTd7b">鐧惧害缃戠洏</a></dd>
+						<dt id='Games_FlashGame_Mr.Snoozleberg'>姊︽父鍏堢敓</dt>
 							<dd id='Games_FlashGame_Mr.Snoozleberg_ico' class="nojs">http://img0.ph.126.net/RaXww229aocT965W7QlpVg==/786441085029807270.png</dd>
 							<dd id='Games_FlashGame_Mr.Snoozleberg_imager' class="nojs"></dd>
 							<dd id='Games_FlashGame_Mr.Snoozleberg_detail'></dd>
-							<dd id='Games_FlashGame_Mr.Snoozleberg_linker'><a  href="http://yunpan.cn/QbzCRtvPb2H3P">360云盘</a> <a href="http://pan.baidu.com/s/1ta6pU">百度网盘</a></dd>
-						<dt id='Games_FlashGame_Mini Adventure Island'>小小冒险岛3~6</dt>
+							<dd id='Games_FlashGame_Mr.Snoozleberg_linker'><a  href="http://yunpan.cn/QbzCRtvPb2H3P">360浜戠洏</a> <a href="http://pan.baidu.com/s/1ta6pU">鐧惧害缃戠洏</a></dd>
+						<dt id='Games_FlashGame_Mini Adventure Island'>灏忓皬鍐掗櫓宀?~6</dt>
 							<dd id='Games_FlashGame_Mini Adventure Island_ico' class="nojs">http://img2.ph.126.net/r42lOibRx-U8bTym4dYwyw==/6597808638472348670.png</dd>
 							<dd id='Games_FlashGame_Mini Adventure Island_imager' class="nojs"></dd>
 							<dd id='Games_FlashGame_Mini Adventure Island_detail'></dd>
-							<dd id='Games_FlashGame_Mini Adventure Island_linker'><a  href="http://yunpan.cn/QbzCM5rPfUSZJ">360云盘</a> <a href="http://pan.baidu.com/s/11ibxJ">百度网盘</a></dd>
+							<dd id='Games_FlashGame_Mini Adventure Island_linker'><a  href="http://yunpan.cn/QbzCM5rPfUSZJ">360浜戠洏</a> <a href="http://pan.baidu.com/s/11ibxJ">鐧惧害缃戠洏</a></dd>
 						<dt id='Games_FlashGame_Flash'>Flash-other</dt>
 							<dd id='Games_FlashGame_Flash_ico' class="nojs">http://img0.ph.126.net/CHEO-7PR6op5bSyngpLGTA==/3243717631714069464.png</dd>
 							<dd id='Games_FlashGame_Flash_imager' class="nojs"></dd>
 							<dd id='Games_FlashGame_Flash_detail'></dd>
-							<dd id='Games_FlashGame_Flash_linker'><a  href="http://yunpan.cn/QbzCSnFKa6cfQ">360云盘</a> <a href="http://pan.baidu.com/s/1oWMuf">百度网盘</a></dd>
+							<dd id='Games_FlashGame_Flash_linker'><a  href="http://yunpan.cn/QbzCSnFKa6cfQ">360浜戠洏</a> <a href="http://pan.baidu.com/s/1oWMuf">鐧惧害缃戠洏</a></dd>
 					</dl></dd>
-				<dt id='Games_Small but Delicate'>小而精致</dt>
+				<dt id='Games_Small but Delicate'>灏忚€岀簿鑷?/dt>
 					<dd id='Games_Small but Delicate_ico' class="nojs">http://img2.ph.126.net/3P795pQv9p80Ec4bnddJig==/777433885775080139.jpg</dd>
 					<dd id='Games_Small but Delicate_imager' class="nojs"></dd>
 					<dd id='Games_Small but Delicate_detail'></dd>
-					<dd id='Games_Small but Delicate_linker'><a  href="http://yunpan.cn/Q9ECh3pMMsGiP">360云盘</a> <a href="http://pan.baidu.com/s/1gkQVf">百度网盘</a></dd>
+					<dd id='Games_Small but Delicate_linker'><a  href="http://yunpan.cn/Q9ECh3pMMsGiP">360浜戠洏</a> <a href="http://pan.baidu.com/s/1gkQVf">鐧惧害缃戠洏</a></dd>
 					<dd><dl id='Games_Small but Delicate_next'>
-						<dt id='Games_Small but Delicate_Braid'>Braid (时空幻境)</dt>
+						<dt id='Games_Small but Delicate_Braid'>Braid (鏃剁┖骞诲)</dt>
 							<dd id='Games_Small but Delicate_Braid_ico' class="nojs">http://img0.ph.126.net/yamPUNCf0qplbFHSa5aIxg==/6608222113097412513.png</dd>
 							<dd id='Games_Small but Delicate_Braid_imager' class="nojs"></dd>
 							<dd id='Games_Small but Delicate_Braid_detail'>
-								谁见到过风？<br/>
-								你没有，我也没有。<br/>
-								但当树儿低下头，<br/>
-								便是风儿经过时。<br/>
-								便是风儿穿过的时候。<br/>
-								但当树叶微微摇首，<br/>
-								你没有，我也没有。<br/>
-								谁见到过风？<br/><br/>
-								2008年，一个诞生于Xbox360上的独立游戏，在未经包装宣传的情况下，获得了各类主流媒体的一致超高评价（素来以苛刻著称的GS打出了9.5分/10分制），从此《Braid》一炮而红，并被微软移植到了PC平台，这才使得更多玩家接触到了这款另类的动作解谜冒险游戏。即使将Braid仅仅看作一款解谜游戏，它也不负神作之名。游戏中几乎所有谜题都与时光倒流有关，并被天才般的关卡设计师发挥到了鬼斧神工的地步，整个游戏中充斥着让人目瞪口呆、仿佛神授的惊人创意（相信许多被机关卡住的玩家在看了攻略视频之后，都有不住拍大腿的冲动。）！本作关卡有种只有融入游戏才能体会到的精妙，它不仅承接了游戏的剧情，更与晦涩的主题暗合。不同于RPG、AVG类游戏不厌其烦的文字表述，Braid更多的是将细节融入游戏本身，让玩家通过推理和归纳理解游戏的本质。
+								璋佽鍒拌繃椋庯紵<br/>
+								浣犳病鏈夛紝鎴戜篃娌℃湁銆?br/>
+								浣嗗綋鏍戝効浣庝笅澶达紝<br/>
+								渚挎槸椋庡効缁忚繃鏃躲€?br/>
+								渚挎槸椋庡効绌胯繃鐨勬椂鍊欍€?br/>
+								浣嗗綋鏍戝彾寰井鎽囬锛?br/>
+								浣犳病鏈夛紝鎴戜篃娌℃湁銆?br/>
+								璋佽鍒拌繃椋庯紵<br/><br/>
+								2008骞达紝涓€涓癁鐢熶簬Xbox360涓婄殑鐙珛娓告垙锛屽湪鏈粡鍖呰瀹ｄ紶鐨勬儏鍐典笅锛岃幏寰椾簡鍚勭被涓绘祦濯掍綋鐨勪竴鑷磋秴楂樿瘎浠凤紙绱犳潵浠ヨ嫑鍒昏憲绉扮殑GS鎵撳嚭浜?.5鍒?10鍒嗗埗锛夛紝浠庢銆夿raid銆嬩竴鐐€岀孩锛屽苟琚井杞Щ妞嶅埌浜哖C骞冲彴锛岃繖鎵嶄娇寰楁洿澶氱帺瀹舵帴瑙﹀埌浜嗚繖娆惧彟绫荤殑鍔ㄤ綔瑙ｈ皽鍐掗櫓娓告垙銆傚嵆浣垮皢Braid浠呬粎鐪嬩綔涓€娆捐В璋滄父鎴忥紝瀹冧篃涓嶈礋绁炰綔涔嬪悕銆傛父鎴忎腑鍑犱箮鎵€鏈夎皽棰橀兘涓庢椂鍏夊€掓祦鏈夊叧锛屽苟琚ぉ鎵嶈埇鐨勫叧鍗¤璁″笀鍙戞尌鍒颁簡楝兼枾绁炲伐鐨勫湴姝ワ紝鏁翠釜娓告垙涓厖鏂ョ潃璁╀汉鐩灙鍙ｅ憜銆佷豢浣涚鎺堢殑鎯婁汉鍒涙剰锛堢浉淇¤澶氳鏈哄叧鍗′綇鐨勭帺瀹跺湪鐪嬩簡鏀荤暐瑙嗛涔嬪悗锛岄兘鏈変笉浣忔媿澶ц吙鐨勫啿鍔ㄣ€傦級锛佹湰浣滃叧鍗℃湁绉嶅彧鏈夎瀺鍏ユ父鎴忔墠鑳戒綋浼氬埌鐨勭簿濡欙紝瀹冧笉浠呮壙鎺ヤ簡娓告垙鐨勫墽鎯咃紝鏇翠笌鏅︽订鐨勪富棰樻殫鍚堛€備笉鍚屼簬RPG銆丄VG绫绘父鎴忎笉鍘屽叾鐑︾殑鏂囧瓧琛ㄨ堪锛孊raid鏇村鐨勬槸灏嗙粏鑺傝瀺鍏ユ父鎴忔湰韬紝璁╃帺瀹堕€氳繃鎺ㄧ悊鍜屽綊绾崇悊瑙ｆ父鎴忕殑鏈川銆?
 								</dd>
-							<dd id='Games_Small but Delicate_Braid_linker'><a  href="http://yunpan.cn/Q9E7rvdmjPkT3">360云盘</a> <a href="http://pan.baidu.com/s/1osyYM">百度网盘</a></dd>
-						<dt id='Games_Small but Delicate_FEZ'>FEZ (菲兹)</dt>
+							<dd id='Games_Small but Delicate_Braid_linker'><a  href="http://yunpan.cn/Q9E7rvdmjPkT3">360浜戠洏</a> <a href="http://pan.baidu.com/s/1osyYM">鐧惧害缃戠洏</a></dd>
+						<dt id='Games_Small but Delicate_FEZ'>FEZ (鑿插吂)</dt>
 							<dd id='Games_Small but Delicate_FEZ_ico' class="nojs">http://img2.ph.126.net/jc_1AmH42Ai2RzcU_zRDxg==/6597589835658416474.png</dd>
 							<dd id='Games_Small but Delicate_FEZ_imager' class="nojs"></dd>
 							<dd id='Games_Small but Delicate_FEZ_detail'>
-								由Polytron Corp.开发的，曾获得GDC 2012（游戏开发者大会）最佳独立游戏奖项的《Fez》是一款极具创意的利用视角的转换来改变关卡舞台，结合2D和3D的关卡的平台动作游戏全面展现游戏清新画面、复古音效背后创意玩法所能能给玩家带来的无限乐趣。<br/>
-								《Fez(菲斯)》那充满智慧灵感的关卡设计，海量的关卡和谜题，惊人的艺术风格综合起来，已经完全超过了曾经出现过的任何向老风格致敬的其他游戏。《Fez(菲斯)》是个出于对游戏的爱意的结晶。它表现了作者对于经典的致敬和对自己的自信。制作组Polytron力图通过本作将玩家带回那个对于游戏满是爱意的纯真年代。<br/>
-								《Fez（菲斯）》的IGN评分还高达9.5分。
+								鐢盤olytron Corp.寮€鍙戠殑锛屾浘鑾峰緱GDC 2012锛堟父鎴忓紑鍙戣€呭ぇ浼氾級鏈€浣崇嫭绔嬫父鎴忓椤圭殑銆奆ez銆嬫槸涓€娆炬瀬鍏峰垱鎰忕殑鍒╃敤瑙嗚鐨勮浆鎹㈡潵鏀瑰彉鍏冲崱鑸炲彴锛岀粨鍚?D鍜?D鐨勫叧鍗＄殑骞冲彴鍔ㄤ綔娓告垙鍏ㄩ潰灞曠幇娓告垙娓呮柊鐢婚潰銆佸鍙ら煶鏁堣儗鍚庡垱鎰忕帺娉曟墍鑳借兘缁欑帺瀹跺甫鏉ョ殑鏃犻檺涔愯叮銆?br/>
+								銆奆ez(鑿叉柉)銆嬮偅鍏呮弧鏅烘収鐏垫劅鐨勫叧鍗¤璁★紝娴烽噺鐨勫叧鍗″拰璋滈锛屾儕浜虹殑鑹烘湳椋庢牸缁煎悎璧锋潵锛屽凡缁忓畬鍏ㄨ秴杩囦簡鏇剧粡鍑虹幇杩囩殑浠讳綍鍚戣€侀鏍艰嚧鏁殑鍏朵粬娓告垙銆傘€奆ez(鑿叉柉)銆嬫槸涓嚭浜庡娓告垙鐨勭埍鎰忕殑缁撴櫠銆傚畠琛ㄧ幇浜嗕綔鑰呭浜庣粡鍏哥殑鑷存暚鍜屽鑷繁鐨勮嚜淇°€傚埗浣滅粍Polytron鍔涘浘閫氳繃鏈綔灏嗙帺瀹跺甫鍥為偅涓浜庢父鎴忔弧鏄埍鎰忕殑绾湡骞翠唬銆?br/>
+								銆奆ez锛堣彶鏂級銆嬬殑IGN璇勫垎杩橀珮杈?.5鍒嗐€?
 								</dd>
-							<dd id='Games_Small but Delicate_FEZ_linker'><a  href="http://yunpan.cn/Q9E7YDJ5JKutw">360云盘</a> <a href="http://pan.baidu.com/s/1EGMZZ">百度网盘</a></dd>
-						<dt id='Games_Small but Delicate_Death Rabbit'>死兔 (Death Rabbit)</dt>
+							<dd id='Games_Small but Delicate_FEZ_linker'><a  href="http://yunpan.cn/Q9E7YDJ5JKutw">360浜戠洏</a> <a href="http://pan.baidu.com/s/1EGMZZ">鐧惧害缃戠洏</a></dd>
+						<dt id='Games_Small but Delicate_Death Rabbit'>姝诲厰 (Death Rabbit)</dt>
 							<dd id='Games_Small but Delicate_Death Rabbit_ico' class="nojs">http://img2.ph.126.net/sSgx52ejqhasV-ToF4gODA==/6597373231868060873.jpg</dd>
 							<dd id='Games_Small but Delicate_Death Rabbit_imager' class="nojs"></dd>
 							<dd id='Games_Small but Delicate_Death Rabbit_detail'>
-								半年磨一Game，死兔无生路！<br/>
-								四只迥然不同的兔子要联手逃出这个可怕的DR实验室。<br/>
-								随着剧情的推进，四只兔子将习得强大的技能，这些技能就是决胜迷宫的关键！！！<br/>
-								这个游戏的初级玩家会发现，玩本游戏老是死。<br/>
-								而高级玩家也会发现，玩本游戏也老是死。<br/>
-								其实这个是一个非常简单的走迷宫游戏，你只要操控小白兔避开危险的方块，走到终点就是赢了。<br/>
-								问题是你必须通过数学的逻辑推理来排除危险的方块，找到通往终点的安全道路！！！
+								鍗婂勾纾ㄤ竴Game锛屾鍏旀棤鐢熻矾锛?br/>
+								鍥涘彧杩ョ劧涓嶅悓鐨勫厰瀛愯鑱旀墜閫冨嚭杩欎釜鍙€曠殑DR瀹為獙瀹ゃ€?br/>
+								闅忕潃鍓ф儏鐨勬帹杩涳紝鍥涘彧鍏斿瓙灏嗕範寰楀己澶х殑鎶€鑳斤紝杩欎簺鎶€鑳藉氨鏄喅鑳滆糠瀹殑鍏抽敭锛侊紒锛?br/>
+								杩欎釜娓告垙鐨勫垵绾х帺瀹朵細鍙戠幇锛岀帺鏈父鎴忚€佹槸姝汇€?br/>
+								鑰岄珮绾х帺瀹朵篃浼氬彂鐜帮紝鐜╂湰娓告垙涔熻€佹槸姝汇€?br/>
+								鍏跺疄杩欎釜鏄竴涓潪甯哥畝鍗曠殑璧拌糠瀹父鎴忥紝浣犲彧瑕佹搷鎺у皬鐧藉厰閬垮紑鍗遍櫓鐨勬柟鍧楋紝璧板埌缁堢偣灏辨槸璧簡銆?br/>
+								闂鏄綘蹇呴』閫氳繃鏁板鐨勯€昏緫鎺ㄧ悊鏉ユ帓闄ゅ嵄闄╃殑鏂瑰潡锛屾壘鍒伴€氬線缁堢偣鐨勫畨鍏ㄩ亾璺紒锛侊紒
 								</dd>
-							<dd id='Games_Small but Delicate_Death Rabbit_linker'><a  href="http://yunpan.cn/Q9E7WrHw98DXE">360云盘</a> <a href="http://pan.baidu.com/s/1ejbcL">百度网盘</a></dd>
-						<dt id='Games_Small but Delicate_LIMBO'>LIMBO (地狱边境)</dt>
+							<dd id='Games_Small but Delicate_Death Rabbit_linker'><a  href="http://yunpan.cn/Q9E7WrHw98DXE">360浜戠洏</a> <a href="http://pan.baidu.com/s/1ejbcL">鐧惧害缃戠洏</a></dd>
+						<dt id='Games_Small but Delicate_LIMBO'>LIMBO (鍦扮嫳杈瑰)</dt>
 							<dd id='Games_Small but Delicate_LIMBO_ico' class="nojs">http://img2.ph.126.net/SFukiDn6WPVchIWrE75SFA==/2672323428991281689.png</dd>
 							<dd id='Games_Small but Delicate_LIMBO_imager' class="nojs"></dd>
 							<dd id='Games_Small but Delicate_LIMBO_detail'>
-								老电影修饰手法下的黑白配，层次感清晰分明，无需音乐的渲染，只用逼真的环境音效便可将那种死亡边境下的阴郁氛围烘托得淋漓尽致。角色的每一步行动，场景的每一次变化，配合模糊的雾气及恰到好处的镜头拉伸，无不牵动着玩家的心。看似平凡却不平凡，看似简约却不简单。<br/>
-								幽暗的森林，黑白的世界，在这地狱的边境，一场充满未知危险的旅途即将上演。这里没有任何的剧情，也没有任何的对白，迫使小男孩唯一前进的信念，就是寻找地狱彼端的姐姐。一路上，孤独、恐惧、无助始终伴随玩家左右，虽说少了剧情的润色，不过环环相扣的流程同样引人入胜。
+								鑰佺數褰变慨楗版墜娉曚笅鐨勯粦鐧介厤锛屽眰娆℃劅娓呮櫚鍒嗘槑锛屾棤闇€闊充箰鐨勬覆鏌擄紝鍙敤閫肩湡鐨勭幆澧冮煶鏁堜究鍙皢閭ｇ姝讳骸杈瑰涓嬬殑闃撮儊姘涘洿鐑樻墭寰楁穻婕撳敖鑷淬€傝鑹茬殑姣忎竴姝ヨ鍔紝鍦烘櫙鐨勬瘡涓€娆″彉鍖栵紝閰嶅悎妯＄硦鐨勯浘姘斿強鎭板埌濂藉鐨勯暅澶存媺浼革紝鏃犱笉鐗靛姩鐫€鐜╁鐨勫績銆傜湅浼煎钩鍑″嵈涓嶅钩鍑★紝鐪嬩技绠€绾﹀嵈涓嶇畝鍗曘€?br/>
+								骞芥殫鐨勬．鏋楋紝榛戠櫧鐨勪笘鐣岋紝鍦ㄨ繖鍦扮嫳鐨勮竟澧冿紝涓€鍦哄厖婊℃湭鐭ュ嵄闄╃殑鏃呴€斿嵆灏嗕笂婕斻€傝繖閲屾病鏈変换浣曠殑鍓ф儏锛屼篃娌℃湁浠讳綍鐨勫鐧斤紝杩娇灏忕敺瀛╁敮涓€鍓嶈繘鐨勪俊蹇碉紝灏辨槸瀵绘壘鍦扮嫳褰肩鐨勫濮愩€備竴璺笂锛屽鐙€佹亹鎯с€佹棤鍔╁缁堜即闅忕帺瀹跺乏鍙筹紝铏借灏戜簡鍓ф儏鐨勬鼎鑹诧紝涓嶈繃鐜幆鐩告墸鐨勬祦绋嬪悓鏍峰紩浜哄叆鑳溿€?
 								</dd>
-							<dd id='Games_Small but Delicate_LIMBO_linker'><a  href="http://yunpan.cn/Q9E7xXGGk27MG">360云盘</a> <a href="http://pan.baidu.com/s/17pnp7">百度网盘</a></dd>
-						<dt id='Games_Small but Delicate_Cave Story'>Cave Story (洞窟物语)</dt>
+							<dd id='Games_Small but Delicate_LIMBO_linker'><a  href="http://yunpan.cn/Q9E7xXGGk27MG">360浜戠洏</a> <a href="http://pan.baidu.com/s/17pnp7">鐧惧害缃戠洏</a></dd>
+						<dt id='Games_Small but Delicate_Cave Story'>Cave Story (娲炵獰鐗╄)</dt>
 							<dd id='Games_Small but Delicate_Cave Story_ico' class="nojs">http://img1.ph.126.net/s4Cxsdb_cNwaIG7rmDsa4g==/6597733871681652478.jpg</dd>
 							<dd id='Games_Small but Delicate_Cave Story_imager' class="nojs"></dd>
 							<dd id='Games_Small but Delicate_Cave Story_detail'>
-								在一段神秘的通讯后，主角在一个积水的洞窟醒来。这里是哪里？自己是谁？一切都不清楚。随着前行，大量的信息接踵而至：神秘的通讯、兔子一样的生物咪咪卡、可怕的赤之花、行踪神秘又不合群的咪咪卡“数”、残暴的博士和他的手下……唯有不断前行，才能解开所有谜团。而等待着主角的，是科幻与奇幻相交汇的壮大世界，以及梦幻而残酷的现实……<br/>
-								能否阻止战争？能否拯救重要的人？能否了解到真相？一切都在玩家手中。<br/><br/>
-								游戏的画面非常复古，分辨率只有320*240，但细节绝对精致；游戏的音乐是电子感强烈的MIDI音乐，但简单又极具感染力；游戏的系统类似普通的2D横版动作射击游戏，但却有着独特的成长系统、丰富的武器和大量的RPG要素，同时操作爽快感十足。游戏有些地方也颇有难度，富有挑战性。这个游戏只有4MB，却足够让人玩上数十小时，乃至数年后都不忍心从电脑里删去。
+								鍦ㄤ竴娈电绉樼殑閫氳鍚庯紝涓昏鍦ㄤ竴涓Н姘寸殑娲炵獰閱掓潵銆傝繖閲屾槸鍝噷锛熻嚜宸辨槸璋侊紵涓€鍒囬兘涓嶆竻妤氥€傞殢鐫€鍓嶈锛屽ぇ閲忕殑淇℃伅鎺ヨ傅鑰岃嚦锛氱绉樼殑閫氳銆佸厰瀛愪竴鏍风殑鐢熺墿鍜挭鍗°€佸彲鎬曠殑璧や箣鑺便€佽韪绉樺張涓嶅悎缇ょ殑鍜挭鍗♀€滄暟鈥濄€佹畫鏆寸殑鍗氬＋鍜屼粬鐨勬墜涓嬧€︹€﹀敮鏈変笉鏂墠琛岋紝鎵嶈兘瑙ｅ紑鎵€鏈夎皽鍥€傝€岀瓑寰呯潃涓昏鐨勶紝鏄骞讳笌濂囧够鐩镐氦姹囩殑澹ぇ涓栫晫锛屼互鍙婃ⅵ骞昏€屾畫閰风殑鐜板疄鈥︹€?br/>
+								鑳藉惁闃绘鎴樹簤锛熻兘鍚︽嫰鏁戦噸瑕佺殑浜猴紵鑳藉惁浜嗚В鍒扮湡鐩革紵涓€鍒囬兘鍦ㄧ帺瀹舵墜涓€?br/><br/>
+								娓告垙鐨勭敾闈㈤潪甯稿鍙わ紝鍒嗚鲸鐜囧彧鏈?20*240锛屼絾缁嗚妭缁濆绮捐嚧锛涙父鎴忕殑闊充箰鏄數瀛愭劅寮虹儓鐨凪IDI闊充箰锛屼絾绠€鍗曞張鏋佸叿鎰熸煋鍔涳紱娓告垙鐨勭郴缁熺被浼兼櫘閫氱殑2D妯増鍔ㄤ綔灏勫嚮娓告垙锛屼絾鍗存湁鐫€鐙壒鐨勬垚闀跨郴缁熴€佷赴瀵岀殑姝﹀櫒鍜屽ぇ閲忕殑RPG瑕佺礌锛屽悓鏃舵搷浣滅埥蹇劅鍗佽冻銆傛父鎴忔湁浜涘湴鏂逛篃棰囨湁闅惧害锛屽瘜鏈夋寫鎴樻€с€傝繖涓父鎴忓彧鏈?MB锛屽嵈瓒冲璁╀汉鐜╀笂鏁板崄灏忔椂锛屼箖鑷虫暟骞村悗閮戒笉蹇嶅績浠庣數鑴戦噷鍒犲幓銆?
 								</dd>
-							<dd id='Games_Small but Delicate_Cave Story_linker'><a  href="http://yunpan.cn/Q9E7Ew9XY5VtT">360云盘</a> <a href="http://pan.baidu.com/s/1h6MZP">百度网盘</a></dd>
-						<dt id='Games_Small but Delicate_Tower of Heaven'>Tower of Heaven (天国之塔)</dt>
+							<dd id='Games_Small but Delicate_Cave Story_linker'><a  href="http://yunpan.cn/Q9E7Ew9XY5VtT">360浜戠洏</a> <a href="http://pan.baidu.com/s/1h6MZP">鐧惧害缃戠洏</a></dd>
+						<dt id='Games_Small but Delicate_Tower of Heaven'>Tower of Heaven (澶╁浗涔嬪)</dt>
 							<dd id='Games_Small but Delicate_Tower of Heaven_ico' class="nojs">http://img2.ph.126.net/akc1u9jdf9Ej2nEJpBVkFQ==/2212674792023095628.png</dd>
 							<dd id='Games_Small but Delicate_Tower of Heaven_imager' class="nojs"></dd>
 							<dd id='Games_Small but Delicate_Tower of Heaven_detail'>
-								《Tower of Heaven》游戏中你要爬上天梯去找寻心灵的启示，一路上的艰难远超过你的想象。企图登上天堂塔，这是对众神公然的挑衅，你能否如愿呢？
+								銆奣ower of Heaven銆嬫父鎴忎腑浣犺鐖笂澶╂鍘绘壘瀵诲績鐏电殑鍚ず锛屼竴璺笂鐨勮壈闅捐繙瓒呰繃浣犵殑鎯宠薄銆備紒鍥剧櫥涓婂ぉ鍫傚锛岃繖鏄浼楃鍏劧鐨勬寫琛咃紝浣犺兘鍚﹀鎰垮憿锛?
 								</dd>
-							<dd id='Games_Small but Delicate_Tower of Heaven_linker'><a  href="http://yunpan.cn/Q9E7qUxCNmDGH">360云盘</a> <a href="http://pan.baidu.com/s/1f4V4u">百度网盘</a></dd>
-						<dt id='Games_Small but Delicate_Cryon'>Cryon (蜡笔物理学)</dt>
+							<dd id='Games_Small but Delicate_Tower of Heaven_linker'><a  href="http://yunpan.cn/Q9E7qUxCNmDGH">360浜戠洏</a> <a href="http://pan.baidu.com/s/1f4V4u">鐧惧害缃戠洏</a></dd>
+						<dt id='Games_Small but Delicate_Cryon'>Cryon (铚＄瑪鐗╃悊瀛?</dt>
 							<dd id='Games_Small but Delicate_Cryon_ico' class="nojs">http://img0.ph.126.net/zV-Zy7fsFGdVm1-XFZqUiw==/2484016669489707102.jpg</dd>
 							<dd id='Games_Small but Delicate_Cryon_imager' class="nojs"></dd>
 							<dd id='Games_Small but Delicate_Cryon_detail'>
-								蜡笔物理学是一款基于2D物理引擎的解谜游戏。用手中蜡笔绘制出任意图形，它会奇迹般的变成实际物体，利用真实的物理原理将小球推到目标点即可过关。解决谜题需要你运用带有艺术性和创造性的思维来完成。
+								铚＄瑪鐗╃悊瀛︽槸涓€娆惧熀浜?D鐗╃悊寮曟搸鐨勮В璋滄父鎴忋€傜敤鎵嬩腑铚＄瑪缁樺埗鍑轰换鎰忓浘褰紝瀹冧細濂囪抗鑸殑鍙樻垚瀹為檯鐗╀綋锛屽埄鐢ㄧ湡瀹炵殑鐗╃悊鍘熺悊灏嗗皬鐞冩帹鍒扮洰鏍囩偣鍗冲彲杩囧叧銆傝В鍐宠皽棰橀渶瑕佷綘杩愮敤甯︽湁鑹烘湳鎬у拰鍒涢€犳€х殑鎬濈淮鏉ュ畬鎴愩€?
 								</dd>
-							<dd id='Games_Small but Delicate_Cryon_linker'><a  href="http://yunpan.cn/QUYAZu9hNsNHC">360云盘</a> <a href="http://pan.baidu.com/s/1pEtgS">百度网盘</a></dd>
-						<dt id='Games_Small but Delicate_VVVVVV'>VVVVVV (弹弹跳跳闪避人)</dt>
+							<dd id='Games_Small but Delicate_Cryon_linker'><a  href="http://yunpan.cn/QUYAZu9hNsNHC">360浜戠洏</a> <a href="http://pan.baidu.com/s/1pEtgS">鐧惧害缃戠洏</a></dd>
+						<dt id='Games_Small but Delicate_VVVVVV'>VVVVVV (寮瑰脊璺宠烦闂伩浜?</dt>
 							<dd id='Games_Small but Delicate_VVVVVV_ico' class="nojs">http://img2.ph.126.net/gMgZkQIkNl_u_t-ScKCLDg==/2632916932169542283.jpg</dd>
 							<dd id='Games_Small but Delicate_VVVVVV_imager' class="nojs"></dd>
 							<dd id='Games_Small but Delicate_VVVVVV_detail'>
-								弹弹跳跳闪避人（VVVVVV）是 Terry Cavanagh——一个创作了数十个免费游戏的开发者制作的复古风格的2D横版过关游戏。在游戏中，玩家要扮演一队测量探险科学家的无畏的领袖，这队科学家因为意外的事故而失散。在游戏中，玩家要探索自己无意中进入的陌生世界，并且要重新将朋友们组织起来。<br/>
-								在弹弹跳跳闪避人的探险中，游戏设定非常简单：玩家不能跳跃——不过，玩家只按一个键就能将自身重力反转。游戏中依靠这个设定，拥有了很多有趣的游戏方式。<br/>
-								游戏的设计理念是不人为地限定玩家的游戏进程。在弹弹跳跳闪避人中，没有锁定的区域，没有能量升级道具，没有开关，除了挑战本身，没有能够阻挡玩家的东西。
+								寮瑰脊璺宠烦闂伩浜猴紙VVVVVV锛夋槸 Terry Cavanagh鈥斺€斾竴涓垱浣滀簡鏁板崄涓厤璐规父鎴忕殑寮€鍙戣€呭埗浣滅殑澶嶅彜椋庢牸鐨?D妯増杩囧叧娓告垙銆傚湪娓告垙涓紝鐜╁瑕佹壆婕斾竴闃熸祴閲忔帰闄╃瀛﹀鐨勬棤鐣忕殑棰嗚锛岃繖闃熺瀛﹀鍥犱负鎰忓鐨勪簨鏁呰€屽け鏁ｃ€傚湪娓告垙涓紝鐜╁瑕佹帰绱㈣嚜宸辨棤鎰忎腑杩涘叆鐨勯檶鐢熶笘鐣岋紝骞朵笖瑕侀噸鏂板皢鏈嬪弸浠粍缁囪捣鏉ャ€?br/>
+								鍦ㄥ脊寮硅烦璺抽棯閬夸汉鐨勬帰闄╀腑锛屾父鎴忚瀹氶潪甯哥畝鍗曪細鐜╁涓嶈兘璺宠穬鈥斺€斾笉杩囷紝鐜╁鍙寜涓€涓敭灏辫兘灏嗚嚜韬噸鍔涘弽杞€傛父鎴忎腑渚濋潬杩欎釜璁惧畾锛屾嫢鏈変簡寰堝鏈夎叮鐨勬父鎴忔柟寮忋€?br/>
+								娓告垙鐨勮璁＄悊蹇垫槸涓嶄汉涓哄湴闄愬畾鐜╁鐨勬父鎴忚繘绋嬨€傚湪寮瑰脊璺宠烦闂伩浜轰腑锛屾病鏈夐攣瀹氱殑鍖哄煙锛屾病鏈夎兘閲忓崌绾ч亾鍏凤紝娌℃湁寮€鍏筹紝闄や簡鎸戞垬鏈韩锛屾病鏈夎兘澶熼樆鎸＄帺瀹剁殑涓滆タ銆?
 								</dd>
-							<dd id='Games_Small but Delicate_VVVVVV_linker'><a  href="http://yunpan.cn/Q9E74w9RzPVYX">360云盘</a> <a href="http://pan.baidu.com/s/1mq65V">百度网盘</a></dd>
-						<dt id='Games_Small but Delicate_Unepic'>Unepic (这不是传奇)(厕所穿越记)</dt>
+							<dd id='Games_Small but Delicate_VVVVVV_linker'><a  href="http://yunpan.cn/Q9E74w9RzPVYX">360浜戠洏</a> <a href="http://pan.baidu.com/s/1mq65V">鐧惧害缃戠洏</a></dd>
+						<dt id='Games_Small but Delicate_Unepic'>Unepic (杩欎笉鏄紶濂?(鍘曟墍绌胯秺璁?</dt>
 							<dd id='Games_Small but Delicate_Unepic_ico' class="nojs">http://img2.ph.126.net/k_y4u6Tkmkm51Zh28XjH8A==/2490772068930646817.jpg</dd>
 							<dd id='Games_Small but Delicate_Unepic_imager' class="nojs"></dd>
 							<dd id='Games_Small but Delicate_Unepic_detail'>
-								《Unepic》是融合动作与角色扮演类型的游戏，当然还有许多的幽默；整个游戏发生在中古世纪奇幻背景的一座大城堡里。[1]游戏氛围定调在八零年代的风格，但是加上了许多当代的技术，所以 Unepic 一点儿也不像是个老旧的游戏，而是全新的冒险游戏。<br/>
-								《Unepic》在分类上是个以动作为主、角色扮演为辅的游戏，玩家操纵主角探索超过两百个不同场景，闪躲、跳跃、挥砍、解谜。这并不是个繁重的大型游戏，但是玩完一轮可能也要二十小时以上；当你进入游戏、开始操作主角时，第一个印象可能是「好小啊！」游戏中的人物确实很小巧，但很快地你就会发现《Unepic》的精致之处。每一个小动作都恰如其分，使用不同武器、更换不同装备时，人物外型也会有所不同，加上十足称职的光影系统，营造出非常完美的氛围，即便游戏画面刻意仿造八零年代的经典风格，却一点也不显得老旧。<br/>
-								更重要的，这不是无脑的砍杀游戏，而是需要玩家动脑思考的角色扮演游戏。整个游戏场景划分为多个不同区域，每个区域都有不同的风格与敌人，需要用不同的方法来克服；大致上来说，游戏的难度也是循序渐进，众多挑战都有多种不同的解决方法──如果你想清楚，就能找出非常容易的应变战略，而且发现你需要的工具其实很容易取得。
+								銆奤nepic銆嬫槸铻嶅悎鍔ㄤ綔涓庤鑹叉壆婕旂被鍨嬬殑娓告垙锛屽綋鐒惰繕鏈夎澶氱殑骞介粯锛涙暣涓父鎴忓彂鐢熷湪涓彜涓栫邯濂囧够鑳屾櫙鐨勪竴搴уぇ鍩庡牎閲屻€俒1]娓告垙姘涘洿瀹氳皟鍦ㄥ叓闆跺勾浠ｇ殑椋庢牸锛屼絾鏄姞涓婁簡璁稿褰撲唬鐨勬妧鏈紝鎵€浠?Unepic 涓€鐐瑰効涔熶笉鍍忔槸涓€佹棫鐨勬父鎴忥紝鑰屾槸鍏ㄦ柊鐨勫啋闄╂父鎴忋€?br/>
+								銆奤nepic銆嬪湪鍒嗙被涓婃槸涓互鍔ㄤ綔涓轰富銆佽鑹叉壆婕斾负杈呯殑娓告垙锛岀帺瀹舵搷绾典富瑙掓帰绱㈣秴杩囦袱鐧句釜涓嶅悓鍦烘櫙锛岄棯韬层€佽烦璺冦€佹尌鐮嶃€佽В璋溿€傝繖骞朵笉鏄釜绻侀噸鐨勫ぇ鍨嬫父鎴忥紝浣嗘槸鐜╁畬涓€杞彲鑳戒篃瑕佷簩鍗佸皬鏃朵互涓婏紱褰撲綘杩涘叆娓告垙銆佸紑濮嬫搷浣滀富瑙掓椂锛岀涓€涓嵃璞″彲鑳芥槸銆屽ソ灏忓晩锛併€嶆父鎴忎腑鐨勪汉鐗╃‘瀹炲緢灏忓阀锛屼絾寰堝揩鍦颁綘灏变細鍙戠幇銆奤nepic銆嬬殑绮捐嚧涔嬪銆傛瘡涓€涓皬鍔ㄤ綔閮芥伆濡傚叾鍒嗭紝浣跨敤涓嶅悓姝﹀櫒銆佹洿鎹笉鍚岃澶囨椂锛屼汉鐗╁鍨嬩篃浼氭湁鎵€涓嶅悓锛屽姞涓婂崄瓒崇О鑱岀殑鍏夊奖绯荤粺锛岃惀閫犲嚭闈炲父瀹岀編鐨勬皼鍥达紝鍗充究娓告垙鐢婚潰鍒绘剰浠块€犲叓闆跺勾浠ｇ殑缁忓吀椋庢牸锛屽嵈涓€鐐逛篃涓嶆樉寰楄€佹棫銆?br/>
+								鏇撮噸瑕佺殑锛岃繖涓嶆槸鏃犺剳鐨勭爫鏉€娓告垙锛岃€屾槸闇€瑕佺帺瀹跺姩鑴戞€濊€冪殑瑙掕壊鎵紨娓告垙銆傛暣涓父鎴忓満鏅垝鍒嗕负澶氫釜涓嶅悓鍖哄煙锛屾瘡涓尯鍩熼兘鏈変笉鍚岀殑椋庢牸涓庢晫浜猴紝闇€瑕佺敤涓嶅悓鐨勬柟娉曟潵鍏嬫湇锛涘ぇ鑷翠笂鏉ヨ锛屾父鎴忕殑闅惧害涔熸槸寰簭娓愯繘锛屼紬澶氭寫鎴橀兘鏈夊绉嶄笉鍚岀殑瑙ｅ喅鏂规硶鈹€鈹€濡傛灉浣犳兂娓呮锛屽氨鑳芥壘鍑洪潪甯稿鏄撶殑搴斿彉鎴樼暐锛岃€屼笖鍙戠幇浣犻渶瑕佺殑宸ュ叿鍏跺疄寰堝鏄撳彇寰椼€?
 								</dd>
-							<dd id='Games_Small but Delicate_Unepic_linker'><a  href="http://yunpan.cn/Q9E7MPecZrmtC">360云盘</a> <a href="http://pan.baidu.com/s/103ETR">百度网盘</a></dd>
-						<dt id='Games_Small but Delicate_Akuji'>Akuji (魔王录)</dt>
+							<dd id='Games_Small but Delicate_Unepic_linker'><a  href="http://yunpan.cn/Q9E7MPecZrmtC">360浜戠洏</a> <a href="http://pan.baidu.com/s/103ETR">鐧惧害缃戠洏</a></dd>
+						<dt id='Games_Small but Delicate_Akuji'>Akuji (榄旂帇褰?</dt>
 							<dd id='Games_Small but Delicate_Akuji_ico' class="nojs">http://img1.ph.126.net/TDnPqHz4MQQOeLnIfoPLZA==/6599327064029175052.png</dd>
 							<dd id='Games_Small but Delicate_Akuji_imager' class="nojs"></dd>
 							<dd id='Games_Small but Delicate_Akuji_detail'>
-								这是一款可爱的免费的迷你的平台过关游戏，特点在于主角刚开始时只会慢爬和小跳，找到分布于迷宫各处的水晶球后可获得新的技能，如攻击，快跑等等。游戏的操作感很强，需要一定的技巧，难度方面循序渐进，上手简单，越到后面越有挑战性。
+								杩欐槸涓€娆惧彲鐖辩殑鍏嶈垂鐨勮糠浣犵殑骞冲彴杩囧叧娓告垙锛岀壒鐐瑰湪浜庝富瑙掑垰寮€濮嬫椂鍙細鎱㈢埇鍜屽皬璺筹紝鎵惧埌鍒嗗竷浜庤糠瀹悇澶勭殑姘存櫠鐞冨悗鍙幏寰楁柊鐨勬妧鑳斤紝濡傛敾鍑伙紝蹇窇绛夌瓑銆傛父鎴忕殑鎿嶄綔鎰熷緢寮猴紝闇€瑕佷竴瀹氱殑鎶€宸э紝闅惧害鏂归潰寰簭娓愯繘锛屼笂鎵嬬畝鍗曪紝瓒婂埌鍚庨潰瓒婃湁鎸戞垬鎬с€?
 								</dd>
-							<dd id='Games_Small but Delicate_Akuji_linker'><a  href="http://yunpan.cn/Q9E7v9ejIrCkw">360云盘</a> <a href="http://pan.baidu.com/s/15nwPt">百度网盘</a></dd>
-						<dt id='Games_Small but Delicate_Evoland'>Evoland (进化之地)</dt>
+							<dd id='Games_Small but Delicate_Akuji_linker'><a  href="http://yunpan.cn/Q9E7v9ejIrCkw">360浜戠洏</a> <a href="http://pan.baidu.com/s/15nwPt">鐧惧害缃戠洏</a></dd>
+						<dt id='Games_Small but Delicate_Evoland'>Evoland (杩涘寲涔嬪湴)</dt>
 							<dd id='Games_Small but Delicate_Evoland_ico' class="nojs">http://img1.ph.126.net/T_hJp6ccE4am_rA_VqJk8g==/3683381545335924181.png</dd>
 							<dd id='Games_Small but Delicate_Evoland_imager' class="nojs"></dd>
 							<dd id='Games_Small but Delicate_Evoland_detail'>
-								《Evoland》是一部用游戏讲述历史的游戏，参考了塞尔达传说和最终幻想等RPG的进化过程，让玩家从游戏中纵观整个RPG游戏的进化史。那些一幕幕熟悉的画面，是否也会让你收获些许感动呢？<br/>
-								游戏以复古的像素画面为开始，没有色差也没有声音。然后慢慢画面变成了32位色的图片，你还可以听的到游戏的音效，接着，玩家拿到了宝剑，开始与怪物开始搏斗，再然后你开始接受任务，完成任务，得到金币开始进行交易等等。游戏就这样带领你从FC时代走到如今的3D动作游戏中，20多年的RPG成长史，让你一次在游戏中亲身体验。
+								銆奅voland銆嬫槸涓€閮ㄧ敤娓告垙璁茶堪鍘嗗彶鐨勬父鎴忥紝鍙傝€冧簡濉炲皵杈句紶璇村拰鏈€缁堝够鎯崇瓑RPG鐨勮繘鍖栬繃绋嬶紝璁╃帺瀹朵粠娓告垙涓旱瑙傛暣涓猂PG娓告垙鐨勮繘鍖栧彶銆傞偅浜涗竴骞曞箷鐔熸倝鐨勭敾闈紝鏄惁涔熶細璁╀綘鏀惰幏浜涜鎰熷姩鍛紵<br/>
+								娓告垙浠ュ鍙ょ殑鍍忕礌鐢婚潰涓哄紑濮嬶紝娌℃湁鑹插樊涔熸病鏈夊０闊炽€傜劧鍚庢參鎱㈢敾闈㈠彉鎴愪簡32浣嶈壊鐨勫浘鐗囷紝浣犺繕鍙互鍚殑鍒版父鎴忕殑闊虫晥锛屾帴鐫€锛岀帺瀹舵嬁鍒颁簡瀹濆墤锛屽紑濮嬩笌鎬墿寮€濮嬫悘鏂楋紝鍐嶇劧鍚庝綘寮€濮嬫帴鍙椾换鍔★紝瀹屾垚浠诲姟锛屽緱鍒伴噾甯佸紑濮嬭繘琛屼氦鏄撶瓑绛夈€傛父鎴忓氨杩欐牱甯﹂浣犱粠FC鏃朵唬璧板埌濡備粖鐨?D鍔ㄤ綔娓告垙涓紝20澶氬勾鐨凴PG鎴愰暱鍙诧紝璁╀綘涓€娆″湪娓告垙涓翰韬綋楠屻€?
 								</dd>
-							<dd id='Games_Small but Delicate_Evoland_linker'><a  href="http://yunpan.cn/Q9E724AyPUiNU">360云盘</a> <a href="http://pan.baidu.com/s/1BsZz0">百度网盘</a></dd>
-						<dt id='Games_Small but Delicate_Voxatron'>Voxatron (点阵核心)</dt>
+							<dd id='Games_Small but Delicate_Evoland_linker'><a  href="http://yunpan.cn/Q9E724AyPUiNU">360浜戠洏</a> <a href="http://pan.baidu.com/s/1BsZz0">鐧惧害缃戠洏</a></dd>
+						<dt id='Games_Small but Delicate_Voxatron'>Voxatron (鐐归樀鏍稿績)</dt>
 							<dd id='Games_Small but Delicate_Voxatron_ico' class="nojs">http://img2.ph.126.net/K7ltwLqzlTF4UbpFpaCC_A==/1672805786691785612.jpg</dd>
 							<dd id='Games_Small but Delicate_Voxatron_imager' class="nojs"></dd>
 							<dd id='Games_Small but Delicate_Voxatron_detail'>
-								游戏中容量小和画面抽象并不是一个游戏是否好玩的关键，关键要看是否能从游戏中获得乐趣，点阵核心这款游戏就是相当有诚意的一款小游戏，它会带给你简单的乐趣和想象的空间。<br/>
-								用方块堆造自己想象中的世界，你能想到的就能构建出来，这是《Voxatron》现在大受欢迎的主要原因，旨在开发及鼓动玩家的创造性，你一定会对自己的成果非常满意！
+								娓告垙涓閲忓皬鍜岀敾闈㈡娊璞″苟涓嶆槸涓€涓父鎴忔槸鍚﹀ソ鐜╃殑鍏抽敭锛屽叧閿鐪嬫槸鍚﹁兘浠庢父鎴忎腑鑾峰緱涔愯叮锛岀偣闃垫牳蹇冭繖娆炬父鎴忓氨鏄浉褰撴湁璇氭剰鐨勪竴娆惧皬娓告垙锛屽畠浼氬甫缁欎綘绠€鍗曠殑涔愯叮鍜屾兂璞＄殑绌洪棿銆?br/>
+								鐢ㄦ柟鍧楀爢閫犺嚜宸辨兂璞′腑鐨勪笘鐣岋紝浣犺兘鎯冲埌鐨勫氨鑳芥瀯寤哄嚭鏉ワ紝杩欐槸銆奦oxatron銆嬬幇鍦ㄥぇ鍙楁杩庣殑涓昏鍘熷洜锛屾棬鍦ㄥ紑鍙戝強榧撳姩鐜╁鐨勫垱閫犳€э紝浣犱竴瀹氫細瀵硅嚜宸辩殑鎴愭灉闈炲父婊℃剰锛?
 								</dd>
-							<dd id='Games_Small but Delicate_Voxatron_linker'><a  href="http://yunpan.cn/Q9E75ywDVPxZg">360云盘</a> <a href="http://pan.baidu.com/s/1vdXgH">百度网盘</a></dd>
-						<dt id='Games_Small but Delicate_catmario'>CatMario (猫里奥)</dt>
+							<dd id='Games_Small but Delicate_Voxatron_linker'><a  href="http://yunpan.cn/Q9E75ywDVPxZg">360浜戠洏</a> <a href="http://pan.baidu.com/s/1vdXgH">鐧惧害缃戠洏</a></dd>
+						<dt id='Games_Small but Delicate_catmario'>CatMario (鐚噷濂?</dt>
 							<dd id='Games_Small but Delicate_catmario_ico' class="nojs">http://img1.ph.126.net/oj5XyL39al63AVb7RhZOWA==/6599308372331507374.png</dd>
 							<dd id='Games_Small but Delicate_catmario_imager' class="nojs"></dd>
 							<dd id='Games_Small but Delicate_catmario_detail'>
-								《猫里奥》（Cat mario，原名Syobon Action）是日本的一款2D平台游戏，被称位史上最BT的游戏，是由一名日本民间自己制作的小游戏，发行于2007年2月。就像图中的一样，它的结构类似于《超级马里奥》，只是人物和怪以及游戏内容改变，所以也有人称之为《超级玛丽变态版》，同时网上也产生了许多该游戏的改版。<br/>
-								《猫里奥》一款由日本民间玩家自己制作的单机小游戏，和《超级马里奥》比较相似，我国玩家又称其为《超级玛丽变态版》，英文名字叫《SyobonAction》(《Catmario》)。开局看起来和FC的《超级玛丽》没有很大区别，只是主角变成了一个可爱的小白猫，怪物变成了和馒头差不多的东西。游戏中有很多让人意想不到的陷阱，比如跳跃壕沟的时候头顶上会莫名其妙的多出一个砖块而让玩家掉进壕沟、好好的地面突然会塌陷下去、眼看过关了又有个不明飞行物将玩家砸死...而且其中充满了各种让人意想不到的解谜。
+								銆婄尗閲屽ゥ銆嬶紙Cat mario锛屽師鍚峉yobon Action锛夋槸鏃ユ湰鐨勪竴娆?D骞冲彴娓告垙锛岃绉颁綅鍙蹭笂鏈€BT鐨勬父鎴忥紝鏄敱涓€鍚嶆棩鏈皯闂磋嚜宸卞埗浣滅殑灏忔父鎴忥紝鍙戣浜?007骞?鏈堛€傚氨鍍忓浘涓殑涓€鏍凤紝瀹冪殑缁撴瀯绫讳技浜庛€婅秴绾ч┈閲屽ゥ銆嬶紝鍙槸浜虹墿鍜屾€互鍙婃父鎴忓唴瀹规敼鍙橈紝鎵€浠ヤ篃鏈変汉绉颁箣涓恒€婅秴绾х帥涓藉彉鎬佺増銆嬶紝鍚屾椂缃戜笂涔熶骇鐢熶簡璁稿璇ユ父鎴忕殑鏀圭増銆?br/>
+								銆婄尗閲屽ゥ銆嬩竴娆剧敱鏃ユ湰姘戦棿鐜╁鑷繁鍒朵綔鐨勫崟鏈哄皬娓告垙锛屽拰銆婅秴绾ч┈閲屽ゥ銆嬫瘮杈冪浉浼硷紝鎴戝浗鐜╁鍙堢О鍏朵负銆婅秴绾х帥涓藉彉鎬佺増銆嬶紝鑻辨枃鍚嶅瓧鍙€奡yobonAction銆?銆奀atmario銆?銆傚紑灞€鐪嬭捣鏉ュ拰FC鐨勩€婅秴绾х帥涓姐€嬫病鏈夊緢澶у尯鍒紝鍙槸涓昏鍙樻垚浜嗕竴涓彲鐖辩殑灏忕櫧鐚紝鎬墿鍙樻垚浜嗗拰棣掑ご宸笉澶氱殑涓滆タ銆傛父鎴忎腑鏈夊緢澶氳浜烘剰鎯充笉鍒扮殑闄烽槺锛屾瘮濡傝烦璺冨娌熺殑鏃跺€欏ご椤朵笂浼氳帿鍚嶅叾濡欑殑澶氬嚭涓€涓爾鍧楄€岃鐜╁鎺夎繘澹曟矡銆佸ソ濂界殑鍦伴潰绐佺劧浼氬闄蜂笅鍘汇€佺溂鐪嬭繃鍏充簡鍙堟湁涓笉鏄庨琛岀墿灏嗙帺瀹剁牳姝?..鑰屼笖鍏朵腑鍏呮弧浜嗗悇绉嶈浜烘剰鎯充笉鍒扮殑瑙ｈ皽銆?
 								</dd>
-							<dd id='Games_Small but Delicate_catmario_linker'><a  href="http://yunpan.cn/Q9E75DJYkyZCn">360云盘</a> <a href="http://pan.baidu.com/s/1Lns0">百度网盘</a></dd>
-						<dt id='Games_Small but Delicate_Teleportower'>Teleportower (镜像之塔)</dt>
+							<dd id='Games_Small but Delicate_catmario_linker'><a  href="http://yunpan.cn/Q9E75DJYkyZCn">360浜戠洏</a> <a href="http://pan.baidu.com/s/1Lns0">鐧惧害缃戠洏</a></dd>
+						<dt id='Games_Small but Delicate_Teleportower'>Teleportower (闀滃儚涔嬪)</dt>
 							<dd id='Games_Small but Delicate_Teleportower_ico' class="nojs">http://img1.ph.126.net/g1lliTcutPOOaIG0yni5vA==/698339417319426745.png</dd>
 							<dd id='Games_Small but Delicate_Teleportower_imager' class="nojs"></dd>
 							<dd id='Games_Small but Delicate_Teleportower_detail'>
-								在 Teleportower 里面有左右两座塔，它们就是游戏里的平行世界。我们可以控制主角在两个世界自由穿梭，目的是获得宝石。
+								鍦?Teleportower 閲岄潰鏈夊乏鍙充袱搴у锛屽畠浠氨鏄父鎴忛噷鐨勫钩琛屼笘鐣屻€傛垜浠彲浠ユ帶鍒朵富瑙掑湪涓や釜涓栫晫鑷敱绌挎锛岀洰鐨勬槸鑾峰緱瀹濈煶銆?
 								</dd>
-							<dd id='Games_Small but Delicate_Teleportower_linker'><a  href="http://yunpan.cn/Q9E7XeyZzGH2e">360云盘</a> <a href="http://pan.baidu.com/s/1FwJ3S">百度网盘</a></dd>
-						<dt id='Games_Small but Delicate_The Power Of Paint'>Tag:The Power Of Paint(给力涂鸦)</dt>
+							<dd id='Games_Small but Delicate_Teleportower_linker'><a  href="http://yunpan.cn/Q9E7XeyZzGH2e">360浜戠洏</a> <a href="http://pan.baidu.com/s/1FwJ3S">鐧惧害缃戠洏</a></dd>
+						<dt id='Games_Small but Delicate_The Power Of Paint'>Tag:The Power Of Paint(缁欏姏娑傞甫)</dt>
 							<dd id='Games_Small but Delicate_The Power Of Paint_ico' class="nojs">http://img2.ph.126.net/H4Iq_QEK7S8uuJMddd6uJQ==/2259399638156692250.jpg</dd>
 							<dd id='Games_Small but Delicate_The Power Of Paint_imager' class="nojs"></dd>
 							<dd id='Games_Small but Delicate_The Power Of Paint_detail'>
-								Tag 是一款标新立异的脱逃类动作游戏，不同于以往的纯解谜或者动作类的脱逃，Tag 使用了非常新颖的系统，那就是“水枪涂鸦”。游戏中玩家共可以得到三种喷漆，每种都各有不同的功能，通过水枪把它们喷到墙、高台、地面甚至是火车上，从而完成各种匪夷所思的动作和行进路线。
+								Tag 鏄竴娆炬爣鏂扮珛寮傜殑鑴遍€冪被鍔ㄤ綔娓告垙锛屼笉鍚屼簬浠ュ線鐨勭函瑙ｈ皽鎴栬€呭姩浣滅被鐨勮劚閫冿紝Tag 浣跨敤浜嗛潪甯告柊棰栫殑绯荤粺锛岄偅灏辨槸鈥滄按鏋秱楦︹€濄€傛父鎴忎腑鐜╁鍏卞彲浠ュ緱鍒颁笁绉嶅柗婕嗭紝姣忕閮藉悇鏈変笉鍚岀殑鍔熻兘锛岄€氳繃姘存灙鎶婂畠浠柗鍒板銆侀珮鍙般€佸湴闈㈢敋鑷虫槸鐏溅涓婏紝浠庤€屽畬鎴愬悇绉嶅尓澶锋墍鎬濈殑鍔ㄤ綔鍜岃杩涜矾绾裤€?
 								</dd>
-							<dd id='Games_Small but Delicate_The Power Of Paint_linker'><a  href="http://yunpan.cn/Q9E7GvcNDm5jD">360云盘</a> <a href="http://pan.baidu.com/s/1h6MZi">百度网盘</a></dd>
-						<dt id='Games_Small but Delicate_Proun'>Proun (抽象赛车)</dt>
+							<dd id='Games_Small but Delicate_The Power Of Paint_linker'><a  href="http://yunpan.cn/Q9E7GvcNDm5jD">360浜戠洏</a> <a href="http://pan.baidu.com/s/1h6MZi">鐧惧害缃戠洏</a></dd>
+						<dt id='Games_Small but Delicate_Proun'>Proun (鎶借薄璧涜溅)</dt>
 							<dd id='Games_Small but Delicate_Proun_ico' class="nojs">http://img2.ph.126.net/cgKgsgZDfe-Mq-i1dqf0jQ==/1000925017201269587.jpg</dd>
 							<dd id='Games_Small but Delicate_Proun_imager' class="nojs"></dd>
 							<dd id='Games_Small but Delicate_Proun_detail'>
-								《Proun》是一款抽象的赛车游戏，在这里面玩家要驾驶着一辆出租车来躲避前面出现的各种物体。支持2至4人分屏游戏、支持手柄、在线分数榜，可以记录自己的比赛轨迹。支持玩家自己创建赛道。
+								銆奝roun銆嬫槸涓€娆炬娊璞＄殑璧涜溅娓告垙锛屽湪杩欓噷闈㈢帺瀹惰椹鹃┒鐫€涓€杈嗗嚭绉熻溅鏉ヨ翰閬垮墠闈㈠嚭鐜扮殑鍚勭鐗╀綋銆傛敮鎸?鑷?浜哄垎灞忔父鎴忋€佹敮鎸佹墜鏌勩€佸湪绾垮垎鏁版锛屽彲浠ヨ褰曡嚜宸辩殑姣旇禌杞ㄨ抗銆傛敮鎸佺帺瀹惰嚜宸卞垱寤鸿禌閬撱€?
 								</dd>
-							<dd id='Games_Small but Delicate_Proun_linker'><a  href="http://yunpan.cn/Q9E7kdnYLS3YI">360云盘</a> <a href="http://pan.baidu.com/s/1EGNam">百度网盘</a></dd>
-						<dt id='Games_Small but Delicate_RagDollMasters'>RagDollMasters (人偶格斗)</dt>
+							<dd id='Games_Small but Delicate_Proun_linker'><a  href="http://yunpan.cn/Q9E7kdnYLS3YI">360浜戠洏</a> <a href="http://pan.baidu.com/s/1EGNam">鐧惧害缃戠洏</a></dd>
+						<dt id='Games_Small but Delicate_RagDollMasters'>RagDollMasters (浜哄伓鏍兼枟)</dt>
 							<dd id='Games_Small but Delicate_RagDollMasters_ico' class="nojs">http://img2.ph.126.net/56cbyDcT6OMkkKuiRlXisA==/1938518164706751221.png</dd>
 							<dd id='Games_Small but Delicate_RagDollMasters_imager' class="nojs"></dd>
 							<dd id='Games_Small but Delicate_RagDollMasters_detail'>
-								这绝对是一个不同于你认识的格斗游戏，没有想象中的重拳轻拳，也没有印象中的出招表，玩家要做的就是依靠惯性用拳头和脚去碰到对面的脑袋。<br/>
-								在这场格斗游戏中，你要控制白方人偶,经过移动和强劲的打击，展示高超的技巧，击败越来越多和强大的对手。 本作真实的模拟出打斗中的各种动作，不仅有着游戏的趣味性，还可以使一些制作者获得灵感的启发。
+								杩欑粷瀵规槸涓€涓笉鍚屼簬浣犺璇嗙殑鏍兼枟娓告垙锛屾病鏈夋兂璞′腑鐨勯噸鎷宠交鎷筹紝涔熸病鏈夊嵃璞′腑鐨勫嚭鎷涜〃锛岀帺瀹惰鍋氱殑灏辨槸渚濋潬鎯€х敤鎷冲ご鍜岃剼鍘荤鍒板闈㈢殑鑴戣銆?br/>
+								鍦ㄨ繖鍦烘牸鏂楁父鎴忎腑锛屼綘瑕佹帶鍒剁櫧鏂逛汉鍋?缁忚繃绉诲姩鍜屽己鍔茬殑鎵撳嚮锛屽睍绀洪珮瓒呯殑鎶€宸э紝鍑昏触瓒婃潵瓒婂鍜屽己澶х殑瀵规墜銆?鏈綔鐪熷疄鐨勬ā鎷熷嚭鎵撴枟涓殑鍚勭鍔ㄤ綔锛屼笉浠呮湁鐫€娓告垙鐨勮叮鍛虫€э紝杩樺彲浠ヤ娇涓€浜涘埗浣滆€呰幏寰楃伒鎰熺殑鍚彂銆?
 								</dd>
-							<dd id='Games_Small but Delicate_RagDollMasters_linker'><a  href="http://yunpan.cn/Q9E7bNCM9QHbD">360云盘</a> <a href="http://pan.baidu.com/s/1xfQrx">百度网盘</a></dd>
-						<dt id='Games_Small but Delicate_Snapshot'>Snapshot (快照)</dt>
+							<dd id='Games_Small but Delicate_RagDollMasters_linker'><a  href="http://yunpan.cn/Q9E7bNCM9QHbD">360浜戠洏</a> <a href="http://pan.baidu.com/s/1xfQrx">鐧惧害缃戠洏</a></dd>
+						<dt id='Games_Small but Delicate_Snapshot'>Snapshot (蹇収)</dt>
 							<dd id='Games_Small but Delicate_Snapshot_ico' class="nojs">http://img2.ph.126.net/EDQn_4XkWBiALK8lZuPLbQ==/1868430895505546594.jpg</dd>
 							<dd id='Games_Small but Delicate_Snapshot_imager' class="nojs"></dd>
 							<dd id='Games_Small but Delicate_Snapshot_detail'></dd>
-							<dd id='Games_Small but Delicate_Snapshot_linker'><a  href="http://yunpan.cn/Q9E7BvdZxbpz8">360云盘</a> <a href="http://pan.baidu.com/s/147zED">百度网盘</a></dd>
-						<dt id='Games_Small but Delicate_Opus Pocus'>Opus Pocus (魔法之书)</dt>
+							<dd id='Games_Small but Delicate_Snapshot_linker'><a  href="http://yunpan.cn/Q9E7BvdZxbpz8">360浜戠洏</a> <a href="http://pan.baidu.com/s/147zED">鐧惧害缃戠洏</a></dd>
+						<dt id='Games_Small but Delicate_Opus Pocus'>Opus Pocus (榄旀硶涔嬩功)</dt>
 							<dd id='Games_Small but Delicate_Opus Pocus_ico' class="nojs">http://img0.ph.126.net/-m5vDHaSGx8N6ifclNP4_w==/2155816846727172705.png</dd>
 							<dd id='Games_Small but Delicate_Opus Pocus_imager' class="nojs"></dd>
 							<dd id='Games_Small but Delicate_Opus Pocus_detail'></dd>
-							<dd id='Games_Small but Delicate_Opus Pocus_linker'><a  href="http://yunpan.cn/Q9E76SxNrFQqG">360云盘</a> <a href="http://pan.baidu.com/s/1uybxA">百度网盘</a></dd>
-						<dt id='Games_Small but Delicate_Dyson'>Dyson (星球之树)</dt>
+							<dd id='Games_Small but Delicate_Opus Pocus_linker'><a  href="http://yunpan.cn/Q9E76SxNrFQqG">360浜戠洏</a> <a href="http://pan.baidu.com/s/1uybxA">鐧惧害缃戠洏</a></dd>
+						<dt id='Games_Small but Delicate_Dyson'>Dyson (鏄熺悆涔嬫爲)</dt>
 							<dd id='Games_Small but Delicate_Dyson_ico' class="nojs">http://img1.ph.126.net/eLMA9HNqlsyKp36Ao926jQ==/6598148387565268675.png</dd>
 							<dd id='Games_Small but Delicate_Dyson_imager' class="nojs"></dd>
 							<dd id='Games_Small but Delicate_Dyson_detail'></dd>
-							<dd id='Games_Small but Delicate_Dyson_linker'><a  href="http://yunpan.cn/Q9E7vAG2BWUi5">360云盘</a> <a href="http://pan.baidu.com/s/13R4xi">百度网盘</a></dd>
+							<dd id='Games_Small but Delicate_Dyson_linker'><a  href="http://yunpan.cn/Q9E7vAG2BWUi5">360浜戠洏</a> <a href="http://pan.baidu.com/s/13R4xi">鐧惧害缃戠洏</a></dd>
 						<dt id='Games_Small but Delicate_cs16'>CS1.6</dt>
 							<dd id='Games_Small but Delicate_cs16_ico' class="nojs">http://img1.ph.126.net/1b-qjRwWWfT4sF9dXktBuQ==/146366987989864033.png</dd>
 							<dd id='Games_Small but Delicate_cs16_imager' class="nojs"></dd>
 							<dd id='Games_Small but Delicate_cs16_detail'></dd>
-							<dd id='Games_Small but Delicate_cs16_linker'><a  href="http://yunpan.cn/Qi2CZz78GkyzX">360云盘 852e</a> <a href="http://pan.baidu.com/s/1s3NiQ">百度网盘</a></dd>
-						<dt id='Games_Small but Delicate_CubeWorld'>CubeWorld (魔方世界)</dt>
+							<dd id='Games_Small but Delicate_cs16_linker'><a  href="http://yunpan.cn/Qi2CZz78GkyzX">360浜戠洏 852e</a> <a href="http://pan.baidu.com/s/1s3NiQ">鐧惧害缃戠洏</a></dd>
+						<dt id='Games_Small but Delicate_CubeWorld'>CubeWorld (榄旀柟涓栫晫)</dt>
 							<dd id='Games_Small but Delicate_CubeWorld_ico' class="nojs">http://img1.ph.126.net/jYlI9SOcHptXZhpWnUuLow==/2980538528489356057.png</dd>
 							<dd id='Games_Small but Delicate_CubeWorld_imager' class="nojs"></dd>
 							<dd id='Games_Small but Delicate_CubeWorld_detail'></dd>
-							<dd id='Games_Small but Delicate_CubeWorld_linker'><a  href="http://yunpan.cn/Qi2CqXqSVqezY">360云盘 bf8b</a> <a href="http://pan.baidu.com/s/1sjNNvsD">百度网盘</a></dd>
-						<dt id='Games_Small but Delicate_GeometryWars'>GeometryWars (几何战争)</dt>
+							<dd id='Games_Small but Delicate_CubeWorld_linker'><a  href="http://yunpan.cn/Qi2CqXqSVqezY">360浜戠洏 bf8b</a> <a href="http://pan.baidu.com/s/1sjNNvsD">鐧惧害缃戠洏</a></dd>
+						<dt id='Games_Small but Delicate_GeometryWars'>GeometryWars (鍑犱綍鎴樹簤)</dt>
 							<dd id='Games_Small but Delicate_GeometryWars_ico' class="nojs">http://img2.ph.126.net/2FzUr3kxjmXPgeXfZte15Q==/1400900959189215167.png</dd>
 							<dd id='Games_Small but Delicate_GeometryWars_imager' class="nojs"></dd>
 							<dd id='Games_Small but Delicate_GeometryWars_detail'></dd>
-							<dd id='Games_Small but Delicate_GeometryWars_linker'><a  href="http://yunpan.cn/Qi2CR9ugLVTzc">360云盘 83f2</a> <a href="http://pan.baidu.com/s/1dDkqkwh">百度网盘</a></dd>
-						<dt id='Games_Small but Delicate_Grief'>Grief (哀伤)</dt>
+							<dd id='Games_Small but Delicate_GeometryWars_linker'><a  href="http://yunpan.cn/Qi2CR9ugLVTzc">360浜戠洏 83f2</a> <a href="http://pan.baidu.com/s/1dDkqkwh">鐧惧害缃戠洏</a></dd>
+						<dt id='Games_Small but Delicate_Grief'>Grief (鍝€浼?</dt>
 							<dd id='Games_Small but Delicate_Grief_ico' class="nojs">http://img1.ph.126.net/VlCYKkjm0z3Piec2lwxeRw==/6608521180259320831.png</dd>
 							<dd id='Games_Small but Delicate_Grief_imager' class="nojs"></dd>
 							<dd id='Games_Small but Delicate_Grief_detail'></dd>
-							<dd id='Games_Small but Delicate_Grief_linker'><a  href="http://yunpan.cn/Qi2CzIjiFUcgT">360云盘 21d4</a> <a href="http://pan.baidu.com/s/1gdFun31">百度网盘</a></dd>
-						<dt id='Games_Small but Delicate_NightSky'>NightSky (夜空)</dt>
+							<dd id='Games_Small but Delicate_Grief_linker'><a  href="http://yunpan.cn/Qi2CzIjiFUcgT">360浜戠洏 21d4</a> <a href="http://pan.baidu.com/s/1gdFun31">鐧惧害缃戠洏</a></dd>
+						<dt id='Games_Small but Delicate_NightSky'>NightSky (澶滅┖)</dt>
 							<dd id='Games_Small but Delicate_NightSky_ico' class="nojs">http://img2.ph.126.net/y817OY7_Y-F7lra-GjUhSg==/901282875528002789.png</dd>
 							<dd id='Games_Small but Delicate_NightSky_imager' class="nojs"></dd>
 							<dd id='Games_Small but Delicate_NightSky_detail'></dd>
-							<dd id='Games_Small but Delicate_NightSky_linker'><a  href="http://yunpan.cn/Qi2CiDMvdCNBi">360云盘 1f3f</a> <a href="http://pan.baidu.com/s/1s3Njw">百度网盘</a></dd>
-						<dt id='Games_Small but Delicate_Rich4'>Rich4 (大富翁4)</dt>
+							<dd id='Games_Small but Delicate_NightSky_linker'><a  href="http://yunpan.cn/Qi2CiDMvdCNBi">360浜戠洏 1f3f</a> <a href="http://pan.baidu.com/s/1s3Njw">鐧惧害缃戠洏</a></dd>
+						<dt id='Games_Small but Delicate_Rich4'>Rich4 (澶у瘜缈?)</dt>
 							<dd id='Games_Small but Delicate_Rich4_ico' class="nojs">http://img1.ph.126.net/lG66Bj9m4RpKvXgX6s-gEw==/2035627031671744240.jpg</dd>
 							<dd id='Games_Small but Delicate_Rich4_imager' class="nojs"></dd>
 							<dd id='Games_Small but Delicate_Rich4_detail'></dd>
-							<dd id='Games_Small but Delicate_Rich4_linker'><a  href="http://yunpan.cn/Qi2Chq8iWbzLu">360云盘 f301</a> <a href="http://pan.baidu.com/s/1eQ1jgSq">百度网盘</a></dd>
-						<dt id='Games_Small but Delicate_Samurai II'>Samurai II (武士2)</dt>
+							<dd id='Games_Small but Delicate_Rich4_linker'><a  href="http://yunpan.cn/Qi2Chq8iWbzLu">360浜戠洏 f301</a> <a href="http://pan.baidu.com/s/1eQ1jgSq">鐧惧害缃戠洏</a></dd>
+						<dt id='Games_Small but Delicate_Samurai II'>Samurai II (姝﹀＋2)</dt>
 							<dd id='Games_Small but Delicate_Samurai II_ico' class="nojs">http://img2.ph.126.net/9l__Nv0MYK2_NoisEIKm3g==/1457758904485294154.jpg</dd>
 							<dd id='Games_Small but Delicate_Samurai II_imager' class="nojs"></dd>
 							<dd id='Games_Small but Delicate_Samurai II_detail'></dd>
-							<dd id='Games_Small but Delicate_Samurai II_linker'><a  href="http://yunpan.cn/Qi2aytQ4JmSJC">360云盘 a9ab</a> <a href="http://pan.baidu.com/s/1pJwhdAN">百度网盘</a></dd>
-						<dt id='Games_Small but Delicate_ZenBound2'>ZenBound2 (禅绕2)</dt>
+							<dd id='Games_Small but Delicate_Samurai II_linker'><a  href="http://yunpan.cn/Qi2aytQ4JmSJC">360浜戠洏 a9ab</a> <a href="http://pan.baidu.com/s/1pJwhdAN">鐧惧害缃戠洏</a></dd>
+						<dt id='Games_Small but Delicate_ZenBound2'>ZenBound2 (绂呯粫2)</dt>
 							<dd id='Games_Small but Delicate_ZenBound2_ico' class="nojs">http://img1.ph.126.net/Y9nCMZqnG4CvRpUSzJhpmQ==/1090715534771686051.jpg</dd>
 							<dd id='Games_Small but Delicate_ZenBound2_imager' class="nojs"></dd>
 							<dd id='Games_Small but Delicate_ZenBound2_detail'></dd>
-							<dd id='Games_Small but Delicate_ZenBound2_linker'><a  href="http://yunpan.cn/Qi2awthY5AIkm">360云盘 b659</a> <a href="http://pan.baidu.com/s/1eQqZI9c">百度网盘</a></dd>
-						<dt id='Games_Small but Delicate_ganjingzi'>甘井子传说</dt>
+							<dd id='Games_Small but Delicate_ZenBound2_linker'><a  href="http://yunpan.cn/Qi2awthY5AIkm">360浜戠洏 b659</a> <a href="http://pan.baidu.com/s/1eQqZI9c">鐧惧害缃戠洏</a></dd>
+						<dt id='Games_Small but Delicate_ganjingzi'>鐢樹簳瀛愪紶璇?/dt>
 							<dd id='Games_Small but Delicate_ganjingzi_ico' class="nojs">http://img0.ph.126.net/ALiXsrYQ__to4NhkjwZjZA==/3126342566425525164.png</dd>
 							<dd id='Games_Small but Delicate_ganjingzi_imager' class="nojs"></dd>
 							<dd id='Games_Small but Delicate_ganjingzi_detail'></dd>
-							<dd id='Games_Small but Delicate_ganjingzi_linker'><a  href="http://yunpan.cn/Qi2aHmzbxNC9j">360云盘 2a71</a> <a href="http://pan.baidu.com/s/1c0zlx1u">百度网盘</a></dd>
-						<dt id='Games_Small but Delicate_Metal Slug'>Metal Slug (合金弹头)</dt>
+							<dd id='Games_Small but Delicate_ganjingzi_linker'><a  href="http://yunpan.cn/Qi2aHmzbxNC9j">360浜戠洏 2a71</a> <a href="http://pan.baidu.com/s/1c0zlx1u">鐧惧害缃戠洏</a></dd>
+						<dt id='Games_Small but Delicate_Metal Slug'>Metal Slug (鍚堥噾寮瑰ご)</dt>
 							<dd id='Games_Small but Delicate_Metal Slug_ico' class="nojs">http://img2.ph.126.net/ng9Pgjk0jJ7s1uujxcCcKw==/4884716745937069094.png</dd>
 							<dd id='Games_Small but Delicate_Metal Slug_imager' class="nojs"></dd>
 							<dd id='Games_Small but Delicate_Metal Slug_detail'></dd>
-							<dd id='Games_Small but Delicate_Metal Slug_linker'><a  href="http://yunpan.cn/Qi2aueRhkhIgB">360云盘 3254</a> <a href="http://pan.baidu.com/s/1bnCK7bL">百度网盘</a></dd>
-						<dt id='Games_Small but Delicate_Silence in the Mist'>静在迷雾中(Silence in the Mist)</dt>
+							<dd id='Games_Small but Delicate_Metal Slug_linker'><a  href="http://yunpan.cn/Qi2aueRhkhIgB">360浜戠洏 3254</a> <a href="http://pan.baidu.com/s/1bnCK7bL">鐧惧害缃戠洏</a></dd>
+						<dt id='Games_Small but Delicate_Silence in the Mist'>闈欏湪杩烽浘涓?Silence in the Mist)</dt>
 							<dd id='Games_Small but Delicate_Silence in the Mist_ico' class="nojs">http://img1.ph.126.net/y3Jqy1gGNajM1VsLsw95pQ==/3796815960950421025.png</dd>
 							<dd id='Games_Small but Delicate_Silence in the Mist_imager' class="nojs"></dd>
 							<dd id='Games_Small but Delicate_Silence in the Mist_detail'></dd>
-							<dd id='Games_Small but Delicate_Silence in the Mist_linker'><a  href="http://yunpan.cn/Qi2aStQ6f5NWT">360云盘 760d</a> <a href="http://pan.baidu.com/s/1hqDqvac">百度网盘</a></dd>
-						<dt id='Games_Small but Delicate_raiden'>Raiden (雷电)</dt>
+							<dd id='Games_Small but Delicate_Silence in the Mist_linker'><a  href="http://yunpan.cn/Qi2aStQ6f5NWT">360浜戠洏 760d</a> <a href="http://pan.baidu.com/s/1hqDqvac">鐧惧害缃戠洏</a></dd>
+						<dt id='Games_Small but Delicate_raiden'>Raiden (闆风數)</dt>
 							<dd id='Games_Small but Delicate_raiden_ico' class="nojs">http://img2.ph.126.net/vqeBksYqZLlOA25glzKyeg==/1337287614452664158.png</dd>
 							<dd id='Games_Small but Delicate_raiden_imager' class="nojs"></dd>
 							<dd id='Games_Small but Delicate_raiden_detail'></dd>
-							<dd id='Games_Small but Delicate_raiden_linker'><a  href="http://yunpan.cn/Qi2akVaHsDNHB">360云盘 3a5b</a> <a href="http://pan.baidu.com/s/1sj6mx9V">百度网盘</a></dd>
-						<dt id='Games_Small but Delicate_KOF'>KOF98 (拳皇98)</dt>
+							<dd id='Games_Small but Delicate_raiden_linker'><a  href="http://yunpan.cn/Qi2akVaHsDNHB">360浜戠洏 3a5b</a> <a href="http://pan.baidu.com/s/1sj6mx9V">鐧惧害缃戠洏</a></dd>
+						<dt id='Games_Small but Delicate_KOF'>KOF98 (鎷崇殗98)</dt>
 							<dd id='Games_Small but Delicate_KOF_ico' class="nojs">http://img2.ph.126.net/vFo-DA5kfWXRiPTZ8FkT0g==/830914131350523449.png</dd>
 							<dd id='Games_Small but Delicate_KOF_imager' class="nojs"></dd>
 							<dd id='Games_Small but Delicate_KOF_detail'></dd>
-							<dd id='Games_Small but Delicate_KOF_linker'><a  href="http://yunpan.cn/Qi2aeVaVr42AU">360云盘 c939</a> <a href="http://pan.baidu.com/s/1pJsJsSV">百度网盘</a></dd>
-						<dt id='Games_Small but Delicate_Mummy Maze Deluxe'>Mummy Maze Deluxe (木乃伊迷宫 豪华版)</dt>
+							<dd id='Games_Small but Delicate_KOF_linker'><a  href="http://yunpan.cn/Qi2aeVaVr42AU">360浜戠洏 c939</a> <a href="http://pan.baidu.com/s/1pJsJsSV">鐧惧害缃戠洏</a></dd>
+						<dt id='Games_Small but Delicate_Mummy Maze Deluxe'>Mummy Maze Deluxe (鏈ㄤ箖浼婅糠瀹?璞崕鐗?</dt>
 							<dd id='Games_Small but Delicate_Mummy Maze Deluxe_ico' class="nojs">http://img1.ph.126.net/8JM9FpxgjNQJ5nVmYpm6jw==/2051108155391176933.jpg</dd>
 							<dd id='Games_Small but Delicate_Mummy Maze Deluxe_imager' class="nojs"></dd>
 							<dd id='Games_Small but Delicate_Mummy Maze Deluxe_detail'></dd>
-							<dd id='Games_Small but Delicate_Mummy Maze Deluxe_linker'><a  href="http://yunpan.cn/Q9E78R4Jg7x4d">360云盘</a> <a href="http://pan.baidu.com/s/1ejbcl">百度网盘</a></dd>
+							<dd id='Games_Small but Delicate_Mummy Maze Deluxe_linker'><a  href="http://yunpan.cn/Q9E78R4Jg7x4d">360浜戠洏</a> <a href="http://pan.baidu.com/s/1ejbcl">鐧惧害缃戠洏</a></dd>
 						<dt id='Games_Small but Delicate_CounterClockWise'>Counter ClockWise</dt>
 							<dd id='Games_Small but Delicate_CounterClockWise_ico' class="nojs">http://img0.ph.126.net/kTliozk6PIfOXINH6wf7ng==/1262133795670792731.png</dd>
 							<dd id='Games_Small but Delicate_CounterClockWise_imager' class="nojs"></dd>
 							<dd id='Games_Small but Delicate_CounterClockWise_detail'></dd>
-							<dd id='Games_Small but Delicate_CounterClockWise_linker'><a  href="http://yunpan.cn/Q9E7bHV6j7DDu">360云盘</a> <a href="http://pan.baidu.com/s/1vJUPb">百度网盘</a></dd>
+							<dd id='Games_Small but Delicate_CounterClockWise_linker'><a  href="http://yunpan.cn/Q9E7bHV6j7DDu">360浜戠洏</a> <a href="http://pan.baidu.com/s/1vJUPb">鐧惧害缃戠洏</a></dd>
 						<dt id='Games_Small but Delicate_a Fistful of Gun Trailer'>a Fistful of Gun Trailer</dt>
 							<dd id='Games_Small but Delicate_a Fistful of Gun Trailer_ico' class="nojs">http://img2.ph.126.net/VWIMK_vN50deI_P9Es6E6w==/2554948363620694613.png</dd>
 							<dd id='Games_Small but Delicate_a Fistful of Gun Trailer_imager' class="nojs"></dd>
 							<dd id='Games_Small but Delicate_a Fistful of Gun Trailer_detail'></dd>
-							<dd id='Games_Small but Delicate_a Fistful of Gun Trailer_linker'><a  href="http://yunpan.cn/Q9E79n7nhFuRX">360云盘</a> <a href="http://pan.baidu.com/s/1EaQHT">百度网盘</a></dd>
-						<dt id='Games_Small but Delicate_Eddy purple'>Eddy紫 v1.01</dt>
+							<dd id='Games_Small but Delicate_a Fistful of Gun Trailer_linker'><a  href="http://yunpan.cn/Q9E79n7nhFuRX">360浜戠洏</a> <a href="http://pan.baidu.com/s/1EaQHT">鐧惧害缃戠洏</a></dd>
+						<dt id='Games_Small but Delicate_Eddy purple'>Eddy绱?v1.01</dt>
 							<dd id='Games_Small but Delicate_Eddy purple_ico' class="nojs">http://img2.ph.126.net/66xPTH4RB8E2x0UhUzDEpA==/1583015269038794072.png</dd>
 							<dd id='Games_Small but Delicate_Eddy purple_imager' class="nojs"></dd>
 							<dd id='Games_Small but Delicate_Eddy purple_detail'></dd>
-							<dd id='Games_Small but Delicate_Eddy purple_linker'><a  href="http://yunpan.cn/Q9E7UMsNJRDaB">360云盘</a> <a href="http://pan.baidu.com/s/1h6MZ3">百度网盘</a></dd>
-						<dt id='Games_Small but Delicate_Beat Hazard'>Beat Hazard (危险节奏)</dt>
+							<dd id='Games_Small but Delicate_Eddy purple_linker'><a  href="http://yunpan.cn/Q9E7UMsNJRDaB">360浜戠洏</a> <a href="http://pan.baidu.com/s/1h6MZ3">鐧惧害缃戠洏</a></dd>
+						<dt id='Games_Small but Delicate_Beat Hazard'>Beat Hazard (鍗遍櫓鑺傚)</dt>
 							<dd id='Games_Small but Delicate_Beat Hazard_ico' class="nojs">http://img2.ph.126.net/A_6uFibqFAVLYnjHFaz6_Q==/829225281490031438.png</dd>
 							<dd id='Games_Small but Delicate_Beat Hazard_imager' class="nojs"></dd>
 							<dd id='Games_Small but Delicate_Beat Hazard_detail'></dd>
-							<dd id='Games_Small but Delicate_Beat Hazard_linker'><a  href="http://yunpan.cn/Q9E7DZpintHTh">360云盘</a> <a href="http://pan.baidu.com/s/1chhf7">百度网盘</a></dd>
-						<dt id='Games_Small but Delicate_Monaco'>Monaco Whats Yours Is Mine (摩纳哥-你的就是我的)</dt>
+							<dd id='Games_Small but Delicate_Beat Hazard_linker'><a  href="http://yunpan.cn/Q9E7DZpintHTh">360浜戠洏</a> <a href="http://pan.baidu.com/s/1chhf7">鐧惧害缃戠洏</a></dd>
+						<dt id='Games_Small but Delicate_Monaco'>Monaco Whats Yours Is Mine (鎽╃撼鍝?浣犵殑灏辨槸鎴戠殑)</dt>
 							<dd id='Games_Small but Delicate_Monaco_ico' class="nojs">http://img1.ph.126.net/D9zyCJO44sOeiOF5H_SMAA==/2760988046572763947.png</dd>
 							<dd id='Games_Small but Delicate_Monaco_imager' class="nojs"></dd>
 							<dd id='Games_Small but Delicate_Monaco_detail'></dd>
-							<dd id='Games_Small but Delicate_Monaco_linker'><a  href="http://yunpan.cn/Q9E7DhNyI4bPX">360云盘</a> <a href="http://pan.baidu.com/s/1zhIsB">百度网盘</a></dd>
-						<dt id='Games_Small but Delicate_Binding of Isaac'>Binding of Isaac-Wrath of the Lamb (以萨的结合-羔羊的愤怒)</dt>
+							<dd id='Games_Small but Delicate_Monaco_linker'><a  href="http://yunpan.cn/Q9E7DhNyI4bPX">360浜戠洏</a> <a href="http://pan.baidu.com/s/1zhIsB">鐧惧害缃戠洏</a></dd>
+						<dt id='Games_Small but Delicate_Binding of Isaac'>Binding of Isaac-Wrath of the Lamb (浠ヨ惃鐨勭粨鍚?缇旂緤鐨勬劋鎬?</dt>
 							<dd id='Games_Small but Delicate_Binding of Isaac_ico' class="nojs">http://img2.ph.126.net/f6GPDaU-WWvxgGqVawTkCA==/1357272337716850481.jpg</dd>
 							<dd id='Games_Small but Delicate_Binding of Isaac_imager' class="nojs"></dd>
 							<dd id='Games_Small but Delicate_Binding of Isaac_detail'></dd>
-							<dd id='Games_Small but Delicate_Binding of Isaac_linker'><a  href="http://yunpan.cn/Q9E7zbTHAhzVW">360云盘</a> <a href="http://pan.baidu.com/s/1Lnsc">百度网盘</a></dd>
-						<dt id='Games_Small but Delicate_Trauma'>Trauma (创伤)</dt>
+							<dd id='Games_Small but Delicate_Binding of Isaac_linker'><a  href="http://yunpan.cn/Q9E7zbTHAhzVW">360浜戠洏</a> <a href="http://pan.baidu.com/s/1Lnsc">鐧惧害缃戠洏</a></dd>
+						<dt id='Games_Small but Delicate_Trauma'>Trauma (鍒涗激)</dt>
 							<dd id='Games_Small but Delicate_Trauma_ico' class="nojs">http://img1.ph.126.net/-Np008SnXqNapeEFJrVLYA==/2098395951478823302.png</dd>
 							<dd id='Games_Small but Delicate_Trauma_imager' class="nojs"></dd>
 							<dd id='Games_Small but Delicate_Trauma_detail'></dd>
-							<dd id='Games_Small but Delicate_Trauma_linker'><a  href="http://yunpan.cn/Q9E7pRpIPUx2s">360云盘</a> <a href="http://pan.baidu.com/s/169oZL">百度网盘</a></dd>
-						<dt id='Games_Small but Delicate_Aquaria'>Aquaria (安琪拉之歌)</dt>
+							<dd id='Games_Small but Delicate_Trauma_linker'><a  href="http://yunpan.cn/Q9E7pRpIPUx2s">360浜戠洏</a> <a href="http://pan.baidu.com/s/169oZL">鐧惧害缃戠洏</a></dd>
+						<dt id='Games_Small but Delicate_Aquaria'>Aquaria (瀹夌惇鎷変箣姝?</dt>
 							<dd id='Games_Small but Delicate_Aquaria_ico' class="nojs">http://img0.ph.126.net/k4Sru0uDdUy8HO97aH7Wqg==/3279183478779599994.png</dd>
 							<dd id='Games_Small but Delicate_Aquaria_imager' class="nojs"></dd>
 							<dd id='Games_Small but Delicate_Aquaria_detail'></dd>
-							<dd id='Games_Small but Delicate_Aquaria_linker'><a  href="http://yunpan.cn/Q9Wguwb7WQkIC">360云盘</a> <a href="http://pan.baidu.com/s/1mq65u">百度网盘</a></dd>
+							<dd id='Games_Small but Delicate_Aquaria_linker'><a  href="http://yunpan.cn/Q9Wguwb7WQkIC">360浜戠洏</a> <a href="http://pan.baidu.com/s/1mq65u">鐧惧害缃戠洏</a></dd>
 					</dl></dd>
-				<dt id='Games_Grand and Magnificent'>大而完美</dt>
+				<dt id='Games_Grand and Magnificent'>澶ц€屽畬缇?/dt>
 					<dd id='Games_Grand and Magnificent_ico' class="nojs">http://img2.ph.126.net/sIpiljplVESlzQHVAkcaAg==/3140134840284462833.jpg</dd>
 					<dd id='Games_Grand and Magnificent_imager' class="nojs"></dd>
 					<dd id='Games_Grand and Magnificent_detail'></dd>
-					<dd id='Games_Grand and Magnificent_linker'><a  href="http://yunpan.cn/Q9Wg2FEgADxB8">360云盘</a> <a href="http://pan.baidu.com/s/1raoTV">百度网盘</a></dd>
+					<dd id='Games_Grand and Magnificent_linker'><a  href="http://yunpan.cn/Q9Wg2FEgADxB8">360浜戠洏</a> <a href="http://pan.baidu.com/s/1raoTV">鐧惧害缃戠洏</a></dd>
 					<dd><dl id='Games_Grand and Magnificent_next'>
-						<dt id='Games_Grand and Magnificent_o2jam'>o2jam (劲乐团)</dt>
+						<dt id='Games_Grand and Magnificent_o2jam'>o2jam (鍔蹭箰鍥?</dt>
 							<dd id='Games_Grand and Magnificent_o2jam_ico' class="nojs">http://img1.ph.126.net/k8NB70TqgI8nFz3g52CLkA==/1266637395298220998.jpg</dd>
 							<dd id='Games_Grand and Magnificent_o2jam_imager' class="nojs"></dd>
 							<dd id='Games_Grand and Magnificent_o2jam_detail'>
-								o2jam是韩国 O2Media 游戏公司开发的一款 MMOMPG (Massive Multi Online Music Play Game) 游戏。 它是世界上第一款以 MP3音乐为游戏平台的休闲音乐游戏，巧妙地结合了音乐与娱乐，让你在弹奏歌曲时不知不觉融入到无限音乐美好中。
+								o2jam鏄煩鍥?O2Media 娓告垙鍏徃寮€鍙戠殑涓€娆?MMOMPG (Massive Multi Online Music Play Game) 娓告垙銆?瀹冩槸涓栫晫涓婄涓€娆句互 MP3闊充箰涓烘父鎴忓钩鍙扮殑浼戦棽闊充箰娓告垙锛屽阀濡欏湴缁撳悎浜嗛煶涔愪笌濞变箰锛岃浣犲湪寮瑰姝屾洸鏃朵笉鐭ヤ笉瑙夎瀺鍏ュ埌鏃犻檺闊充箰缇庡ソ涓€?
 								</dd>
-							<dd id='Games_Grand and Magnificent_o2jam_linker'><a  href="http://yunpan.cn/Q9WgxMbCrJph3">360云盘</a> <a href="http://pan.baidu.com/s/1nCzLQ">百度网盘</a></dd>
-						<dt id='Games_Grand and Magnificent_Bastion'>Bastion (堡垒)</dt>
+							<dd id='Games_Grand and Magnificent_o2jam_linker'><a  href="http://yunpan.cn/Q9WgxMbCrJph3">360浜戠洏</a> <a href="http://pan.baidu.com/s/1nCzLQ">鐧惧害缃戠洏</a></dd>
+						<dt id='Games_Grand and Magnificent_Bastion'>Bastion (鍫″瀿)</dt>
 							<dd id='Games_Grand and Magnificent_Bastion_ico' class="nojs">http://img1.ph.126.net/klQj3tCJ2MHacj3cMiJlyA==/6597829529193274141.png</dd>
 							<dd id='Games_Grand and Magnificent_Bastion_imager' class="nojs"></dd>
 							<dd id='Games_Grand and Magnificent_Bastion_detail'>
-								堡垒（Bastion）是一款拥有全新叙述方式的动作角色扮演游戏，游戏里将会有反应灵敏的叙述者来记录您的一举一动。在玩家不段探索的过程中，玩家将会发现 Calamity 世界的众多秘密，一场足以粉碎世界的离奇灾难。<br/>
-								在全 1080p 分辨率下令人惊讶的手绘画面 <br/>
-								广受好评的原创音乐 <br/>
-								数小时的互动讲述传递了一个深邃的故事 <br/>
-								动感十足的战斗需要技巧才能获得奖励 <br/>
-								为 PC 量身定制的操控，外加对游戏手柄的支持 <br/>
-								10+ 款独一无二的可升级武器供使用 <br/>
-								6 种强大的堡垒建筑可供探索 <br/>
-								当完成主线游戏时，“新游戏附加”将解锁
+								鍫″瀿锛圔astion锛夋槸涓€娆炬嫢鏈夊叏鏂板彊杩版柟寮忕殑鍔ㄤ綔瑙掕壊鎵紨娓告垙锛屾父鎴忛噷灏嗕細鏈夊弽搴旂伒鏁忕殑鍙欒堪鑰呮潵璁板綍鎮ㄧ殑涓€涓句竴鍔ㄣ€傚湪鐜╁涓嶆鎺㈢储鐨勮繃绋嬩腑锛岀帺瀹跺皢浼氬彂鐜?Calamity 涓栫晫鐨勪紬澶氱瀵嗭紝涓€鍦鸿冻浠ョ矇纰庝笘鐣岀殑绂诲鐏鹃毦銆?br/>
+								鍦ㄥ叏 1080p 鍒嗚鲸鐜囦笅浠や汉鎯婅鐨勬墜缁樼敾闈?<br/>
+								骞垮彈濂借瘎鐨勫師鍒涢煶涔?<br/>
+								鏁板皬鏃剁殑浜掑姩璁茶堪浼犻€掍簡涓€涓繁閭冪殑鏁呬簨 <br/>
+								鍔ㄦ劅鍗佽冻鐨勬垬鏂楅渶瑕佹妧宸ф墠鑳借幏寰楀鍔?<br/>
+								涓?PC 閲忚韩瀹氬埗鐨勬搷鎺э紝澶栧姞瀵规父鎴忔墜鏌勭殑鏀寔 <br/>
+								10+ 娆剧嫭涓€鏃犱簩鐨勫彲鍗囩骇姝﹀櫒渚涗娇鐢?<br/>
+								6 绉嶅己澶х殑鍫″瀿寤虹瓚鍙緵鎺㈢储 <br/>
+								褰撳畬鎴愪富绾挎父鎴忔椂锛屸€滄柊娓告垙闄勫姞鈥濆皢瑙ｉ攣
 								</dd>
-							<dd id='Games_Grand and Magnificent_Bastion_linker'><a  href="http://yunpan.cn/Q9WgYqiX3bE33">360云盘</a> <a href="http://pan.baidu.com/s/1f4V60">百度网盘</a></dd>
-						<dt id='Games_Grand and Magnificent_Magicka'>Magicka (魔能)</dt>
+							<dd id='Games_Grand and Magnificent_Bastion_linker'><a  href="http://yunpan.cn/Q9WgYqiX3bE33">360浜戠洏</a> <a href="http://pan.baidu.com/s/1f4V60">鐧惧害缃戠洏</a></dd>
+						<dt id='Games_Grand and Magnificent_Magicka'>Magicka (榄旇兘)</dt>
 							<dd id='Games_Grand and Magnificent_Magicka_ico' class="nojs">http://img2.ph.126.net/pPbkLpapvrxr_hEg-mBR8w==/6608846635701142529.png</dd>
 							<dd id='Games_Grand and Magnificent_Magicka_imager' class="nojs"></dd>
 							<dd id='Games_Grand and Magnificent_Magicka_detail'>
-								《魔能》是一款基于挪威神话幻想世界的动作冒险RPG，玩家要扮演巫师去被赋予神圣的使命，阻止黑暗男巫利用他召唤的恶魔将这个世界带入混乱。游戏使用了近几年非常流行的欧式卡通奇幻风格，画面效果出众、整体表现协调，各类法术效果十分抢眼。同时还支持单机下的最高四人联机和在线多人合作，能让玩家从中得到更多的娱乐体验。<br/>
-								《魔能》最精华的地方在于它独创的法术吟唱系统——玩家需要灵活搭配使用其提供的各种基本元素以释放不同效果的法术来打击敌人。游戏里玩家能够通过法术书学会二十余种法术，同时还能通过多种不同的法术组合造成完全不同的效果，绚丽的法术效果、多变的玩法让人欲罢不能，爽快感爆表!
+								銆婇瓟鑳姐€嬫槸涓€娆惧熀浜庢尓濞佺璇濆够鎯充笘鐣岀殑鍔ㄤ綔鍐掗櫓RPG锛岀帺瀹惰鎵紨宸笀鍘昏璧嬩簣绁炲湥鐨勪娇鍛斤紝闃绘榛戞殫鐢峰帆鍒╃敤浠栧彫鍞ょ殑鎭堕瓟灏嗚繖涓笘鐣屽甫鍏ユ贩涔便€傛父鎴忎娇鐢ㄤ簡杩戝嚑骞撮潪甯告祦琛岀殑娆у紡鍗￠€氬骞婚鏍硷紝鐢婚潰鏁堟灉鍑轰紬銆佹暣浣撹〃鐜板崗璋冿紝鍚勭被娉曟湳鏁堟灉鍗佸垎鎶㈢溂銆傚悓鏃惰繕鏀寔鍗曟満涓嬬殑鏈€楂樺洓浜鸿仈鏈哄拰鍦ㄧ嚎澶氫汉鍚堜綔锛岃兘璁╃帺瀹朵粠涓緱鍒版洿澶氱殑濞变箰浣撻獙銆?br/>
+								銆婇瓟鑳姐€嬫渶绮惧崕鐨勫湴鏂瑰湪浜庡畠鐙垱鐨勬硶鏈悷鍞辩郴缁熲€斺€旂帺瀹堕渶瑕佺伒娲绘惌閰嶄娇鐢ㄥ叾鎻愪緵鐨勫悇绉嶅熀鏈厓绱犱互閲婃斁涓嶅悓鏁堟灉鐨勬硶鏈潵鎵撳嚮鏁屼汉銆傛父鎴忛噷鐜╁鑳藉閫氳繃娉曟湳涔﹀浼氫簩鍗佷綑绉嶆硶鏈紝鍚屾椂杩樿兘閫氳繃澶氱涓嶅悓鐨勬硶鏈粍鍚堥€犳垚瀹屽叏涓嶅悓鐨勬晥鏋滐紝缁氫附鐨勬硶鏈晥鏋溿€佸鍙樼殑鐜╂硶璁╀汉娆茬舰涓嶈兘锛岀埥蹇劅鐖嗚〃!
 								</dd>
-							<dd id='Games_Grand and Magnificent_Magicka_linker'><a  href="http://yunpan.cn/Q9WgPZK5BvpcK">360云盘</a> <a href="http://pan.baidu.com/s/1GcIrd">百度网盘</a></dd>
-						<dt id='Games_Grand and Magnificent_Warcraft3'>Warcraft3 (魔兽争霸)</dt>
+							<dd id='Games_Grand and Magnificent_Magicka_linker'><a  href="http://yunpan.cn/Q9WgPZK5BvpcK">360浜戠洏</a> <a href="http://pan.baidu.com/s/1GcIrd">鐧惧害缃戠洏</a></dd>
+						<dt id='Games_Grand and Magnificent_Warcraft3'>Warcraft3 (榄斿吔浜夐湼)</dt>
 							<dd id='Games_Grand and Magnificent_Warcraft3_ico' class="nojs">http://img0.ph.126.net/cloLfcPOSc3oZ3G1BjehKg==/2024368032603309342.png</dd>
 							<dd id='Games_Grand and Magnificent_Warcraft3_imager' class="nojs"></dd>
 							<dd id='Games_Grand and Magnificent_Warcraft3_detail'></dd>
-							<dd id='Games_Grand and Magnificent_Warcraft3_linker'><a  href="http://yunpan.cn/Q9WgSpF25He3g">360云盘</a> <a href="http://pan.baidu.com/s/1EaQKR">百度网盘</a></dd>
-						<dt id='Games_Grand and Magnificent_Spore'>Spore (孢子)</dt>
+							<dd id='Games_Grand and Magnificent_Warcraft3_linker'><a  href="http://yunpan.cn/Q9WgSpF25He3g">360浜戠洏</a> <a href="http://pan.baidu.com/s/1EaQKR">鐧惧害缃戠洏</a></dd>
+						<dt id='Games_Grand and Magnificent_Spore'>Spore (瀛㈠瓙)</dt>
 							<dd id='Games_Grand and Magnificent_Spore_ico' class="nojs">http://img0.ph.126.net/6IdFo5UPNednV7j7xZaX5w==/6597863614053735285.jpg</dd>
 							<dd id='Games_Grand and Magnificent_Spore_imager' class="nojs"></dd>
 							<dd id='Games_Grand and Magnificent_Spore_detail'>
-								《孢子》(Spore)发行于2008年9月7日，游戏让玩家能打造属于自己的世界。游戏需要玩家从数十亿年前的单细胞生物逐步向前发展，随着时间的推移进化成多细胞生物，再进一步发展大脑功能，最后产生出群集生物，这个时候再体验生命成长的过程。<br/>
-								除了模拟成分外，这款游戏还具备重要的战略要素和简易编辑器。玩家在这里可以控制生物发展文明，如果喜欢征战，使用强大的武力还可以征服其它星球。至于游戏编辑器方面，是方便玩家根据自己喜好来设计游戏内容。
+								銆婂瀛愩€?Spore)鍙戣浜?008骞?鏈?鏃ワ紝娓告垙璁╃帺瀹惰兘鎵撻€犲睘浜庤嚜宸辩殑涓栫晫銆傛父鎴忛渶瑕佺帺瀹朵粠鏁板崄浜垮勾鍓嶇殑鍗曠粏鑳炵敓鐗╅€愭鍚戝墠鍙戝睍锛岄殢鐫€鏃堕棿鐨勬帹绉昏繘鍖栨垚澶氱粏鑳炵敓鐗╋紝鍐嶈繘涓€姝ュ彂灞曞ぇ鑴戝姛鑳斤紝鏈€鍚庝骇鐢熷嚭缇ら泦鐢熺墿锛岃繖涓椂鍊欏啀浣撻獙鐢熷懡鎴愰暱鐨勮繃绋嬨€?br/>
+								闄や簡妯℃嫙鎴愬垎澶栵紝杩欐娓告垙杩樺叿澶囬噸瑕佺殑鎴樼暐瑕佺礌鍜岀畝鏄撶紪杈戝櫒銆傜帺瀹跺湪杩欓噷鍙互鎺у埗鐢熺墿鍙戝睍鏂囨槑锛屽鏋滃枩娆㈠緛鎴橈紝浣跨敤寮哄ぇ鐨勬鍔涜繕鍙互寰佹湇鍏跺畠鏄熺悆銆傝嚦浜庢父鎴忕紪杈戝櫒鏂归潰锛屾槸鏂逛究鐜╁鏍规嵁鑷繁鍠滃ソ鏉ヨ璁℃父鎴忓唴瀹广€?
 								</dd>
-							<dd id='Games_Grand and Magnificent_Spore_linker'><a  href="http://yunpan.cn/QUDhM3Sn5bQR7">360云盘</a> <a href="http://pan.baidu.com/s/1AFCr0">百度网盘</a></dd>
-						<dt id='Games_Grand and Magnificent_TorchLight2'>TorchLight2 (火炬之光2)</dt>
+							<dd id='Games_Grand and Magnificent_Spore_linker'><a  href="http://yunpan.cn/QUDhM3Sn5bQR7">360浜戠洏</a> <a href="http://pan.baidu.com/s/1AFCr0">鐧惧害缃戠洏</a></dd>
+						<dt id='Games_Grand and Magnificent_TorchLight2'>TorchLight2 (鐏偓涔嬪厜2)</dt>
 							<dd id='Games_Grand and Magnificent_TorchLight2_ico' class="nojs">http://img0.ph.126.net/pkn9hP10BJRawV3N-RuKug==/6597681095123522430.png</dd>
 							<dd id='Games_Grand and Magnificent_TorchLight2_imager' class="nojs"></dd>
 							<dd id='Games_Grand and Magnificent_TorchLight2_detail'></dd>
-							<dd id='Games_Grand and Magnificent_TorchLight2_linker'><a  href="http://yunpan.cn/Qi274gwjxItCF">360云盘 b01f</a> <a href="http://pan.baidu.com/s/1i3oRMoX">百度网盘</a></dd>
-						<dt id='Games_Grand and Magnificent_The Cave'>The Cave (魔窟历险)</dt>
+							<dd id='Games_Grand and Magnificent_TorchLight2_linker'><a  href="http://yunpan.cn/Qi274gwjxItCF">360浜戠洏 b01f</a> <a href="http://pan.baidu.com/s/1i3oRMoX">鐧惧害缃戠洏</a></dd>
+						<dt id='Games_Grand and Magnificent_The Cave'>The Cave (榄旂獰鍘嗛櫓)</dt>
 							<dd id='Games_Grand and Magnificent_The Cave_ico' class="nojs">http://img1.ph.126.net/cRDfhb5ijlRH2E2SRcZPdQ==/2015642308325275369.jpg</dd>
 							<dd id='Games_Grand and Magnificent_The Cave_imager' class="nojs"></dd>
 							<dd id='Games_Grand and Magnificent_The Cave_detail'></dd>
-							<dd id='Games_Grand and Magnificent_The Cave_linker'><a  href="http://yunpan.cn/Q9WgSxXn5CUZg">360云盘</a> <a href="http://pan.baidu.com/s/1rapaU">百度网盘</a></dd>
-						<dt id='Games_Grand and Magnificent_The Swapper'>The Swapper (交易者)</dt>
+							<dd id='Games_Grand and Magnificent_The Cave_linker'><a  href="http://yunpan.cn/Q9WgSxXn5CUZg">360浜戠洏</a> <a href="http://pan.baidu.com/s/1rapaU">鐧惧害缃戠洏</a></dd>
+						<dt id='Games_Grand and Magnificent_The Swapper'>The Swapper (浜ゆ槗鑰?</dt>
 							<dd id='Games_Grand and Magnificent_The Swapper_ico' class="nojs">http://img1.ph.126.net/vjbNU0fyTZqv3EcQ-dz7cw==/2040975056229531595.png</dd>
 							<dd id='Games_Grand and Magnificent_The Swapper_imager' class="nojs"></dd>
 							<dd id='Games_Grand and Magnificent_The Swapper_detail'></dd>
-							<dd id='Games_Grand and Magnificent_The Swapper_linker'><a  href="http://yunpan.cn/Q9WgP4sdIQEAU">360云盘</a> <a href="http://pan.baidu.com/s/15TtTr">百度网盘</a></dd>
-						<dt id='Games_Grand and Magnificent_DeathSpank'>DeathSpank (戴斯班克)</dt>
+							<dd id='Games_Grand and Magnificent_The Swapper_linker'><a  href="http://yunpan.cn/Q9WgP4sdIQEAU">360浜戠洏</a> <a href="http://pan.baidu.com/s/15TtTr">鐧惧害缃戠洏</a></dd>
+						<dt id='Games_Grand and Magnificent_DeathSpank'>DeathSpank (鎴存柉鐝厠)</dt>
 							<dd id='Games_Grand and Magnificent_DeathSpank_ico' class="nojs">http://img2.ph.126.net/Qm-QEPThG-grtdJwTUUdUQ==/1413004383188244866.jpg</dd>
 							<dd id='Games_Grand and Magnificent_DeathSpank_imager' class="nojs"></dd>
 							<dd id='Games_Grand and Magnificent_DeathSpank_detail'></dd>
-							<dd id='Games_Grand and Magnificent_DeathSpank_linker'><a  href="http://yunpan.cn/Q9WgqqwAKze8v">360云盘</a> <a href="http://pan.baidu.com/s/1tIfje">百度网盘</a></dd>
+							<dd id='Games_Grand and Magnificent_DeathSpank_linker'><a  href="http://yunpan.cn/Q9WgqqwAKze8v">360浜戠洏</a> <a href="http://pan.baidu.com/s/1tIfje">鐧惧害缃戠洏</a></dd>
 					
 					</dl></dd>
-				<dt id='Games_documents'>游戏存档</dt>
+				<dt id='Games_documents'>娓告垙瀛樻。</dt>
 					<dd id='Games_documents_ico' class="nojs">http://img0.ph.126.net/vwlrDLByyIXgZAH4zIA_bw==/6608892815189509413.jpg</dd>
 					<dd id='Games_documents_imager' class="nojs"></dd>
 					<dd id='Games_documents_detail'></dd>
-					<dd id='Games_documents_linker'><a  href="http://yunpan.cn/QniapnuQYJr6n">360云盘</a> <a href="http://pan.baidu.com/s/1zhIRz">百度网盘</a></dd>
+					<dd id='Games_documents_linker'><a  href="http://yunpan.cn/QniapnuQYJr6n">360浜戠洏</a> <a href="http://pan.baidu.com/s/1zhIRz">鐧惧害缃戠洏</a></dd>
 			</dl></dd>
 			
-		<dt id='Software'>那些软件</dt>
+		<dt id='Software'>閭ｄ簺杞欢</dt>
 			<dd id='Software_ico' class="nojs">http://img1.ph.126.net/YUL71qqPFRXIartghUio5A==/2506534667626439671.png</dd>
-			<dd id='Software_linker'><a href="http://yunpan.cn/Q95H8CK8adped">360云盘</a> <a href="http://pan.baidu.com/s/1Fyr5k">百度网盘</a></dd>
+			<dd id='Software_linker'><a href="http://yunpan.cn/Q95H8CK8adped">360浜戠洏</a> <a href="http://pan.baidu.com/s/1Fyr5k">鐧惧害缃戠洏</a></dd>
 			<dd id='Software_detail'></dd>
 			<dd><dl id='Software_next'>
-				<dt id='Software_utility'>简洁实用</dt>
+				<dt id='Software_utility'>绠€娲佸疄鐢?/dt>
 					<dd id='Software_utility_imager' class="nojs"></dd>
 					<dd id='Software_utility_detail'></dd>
-					<dd id='Software_utility_linker'><a  href="http://yunpan.cn/QUPfrGTPwtezx">360云盘</a> <a href="http://pan.baidu.com/s/1zPm0I">百度网盘</a></dd>
+					<dd id='Software_utility_linker'><a  href="http://yunpan.cn/QUPfrGTPwtezx">360浜戠洏</a> <a href="http://pan.baidu.com/s/1zPm0I">鐧惧害缃戠洏</a></dd>
 					<dd><dl id='Software_utility_next'>
 						<dt id='Software_utility_7zip'>7zip</dt>
 							<dd id='Software_utility_7zip_imager' class="nojs"></dd>
 							<dd id='Software_utility_7zip_detail'></dd>
 							<dd id='Software_utility_7zip_linker'>
-								32bit：<a  href="http://yunpan.cn/QUPAaYQVExTTQ">360云盘</a> <a href="http://pan.baidu.com/s/1257OD">百度网盘</a><br/>
-								64bit：<a  href="http://yunpan.cn/QUPA7JJb7ZKkb">360云盘</a> <a href="http://pan.baidu.com/s/1qusqr">百度网盘</a>
+								32bit锛?a  href="http://yunpan.cn/QUPAaYQVExTTQ">360浜戠洏</a> <a href="http://pan.baidu.com/s/1257OD">鐧惧害缃戠洏</a><br/>
+								64bit锛?a  href="http://yunpan.cn/QUPA7JJb7ZKkb">360浜戠洏</a> <a href="http://pan.baidu.com/s/1qusqr">鐧惧害缃戠洏</a>
 								</dd>
 						<dt id='Software_utility_SpaceSniffer'>SpaceSniffer1.1.201</dt>
 							<dd id='Software_utility_SpaceSniffer_imager' class="nojs"></dd>
 							<dd id='Software_utility_SpaceSniffer_detail'></dd>
-							<dd id='Software_utility_SpaceSniffer_linker'><a  href="http://yunpan.cn/QUPfFEEC6Ed9I">360云盘</a> <a href="http://pan.baidu.com/s/1ek9dH">百度网盘</a></dd>
-						<dt id='Software_utility_360'>360独立软件</dt>
+							<dd id='Software_utility_SpaceSniffer_linker'><a  href="http://yunpan.cn/QUPfFEEC6Ed9I">360浜戠洏</a> <a href="http://pan.baidu.com/s/1ek9dH">鐧惧害缃戠洏</a></dd>
+						<dt id='Software_utility_360'>360鐙珛杞欢</dt>
 							<dd id='Software_utility_360_imager' class="nojs"></dd>
 							<dd id='Software_utility_360_detail'></dd>
-							<dd id='Software_utility_360_linker'><a  href="http://yunpan.cn/QUPKZudSs35UT">360云盘</a> <a href="http://pan.baidu.com/s/1CG15y">百度网盘</a></dd>
+							<dd id='Software_utility_360_linker'><a  href="http://yunpan.cn/QUPKZudSs35UT">360浜戠洏</a> <a href="http://pan.baidu.com/s/1CG15y">鐧惧害缃戠洏</a></dd>
 						<dt id='Software_utility_Dev-cpp'>Dev-cpp 4.9.9.2</dt>
 							<dd id='Software_utility_Dev-cpp_imager' class="nojs"></dd>
 							<dd id='Software_utility_Dev-cpp_detail'></dd>
-							<dd id='Software_utility_Dev-cpp_linker'><a  href="http://yunpan.cn/QUPff69Cfkqch">360云盘</a> <a href="http://pan.baidu.com/s/1vf4Ih">百度网盘</a></dd>
+							<dd id='Software_utility_Dev-cpp_linker'><a  href="http://yunpan.cn/QUPff69Cfkqch">360浜戠洏</a> <a href="http://pan.baidu.com/s/1vf4Ih">鐧惧害缃戠洏</a></dd>
 						<dt id='Software_utility_Docx Viewer'>Docx Viewer</dt>
 							<dd id='Software_utility_Docx Viewer_imager' class="nojs"></dd>
 							<dd id='Software_utility_Docx Viewer_detail'></dd>
-							<dd id='Software_utility_Docx Viewer_linker'><a  href="http://yunpan.cn/QUPfKQCNcSsi2">360云盘</a> <a href="http://pan.baidu.com/s/1AEBpz">百度网盘</a></dd>
+							<dd id='Software_utility_Docx Viewer_linker'><a  href="http://yunpan.cn/QUPfKQCNcSsi2">360浜戠洏</a> <a href="http://pan.baidu.com/s/1AEBpz">鐧惧害缃戠洏</a></dd>
 						<dt id='Software_utility_GPU-Z'>GPU-Z 0.6.2</dt>
 							<dd id='Software_utility_GPU-Z_imager' class="nojs"></dd>
 							<dd id='Software_utility_GPU-Z_detail'></dd>
-							<dd id='Software_utility_GPU-Z_linker'><a  href="http://yunpan.cn/QUPfVD2iJ4teX">360云盘</a> <a href="http://pan.baidu.com/s/1f63uc">百度网盘</a></dd>
+							<dd id='Software_utility_GPU-Z_linker'><a  href="http://yunpan.cn/QUPfVD2iJ4teX">360浜戠洏</a> <a href="http://pan.baidu.com/s/1f63uc">鐧惧害缃戠洏</a></dd>
 						<dt id='Software_utility_HDTune'>HDTune 5.0</dt>
 							<dd id='Software_utility_HDTune_imager' class="nojs"></dd>
 							<dd id='Software_utility_HDTune_detail'></dd>
-							<dd id='Software_utility_HDTune_linker'><a  href="http://yunpan.cn/QUPfQ9xNPNANt">360云盘</a> <a href="http://pan.baidu.com/s/1mYaIA">百度网盘</a></dd>
+							<dd id='Software_utility_HDTune_linker'><a  href="http://yunpan.cn/QUPfQ9xNPNANt">360浜戠洏</a> <a href="http://pan.baidu.com/s/1mYaIA">鐧惧害缃戠洏</a></dd>
 						<dt id='Software_utility_MyDiskTest'>MyDiskTest</dt>
 							<dd id='Software_utility_MyDiskTest_imager' class="nojs"></dd>
 							<dd id='Software_utility_MyDiskTest_detail'></dd>
-							<dd id='Software_utility_MyDiskTest_linker'><a  href="http://yunpan.cn/QUPfd5Daw2Iki">360云盘</a> <a href="http://pan.baidu.com/s/11Rgzw">百度网盘</a></dd>
+							<dd id='Software_utility_MyDiskTest_linker'><a  href="http://yunpan.cn/QUPfd5Daw2Iki">360浜戠洏</a> <a href="http://pan.baidu.com/s/11Rgzw">鐧惧害缃戠洏</a></dd>
 						<dt id='Software_utility_Nokia Monitor Test'>Nokia Monitor Test</dt>
 							<dd id='Software_utility_Nokia Monitor Test_imager' class="nojs"></dd>
 							<dd id='Software_utility_Nokia Monitor Test_detail'></dd>
-							<dd id='Software_utility_Nokia Monitor Test_linker'><a  href="http://yunpan.cn/QUPfmS4Vrehmz">360云盘</a> <a href="http://pan.baidu.com/s/1jAmHC">百度网盘</a></dd>
-						<dt id='Software_utility_Quick Macro'>按键精灵9</dt>
+							<dd id='Software_utility_Nokia Monitor Test_linker'><a  href="http://yunpan.cn/QUPfmS4Vrehmz">360浜戠洏</a> <a href="http://pan.baidu.com/s/1jAmHC">鐧惧害缃戠洏</a></dd>
+						<dt id='Software_utility_Quick Macro'>鎸夐敭绮剧伒9</dt>
 							<dd id='Software_utility_Quick Macro_imager' class="nojs"></dd>
 							<dd id='Software_utility_Quick Macro_detail'></dd>
-							<dd id='Software_utility_Quick Macro_linker'><a  href="http://yunpan.cn/QUPA7pArr9IxP">360云盘</a> <a href="http://pan.baidu.com/s/1nDXaG">百度网盘</a></dd>
+							<dd id='Software_utility_Quick Macro_linker'><a  href="http://yunpan.cn/QUPA7pArr9IxP">360浜戠洏</a> <a href="http://pan.baidu.com/s/1nDXaG">鐧惧害缃戠洏</a></dd>
 						<dt id='Software_utility_Baidu Reader'>Baidu Reader</dt>
 							<dd id='Software_utility_Baidu Reader_imager' class="nojs"></dd>
 							<dd id='Software_utility_Baidu Reader_detail'></dd>
-							<dd id='Software_utility_Baidu Reader_linker'><a  href="http://yunpan.cn/QUPfgzLnZpT5e">360云盘</a> <a href="http://pan.baidu.com/s/1MLD1">百度网盘</a></dd>
+							<dd id='Software_utility_Baidu Reader_linker'><a  href="http://yunpan.cn/QUPfgzLnZpT5e">360浜戠洏</a> <a href="http://pan.baidu.com/s/1MLD1">鐧惧害缃戠洏</a></dd>
 						<dt id='Software_utility_Bulk Rename Utility'>Bulk_Rename_Utility</dt>
 							<dd id='Software_utility_Bulk Rename Utility_imager' class="nojs"></dd>
 							<dd id='Software_utility_Bulk Rename Utility_detail'></dd>
-							<dd id='Software_utility_Bulk Rename Utility_linker'><a  href="http://yunpan.cn/QUPfsSJXGAYEJ">360云盘</a> <a href="http://pan.baidu.com/s/1b2HAj">百度网盘</a></dd>
-						<dt id='Software_utility_speed time'>变速齿轮</dt>
+							<dd id='Software_utility_Bulk Rename Utility_linker'><a  href="http://yunpan.cn/QUPfsSJXGAYEJ">360浜戠洏</a> <a href="http://pan.baidu.com/s/1b2HAj">鐧惧害缃戠洏</a></dd>
+						<dt id='Software_utility_speed time'>鍙橀€熼娇杞?/dt>
 							<dd id='Software_utility_speed time_imager' class="nojs"></dd>
 							<dd id='Software_utility_speed time_detail'></dd>
-							<dd id='Software_utility_speed time_linker'><a  href="http://yunpan.cn/QUPfAjA3KnjPD">360云盘</a> <a href="http://pan.baidu.com/s/1sxEKw">百度网盘</a></dd>
+							<dd id='Software_utility_speed time_linker'><a  href="http://yunpan.cn/QUPfAjA3KnjPD">360浜戠洏</a> <a href="http://pan.baidu.com/s/1sxEKw">鐧惧害缃戠洏</a></dd>
 						<dt id='Software_utility_CPU-Z'>CPU-Z</dt>
 							<dd id='Software_utility_CPU-Z_imager' class="nojs"></dd>
 							<dd id='Software_utility_CPU-Z_detail'></dd>
-							<dd id='Software_utility_CPU-Z_linker'><a  href="http://yunpan.cn/QUPfAU4utN5Ym">360云盘</a> <a href="http://pan.baidu.com/s/1ek9dY">百度网盘</a></dd>
-						<dt id='Software_utility_DisplayX'>DisplayX显示器测试</dt>
+							<dd id='Software_utility_CPU-Z_linker'><a  href="http://yunpan.cn/QUPfAU4utN5Ym">360浜戠洏</a> <a href="http://pan.baidu.com/s/1ek9dY">鐧惧害缃戠洏</a></dd>
+						<dt id='Software_utility_DisplayX'>DisplayX鏄剧ず鍣ㄦ祴璇?/dt>
 							<dd id='Software_utility_DisplayX_imager' class="nojs"></dd>
 							<dd id='Software_utility_DisplayX_detail'></dd>
-							<dd id='Software_utility_DisplayX_linker'><a  href="http://yunpan.cn/QUPfyYTXAm2YD">360云盘</a> <a href="http://pan.baidu.com/s/15oUpz">百度网盘</a></dd>
+							<dd id='Software_utility_DisplayX_linker'><a  href="http://yunpan.cn/QUPfyYTXAm2YD">360浜戠洏</a> <a href="http://pan.baidu.com/s/15oUpz">鐧惧害缃戠洏</a></dd>
 						<dt id='Software_utility_eXeScope'>eXeScope</dt>
 							<dd id='Software_utility_eXeScope_imager' class="nojs"></dd>
 							<dd id='Software_utility_eXeScope_detail'></dd>
-							<dd id='Software_utility_eXeScope_linker'><a  href="http://yunpan.cn/QUPfZHWJ2J4JJ">360云盘</a> <a href="http://pan.baidu.com/s/1uz8HE">百度网盘</a></dd>
+							<dd id='Software_utility_eXeScope_linker'><a  href="http://yunpan.cn/QUPfZHWJ2J4JJ">360浜戠洏</a> <a href="http://pan.baidu.com/s/1uz8HE">鐧惧害缃戠洏</a></dd>
 						<dt id='Software_utility_Foobar2000'>Foobar2000</dt>
 							<dd id='Software_utility_Foobar2000_imager' class="nojs"></dd>
 							<dd id='Software_utility_Foobar2000_detail'>
-							 在n年前的一天，当时图形界面做得相当酷的 WinAMP 音乐播放器还正红火地流行着，一款有别于一般播放器的 Foobar2000 悄悄地来到了这个世界上。可后来，这个只有“逆潮流”般极其简陋界面的播放器却吸引了世界各地无数的粉丝为止疯狂，完美地诠释了“简约而不简单”的魅力！<br/>
-							 Foobar2000有相当大量的功能插件，可以实现各种各样的需求；也有着无数皮肤，绝对能满足你一切对于播放器的要求。虽说默认的fb2k很简陋，但经过配置后有些皮肤简直是华丽得一塌糊涂的哟～<br/>
+							 鍦╪骞村墠鐨勪竴澶╋紝褰撴椂鍥惧舰鐣岄潰鍋氬緱鐩稿綋閰风殑 WinAMP 闊充箰鎾斁鍣ㄨ繕姝ｇ孩鐏湴娴佽鐫€锛屼竴娆炬湁鍒簬涓€鑸挱鏀惧櫒鐨?Foobar2000 鎮勬倓鍦版潵鍒颁簡杩欎釜涓栫晫涓娿€傚彲鍚庢潵锛岃繖涓彧鏈夆€滈€嗘疆娴佲€濊埇鏋佸叾绠€闄嬬晫闈㈢殑鎾斁鍣ㄥ嵈鍚稿紩浜嗕笘鐣屽悇鍦版棤鏁扮殑绮変笣涓烘鐤媯锛屽畬缇庡湴璇犻噴浜嗏€滅畝绾﹁€屼笉绠€鍗曗€濈殑榄呭姏锛?br/>
+							 Foobar2000鏈夌浉褰撳ぇ閲忕殑鍔熻兘鎻掍欢锛屽彲浠ュ疄鐜板悇绉嶅悇鏍风殑闇€姹傦紱涔熸湁鐫€鏃犳暟鐨偆锛岀粷瀵硅兘婊¤冻浣犱竴鍒囧浜庢挱鏀惧櫒鐨勮姹傘€傝櫧璇撮粯璁ょ殑fb2k寰堢畝闄嬶紝浣嗙粡杩囬厤缃悗鏈変簺鐨偆绠€鐩存槸鍗庝附寰椾竴濉岀硦娑傜殑鍝燂綖<br/>
 							</dd>
-							<dd id='Software_utility_Foobar2000_linker'><a  href="http://yunpan.cn/QUPfVyeFbQips">360云盘</a> <a href="http://pan.baidu.com/s/13Tbug">百度网盘</a></dd>
+							<dd id='Software_utility_Foobar2000_linker'><a  href="http://yunpan.cn/QUPfVyeFbQips">360浜戠洏</a> <a href="http://pan.baidu.com/s/13Tbug">鐧惧害缃戠洏</a></dd>
 						<dt id='Software_utility_RegScanner'>RegScanner1.82</dt>
 							<dd id='Software_utility_RegScanner_imager' class="nojs"></dd>
 							<dd id='Software_utility_RegScanner_detail'></dd>
-							<dd id='Software_utility_RegScanner_linker'><a  href="http://yunpan.cn/QUPfHj9bbLXK6">360云盘</a> <a href="http://pan.baidu.com/s/1GKn18">百度网盘</a></dd>
+							<dd id='Software_utility_RegScanner_linker'><a  href="http://yunpan.cn/QUPfHj9bbLXK6">360浜戠洏</a> <a href="http://pan.baidu.com/s/1GKn18">鐧惧害缃戠洏</a></dd>
 						<dt id='Software_utility_ResHacker'>ResHacker 3.5</dt>
 							<dd id='Software_utility_ResHacker_imager' class="nojs"></dd>
 							<dd id='Software_utility_ResHacker_detail'></dd>
-							<dd id='Software_utility_ResHacker_linker'><a  href="http://yunpan.cn/QUPfHaDTTY9zq">360云盘</a> <a href="http://pan.baidu.com/s/1lCfCY">百度网盘</a></dd>
+							<dd id='Software_utility_ResHacker_linker'><a  href="http://yunpan.cn/QUPfHaDTTY9zq">360浜戠洏</a> <a href="http://pan.baidu.com/s/1lCfCY">鐧惧害缃戠洏</a></dd>
 						<dt id='Software_utility_UltraISO'>UltraISO</dt>
 							<dd id='Software_utility_UltraISO_imager' class="nojs"></dd>
 							<dd id='Software_utility_UltraISO_detail'>
-								注册码:<br/>
-								王涛 7C81-1689-4046-626F 
+								娉ㄥ唽鐮?<br/>
+								鐜嬫稕 7C81-1689-4046-626F 
 								</dd>
-							<dd id='Software_utility_UltraISO_linker'><a  href="http://yunpan.cn/QUPfLt7IyJ8T3">360云盘</a> <a href="http://pan.baidu.com/s/1zPmws">百度网盘</a></dd>
+							<dd id='Software_utility_UltraISO_linker'><a  href="http://yunpan.cn/QUPfLt7IyJ8T3">360浜戠洏</a> <a href="http://pan.baidu.com/s/1zPmws">鐧惧害缃戠洏</a></dd>
 						<dt id='Software_utility_XnView'>XnView 2.03.0</dt>
 							<dd id='Software_utility_XnView_imager' class="nojs"></dd>
 							<dd id='Software_utility_XnView_detail'></dd>
-							<dd id='Software_utility_XnView_linker'><a  href="http://yunpan.cn/QUPfuekMWmXSU">360云盘</a> <a href="http://pan.baidu.com/s/1xhxWA">百度网盘</a></dd>
+							<dd id='Software_utility_XnView_linker'><a  href="http://yunpan.cn/QUPfuekMWmXSU">360浜戠洏</a> <a href="http://pan.baidu.com/s/1xhxWA">鐧惧害缃戠洏</a></dd>
 						<dt id='Software_utility_winmd5'>winmd5 free</dt>
 							<dd id='Software_utility_winmd5_imager' class="nojs"></dd>
 							<dd id='Software_utility_winmd5_detail'></dd>
-							<dd id='Software_utility_winmd5_linker'><a  href="http://yunpan.cn/QUPf39x95WCfU">360云盘</a> <a href="http://pan.baidu.com/s/1tJC1k">百度网盘</a></dd>
-						<dt id='Software_utility_iciba'>谷歌金山词霸</dt>
+							<dd id='Software_utility_winmd5_linker'><a  href="http://yunpan.cn/QUPf39x95WCfU">360浜戠洏</a> <a href="http://pan.baidu.com/s/1tJC1k">鐧惧害缃戠洏</a></dd>
+						<dt id='Software_utility_iciba'>璋锋瓕閲戝北璇嶉湼</dt>
 							<dd id='Software_utility_iciba_imager' class="nojs"></dd>
 							<dd id='Software_utility_iciba_detail'></dd>
-							<dd id='Software_utility_iciba_linker'><a  href="http://yunpan.cn/QUPfw8NqfTY47">360云盘</a> <a href="http://pan.baidu.com/s/1EIu9T">百度网盘</a></dd>
+							<dd id='Software_utility_iciba_linker'><a  href="http://yunpan.cn/QUPfw8NqfTY47">360浜戠洏</a> <a href="http://pan.baidu.com/s/1EIu9T">鐧惧害缃戠洏</a></dd>
 						<dt id='Software_utility_KMSpico'>KMSpico_v4.5</dt>
 							<dd id='Software_utility_KMSpico_imager' class="nojs"></dd>
 							<dd id='Software_utility_KMSpico_detail'></dd>
-							<dd id='Software_utility_KMSpico_linker'><a  href="http://yunpan.cn/QUPfcBLBzMzGr">360云盘</a> <a href="http://pan.baidu.com/s/1f63vt">百度网盘</a></dd>
+							<dd id='Software_utility_KMSpico_linker'><a  href="http://yunpan.cn/QUPfcBLBzMzGr">360浜戠洏</a> <a href="http://pan.baidu.com/s/1f63vt">鐧惧害缃戠洏</a></dd>
 						<dt id='Software_utility_EVEREST'>EVEREST Ultimate Edition v5.50.2100</dt>
 							<dd id='Software_utility_EVEREST_imager' class="nojs"></dd>
 							<dd id='Software_utility_EVEREST_detail'></dd>
-							<dd id='Software_utility_EVEREST_linker'><a  href="http://yunpan.cn/QUPfJsgfYXiQQ">360云盘</a> <a href="http://pan.baidu.com/s/13nbnC">百度网盘</a></dd>
+							<dd id='Software_utility_EVEREST_linker'><a  href="http://yunpan.cn/QUPfJsgfYXiQQ">360浜戠洏</a> <a href="http://pan.baidu.com/s/13nbnC">鐧惧害缃戠洏</a></dd>
 					</dl></dd>
-				<dt id='Software_powerful'>功能齐全</dt>
+				<dt id='Software_powerful'>鍔熻兘榻愬叏</dt>
 					<dd id='Software_powerful_imager' class="nojs"></dd>
 					<dd id='Software_powerful_detail'></dd>
-					<dd id='Software_powerful_linker'><a  href="http://yunpan.cn/QUqC3Bqc8Isb3">360云盘</a> <a href="http://pan.baidu.com/s/15oUbr">百度网盘</a></dd>
+					<dd id='Software_powerful_linker'><a  href="http://yunpan.cn/QUqC3Bqc8Isb3">360浜戠洏</a> <a href="http://pan.baidu.com/s/15oUbr">鐧惧害缃戠洏</a></dd>
 					<dd><dl id='Software_powerful_next'>
 						<dt id='Software_powerful_Format Factory'>Format Factory 3.1.1</dt>
 							<dd id='Software_powerful_Format Factory_imager' class="nojs"></dd>
 							<dd id='Software_powerful_Format Factory_detail'></dd>
-							<dd id='Software_powerful_Format Factory_linker'><a  href="http://yunpan.cn/QUqa85Vp5EkWu">360云盘</a> <a href="http://pan.baidu.com/s/1AEATr">百度网盘</a></dd>
+							<dd id='Software_powerful_Format Factory_linker'><a  href="http://yunpan.cn/QUqa85Vp5EkWu">360浜戠洏</a> <a href="http://pan.baidu.com/s/1AEATr">鐧惧害缃戠洏</a></dd>
 						<dt id='Software_powerful_OFFICE 2013'>OFFICE 2013</dt>
 							<dd id='Software_powerful_OFFICE 2013_imager' class="nojs"></dd>
 							<dd id='Software_powerful_OFFICE 2013_detail'></dd>
 							<dd id='Software_powerful_OFFICE 2013_linker'>
-								32bit：<a  href="http://yunpan.cn/QUqhbGLQ2jGhE">360云盘</a> <a href="http://pan.baidu.com/s/1xLROt">百度网盘</a> <br/>
-								64bit：<a  href="http://yunpan.cn/QUqaJmauRQzQ3">360云盘</a> <a href="http://pan.baidu.com/s/15TvJR">百度网盘</a>
+								32bit锛?a  href="http://yunpan.cn/QUqhbGLQ2jGhE">360浜戠洏</a> <a href="http://pan.baidu.com/s/1xLROt">鐧惧害缃戠洏</a> <br/>
+								64bit锛?a  href="http://yunpan.cn/QUqaJmauRQzQ3">360浜戠洏</a> <a href="http://pan.baidu.com/s/15TvJR">鐧惧害缃戠洏</a>
 								</dd>
 						<dt id='Software_powerful_Vmware workstation'>Vmware workstation v9.01</dt>
 							<dd id='Software_powerful_Vmware workstation_imager' class="nojs"></dd>
 							<dd id='Software_powerful_Vmware workstation_detail'>
-								注册码:<br/>
+								娉ㄥ唽鐮?<br/>
 								JV695-DR0D3-LZUC0-H8852-CAWJ4
 								</dd>
-							<dd id='Software_powerful_Vmware workstation_linker'><a  href="http://yunpan.cn/QUqaH8awx5zQW">360云盘</a> <a href="http://pan.baidu.com/s/13TaWE">百度网盘</a></dd>
+							<dd id='Software_powerful_Vmware workstation_linker'><a  href="http://yunpan.cn/QUqaH8awx5zQW">360浜戠洏</a> <a href="http://pan.baidu.com/s/13TaWE">鐧惧害缃戠洏</a></dd>
 						<dt id='Software_powerful_VS2010Pro'>VS2010ProTrialCHS</dt>
 							<dd id='Software_powerful_VS2010Pro_imager' class="nojs"></dd>
 							<dd id='Software_powerful_VS2010Pro_detail'>
-								注册码:<br/>
+								娉ㄥ唽鐮?<br/>
 								YCFHQ-9DWCY-DKV88-T2TMH-G7BHP
 								</dd>
-							<dd id='Software_powerful_VS2010Pro_linker'><a  href="http://yunpan.cn/QUqa5VxhacWIS">360云盘</a> <a href="http://pan.baidu.com/s/15oTTH">百度网盘</a></dd>
+							<dd id='Software_powerful_VS2010Pro_linker'><a  href="http://yunpan.cn/QUqa5VxhacWIS">360浜戠洏</a> <a href="http://pan.baidu.com/s/15oTTH">鐧惧害缃戠洏</a></dd>
 						<dt id='Software_powerful_AutoCad'>AutoCad (64bit)</dt>
 							<dd id='Software_powerful_AutoCad_imager' class="nojs"></dd>
 							<dd id='Software_powerful_AutoCad_detail'>
 								AutoCad 2012<br/>
-								序列号: 666-69696969 | 667-98989898 | 400-45454545<br/>
-								密  钥: 001D1<br/>
+								搴忓垪鍙? 666-69696969 | 667-98989898 | 400-45454545<br/>
+								瀵? 閽? 001D1<br/>
 								<br/>AutoCad 2010<br/>
-								序列号: 356-72378422 <br/>
-								密  钥: 001B1
+								搴忓垪鍙? 356-72378422 <br/>
+								瀵? 閽? 001B1
 								</dd>
 							<dd id='Software_powerful_AutoCad_linker'>
-								2010：<a  href="http://yunpan.cn/QUqCD48XUm9ju">360云盘</a> <a href="http://pan.baidu.com/s/1tb0x3">百度网盘</a><br/>
-								2012：<a  href="http://yunpan.cn/QUqCdzqLZLW7j">360云盘</a> <a href="http://pan.baidu.com/s/1sv2MW">百度网盘</a>
+								2010锛?a  href="http://yunpan.cn/QUqCD48XUm9ju">360浜戠洏</a> <a href="http://pan.baidu.com/s/1tb0x3">鐧惧害缃戠洏</a><br/>
+								2012锛?a  href="http://yunpan.cn/QUqCdzqLZLW7j">360浜戠洏</a> <a href="http://pan.baidu.com/s/1sv2MW">鐧惧害缃戠洏</a>
 								</dd>
 						<dt id='Software_powerful_Windows xp pro'>Windows xp pro</dt>
 							<dd id='Software_powerful_Windows xp pro_imager' class="nojs"></dd>
 							<dd id='Software_powerful_Windows xp pro_detail'>
-								注册码:<br/>
+								娉ㄥ唽鐮?<br/>
 								QC986-27D34-6M3TY-JJXP9-TBGMD
 								</dd>
-							<dd id='Software_powerful_Windows xp pro_linker'><a  href="http://yunpan.cn/QUqaWuu9DZ2Vk">360云盘</a> <a href="http://pan.baidu.com/s/1gSxEN">百度网盘</a></dd>
+							<dd id='Software_powerful_Windows xp pro_linker'><a  href="http://yunpan.cn/QUqaWuu9DZ2Vk">360浜戠洏</a> <a href="http://pan.baidu.com/s/1gSxEN">鐧惧害缃戠洏</a></dd>
 						
 					</dl></dd>
 			</dl></dd>
 		
-		<dt id='Online'>乐在互联</dt>	
+		<dt id='Online'>涔愬湪浜掕仈</dt>	
 			<dd id='Online_ico' class="nojs">http://img2.ph.126.net/xDKVqJUmDKg_23AF9vfbqA==/6599334760610583551.png</dd>
 			<dd><dl id='Online_next'>
-				<dt id='Online_Game'>在线玩乐</dt>
+				<dt id='Online_Game'>鍦ㄧ嚎鐜╀箰</dt>
 					<dd id='Online_Game_ico' class="nojs">http://img1.ph.126.net/n84zW8GE3Eus1ADN31BQYQ==/6608414527632289807.jpg</dd>
 					<dd id='Online_Game_detail'></dd>
 					<dd><dl id='Online_Game_next'>
-						<dt id='Online_Game_z-type'>Z-Type (盲打高手打飞字)</dt>
+						<dt id='Online_Game_z-type'>Z-Type (鐩叉墦楂樻墜鎵撻瀛?</dt>
 							<dd id='Online_Game_z-type_ico' class="nojs">http://img2.ph.126.net/OHhg083rwT7webRCNfDvlg==/1496320976294408393.png</dd>
-							<dd id='Online_Game_z-type_detail'>打飞字(Z-Type)是有史以来最酷的一款练习盲打的游戏。视觉效果、射击爆破效果和声音效果都非常的刺激。这款游戏是用HTML5做成的，曾经获得Mozilla Game On游戏大赛的Community Choice Award大奖。玩家可以选择关闭游戏音效，轻按ESC按键便可以暂停游戏。</dd>
-							<dd id='Online_Game_z-type_linker'><a href='http://www.webhek.com/misc/z-type/'>Z-Type 中文翻译版</a> <a href='http://phoboslab.org/ztype/'>Z-Type 官网英文版</a></dd>
+							<dd id='Online_Game_z-type_detail'>鎵撻瀛?Z-Type)鏄湁鍙蹭互鏉ユ渶閰风殑涓€娆剧粌涔犵洸鎵撶殑娓告垙銆傝瑙夋晥鏋溿€佸皠鍑荤垎鐮存晥鏋滃拰澹伴煶鏁堟灉閮介潪甯哥殑鍒烘縺銆傝繖娆炬父鎴忔槸鐢℉TML5鍋氭垚鐨勶紝鏇剧粡鑾峰緱Mozilla Game On娓告垙澶ц禌鐨凜ommunity Choice Award澶у銆傜帺瀹跺彲浠ラ€夋嫨鍏抽棴娓告垙闊虫晥锛岃交鎸塃SC鎸夐敭渚垮彲浠ユ殏鍋滄父鎴忋€?/dd>
+							<dd id='Online_Game_z-type_linker'><a href='http://www.webhek.com/misc/z-type/'>Z-Type 涓枃缈昏瘧鐗?/a> <a href='http://phoboslab.org/ztype/'>Z-Type 瀹樼綉鑻辨枃鐗?/a></dd>
 							<dd id='Online_Game_z-type_type' class="nojs">divshow;width=200;height=600;no-resized;</dd>
-						<dt id='Online_Game_x-type'>X-Type (弹幕射击)</dt>
+						<dt id='Online_Game_x-type'>X-Type (寮瑰箷灏勫嚮)</dt>
 							<dd id='Online_Game_x-type_ico' class="nojs">http://img1.ph.126.net/8nt3Sv8Ll1XkyamcicNmfQ==/6608424423236977849.png</dd>
-							<dd id='Online_Game_x-type_detail'>XType与ZType具有一样的视觉效果、射击爆破效果和声音效果。同样也是用HTML5做成的，玩家可以选择关闭游戏音效，轻按ESC按键便可以暂停游戏。如雷电一般的玩法，你所需的只是杀伤对手的同时活下去。</dd>
+							<dd id='Online_Game_x-type_detail'>XType涓嶼Type鍏锋湁涓€鏍风殑瑙嗚鏁堟灉銆佸皠鍑荤垎鐮存晥鏋滃拰澹伴煶鏁堟灉銆傚悓鏍蜂篃鏄敤HTML5鍋氭垚鐨勶紝鐜╁鍙互閫夋嫨鍏抽棴娓告垙闊虫晥锛岃交鎸塃SC鎸夐敭渚垮彲浠ユ殏鍋滄父鎴忋€傚闆风數涓€鑸殑鐜╂硶锛屼綘鎵€闇€鐨勫彧鏄潃浼ゅ鎵嬬殑鍚屾椂娲讳笅鍘汇€?/dd>
 							<dd id='Online_Game_x-type_linker'><a href='http://phoboslab.org/xtype/'>X-Type</a></dd>
 							<dd id='Online_Game_x-type_type' class="nojs">divshow;width=200;height=600;no-resized;</dd>
-						<dt id='Online_Game_Entanglement'>Entanglement (六边拼图)</dt>
+						<dt id='Online_Game_Entanglement'>Entanglement (鍏竟鎷煎浘)</dt>
 							<dd id='Online_Game_Entanglement_ico' class="nojs">http://img0.ph.126.net/101L8Qjmbg4gy5eEKxU-uQ==/1616792266326336030.png</dd>
-							<dd id='Online_Game_Entanglement_detail'>六边拼图 (Entanglement) 是一款由Gopherwood Studios公司开发的益智类拼图游戏，游戏与其它拼图游戏不同的地方就在于六边方块。</dd>
+							<dd id='Online_Game_Entanglement_detail'>鍏竟鎷煎浘 (Entanglement) 鏄竴娆剧敱Gopherwood Studios鍏徃寮€鍙戠殑鐩婃櫤绫绘嫾鍥炬父鎴忥紝娓告垙涓庡叾瀹冩嫾鍥炬父鎴忎笉鍚岀殑鍦版柟灏卞湪浜庡叚杈规柟鍧椼€?/dd>
 							<dd id='Online_Game_Entanglement_linker'><a href='http://entanglement.gopherwoodstudios.com/'>Entanglement</a></dd>
 							<dd id='Online_Game_Entanglement_type' class="nojs">divshow;</dd>
-						<dt id='Online_Game_Canvas Pinball'>Canvas Pinball (弹球游戏)</dt>
+						<dt id='Online_Game_Canvas Pinball'>Canvas Pinball (寮圭悆娓告垙)</dt>
 							<dd id='Online_Game_Canvas Pinball_ico' class="nojs">http://img2.ph.126.net/gfC7LlXjOqm09QAo2M0hqQ==/2852467414086435005.png</dd>
 							<dd id='Online_Game_Canvas Pinball_imager' class="nojs"></dd>
-							<dd id='Online_Game_Canvas Pinball_detail'>一个简单的弹球游戏，使用HTML5的Box2D的物理引擎。</dd>
+							<dd id='Online_Game_Canvas Pinball_detail'>涓€涓畝鍗曠殑寮圭悆娓告垙锛屼娇鐢℉TML5鐨凚ox2D鐨勭墿鐞嗗紩鎿庛€?/dd>
 							<dd id='Online_Game_Canvas Pinball_linker'><a href='http://ie.microsoft.com/testdrive/Graphics/CanvasPinball/Default.html'>Canvas Pinball</a></dd>
 							<dd id='Online_Game_Canvas Pinball_type' class="nojs"></dd>
-						<dt id='Online_Game_Bejeweled'>Bejeweled (宝石迷阵)</dt>
+						<dt id='Online_Game_Bejeweled'>Bejeweled (瀹濈煶杩烽樀)</dt>
 							<dd id='Online_Game_Bejeweled_ico' class="nojs">http://img2.ph.126.net/T_-M1ICHajyW8YSeGgaHUg==/6608900511770936855.jpg</dd>
 							<dd id='Online_Game_Bejeweled_imager' class="nojs"></dd>
 							<dd id='Online_Game_Bejeweled_detail'>
-							Bejeweled是一款非常杀时间且极其容易使人成瘾的消除类休闲小游戏。<br/>
-							HTML5 网页版的宝石迷阵支持经典（Classic）和计时（Speed）两种模式，虽然没有PC版的宝石迷阵3中有花样繁多的选择，但是玩起来已经非常爽了。<br/>
+							Bejeweled鏄竴娆鹃潪甯告潃鏃堕棿涓旀瀬鍏跺鏄撲娇浜烘垚鐦剧殑娑堥櫎绫讳紤闂插皬娓告垙銆?br/>
+							HTML5 缃戦〉鐗堢殑瀹濈煶杩烽樀鏀寔缁忓吀锛圕lassic锛夊拰璁℃椂锛圫peed锛変袱绉嶆ā寮忥紝铏界劧娌℃湁PC鐗堢殑瀹濈煶杩烽樀3涓湁鑺辨牱绻佸鐨勯€夋嫨锛屼絾鏄帺璧锋潵宸茬粡闈炲父鐖戒簡銆?br/>
 							</dd>
 							<dd id='Online_Game_Bejeweled_linker'><a href="http://bejeweled.popcap.com/html5/0.9.12.9490/html5/Bejeweled.html">Bejeweled</a></dd>
-						<dt id='Online_Game_CutTheRope'>Cut The Rope (割绳子)</dt>
+						<dt id='Online_Game_CutTheRope'>Cut The Rope (鍓茬怀瀛?</dt>
 							<dd id='Online_Game_CutTheRope_ico' class="nojs">http://img1.ph.126.net/rNJmlDh0tMXTJtxw3uujXg==/6608225411632362844.png</dd>
 							<dd id='Online_Game_CutTheRope_imager' class="nojs"></dd>
 							<dd id='Online_Game_CutTheRope_detail'>
-							Cut The Rope (割绳子) 是苹果 iOS/Android 平台上一款非常非常受欢迎的休闲游戏，制作得很精美，而且游戏耐玩度非常高，绝对值得一玩！<br/>
-							游戏制作方与微软展开合作，发布了该游戏的免费网页 HTML5 版本，也就是说，你就能在任何地方免费在线玩这款游戏。对此，只有一句忠告：千万别上瘾哦……<br/>
+							Cut The Rope (鍓茬怀瀛? 鏄嫻鏋?iOS/Android 骞冲彴涓婁竴娆鹃潪甯搁潪甯稿彈娆㈣繋鐨勪紤闂叉父鎴忥紝鍒朵綔寰楀緢绮剧編锛岃€屼笖娓告垙鑰愮帺搴﹂潪甯搁珮锛岀粷瀵瑰€煎緱涓€鐜╋紒<br/>
+							娓告垙鍒朵綔鏂逛笌寰蒋灞曞紑鍚堜綔锛屽彂甯冧簡璇ユ父鎴忕殑鍏嶈垂缃戦〉 HTML5 鐗堟湰锛屼篃灏辨槸璇达紝浣犲氨鑳藉湪浠讳綍鍦版柟鍏嶈垂鍦ㄧ嚎鐜╄繖娆炬父鎴忋€傚姝わ紝鍙湁涓€鍙ュ繝鍛婏細鍗冧竾鍒笂鐦惧摝鈥︹€?br/>
 							</dd>
 							<dd id='Online_Game_CutTheRope_linker'><a href="http://www.cuttherope.net/">Cut The Rope</a></dd>
-						<dt id='Online_Game_MarioCrossover'>MarioCrossover (马里奥大乱斗)</dt>
+						<dt id='Online_Game_MarioCrossover'>MarioCrossover (椹噷濂ュぇ涔辨枟)</dt>
 							<dd id='Online_Game_MarioCrossover_ico' class="nojs">http://img1.ph.126.net/hNwGDtQAvA0Y57XxFecGGA==/6608516782212843532.png</dd>
 							<dd id='Online_Game_MarioCrossover_imager' class="nojs"></dd>
 							<dd id='Online_Game_MarioCrossover_detail'>
-							如果魂斗罗、洛克人、塞尔达传说的主角林克、恶魔城的主角西蒙等等红白机(FC)时代的明星游戏人物都穿越到超级玛丽的世界，用它们来玩超级玛丽会怎样呢？？下面这个《FC游戏明星穿越版超级玛丽》小游戏可谓是超级无敌的经典！！如果这些游戏角色你都熟悉，估计玩下来你会感动到肉牛满面的！<br/>
+							濡傛灉榄傛枟缃椼€佹礇鍏嬩汉銆佸灏旇揪浼犺鐨勪富瑙掓灄鍏嬨€佹伓榄斿煄鐨勪富瑙掕タ钂欑瓑绛夌孩鐧芥満(FC)鏃朵唬鐨勬槑鏄熸父鎴忎汉鐗╅兘绌胯秺鍒拌秴绾х帥涓界殑涓栫晫锛岀敤瀹冧滑鏉ョ帺瓒呯骇鐜涗附浼氭€庢牱鍛紵锛熶笅闈㈣繖涓€奆C娓告垙鏄庢槦绌胯秺鐗堣秴绾х帥涓姐€嬪皬娓告垙鍙皳鏄秴绾ф棤鏁岀殑缁忓吀锛侊紒濡傛灉杩欎簺娓告垙瑙掕壊浣犻兘鐔熸倝锛屼及璁＄帺涓嬫潵浣犱細鎰熷姩鍒拌倝鐗涙弧闈㈢殑锛?br/>
 							</dd>
 							<dd id='Online_Game_MarioCrossover_linker'><a href="http://dl.iplaysoft.com/flash/3.html">MarioCrossover</a></dd>
 					</dl></dd>
 			
-			<dt id='Online_webpage'>实用网站</dt>
+			<dt id='Online_webpage'>瀹炵敤缃戠珯</dt>
 				<dd id='Online_webpage_ico' class="nojs">http://img2.ph.126.net/EcJ7vIknRyjXT_Jpdm6HAA==/6608523379282609682.png</dd>
 				<dd><dl id='Online_webpage_next'>
 					<dt id='Online_webpage_ProcessOn'>ProcessOn</dt>
 						<dd id='Online_webpage_ProcessOn_ico' class="nojs">http://img0.ph.126.net/5APtP4ssfEX7hMzj3OJc2g==/6608521180259354025.png</dd>
 						<dd id='Online_webpage_ProcessOn_imager' class="nojs"></dd>
 						<dd id='Online_webpage_ProcessOn_detail'>
-						ProcessOn 是一款用 HTML5 开发的在线网页版作图工具 (类似之前介绍过的 iPresst 在线PPT制作工具)，使用起来非常傻瓜简单，你只需在工具栏拖放对应的图形到画布中即可进行编辑。当然，既然它是免费的在线作图工具，使用它自然无需下载安装，更不用到处找破解激活了，打开浏览器就可以开始。<br/>
-						目前 ProcessOn 支持 Flowchart、EVC、EPC、BPMN、UML 等不同类型图；ProcessOn采用实时保存机制，每一步操作之后都自动保存，<br/>
-						ProcessOn 还有一个比较常用的功能就是实时协作，基于 HTML5 技术做到无延迟协作，方便两个或多个人同时对一个文件协作编辑和沟通。<br/>
+						ProcessOn 鏄竴娆剧敤 HTML5 寮€鍙戠殑鍦ㄧ嚎缃戦〉鐗堜綔鍥惧伐鍏?(绫讳技涔嬪墠浠嬬粛杩囩殑 iPresst 鍦ㄧ嚎PPT鍒朵綔宸ュ叿)锛屼娇鐢ㄨ捣鏉ラ潪甯稿偦鐡滅畝鍗曪紝浣犲彧闇€鍦ㄥ伐鍏锋爮鎷栨斁瀵瑰簲鐨勫浘褰㈠埌鐢诲竷涓嵆鍙繘琛岀紪杈戙€傚綋鐒讹紝鏃㈢劧瀹冩槸鍏嶈垂鐨勫湪绾夸綔鍥惧伐鍏凤紝浣跨敤瀹冭嚜鐒舵棤闇€涓嬭浇瀹夎锛屾洿涓嶇敤鍒板鎵剧牬瑙ｆ縺娲讳簡锛屾墦寮€娴忚鍣ㄥ氨鍙互寮€濮嬨€?br/>
+						鐩墠 ProcessOn 鏀寔 Flowchart銆丒VC銆丒PC銆丅PMN銆乁ML 绛変笉鍚岀被鍨嬪浘锛汸rocessOn閲囩敤瀹炴椂淇濆瓨鏈哄埗锛屾瘡涓€姝ユ搷浣滀箣鍚庨兘鑷姩淇濆瓨锛?br/>
+						ProcessOn 杩樻湁涓€涓瘮杈冨父鐢ㄧ殑鍔熻兘灏辨槸瀹炴椂鍗忎綔锛屽熀浜?HTML5 鎶€鏈仛鍒版棤寤惰繜鍗忎綔锛屾柟渚夸袱涓垨澶氫釜浜哄悓鏃跺涓€涓枃浠跺崗浣滅紪杈戝拰娌熼€氥€?br/>
 						</dd>
 						<dd id='Online_webpage_ProcessOn_linker'><a href="http://www.processon.com/">ProcessOn</a></dd>
 					<dt id='Online_webpage_JingFm'>Jing.fm</dt>
 						<dd id='Online_webpage_JingFm_ico' class="nojs">http://img0.ph.126.net/eIhZTWZ55mXIUYbP8q3WmQ==/6608890616166286635.png</dd>
 						<dd id='Online_webpage_JingFm_detail'>
-						Jing.fm 是一款颠覆传统音乐搜索模式的新型智能电台，它不像其他音乐产品一样仅有数十个“华语”、“摇滚”、“流行”等分类，而是首创可以让你用语言描述出你想听怎样的歌，譬如“深情安静的中文歌”或者“酒吧爵士乐”，然后你就等着 Jing.fm 给你带来惊喜吧！<br/>
-						无论是歌手名、地区、语言、情绪、风格、乐器、场景、感觉，几乎用户可以想象到的每一种用来描述音乐的词句，在 Jing.fm 都可以转化为歌曲。这些标签也可以随意组合，来进行搜索。<br/>
+						Jing.fm 鏄竴娆鹃瑕嗕紶缁熼煶涔愭悳绱㈡ā寮忕殑鏂板瀷鏅鸿兘鐢靛彴锛屽畠涓嶅儚鍏朵粬闊充箰浜у搧涓€鏍蜂粎鏈夋暟鍗佷釜鈥滃崕璇€濄€佲€滄憞婊氣€濄€佲€滄祦琛屸€濈瓑鍒嗙被锛岃€屾槸棣栧垱鍙互璁╀綘鐢ㄨ瑷€鎻忚堪鍑轰綘鎯冲惉鎬庢牱鐨勬瓕锛岃濡傗€滄繁鎯呭畨闈欑殑涓枃姝屸€濇垨鑰呪€滈厭鍚х埖澹箰鈥濓紝鐒跺悗浣犲氨绛夌潃 Jing.fm 缁欎綘甯︽潵鎯婂枩鍚э紒<br/>
+						鏃犺鏄瓕鎵嬪悕銆佸湴鍖恒€佽瑷€銆佹儏缁€侀鏍笺€佷箰鍣ㄣ€佸満鏅€佹劅瑙夛紝鍑犱箮鐢ㄦ埛鍙互鎯宠薄鍒扮殑姣忎竴绉嶇敤鏉ユ弿杩伴煶涔愮殑璇嶅彞锛屽湪 Jing.fm 閮藉彲浠ヨ浆鍖栦负姝屾洸銆傝繖浜涙爣绛句篃鍙互闅忔剰缁勫悎锛屾潵杩涜鎼滅储銆?br/>
 						</dd>
 						<dd id='Online_webpage_JingFm_linker'><a href="http://jing.fm/">JingFm</a></dd>
 					<dt id='Online_webpage_UbuntuTour'>Ubuntu Online Tour</dt>
 						<dd id='Online_webpage_UbuntuTour_ico' class="nojs">http://img1.ph.126.net/jFvZS18OY1Lcb5ee4d3kSA==/6608871924468614209.png</dd>
 						<dd id='Online_webpage_UbuntuTour_imager' class="nojs"></dd>
 						<dd id='Online_webpage_UbuntuTour_detail'>
-						只要简单地用浏览器访问它，就能在线体验一番 Ubuntu 操作系统的魅力！<br/>
+						鍙绠€鍗曞湴鐢ㄦ祻瑙堝櫒璁块棶瀹冿紝灏辫兘鍦ㄧ嚎浣撻獙涓€鐣?Ubuntu 鎿嶄綔绯荤粺鐨勯瓍鍔涳紒<br/>
 						</dd>
 						<dd id='Online_webpage_UbuntuTour_linker'><a href="http://www.ubuntu.com/tour/">Ubuntu Online Tour</a></dd>
 				</dl></dd>
@@ -1126,13 +1126,13 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 	</dl>
 	</div>
 	
-	<script type="text/JavaScript" language="JavaScript">   //<!-- 总信息的提取 -->
+	<script type="text/JavaScript" language="JavaScript">   //<!-- 鎬讳俊鎭殑鎻愬彇 -->
 		var allcon = new Array();
 		var showlist = new Array();
 		var titlesta = new Array();
 		var waittot = 0,showtot=0;
 		var alltot = 0;
-		var root = new container("root","根节点",'','','','',0,0,'');
+		var root = new container("root","鏍硅妭鐐?,'','','','',0,0,'');
 		var ico_id_suffix = "_ico";
 		var imager_id_suffix = "_imager";
 		var detail_id_suffix = "_detail";
@@ -1162,9 +1162,9 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 			var target = document.getElementById("content_bottom");
 			if (!target) return;
 			var title;
-			if (this.level==3) title = "→ " + this.title;
-			else if (this.level==2) title = "√ " + this.title;
-			else if (this.level==1) title = "「 "+this.title+" 」"
+			if (this.level==3) title = "鈫?" + this.title;
+			else if (this.level==2) title = "鈭?" + this.title;
+			else if (this.level==1) title = "銆?"+this.title+" 銆?
 			else title = this.title;
 			if (a==1){
 				if (this.ico){
@@ -1262,7 +1262,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 				stack[tot+1] = c;
 				allcon[i+1] = c;
 			}
-			title = "全文查找"; tot = 0; detail = ''; linker = ''; id = title;
+			title = "鍏ㄦ枃鏌ユ壘"; tot = 0; detail = ''; linker = ''; id = title;
 			ico = "http://img0.ph.126.net/lsn_sXWLthu9fb1Znd1Sbw==/782500435355769387.png" ;
 			var c = new container(id,title,detail,linker,ico,'',tot+1,i+1,'');
 			stack[tot].add(c);
@@ -1270,7 +1270,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 			allcon[i+1] = c;
 			alltot=i+2;
 			i++;
-			title = "返回首页"; tot = 0; detail = ''; linker = ''; id = title;
+			title = "杩斿洖棣栭〉"; tot = 0; detail = ''; linker = ''; id = title;
 			ico = "http://img2.ph.126.net/ydESAGYY8Q4O3nL7_l9EfA==/4849532373848153825.png" ;
 			var c = new container(id,title,detail,linker,ico,'',tot+1,i+1,'');
 			stack[tot].add(c);
@@ -1284,29 +1284,29 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 		finddown(root,document.getElementById(root.id+"_next"));
 	</script>
 
-	<script type="text/JavaScript" language="JavaScript">	<!--文字跟随鼠标-->
-        var step = 15; //字符显示间距，为了好看，step=0则字符显示没有间距
+	<script type="text/JavaScript" language="JavaScript">	<!--鏂囧瓧璺熼殢榧犳爣-->
+        var step = 15; //瀛楃鏄剧ず闂磋窛锛屼负浜嗗ソ鐪嬶紝step=0鍒欏瓧绗︽樉绀烘病鏈夐棿璺?
 		var charhei = 13,charwid = 15;
         var timesx = step * 2;
-        var timesy = step * 2;  // 调整右侧和下方文字消失位置
+        var timesy = step * 2;  // 璋冩暣鍙充晶鍜屼笅鏂规枃瀛楁秷澶变綅缃?
 		var delaytime = 41;
-        var message = "LM share"; 	//跟随鼠标要显示的字符串
-        message = message.split(""); //将字符串分割为字符数组
+        var message = "LM share"; 	//璺熼殢榧犳爣瑕佹樉绀虹殑瀛楃涓?
+        message = message.split(""); //灏嗗瓧绗︿覆鍒嗗壊涓哄瓧绗︽暟缁?
 
-        var xpos = new Array(); 		//存储每个字符的x位置的数组
-        var ypos = new Array(); 		//存储每个字符的y位置的数组
+        var xpos = new Array(); 		//瀛樺偍姣忎釜瀛楃鐨剎浣嶇疆鐨勬暟缁?
+        var ypos = new Array(); 		//瀛樺偍姣忎釜瀛楃鐨剏浣嶇疆鐨勬暟缁?
 		var wid=1,hei=1;
 
 		function addmessage(){
-			for (var i = 0; i < message.length; i++) {  //动态生成显示每个字符span标记,
-				//使用span来标记字符，是为了方便使用CSS，并可以自由的绝对定位
+			for (var i = 0; i < message.length; i++) {  //鍔ㄦ€佺敓鎴愭樉绀烘瘡涓瓧绗pan鏍囪,
+				//浣跨敤span鏉ユ爣璁板瓧绗︼紝鏄负浜嗘柟渚夸娇鐢–SS锛屽苟鍙互鑷敱鐨勭粷瀵瑰畾浣?
 				body.innerHTML += "<span id='span" + i + "' class='prespanstyle'>" + message[i] + "</span>";
 				xpos[i] = 0; ypos[i] = 0;
 			}
 		}
         function makesnake() {
-            //下面的算法将保证，如果鼠标光标移动到新位置，连续调用makenake将会使这些字符一个接一个的移动到新位置。
-            // 该算法显示字符串就有点象人类的游行队伍一样， 
+            //涓嬮潰鐨勭畻娉曞皢淇濊瘉锛屽鏋滈紶鏍囧厜鏍囩Щ鍔ㄥ埌鏂颁綅缃紝杩炵画璋冪敤makenake灏嗕細浣胯繖浜涘瓧绗︿竴涓帴涓€涓殑绉诲姩鍒版柊浣嶇疆銆?
+            // 璇ョ畻娉曟樉绀哄瓧绗︿覆灏辨湁鐐硅薄浜虹被鐨勬父琛岄槦浼嶄竴鏍凤紝 
 			var i;
 			for (i = message.length - 1; i >= 1; i--) {
 				if (xpos[i - 1] + timesx < wid)
@@ -1315,9 +1315,9 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 					xpos[i] = xpos[i - 1] + timesx - inwidth;
 				ypos[i] = ypos[i - 1];
             }
-            //从尾向头确定字符的位置，每个字符为前一个字符“历史”水平坐标+step间隔，
-            //这样随着光标移动事件，就能得到一个动态的波浪状的显示效果
-            //垂直坐标为前一字符的历史“垂直”坐标，后一个字符跟踪前一个字符运动
+            //浠庡熬鍚戝ご纭畾瀛楃鐨勪綅缃紝姣忎釜瀛楃涓哄墠涓€涓瓧绗︹€滃巻鍙测€濇按骞冲潗鏍?step闂撮殧锛?
+            //杩欐牱闅忕潃鍏夋爣绉诲姩浜嬩欢锛屽氨鑳藉緱鍒颁竴涓姩鎬佺殑娉㈡氮鐘剁殑鏄剧ず鏁堟灉
+            //鍨傜洿鍧愭爣涓哄墠涓€瀛楃鐨勫巻鍙测€滃瀭鐩粹€濆潗鏍囷紝鍚庝竴涓瓧绗﹁窡韪墠涓€涓瓧绗﹁繍鍔?
 			if (inwidth>charwid)
 				xpos[0] = sleft + (x + timesx - sleft) % (inwidth-charwid);
 			else xpos[0] = 0; 
@@ -1330,7 +1330,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
         }
     </script>
 	
-	<script type="text/JavaScript" language="JavaScript"> 	<!-- 层打开动画相关函数 -->
+	<script type="text/JavaScript" language="JavaScript"> 	<!-- 灞傛墦寮€鍔ㄧ敾鐩稿叧鍑芥暟 -->
 		var prox;
 		var proy;
 		var proxc;
@@ -1341,7 +1341,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 		var divshowperdec = 11;
 		var opacitydelaytime = 41;
 		
-		function show(ider,number,type){/*--打开--*/
+		function show(ider,number,type){/*--鎵撳紑--*/
 			var o = document.getElementById(ider);
 			if (!o) return;
 			clearTimeout(prox);
@@ -1377,7 +1377,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 			prox = setTimeout(function(){openx(o,x)},divshowdelaytime);
 			proy = setTimeout(function(){openy(o,y)},divshowdelaytime);
 		}	
-		function openx(o,x){/*--打开x--*/
+		function openx(o,x){/*--鎵撳紑x--*/
 			var cx = parseInt(o.style.width);
 			if(cx < x)
 			{
@@ -1390,7 +1390,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 				clearInterval(prox); prox = 0;
 			}
 		}	
-		function openy(o,y){/*--打开y--*/	
+		function openy(o,y){/*--鎵撳紑y--*/	
 			var cy = parseInt(o.style.height);
 			if(cy < y)
 			{
@@ -1403,7 +1403,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 				clearInterval(proy); proy = 0;	
 			}
 		}	
-		function openbottomy(o,y){/*--打开y--*/	
+		function openbottomy(o,y){/*--鎵撳紑y--*/	
 			var cy = parseInt(o.style.height);
 			if(cy < y)
 			{
@@ -1414,7 +1414,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 				clearInterval(probottomy);
 			}
 		}	
-		function openupx(o,x){/*--打开x--*/
+		function openupx(o,x){/*--鎵撳紑x--*/
 			var cx = parseInt(o.style.width);
 			if(cx < x)
 			{
@@ -1436,7 +1436,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 				proxc = 0;
 			}	
 		}
-		function closey(o,ider,number){/*--关闭y--*/	
+		function closey(o,ider,number){/*--鍏抽棴y--*/	
 			var cy = parseInt(o.style.height);
 			if(cy > 0)
 			{
@@ -1449,7 +1449,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 				setTimeout(function(){show(ider,number,0)},divshowdelaytime);
 			}
 		}
-		function closeed(id){/*--关闭--*/
+		function closeed(id){/*--鍏抽棴--*/
 			var o = document.getElementById(id);
 			if (!o) return;
 			clearTimeout(prox);
@@ -1471,7 +1471,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 		}
 	</script>	
 	
-	<script type="text/JavaScript" language="JavaScript">	/*--层鼠标拖动--*/
+	<script type="text/JavaScript" language="JavaScript">	/*--灞傞紶鏍囨嫋鍔?-*/
 		var dx,dy,mx=0,my=0,breakx=0,breaky=0,mouseD=0,mouseout=1;
 		var mousedown_opacity = 60;
 		var mouseup_opacity = 90;
@@ -1567,11 +1567,11 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 		}
 	</script>
 	
-	<script type="text/JavaScript" language="JavaScript">  // 描述层相关函数
+	<script type="text/JavaScript" language="JavaScript">  // 鎻忚堪灞傜浉鍏冲嚱鏁?
 		var clickcolor = "#0000FF";
-		var notitle = "无名";
-		var nodetail = "没有介绍。"
-		var nolinker = "无下载。";
+		var notitle = "鏃犲悕";
+		var nodetail = "娌℃湁浠嬬粛銆?
+		var nolinker = "鏃犱笅杞姐€?;
 		
 		function buildtitle(number){
 			var s = allcon[number].title;
@@ -1594,21 +1594,21 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 		}
 		function builddetail(number){
 			var s = allcon[number].detail;
-			var pretxt = "<div id='floatdiv_detail' class='floatdiv_detail'><b style='font-size:1.5em'>介绍:</b><br/>"
+			var pretxt = "<div id='floatdiv_detail' class='floatdiv_detail'><b style='font-size:1.5em'>浠嬬粛:</b><br/>"
 			if (s=='') return pretxt+nodetail+"</div>";
 			s = inserter(s,"<br>","&nbsp;",3);
 			return pretxt+s+"</div>";
 		}
 		function buildlinker(number){
 			var s = allcon[number].linker;
-			var pretxt = "<div id='floatdiv_linker' class='floatdiv_linker'><b style='font-size:1.5em'><hr/>链接:</b><br/>";
+			var pretxt = "<div id='floatdiv_linker' class='floatdiv_linker'><b style='font-size:1.5em'><hr/>閾炬帴:</b><br/>";
 			if (s=='') return pretxt+nolinker+"</div>";
 			s = inserter(s,"<br>","&nbsp;",3);
 			return pretxt+s+"</div>";
 		}
 		function creatfloatdiv(){
 			body.innerHTML += "<div id='floatdiv' class='floatdiv' onDblClick='closeed(\"floatdiv\")' onmouseover='mouseoverfloatdiv()' onmouseout='mouseoutfloatdiv()'>"+
-									"<div id='floatdiv_button' onclick='closeed(\"floatdiv\")' class='floatdiv_button'>关闭</div>"+
+									"<div id='floatdiv_button' onclick='closeed(\"floatdiv\")' class='floatdiv_button'>鍏抽棴</div>"+
 									"<div id='floatdiv_t_l' class='t_l' onmousedown='mousedownfloatdiv(1)' onmouseup='mouseupfloatdiv()'></div>"+
 									"<div id='floatdiv_t_m' class='t_m' onmousedown='mousedownfloatdiv(2)' onmouseup='mouseupfloatdiv()'></div>"+
 									"<div id='floatdiv_t_r' class='t_r' onmousedown='mousedownfloatdiv(3)' onmouseup='mouseupfloatdiv()'></div>"+
@@ -1668,7 +1668,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 		}
 	</script>
 
-	<script type="text/JavaScript" language="JavaScript">  // 全文查找相关函数
+	<script type="text/JavaScript" language="JavaScript">  // 鍏ㄦ枃鏌ユ壘鐩稿叧鍑芥暟
 		var listcon=new Array(),listscore=new Array();
 		var docost=7.0,limit = 7;
 		
@@ -1740,7 +1740,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 				return;
 			}
 			if (searchmode==0){
-				bottom.innerHTML = "搜索中..... 请稍候....<br/>";
+				bottom.innerHTML = "鎼滅储涓?.... 璇风◢鍊?...<br/>";
 				for (i=1;i< alltot-2;i++){
 					listcon[i-1] = i;
 					listscore[i-1] = compare(i,target.value);
@@ -1780,7 +1780,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 					var target = document.getElementById("searchboxtext");
 					if (target) target.focus();
 				}
-	　　    }
+	銆€銆€    }
 		}
 		function clrsearchboxtext(){
 			var target = document.getElementById("searchboxtext");
@@ -1790,7 +1790,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 		}
 	</script>
 
-	<script type="text/JavaScript" language="JavaScript">  //主界面相关函数
+	<script type="text/JavaScript" language="JavaScript">  //涓荤晫闈㈢浉鍏冲嚱鏁?
 		var leftimgwidth = 65;
 		var leftimgheight = 65;
 		var searchmode = 0;
@@ -1816,7 +1816,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 											"<span class='AdLayer' id='AdLayer'></span>"+
 										"</div>"+
 										"<div id='content_bottom' class='level2_content_bottom'>"+
-											"<span style='font-size:3em; cursor:default;'>欢迎！</span>"+
+											"<span style='font-size:3em; cursor:default;'>娆㈣繋锛?/span>"+
 										"</div>"+
 									"</div>" + body.innerHTML;
 			}
@@ -1867,7 +1867,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 					}
 					else
 						inhtml =  '<input rows="auto" cols="20" type="text" id="searchboxtext" class="level2_content_up_searchboxtextie" value=""/>';
-					inhtml+= '<input type="button" id="searchboxsubmit" class="level2_content_up_searchboxsubmit" value="搜索" onclick="findit();"/>';
+					inhtml+= '<input type="button" id="searchboxsubmit" class="level2_content_up_searchboxsubmit" value="鎼滅储" onclick="findit();"/>';
 				}else{
 					if (!isIE) {
 						inhtml = '<textarea id="searchboxtext" class="level2_content_up_searchboxcode" value=""></textarea>';
@@ -1876,7 +1876,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 						inhtml = '<textarea rows="5" id="searchboxtext" class="level2_content_up_searchboxtextie"></textarea>';
 						inhtml+= '<span class="level2_content_up_searchboxclr" onclick="clrsearchboxtext();">X</span>';
 					}
-					inhtml+= ' <input type="button" id="searchboxsubmit" class="level2_content_up_searchboxsubmit" value="运行" onclick="findit();"/>';
+					inhtml+= ' <input type="button" id="searchboxsubmit" class="level2_content_up_searchboxsubmit" value="杩愯" onclick="findit();"/>';
 				}
 				target.innerHTML += inhtml;
 				document.getElementById("searchboxtext").focus();
@@ -1890,13 +1890,13 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 					else classname = 'level2_content_up_in_choose';
 					inhtml += "<span id='" + now.all[i]+ "' class='"+classname+"' onclick='showlevel2("+l1num+",this.id)'>"+ allcon[now.all[i]].title +"</span>";
 				}
-				if (now.total==0) inhtml = "<span class='level2_content_up_in' style='cursor:default;'>什么都没有哦！</span>";
+				if (now.total==0) inhtml = "<span class='level2_content_up_in' style='cursor:default;'>浠€涔堥兘娌℃湁鍝︼紒</span>";
 				target.innerHTML += inhtml;
 				if (l2num!=-1){
 					document.getElementById("content_bottom").innerHTML = '';
 					allcon[l2num].showdown(1);
 				}else{
-					document.getElementById("content_bottom").innerHTML = "<span id='guess' style='font-size:2.5em; cursor:default;'>猜你喜欢：</span><br/>";
+					document.getElementById("content_bottom").innerHTML = "<span id='guess' style='font-size:2.5em; cursor:default;'>鐚滀綘鍠滄锛?/span><br/>";
 					allcon[l1num].showdown(11);
 					showtagup("content_up","span");
 				}
@@ -1942,13 +1942,13 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 		reshowlevel();
 	</script>
 	
-	<script type="text/JavaScript" language="JavaScript">	<!--背景缓存载入-->
+	<script type="text/JavaScript" language="JavaScript">	<!--鑳屾櫙缂撳瓨杞藉叆-->
 		var bg = new Image();
 		var bgimg= new Array();
 		var bgnum = 0;
 		bgimg[0] = 'http://www.pp3.cn/uploads/allimg/111110/14010AU3-0.jpg';
 		bgimg[bgimg.length] = 'http://www.kole8.com/desktop/desk_file-11/2/2/2012/10/201210314361319.jpg';
-		bgimg[bgimg.length] = 'http://desktop.inlishui.com/DesktopFiles/设计/桌面精选壁纸 2010-01-21/desktop.inlishui.com_060.jpg';
+		bgimg[bgimg.length] = 'http://desktop.inlishui.com/DesktopFiles/璁捐/妗岄潰绮鹃€夊绾?2010-01-21/desktop.inlishui.com_060.jpg';
 		bgimg[bgimg.length] = 'http://www2.ppdesk.com/file/20100120/desk/2009/10/16/keai200910_73_1920x1440.jpg';
 		bgimg[bgimg.length] = 'http://dl.bizhi.sogou.com/images/2013/12/06/437033.jpg';
 		bgimg[bgimg.length] = 'http://dl.bizhi.sogou.com/images/2013/12/05/435145.jpg';
@@ -1978,7 +1978,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
         }
     </script>
 
-	<script type="text/JavaScript" language="JavaScript">	<!--载入函数、页面函数-->
+	<script type="text/JavaScript" language="JavaScript">	<!--杞藉叆鍑芥暟銆侀〉闈㈠嚱鏁?->
 		function timedo(){
 			innerpx();
 			//scrollxy();
@@ -1993,7 +1993,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 						changeopacity('span'+i,100);
 					}
 				},300);
-            initAd(); //载入页面后，调用函数initAd()
+            initAd(); //杞藉叆椤甸潰鍚庯紝璋冪敤鍑芥暟initAd()
             UpdateTime();
 			do
 				bgnum= Math.round(Math.random()*(bgimg.length-0.5));
