@@ -12,6 +12,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 	<link rel="stylesheet" type="text/css" href="css/styles.css"/>
 	<style type="text/css">  
 		/*浮动文字  时间 背景*/
+		html {overflow:visible;}
         .prespanstyle{ position:absolute; font-size:1em; font-weight:200; z-index:200; cursor:default;} 
         .bgspanstyle{ position:absolute; font-size:1em; color:#4D4556; font-weight:200; z-index:200; cursor:default;} 
 		#AdLayer {color:blue; font-size:1.5em; position:absolute; float:right; display:inline-block; right:5px; z-index:3; cursor:default; padding:0.15em 0.25em 0 0;}
@@ -112,7 +113,6 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
     <script type="text/javascript" src="JScode/DD_belatedPNG_0.0.8a-min.js"></script>
     <script type="text/javascript">
 		DD_belatedPNG.fix('.tel,.head_content');
-		var IamIeSix = true;
     </script>
 	<![endif]-->
 	<script type="text/javascript">
@@ -146,17 +146,15 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
                 iX = x - this.offsetLeft;
                 iY = y - this.offsetTop;
 				oX = oY = 0;
-                //this.setCapture && this.setCapture();
-                return false;
+                this.setCapture && this.setCapture();
+				return false;
             });
-            $("#selectbar").siblings().mousedown(function(e) {
+            $("#uplayout").mousedown(function(e) {
 				if (e.which == 3) return false;
                 dragging = true;
                 iX = x - this.offsetLeft;
                 iY = y - this.offsetTop;
 				oX = oY = 0;
-                this.setCapture && this.setCapture();
-                return false;
             });
             $("#selectbar").mouseenter(function(e) {
 				mouseinselectbar=true;
@@ -168,6 +166,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 			});
             $("#selectbar").mouseleave(function(e) {
 				mouseinselectbar=false;
+				this.releaseCapture && this.releaseCapture();
 				$("#selectbar").animate({left:barleft},100);
 				if (!setbartop && !dragging){
 					$("#selectbar").animate({top:inheight+bartop+""},{duration: 100,queue:false});
@@ -179,6 +178,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 				if (setbartop==1)	bartotop();
 				else	bartobottom();
                 e.cancelBubble = true;
+				this.releaseCapture && this.releaseCapture();
 				mouseupfloatdiv();
             });
         });
@@ -1632,10 +1632,19 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 						<dd id='Online_webpage_silk_ico' class="nojs"></dd>
 						<dd id='Online_webpage_silk_imager' class="nojs"></dd>
 						<dd id='Online_webpage_silk_detail'>
-							 一个神奇的画画工具
+							 一个神奇的画画工具。
 						</dd>
 						<dd id='Online_webpage_silk_linker'>
 							<a href="http://www.moeacg.cc/silk/">光丝图谱</a>
+						</dd>
+					<dt id='Online_webpage_tinypng'>TinyPNG</dt>
+						<dd id='Online_webpage_tinypng_ico' class="nojs"></dd>
+						<dd id='Online_webpage_tinypng_imager' class="nojs"></dd>
+						<dd id='Online_webpage_tinypng_detail'>
+							这是国外一个非常实用的PNG图片压缩网站，为了考虑更快的页面加载速度以及优化用户体验，对于网站图片的大小与质量必须严格把关，而该网站就是专门压缩PNG图片的，压缩率基本上在50%左右，还可以保留透明通道，非常方便好用。
+						</dd>
+						<dd id='Online_webpage_tinypng_linker'>
+							<a href="http://tinypng.com">TinyPNG</a>
 						</dd>
 						
 				</dl></dd>
@@ -2422,28 +2431,31 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 				bgnum= Math.round(Math.random()*(bgimg.length-0.5));
 			while (bgnum<0 || bgnum>=bgimg.length);
 			bgimager();
-			if (document.layers) {
-				document.captureEvents(Event.MOUSEMOVE);
-			}
-			document.onmousemove = MouseXY;
-			document.onkeydown = EnterSubmit;
-			bartobottom();
-			$("#uplayout").css("opacity",0.85).css("top",inheight).css("zIndex",299).css("display","block");
-			$("#selectbar").css("float","left").css("left",barleft).css("top",inheight+bartop).css("zIndex",300).css("display","block");
-			$("#selector").css("float","left").css("zIndex",301).css("display","block");
-			$("#AdLayer").css("opacity",1);
-			$("#check").remove();
-			$("#ch_effects").bind('change',function(e){
-				if ($(this).attr("checked")=='checked')
-					$.fx.off = false;
-				else $.fx.off = true;
-			});
-			if (IamIeSix){
-				$("#selectcontainer").remove();
-				$("#body").append("<div id='AdLayer'></div>")
-			}
 		}
+		if (document.layers) {
+			document.captureEvents(Event.MOUSEMOVE);
+		}
+		document.onmousemove = MouseXY;
+		document.onkeydown = EnterSubmit;
+		bartobottom();
+		$("#check").remove();
+		$("#uplayout").css("opacity",0.85).css("top",inheight).css("zIndex",299).css("display","block");
+		$("#selectbar").css("float","left").css("left",barleft).css("top",inheight+bartop).css("zIndex",300).css("display","block");
+		$("#selector").css("float","left").css("zIndex",301).css("display","block");
+		$("#AdLayer").css("opacity",1);
+		$("#ch_effects").bind('change',function(e){
+			if ($(this).attr("checked")=='checked')
+				$.fx.off = false;
+			else $.fx.off = true;
+		});
+		$("#body").css("overflow",'hidden');
 	</script>
+	<!--[if IE 6]>
+    <script type="text/javascript">
+		$("#body").append("<div id='AdLayer'></div>");
+		$("#selectcontainer").remove();
+    </script>
+	<![endif]-->
 	
 </body>
 

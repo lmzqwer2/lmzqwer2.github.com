@@ -20,8 +20,8 @@
 
 			// Creating the new checkbox markup:
 			var checkBox = $('<span>',{
-				class	: 'tzCheckBox '+(this.checked?'checked':''),
-				html:	'<span class="tzCBContent" id="'+$(this).attr('id')+'_content">'+labels[this.checked?0:1]+
+				'class'	: 'tzCheckBox '+(this.checked?'checked':''),
+				'html':	'<span class="tzCBContent" id="'+$(this).attr('id')+'_content">'+labels[this.checked?0:1]+
 						'</span><span class="tzCBPart"></span>'
 			});
 
