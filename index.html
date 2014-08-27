@@ -7,14 +7,24 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 <head>
     <title>LM share</title>
 	<base target="_blank"/>
-	<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<link rel="stylesheet" type="text/css" href="css/jquery.tzCheckbox.css"/>
+	<link rel="stylesheet" type="text/css" href="css/styles.css"/>
 	<style type="text/css">  
 		/*浮动文字  时间 背景*/
         .prespanstyle{ position:absolute; font-size:1em; font-weight:200; z-index:200; cursor:default;} 
         .bgspanstyle{ position:absolute; font-size:1em; color:#4D4556; font-weight:200; z-index:200; cursor:default;} 
-		.AdLayer { float:right; display:inline-block; right:0; z-index:3; cursor:default; padding:0.25em 0 0 0;}
+		#AdLayer {color:blue; font-size:1.5em; position:absolute; float:right; display:inline-block; right:5px; z-index:3; cursor:default; padding:0.15em 0.25em 0 0;}
 		body.bgimg {font-size:0.75em; -moz-user-select:none; }
 		.bgdiv {position:absolute; top:0; left:0; height:100%; width:100%; background-size:cover; overflow:hidden; z-index :-100;}
+		
+		
+		#uplayout {position:absolute; width:100%; height:100%; left:0; top:2000px; z-index:0;
+		_height:expression(document.getElementById('uplayout').offsetHeight+"px");display:none;}
+		#selectbar {position:absolute; z-index:0; display:none; left:-50; top:1950px;}
+		#selector {position:absolute; z-index:0; display:none; margin-left:auto; margin-right:auto;}
+		#selectcontainer {}
+		
 		
 		/*无js布局*/
 		body.bgnoimg {font-size:0.75em; background:#94BFCA;}
@@ -36,13 +46,13 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 		
 		/*整体布局*/
 		.nojs {display:none;}
-		.level1_out {padding:0 5% 0; text-align:center; -moz-user-select:none; height:auto;}
+		.level1_out {padding:0 5% 0; top:300px; text-align:center; -moz-user-select:none; height:auto;}
 		.level1_in {display:inline-block; font-size:1.5em; font-weight:bold; padding:0 5%; text-align:center; width:100px; cursor:pointer; zoom:1;}
 		
 		.level2_left {position:absolute; display:block; top:0; left:0; width:70px; z-index:50; border-right:1px solid gray; text-align:center;}
 		.level2_left_in {position:relative; display:inline-block; height:60px; width:60px; font-size:1.1em; text-align:left; overflow:hidden;}
 		.level2_left_in_img {position:relative; left:0px; z-index:10; }
-		.level2_left_in_txt {position:absolute; height:auto; bottom:0; left:128px; z-index:20; width:60px; background:#000000; color:#FFFFFF; text-align:center; font-weight:bold; line-height: 1.5em; cursor:pointer;}
+		.level2_left_in_txt {position:absolute; height:auto;top:60px; z-index:20; width:60px; background:#000000; color:#FFFFFF; text-align:center; font-weight:bold; line-height: 1.5em; cursor:pointer;}
 					
 		.level2_content{position:absolute; display:block; top:0; left:70px; padding:0; height:100%; width:90%; z-index:50; -moz-user-select:none;}
 		
@@ -59,7 +69,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 		
 		.level2_content_bottom {position:relative; display:block; padding:1em 0 0 3em; height:80%; width:100%; z-index:50; overflow-y:auto; overflow-x:hidden; cursor:default; }
 		.level2_content_bottom_in_txt,.level2_content_bottom_in_icotxt {display:inline-block; font-size:1.2em; width:90%; line-height: 1.7em;  padding: 0px; color:#3c3c3c;}
-		.level2_content_bottom_in_icotxt {position:absolute; height:auto; bottom:0; left:128px; z-index:20; display:block; width:128px; background:#000000; color:#FFFFFF; text-align:center; cursor:pointer;}
+		.level2_content_bottom_in_icotxt {position:absolute; height:auto; top:128px; z-index:20; display:block; width:128px; background:#000000; color:#FFFFFF; text-align:center; cursor:pointer;}
 		.level2_content_bottom_in_ico {position:relative; display:inline-block; height:128px; width:128px; font-size:1.2em; line-height: 1.7em; margin: 20px; text-align:center;  overflow:hidden;}
 		.level2_content_bottom_in_img {position:relative; left:0px; z-index:10; }
 	</style>
@@ -95,6 +105,85 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 		.m_m{width:100%; height:100%; font-size:12px; cursor:move;}
 	</style>
 	
+	<script type="text/JavaScript" src="JScode/jquery-1.9.1.min.js"></script>
+	<script src="JScode/jquery.tzCheckbox.js"></script>
+	<script src="JScode/script.js"></script>
+	<!--[if IE 6]>
+    <script type="text/javascript" src="JScode/DD_belatedPNG_0.0.8a-min.js"></script>
+    <script type="text/javascript">
+		DD_belatedPNG.fix('.tel,.head_content');
+		var IamIeSix = true;
+    </script>
+	<![endif]-->
+	<script type="text/javascript">
+        var dragging = false,mouseinselectbar=false;
+        var iX, iY;
+        var oX, oY;
+		var setbartop=0;
+		var bartop=-60,barleft=-40;
+		function bartotop(){
+			dragging = false;
+			$("#selectbar").stop(true).animate({top:bartop,left:barleft},"fast");
+			$("#selectbar").siblings().stop(true).animate({top:'0',left:'0'},"fast");
+			setbartop = 1;
+		}
+		function bartobottom(){
+			dragging = false;
+			$("#selectbar").stop(true).animate({top:inheight+bartop+'',left:barleft},"fast");
+			$("#selectbar").siblings().stop(true).animate({top:inheight+"",left:'0'},"fast");
+			setbartop = 0;
+		}
+        $(function(){
+            /*--------------拖曳效果----------------
+            *原理：标记拖曳状态dragging ,坐标位置iX, iY
+            *         mousedown:fn(){dragging = true, 记录起始坐标位置，设置鼠标捕获}
+            *         mouseover:fn(){判断如果dragging = true, 则当前坐标位置 - 记录起始坐标位置，绝对定位的元素获得差值}
+            *         mouseup:fn(){dragging = false, 释放鼠标捕获，防止冒泡}
+            */
+            $("#selectbar").mousedown(function(e) {
+				if (e.which == 3) return false;
+                dragging = true;
+                iX = x - this.offsetLeft;
+                iY = y - this.offsetTop;
+				oX = oY = 0;
+                //this.setCapture && this.setCapture();
+                return false;
+            });
+            $("#selectbar").siblings().mousedown(function(e) {
+				if (e.which == 3) return false;
+                dragging = true;
+                iX = x - this.offsetLeft;
+                iY = y - this.offsetTop;
+				oX = oY = 0;
+                this.setCapture && this.setCapture();
+                return false;
+            });
+            $("#selectbar").mouseenter(function(e) {
+				mouseinselectbar=true;
+				$("#selectbar").animate({left:'0'},100);
+				if (!setbartop && !dragging){
+					$("#selectbar").animate({top:inheight+bartop-50+""},{duration: 100,queue:false});
+					$("#selectbar").siblings().stop(true).animate({top:inheight+bartop+10+"",left:'0'},100);
+				}
+			});
+            $("#selectbar").mouseleave(function(e) {
+				mouseinselectbar=false;
+				$("#selectbar").animate({left:barleft},100);
+				if (!setbartop && !dragging){
+					$("#selectbar").animate({top:inheight+bartop+""},{duration: 100,queue:false});
+					$("#selectbar").siblings().delay(2000).animate({top:inheight+"",left:'0'},100);
+				}
+			});
+            $(document).mouseup(function(e) {
+				if (oY<5 && mouseinselectbar) setbartop = 1-setbartop;
+				if (setbartop==1)	bartotop();
+				else	bartobottom();
+                e.cancelBubble = true;
+				mouseupfloatdiv();
+            });
+        });
+        
+    </script>
 </head>
 
 <body id='body' onload="loader();" class="bgnoimg"  onmouseup="/*document.selection.empty();*/" onselectstart="return false">
@@ -155,6 +244,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 		function changeopacity(id,n){
 			var object = document.getElementById(id+'');
 			if (!object) return;
+			return $("#"+id).fadeTo(0,n/100);
 			if(isIE)
 			{
 				//od.releaseCapture();
@@ -188,8 +278,11 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 			object.style.height = n + 'px';
 		}
 		function changewidhei(){
+			if (setbartop==0) bartobottom();
+			else bartotop();
+			$("#selector").css("left",(inwidth-600)/2).css("top",(inheight-300)/2);
 			if (nowlevel==1){
-				var l1main = document.getElementById("root");
+				var l1main = document.getElementById("content_mid");
 				if (l1main){
 					var h = 300;
 					l1main.style.paddingTop = (inheight - h) / 2 + 'px';
@@ -248,6 +341,19 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 			x = isIE ? sleft + e.clientX : e.pageX;
 			y = isIE ? stop + e.clientY : e.pageY ;
 			mousemove();
+            if (dragging) {
+				var e = e || window.event;
+				oX = x - iX; oY = y - iY;
+				if ((oY<inheight/3.5*2 && setbartop==0)){
+					bartotop(); return;
+				}
+				if ((oY>inheight/3.5 && setbartop==1)){
+					bartobottom(); return;
+				}
+				if (setbartop==1 && oY<0) oY = oY /2.5;
+				$("#selectbar").css({"top":oY +bartop+30 + "px"});
+				$("#selectbar").siblings().css({"top":oY +bartop+90+ "px"});
+            }
         }
 	</script>
 	
@@ -336,15 +442,32 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
     </script>
 	
 	<div id="check">		<!--JS检查-->
-		<p>对不起，你的浏览器不支持JavaScript！虽然依然可以下载，可是页面将会变得很怪哦！</p>
+		<p>对不起，你的浏览器不支持JavaScript！</p>
     </div>
 	
 	<div class='bgdiv'  id='bgdiv'> <!--背景层-->
 	</div>
 	
-	<div id="AdLayer">		<!--右边时间-->
-		<p></p>
-    </div>
+	<div id='selectcontainer'>
+		<div style='background:#66CCFF;' id='uplayout'>
+			<div id="AdLayer">		<!--右边时间-->
+				<p></p>
+			</div>
+			<div id='selector'>
+				<form method="get" action="./">
+					<ul>
+						<li><label for="ch_effects">动画效果: </label><input type="checkbox" id="ch_effects" name="ch_effects" data-on="开启" data-off="关闭" autocomplete="off"  checked /></li>
+						<!--
+						<li><label for="ch_location">Enable location tracking: </label><input type="checkbox" id="ch_location" name="ch_location" checked /></li>
+						<li><label for="ch_showsearch">Include me in search results: </label><input type="checkbox" id="ch_showsearch" name="ch_showsearch" /></li>
+						<li><label for="ch_emails">Email notifications: </label><input type="checkbox" id="ch_emails" name="ch_emails" data-on="ON" data-off="OFF" /></li>
+						-->
+					</ul>
+				</form>
+			</div>
+		</div>
+		<div id='selectbar' > <img src='icon/updown_arrow.png' height="128" width="128" /></div>
+	</div>
 		
 	<div id='left' class='left'>	<!--左边目录-->
 	<ul id='gameoutline' class="preoutline">
@@ -1542,9 +1665,10 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 			this.imager = imager;
 			if (ico)
 				this.ico = icon_address + ico;
+			else this.ico = '';
 			this.type = type;
 			predownload(imager);
-			predownload(ico);
+			predownload(this.ico);
 			this.level = level;
 			this.number = number;
 			this.all = new Array();
@@ -1566,19 +1690,22 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 			else title = this.title;
 			if (a==1){
 				if (this.ico){
-					target.innerHTML += "<span class='level2_content_bottom_in_ico' id='"+this.number+"_bottom_inner' onmouseover='movetitle(this.id,0)' onmouseout='movetitle(this.id,128)'>"
+					$("#content_bottom").append("<span class='level2_content_bottom_in_ico' id='"+this.number+"_bottom_inner' onmouseover='movetitle(this.id,128,1)' onmouseout='movetitle(this.id,128,-1)'>"
 												+"<img class='level2_content_bottom_in_img' id='"+this.number+"_bottom_inner_img' src= '"+this.ico+"' alt= '"+this.title+"' width='128px' height='128px' style='cursor:pointer;' onclick='showit(this.id)'/>"
 												+"<div class='level2_content_bottom_in_icotxt' id='"+this.number+"_bottom_inner_txt' onclick='showit(this.id)'>"+title+ "</div>"
-										+"</span>";
-					changeopacity(this.number+'_bottom_inner_txt',75);
+										+"</span>");
+					$('#'+this.number+'_bottom_inner_txt').css("opacity",0.75).css("top","128").css("left",'0');
+					var target = document.getElementById(this.number+'_bottom_inner_txt');
+					var autoheight = (target.innerHeight || target.clientHeight || target.offsetHeight);
+					target.style.height = autoheight + 'px';
 					return 0;
 				}else{
 					return 1;
 				}
 			}else{
-				target.innerHTML += "<br/><span id='"+this.number+"_bottom_outer' class='level2_content_bottom_in_txt'>"
+				$("#content_bottom").append("<br/><span id='"+this.number+"_bottom_outer' class='level2_content_bottom_in_txt'>"
 									+"<span id='"+this.number+"_bottom_inner_txt' style='cursor:pointer; width:auto;' onclick='showit(this.id)'>"+title+ "</span>"
-								+"</span>";
+								+"</span>");
 				return 0;
 			}
 		}
@@ -1616,11 +1743,10 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 					}	
 			changewidhei();
 		}
-		function movetitle(s,i){
-			var txt = document.getElementById(s+"_txt");
-			if (!txt) return;
-			txt.style.pixelLeft = i+'px';
-			txt.style.left = i+'px';
+		function movetitle(s,len,i){
+			var t = document.getElementById(s+"_txt");
+			var autoheight = (t.innerHeight || t.clientHeight || t.offsetHeight);
+			$("#"+s+'_txt').stop(true).animate({top:len-i*autoheight},100);
 		}
 		function getinnerHTML(id){
 			var temp=document.getElementById(id);
@@ -1676,6 +1802,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 			allcon[i+1] = c;
 			alltot=i+2;
 			i++;
+			$("#root").remove();
 		}
 		document.getElementById("left").style.display = 'none';
 		document.getElementById("root").style.display = 'none';
@@ -1696,9 +1823,11 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 		var wid=1,hei=1;
 
 		function addmessage(){
+			$("#body").append("<div id='floatword'></div>");
 			for (var i = 0; i < message.length; i++) {  //动态生成显示每个字符span标记,
 				//使用span来标记字符，是为了方便使用CSS，并可以自由的绝对定位
-				body.innerHTML += "<span id='span" + i + "' class='prespanstyle'>" + message[i] + "</span>";
+			//	body.innerHTML += "<span id='span" + i + "' class='prespanstyle'>" + message[i] + "</span>";
+				$("#floatword").append("<span id='span" + i + "' class='prespanstyle'>" + message[i] + "</span>")
 				xpos[i] = 0; ypos[i] = 0;
 			}
 		}
@@ -1728,160 +1857,39 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
         }
     </script>
 	
-	<script type="text/JavaScript" language="JavaScript"> 	<!-- 层打开动画相关函数 -->
+	<script type="text/JavaScript" language="JavaScript"> 	<!-- 层动画相关函数 -->
 		var prox;
-		var proy;
-		var proxc;
-		var proyc=0;
-		var proupx;
-		var probottomy;
+		var dx,dy,mx=0,my=0,breakx=0,breaky=0,mouseD=0,mouseout=1;
+		var mousedown_opacity = 0.6;
+		var mouseup_opacity = 0.9;
+		var border = 4;
+		var outtimer;
 		var divshowdelaytime = 13;
 		var divshowperdec = 11;
 		var opacitydelaytime = 41;
 		
-		function show(ider,number,type){/*--打开--*/
-			var o = document.getElementById(ider);
-			if (!o) return;
-			clearTimeout(prox);
-			clearTimeout(proy);
-			clearTimeout(proxc);
-			mouseupfloatdiv(); proxc = 0;
-			o.style.zIndex = '50'; 
-			if (type==1){
-				changeheight(ider,o.offsetHeight);
-				proyc = setTimeout(function(){closey(o,ider,number)},divshowdelaytime/2);
-				return;
-			}
-			if (number>=0) changefloatdivinner(number);
-			else return;
-			var predisplay = o.style.display;
-			o.style.display = "block";
-			o.style.overflow = "visible";
-			o.style.height = "auto";
-			if (floatdivprewid<widlowlimit) floatdivprewid=widlowlimit;
-			width=floatdivprewid;
-			if (inwidth<floatdivprewid) width = inwidth;
-			o.style.width = width + 'px';
-			var linker = document.getElementById("floatdiv_linker");
-			floatdivprehei = (o.innerHeight || o.clientHeight || o.offsetHeight) + linker.offsetHeight;
-			o.style.overflow = "hidden"; 
-			var x = width;
-			var y = floatdivprehei;
-			o.style.cursor = "move";
-			o.style.display = "block";
-			if (predisplay=='none') o.style.width = "0px";
-			else o.style.width = width + 'px';
-			o.style.height = "0px"; 
-			prox = setTimeout(function(){openx(o,x)},divshowdelaytime);
-			proy = setTimeout(function(){openy(o,y)},divshowdelaytime);
-		}	
-		function openx(o,x){/*--打开x--*/
-			var cx = parseInt(o.style.width);
-			if(cx < x)
-			{
-				moveto(o.id,0,0);
-				changewidth(o.id,cx + Math.ceil((x-cx)/divshowperdec));
-				prox = setTimeout(function(){openx(o,x)},divshowdelaytime);
-			}
-			else
-			{
-				clearInterval(prox); prox = 0;
-			}
-		}	
-		function openy(o,y){/*--打开y--*/	
-			var cy = parseInt(o.style.height);
-			if(cy < y)
-			{
-				moveto(o.id,0,0);
-				changeheight(o.id,cy + Math.ceil((y-cy)/divshowperdec));
-				proy = setTimeout(function(){openy(o,y)},divshowdelaytime);
-			}
-			else
-			{
-				clearInterval(proy); proy = 0;	
-			}
-		}	
-		function openbottomy(o,y){/*--打开y--*/	
-			var cy = parseInt(o.style.height);
-			if(cy < y)
-			{
-				changeheight(o.id,cy + Math.ceil((y-cy)/divshowperdec));
-			}
-			else
-			{
-				clearInterval(probottomy);
-			}
-		}	
-		function openupx(o,x){/*--打开x--*/
-			var cx = parseInt(o.style.width);
-			if(cx < x)
-			{
-				changewidth(o.id,cx + Math.ceil((x-cx)/divshowperdec));
-			}
-			else
-			{
-				clearInterval(proupx);
-			}
-		}
-		function showopacitydown(now){
-			mouseupfloatdiv();
-			changeopacity("floatdiv",now);
-			if (now>0) proxc = setTimeout(function(){showopacitydown(now-5)},opacitydelaytime/1.5);
-			else {
-				changeopacity("floatdiv",100);
-				document.getElementById("floatdiv").style.display = 'none';
-				changefloatdivinner(0);
-				proxc = 0;
-			}	
-		}
-		function closey(o,ider,number){/*--关闭y--*/	
-			var cy = parseInt(o.style.height);
-			if(cy > 0)
-			{
-				changeheight(o.id,cy - Math.ceil(cy/divshowperdec));
-				proyc = setTimeout(function(){closey(o,ider,number)},divshowdelaytime/2);
-			}
-			else
-			{
-				proyc = 0;
-				setTimeout(function(){show(ider,number,0)},divshowdelaytime);
-			}
-		}
+		var floatdivprehei = 0;
+		
 		function closeed(id){/*--关闭--*/
-			var o = document.getElementById(id);
+			o = $("#floatdiv");
 			if (!o) return;
-			clearTimeout(prox);
-			clearTimeout(proy);
-			clearTimeout(proyc);
-			if (proxc){
-				setTimeout(function(){closeed(id)},divshowdelaytime);
-				return;
-			}
-			mouseupfloatdiv(); proxc = 0;
+			mouseupfloatdiv();
 			nowl3num = -1;
 			setallCookies();
-			if(o.style.display == "block")
+			if(o.css("display") == "block")
 			{
-				o.style.cursor = "default";
-				o.style.zIndex = '-100';
-				showopacitydown(mouseup_opacity);
-			}		
+				o.css("cursor","default").stop(true).fadeOut(300,function(){
+					$(this).css("display","none");
+				});
+			}
 		}
-	</script>	
-	
-	<script type="text/JavaScript" language="JavaScript">	/*--层鼠标拖动--*/
-		var dx,dy,mx=0,my=0,breakx=0,breaky=0,mouseD=0,mouseout=1;
-		var mousedown_opacity = 60;
-		var mouseup_opacity = 90;
-		var border = 4;
-		var outtimer;
-		
 		function outfloatdiv(){
 			mouseD = 0; mouseover = 0;
 			mouseupfloatdiv();
 		}
 		function mouseupfloatdiv(){
-			changeopacity("floatdiv",mouseup_opacity);
+			$("#floatdiv").css("opacity",mouseup_opacity);
+			//$("#floatdiv").fadeTo(50,mouseup_opacity);
 			mouseD = 0;
 		}
 		function mouseoutfloatdiv(){
@@ -1894,7 +1902,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 		function mousedownfloatdiv(id){
 			var od = document.getElementById("floatdiv");
 			if (!od) return;
-			changeopacity(od.id,mousedown_opacity);
+			$("#floatdiv").fadeTo(50,mousedown_opacity);
 			mouseD = id;
 			mx = x; my = y;
 			od.style.left = od.offsetLeft + "px";
@@ -2005,7 +2013,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 			return pretxt+s+"</div>";
 		}
 		function creatfloatdiv(){
-			body.innerHTML += "<div id='floatdiv' class='floatdiv' onDblClick='closeed(\"floatdiv\")' onmouseover='mouseoverfloatdiv()' onmouseout='mouseoutfloatdiv()'>"+
+			$("#body").append("<div id='floatdiv' class='floatdiv' onDblClick='closeed(\"floatdiv\")' onmouseover='mouseoverfloatdiv()' onmouseout='mouseoutfloatdiv()'>"+
 									"<div id='floatdiv_button' onclick='closeed(\"floatdiv\")' class='floatdiv_button'>关闭</div>"+
 									"<div id='floatdiv_t_l' class='t_l' onmousedown='mousedownfloatdiv(1)' onmouseup='mouseupfloatdiv()'></div>"+
 									"<div id='floatdiv_t_m' class='t_m' onmousedown='mousedownfloatdiv(2)' onmouseup='mouseupfloatdiv()'></div>"+
@@ -2017,33 +2025,35 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 									"<div id='floatdiv_b_l' class='b_l' onmousedown='mousedownfloatdiv(7)' onmouseup='mouseupfloatdiv()'></div>"+
 									"<div id='floatdiv_b_m' class='b_m' onmousedown='mousedownfloatdiv(8)' onmouseup='mouseupfloatdiv()'></div>"+
 									"<div id='floatdiv_b_r' class='b_r' onmousedown='mousedownfloatdiv(9)' onmouseup='mouseupfloatdiv()'></div>"+
-								"</div>";
+								"</div>");
 			var target = document.getElementById("floatdiv");
 			mouseupfloatdiv();
 			width=floatdivprewid;
 			if (inwidth<floatdivprewid) width = inwidth;
-			target.style.display = 'none';
+			target.style.display = "none";
 			target.style.width = width+ 'px';
 			target.style.left = "0px";
 			target.style.top = "0px";
-			var baser = document.getElementById("AdLayer");
-			var innery = parseInt(baser.innerHeight || baser.clientHeight || baser.offsetHeight);
-			var nowy = parseInt(baser.style.pixelTop || baser.style.top || baser.offsetTop);
-			nowy += innery;
-			var nowx = 1000;
-			moveto(target.id,nowx,nowy);
+			moveto(target.id,(inwidth-width)/2,inheight/2-200);
+			floatdivprehei = 300;
+			$("#floatdiv").css("height",floatdivprehei).css("overflow","hidden");
 		}
 		function changefloatdivinner(number){
 			if (allcon[number].ico){
-				changeopacity(number+"_bottom_inner_img",20);
+				$('#'+number+"_bottom_inner_img").fadeTo(200,0.20);
 			}else{
-				var baser = document.getElementById(number+"_bottom_outer");
-				if (baser) baser.style.color = clickcolor;
+				$("#"+number+"_bottom_outer").css({color:clickcolor});
 			}
 			var target = document.getElementById("floatdiv_m_m");
 			if (!target) return;
-			target.innerHTML = '';
-			target.innerHTML += buildtitle(number) + builddetail(number) + buildlinker(number);
+			$("#floatdiv_m_m").empty().append(buildtitle(number) + builddetail(number) + buildlinker(number));
+			var linker=document.getElementById("floatdiv_linker");
+			var target=document.getElementById("floatdiv");
+			target.style.height = "auto";
+			target.style.display = "block";
+			floatdivprehei = (target.innerHeight || target.clientHeight || target.offsetHeight) + linker.offsetHeight;
+			target.style.display = "none";
+			$("#floatdiv").css("height",floatdivprehei);
 		}
 		function iframein(src){
 			var target = document.getElementById("floatdiv_m_m");
@@ -2056,13 +2066,29 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 			if (nowl3num==number) return;
 			nowl3num = number;
 			setallCookies();
-			var target = document.getElementById("floatdiv");
-			if (!target){
+			var o = document.getElementById("floatdiv");
+			if (!o){
 				creatfloatdiv();
-				var target = document.getElementById("floatdiv");
 			}
-			target.style.height = target.offsetHeight + 'px';
-			show("floatdiv",number,1);
+			o = $("#floatdiv");
+			moveto("floatdiv",0,0);
+			if (o.css("display")=="block"){
+				o.slideUp(150,function(){
+					changefloatdivinner(number);
+					$(this).css("overflow","hidden").css("height",floatdivprehei);
+					$(this).slideDown(250,function(){
+						moveto("floatdiv",0,0);
+					});
+				});
+			}else{
+				changefloatdivinner(number);
+				prox = setInterval(function(){
+						moveto("floatdiv",0,0);
+				},20)
+				o.fadeIn(400,function(){
+					clearInterval(prox);
+				});
+			}
 		}
 	</script>
 
@@ -2138,7 +2164,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 				return;
 			}
 			if (searchmode==0){
-				bottom.innerHTML = "搜索中..... 请稍候....<br/>";
+				$("#content_bottom").empty().append("搜索中..... 请稍候....<br/>");
 				for (i=1;i< alltot-2;i++){
 					listcon[i-1] = i;
 					listscore[i-1] = compare(i,target.value);
@@ -2153,10 +2179,14 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 				showtagup("content_bottom","span");
 			}
 			else{
-				bottom.innerHTML += '<hr/>';
-				bottom.innerHTML += "<pre>"+target.value+"</pre><br/>";
-				var result = eval(target.value);
-				bottom.innerHTML += "<br/>"+result;
+				$("#content_bottom").append("<hr/><pre>"+target.value+"</pre><br/>");
+				var result;
+				if (target.value=="help"){
+					result = "<br/>bottom 表示当前的窗口<br/> target 表示编辑窗口 <br/> root 为根节点<br/> ";
+				}else{
+					result = eval(target.value);
+				}
+				$("#content_bottom").append(result+"<br/>");
 			}
 			changewidhei();
 		}
@@ -2195,38 +2225,32 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 		var posincer = 4;
 		
 		function killall(level){
-			var targets = body.getElementsByTagName("div");
-			var i=0;
-			while(i<targets.length && targets[i]){
-				if (targets[i].id && (targets[i].id=="bgdiv" ||targets[i].id=="floatdiv" || targets[i].parentNode.id=="floatdiv" || targets[i].parentNode.parentNode.id=="floatdiv")){
-					i++; continue;
-				}
-				body.removeChild(targets[i]);
-			}
+			$("#content").remove();
+			$("#left").remove();
 			if (level==1){
-				body.innerHTML = 	"<div class='AdLayer' id='AdLayer'></div>"+
-									"<div class='level1_out' id='root'></div>"+ body.innerHTML;
+				$("#body").append("<div class='level1_out' id='content'></div>");
 			}
 			if (level==2){
-				body.innerHTML = 	"<div class='level2_left' id='left'></div>"+
+				$("#body").append("<div class='level2_left' id='left'></div>"+
 									"<div class='level2_content' id='content'>"+
 										"<div id='content_up' class='level2_content_up'>"+
-											"<span class='AdLayer' id='AdLayer'></span>"+
 										"</div>"+
 										"<div id='content_bottom' class='level2_content_bottom'>"+
 											"<span style='font-size:3em; cursor:default;'>欢迎！</span>"+
 										"</div>"+
-									"</div>" + body.innerHTML;
+									"</div>");
 			}
 			closeed("floatdiv");
 		}
 		function showtagup(id,tagname){
-			var target = document.getElementById(id+'').getElementsByTagName(tagname+'');
+			var target = document.getElementById(id+'');
+			if (!target) return;
+			target = target.getElementsByTagName(tagname+'');
 			if (target.length==0) return;
-			var deltime = (400+target.length*delaytime/2.0)/target.length/target.length;
+			var deltime = (400+target.length*target.length*delaytime)/target.length/target.length;
 			for (i=0;i<target.length;i++){
 				changeopacity(target[i].id,0);
-				setTimeout("showopacityup('"+target[i].id+"',5,100,8)",deltime*i*i);
+				$("#"+target[i].id).css("opacity",0).delay(i*delaytime).fadeTo(10*delaytime,1)
 			}
 		}
 		function showlevel2(l1num,l2num){
@@ -2238,21 +2262,18 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 			}
 			var i,moveevent;
 			killall(2);
-			nowlevel = 2;
-			nowl1num = l1num;
-			nowl2num = l2num;
-			nowl3num = -1;
+			nowlevel = 2; nowl1num = l1num;
+			nowl2num = l2num; nowl3num = -1;
 			setallCookies();
-			var target = document.getElementById("left");
 			for (i=1;i<=root.total;i++) {
-				if (root.all[i]!=l1num) moveevent = "onmouseover='movetitle(this.id,0)' onmouseout='movetitle(this.id,128)'";
+				if (root.all[i]!=l1num) moveevent = "onmouseover='movetitle(this.id,60,1)' onmouseout='movetitle(this.id,60,-1)'";
 				else moveevent = '';
-				target.innerHTML += "<span class='level2_left_in' id='"+root.all[i]+"_left_inner'"+moveevent+">"
+				$("#left").append("<span class='level2_left_in' id='"+root.all[i]+"_left_inner'"+moveevent+">"
 										+"<img class='level2_left_in_img' id='"+root.all[i]+"_left_inner_img' src= '"+allcon[root.all[i]].ico+"' alt= '"+allcon[root.all[i]].title+"' width='60px' height='60px' style='cursor:pointer;' onclick='showlevel2(this.id,-1)'/>"
 										+"<div class='level2_left_in_txt' id='"+root.all[i]+"_left_inner_txt' onclick='showlevel2(this.id,-1)'>"+allcon[root.all[i]].title+ "</div>"
-									+"</span><br/>";
-				if (root.all[i]==l1num) movetitle(root.all[i]+'_left_inner',0);
-				changeopacity(root.all[i]+'_left_inner_txt',50);
+									+"</span><br/>");
+				if (root.all[i]==l1num) movetitle(root.all[i]+'_left_inner',60,1);
+				$('#'+root.all[i]+'_left_inner_txt').css("left",0).css("opacity",0.5);
 			}
 			changewidhei();
 			target = document.getElementById("content_up");
@@ -2276,7 +2297,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 					}
 					inhtml+= ' <input type="button" id="searchboxsubmit" class="level2_content_up_searchboxsubmit" value="运行" onclick="findit();"/>';
 				}
-				target.innerHTML += inhtml;
+				$("#content_up").append(inhtml);
 				document.getElementById("searchboxtext").focus();
 				showtagup("content_up","input");
 			}else{
@@ -2289,12 +2310,12 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 					inhtml += "<span id='" + now.all[i]+ "' class='"+classname+"' onclick='showlevel2("+l1num+",this.id)'>"+ allcon[now.all[i]].title +"</span>";
 				}
 				if (now.total==0) inhtml = "<span class='level2_content_up_in' style='cursor:default;'>什么都没有哦！</span>";
-				target.innerHTML += inhtml;
+				$("#content_up").append(inhtml);
 				if (l2num!=-1){
-					document.getElementById("content_bottom").innerHTML = '';
+					$("#content_bottom").empty();
 					allcon[l2num].showdown(1);
 				}else{
-					document.getElementById("content_bottom").innerHTML = "<span id='guess' style='font-size:2.5em; cursor:default;'>猜你喜欢：</span><br/>";
+					$("#content_bottom").empty().append("<span id='guess' style='font-size:2.5em; cursor:default;'>随便看看：</span><br/>");
 					allcon[l1num].showdown(11);
 					showtagup("content_up","span");
 				}
@@ -2317,14 +2338,16 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 			nowlevel = 1;
 			nowl1num = -1; nowl2num = -1; nowl3num = -1;
 			setallCookies();
-			var target = document.getElementById(root.id);
+			$("#content").append("<div class='level1_out' id='content_mid'></div>");
+			var target = $("#content_mid");
 			for (i=1;i<=root.total;i++) { 
-				if (root.all[i]!=alltot-1)
-					target.innerHTML += "<span id='" + root.all[i]+ "' class='level1_in' onclick='showlevel2(this.id,-1)'>"+ allcon[root.all[i]].title +"</span>";
+				if (root.all[i]!=alltot-1){
+					target.append("<span id='" + root.all[i]+ "' class='level1_in' onclick='showlevel2(this.id,-1)'>"+ allcon[root.all[i]].title +"</span>");
+				}
 				level1image(root.all[i],100);
 			}
 			changewidhei();
-			showtagup("root","span");
+			showtagup("content_mid","span");
 		}
 		function reshowlevel(){
 			if (nowlevel!=2) showlevel1();
@@ -2372,6 +2395,8 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 				target.style.backgroundRepeat = "no-repeat";
 				target.style.backgroundAttachment = "fixed";
 				body.className = 'bgimg';
+				$("#bgdiv").css("background","url('"+bgimg[bgnum]+"') center fixed no-repeat");
+				$("#uplayout").css("background","url('"+bgimg[bgnum]+"') center fixed no-repeat");
 			}
         }
     </script>
@@ -2384,7 +2409,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 		}
 		function loader() {
 			addmessage();
-			document.body.style.overflow = 'hidden';
+			$("#body").css("overflow",'hidden');
 			window.setTimeout(function(){
 					window.setInterval(function(){timedo()},delaytime)
 					for (var i=0;i<message.length;i++) {
@@ -2397,12 +2422,27 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 				bgnum= Math.round(Math.random()*(bgimg.length-0.5));
 			while (bgnum<0 || bgnum>=bgimg.length);
 			bgimager();
+			if (document.layers) {
+				document.captureEvents(Event.MOUSEMOVE);
+			}
+			document.onmousemove = MouseXY;
+			document.onkeydown = EnterSubmit;
+			bartobottom();
+			$("#uplayout").css("opacity",0.85).css("top",inheight).css("zIndex",299).css("display","block");
+			$("#selectbar").css("float","left").css("left",barleft).css("top",inheight+bartop).css("zIndex",300).css("display","block");
+			$("#selector").css("float","left").css("zIndex",301).css("display","block");
+			$("#AdLayer").css("opacity",1);
+			$("#check").remove();
+			$("#ch_effects").bind('change',function(e){
+				if ($(this).attr("checked")=='checked')
+					$.fx.off = false;
+				else $.fx.off = true;
+			});
+			if (IamIeSix){
+				$("#selectcontainer").remove();
+				$("#body").append("<div id='AdLayer'></div>")
+			}
 		}
-        if (document.layers) {
-            document.captureEvents(Event.MOUSEMOVE);
-        }
-        document.onmousemove = MouseXY;
-		document.onkeydown = EnterSubmit;
 	</script>
 	
 </body>
