@@ -8,14 +8,15 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
     <title>LM share</title>
 	<base target="_blank"/>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes" />
 	<link rel="stylesheet" type="text/css" href="css/jquery.tzCheckbox.css"/>
 	<link rel="stylesheet" type="text/css" href="css/styles.css"/>
 	<style type="text/css">  
 		/*浮动文字  时间 背景*/
-		html {overflow:visible;}
-        .prespanstyle{ position:absolute; font-size:1em; font-weight:200; z-index:200; cursor:default;} 
-        .bgspanstyle{ position:absolute; font-size:1em; color:#4D4556; font-weight:200; z-index:200; cursor:default;} 
-		#AdLayer {color:blue; font-size:1.5em; position:absolute; float:right; display:inline-block; right:5px; z-index:3; cursor:default; padding:0.15em 0.25em 0 0;}
+		html {overflow:visible}
+        .FloatWordspan{ position:absolute; font-size:1em; font-weight:200; z-index:400; cursor:default;}
+		#TimeTicker {color:blue; font-size:1.5em; position:absolute; float:right; display:inline-block; right:5px; z-index:3; cursor:default; padding:0.15em 0.25em 0 0;}
 		body.bgimg {font-size:0.75em; -moz-user-select:none; }
 		.bgdiv {position:absolute; top:0; left:0; height:100%; width:100%; background-size:cover; overflow:hidden; z-index :-100;}
 		
@@ -47,7 +48,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 		
 		/*整体布局*/
 		.nojs {display:none;}
-		.level1_out {padding:0 5% 0; top:300px; text-align:center; -moz-user-select:none; height:auto;}
+		.level1_out {padding:0 3% 0; top:300px; text-align:center; -moz-user-select:none; height:auto;}
 		.level1_in {display:inline-block; font-size:1.5em; font-weight:bold; padding:0 5%; text-align:center; width:100px; cursor:pointer; zoom:1;}
 		
 		.level2_left {position:absolute; display:block; top:0; left:0; width:70px; z-index:50; border-right:1px solid gray; text-align:center;}
@@ -70,11 +71,11 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 		
 		.level2_content_bottom {position:relative; display:block; padding:1em 0 0 3em; height:80%; width:100%; z-index:50; overflow-y:auto; overflow-x:hidden; cursor:default; }
 		.level2_content_bottom_in_txt,.level2_content_bottom_in_icotxt {display:inline-block; font-size:1.2em; width:90%; line-height: 1.7em;  padding: 0px; color:#3c3c3c;}
-		.level2_content_bottom_in_icotxt {position:absolute; height:auto; top:128px; z-index:20; display:block; width:128px; background:#000000; color:#FFFFFF; text-align:center; cursor:pointer;}
+		.level2_content_bottom_in_icotxt {position:absolute; padding:0.1em; height:auto; top:128px; z-index:20; display:block; width:128px; line-height: 1.5em; background:#000000; color:#FFFFFF; text-align:center; cursor:pointer;}
 		.level2_content_bottom_in_ico {position:relative; display:inline-block; height:128px; width:128px; font-size:1.2em; line-height: 1.7em; margin: 20px; text-align:center;  overflow:hidden;}
 		.level2_content_bottom_in_img {position:relative; left:0px; z-index:10; }
 	</style>
-	
+
 	<style type="text/css">		
 		/*浮动层*/
 		.floatdiv{	width:60%; height:auto; display:none;
@@ -105,89 +106,12 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 		
 		.m_m{width:100%; height:100%; font-size:12px; cursor:move;}
 	</style>
-	
-	<script type="text/JavaScript" src="JScode/jquery-1.9.1.min.js"></script>
-	<script src="JScode/jquery.tzCheckbox.js"></script>
-	<script src="JScode/script.js"></script>
-	<!--[if IE 6]>
-    <script type="text/javascript" src="JScode/DD_belatedPNG_0.0.8a-min.js"></script>
-    <script type="text/javascript">
-		DD_belatedPNG.fix('.tel,.head_content');
-    </script>
-	<![endif]-->
-	<script type="text/javascript">
-        var dragging = false,mouseinselectbar=false;
-        var iX, iY;
-        var oX, oY;
-		var setbartop=0;
-		var bartop=-60,barleft=-40;
-		function bartotop(){
-			dragging = false;
-			$("#selectbar").stop(true).animate({top:bartop,left:barleft},"fast");
-			$("#selectbar").siblings().stop(true).animate({top:'0',left:'0'},"fast");
-			setbartop = 1;
-		}
-		function bartobottom(){
-			dragging = false;
-			$("#selectbar").stop(true).animate({top:inheight+bartop+'',left:barleft},"fast");
-			$("#selectbar").siblings().stop(true).animate({top:inheight+"",left:'0'},"fast");
-			setbartop = 0;
-		}
-        $(function(){
-            /*--------------拖曳效果----------------
-            *原理：标记拖曳状态dragging ,坐标位置iX, iY
-            *         mousedown:fn(){dragging = true, 记录起始坐标位置，设置鼠标捕获}
-            *         mouseover:fn(){判断如果dragging = true, 则当前坐标位置 - 记录起始坐标位置，绝对定位的元素获得差值}
-            *         mouseup:fn(){dragging = false, 释放鼠标捕获，防止冒泡}
-            */
-            $("#selectbar").mousedown(function(e) {
-				if (e.which == 3) return false;
-                dragging = true;
-                iX = x - this.offsetLeft;
-                iY = y - this.offsetTop;
-				oX = oY = 0;
-                this.setCapture && this.setCapture();
-				return false;
-            });
-            $("#uplayout").mousedown(function(e) {
-				if (e.which == 3) return false;
-                dragging = true;
-                iX = x - this.offsetLeft;
-                iY = y - this.offsetTop;
-				oX = oY = 0;
-            });
-            $("#selectbar").mouseenter(function(e) {
-				mouseinselectbar=true;
-				$("#selectbar").animate({left:'0'},100);
-				if (!setbartop && !dragging){
-					$("#selectbar").animate({top:inheight+bartop-50+""},{duration: 100,queue:false});
-					$("#selectbar").siblings().stop(true).animate({top:inheight+bartop+10+"",left:'0'},100);
-				}
-			});
-            $("#selectbar").mouseleave(function(e) {
-				mouseinselectbar=false;
-				this.releaseCapture && this.releaseCapture();
-				$("#selectbar").animate({left:barleft},100);
-				if (!setbartop && !dragging){
-					$("#selectbar").animate({top:inheight+bartop+""},{duration: 100,queue:false});
-					$("#selectbar").siblings().delay(2000).animate({top:inheight+"",left:'0'},100);
-				}
-			});
-            $(document).mouseup(function(e) {
-				if (oY<5 && mouseinselectbar) setbartop = 1-setbartop;
-				if (setbartop==1)	bartotop();
-				else	bartobottom();
-                e.cancelBubble = true;
-				this.releaseCapture && this.releaseCapture();
-				mouseupfloatdiv();
-            });
-        });
-        
-    </script>
-</head>
 
-<body id='body' onload="loader();" class="bgnoimg"  onmouseup="/*document.selection.empty();*/" onselectstart="return false">
-	
+	<script type="text/JavaScript" src="JScode/jquery-1.9.1.min.js"></script>
+	<script type="text/JavaScript" src="JScode/jquery.tzCheckbox.js"></script>
+	<script type="text/JavaScript" src="JScode/FloatWord.js"><!--文字跟随鼠标--></script>
+	<script type="text/JavaScript" src="JScode/TimeTicker.js"><!--时间跳动--></script>
+
 	<script type="text/JavaScript" language="JavaScript"> // 全局变量及函数
 		var isIE = document.all ? true : false;
 		var preinwidth,preinheight;
@@ -200,23 +124,12 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 		var nowl2num = -1;
 		var nowl3num = -1;
         var x,y;	//鼠标当前在页面上的位置
-		var inwidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
-		var inheight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+		var inwidth = 1;
+		var inheight = 1;
 		var sleft=0,stop=0; //文档滚动条位置
 		var body = document.getElementById("body");
+		var delaytime = 41;
 		
-		function movetoXY(s,x,y){
-			var object = document.getElementById(s+'');
-			if (!object) return;
-			if (x!=0){
-				object.style.pixelLeft = x+'px';
-				object.style.left = x+'px';
-			}
-			if (y!=0){
-				object.style.pixelTop = y+'px';
-				object.style.top = y+'px';
-			}
-		}
 		function joininimage(id,url,alt,width,height,event){
 			width = width || "auto";
 			height = height || "auto";
@@ -280,13 +193,10 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 		function changewidhei(){
 			if (setbartop==0) bartobottom();
 			else bartotop();
-			$("#selector").css("left",(inwidth-600)/2).css("top",(inheight-300)/2);
+			$("#selector").css("left",(inwidth-600)/2).css("paddingTop",(inheight-300)/2);
 			if (nowlevel==1){
-				var l1main = document.getElementById("content_mid");
-				if (l1main){
-					var h = 300;
-					l1main.style.paddingTop = (inheight - h) / 2 + 'px';
-				}
+				var h = 300;
+				$("#content_mid").css({"paddingTop":(inheight - h) / 2});
 			}else{
 				changeheight('left',inheight - bottomlimit);
 				changewidth('content',inwidth - rightlimit);
@@ -306,41 +216,46 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 				moveto("floatdiv",0,0);
 			}
 		}
-		function scrollxy(){
-			sleft = window.pageXOffset  //用于FF
-                || document.documentElement.scrollLeft
-                || document.body.scrollTop
-                || 0;
-			stop = window.pageYOffset  //用于FF
-                || document.documentElement.scrollTop  
-                || document.body.scrollTop  
-                || 0;
-		}
-		function innerpx(){
+		function GetInnerLength(){
 			inwidth = window.innerWidth
 					|| document.documentElement.clientWidth
 					|| document.body.clientWidth
-					|| 0;
+					+1;
 			inheight = window.innerHeight
 					|| document.documentElement.clientHeight
 					|| document.body.clientHeight
 					+1;
-			if (preinwidth != inwidth) {
+		}
+		function scrollxy(){
+			sleft = window.pageXOffset  //用于FF
+				|| document.documentElement.scrollLeft
+				|| document.body.scrollTop
+				|| 0;
+			stop = window.pageYOffset  //用于FF
+				|| document.documentElement.scrollTop  
+				|| document.body.scrollTop  
+				|| 0;
+		}
+		function innerpx(){
+			GetInnerLength();
+			if (preinwidth != inwidth || preinheight != inheight) {
 				changewidhei();
 				preinwidth = inwidth;
-			}
-			if (preinheight != inheight) {
-				changewidhei();
 				preinheight = inheight;
 			}
 			wid = sleft + inwidth;
 			hei = stop + inheight;
 		}
-        function MouseXY(e) { //从事件得到鼠标光标在页面上的位置
+		$(document).ready(function(){
+			setInterval(function(){
+				//scrollxy();
+				innerpx();
+			},41);
+		});
+        $(document).mousemove(function MouseXY(e) { //从事件得到鼠标光标在页面上的位置
 			e=e||window.event;
 			x = isIE ? sleft + e.clientX : e.pageX;
 			y = isIE ? stop + e.clientY : e.pageY ;
-			mousemove();
             if (dragging) {
 				var e = e || window.event;
 				oX = x - iX; oY = y - iY;
@@ -354,9 +269,9 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 				$("#selectbar").css({"top":oY +bartop+30 + "px"});
 				$("#selectbar").siblings().css({"top":oY +bartop+90+ "px"});
             }
-        }
+        });
 	</script>
-	
+
 	<script type="text/JavaScript" language="JavaScript">  // Cookie相关函数
 		function getCookie(c_name) {
 			if (document.cookie.length>0) { 
@@ -390,67 +305,858 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 			nowl3num = parseInt(getCookie("nowl3num"));
 		}
     </script>
-	
-	<script type="text/JavaScript" language="JavaScript">	<!--时间跳动-->
-　　    //<!--
-　　    function initAd() {
-            //document.all.AdLayer.style.posTop = -200; //设置onLoad事件激发以后，广告层相对于固定后的y方向位置
-            //document.getElementById("AdLayer").style.posWidth = 150;
-            //document.getElementById("AdLayer").style.posHeight = 150;
-            document.getElementById("AdLayer").style.visibility = 'visible'//设置层为可见
-            MoveLayer('AdLayer'); //调用函数MoveLayer()
+
+	<script type="text/JavaScript" language="JavaScript">  // tzCheckBox 函数
+		$(document).ready(function(){
+			$('input[type=checkbox]').tzCheckbox({labels:['Enable','Disable']});
+			// To use tzCheckbox
+		});
+	</script>
+
+	<script type="text/JavaScript" language="JavaScript">   //<!-- 总信息的提取 -->
+		var allcon = new Array();
+		var showlist = new Array();
+		var titlesta = new Array();
+		var waittot = 0,showtot=0;
+		var alltot = 0;
+		var root = new container("root","根节点",'','','','',0,0,'');
+		var ico_id_suffix = "_ico";
+		var imager_id_suffix = "_imager";
+		var detail_id_suffix = "_detail";
+		var linker_id_suffix = "_linker";
+		var type_id_suffix = "_type";
+		var icon_address = "icon/";
+		
+		function container(id,title,detail,linker,ico,imager,level,number,type){
+			this.id = id;
+			this.title = title;
+			this.detail = detail;
+			this.linker = linker;
+			this.imager = imager;
+			if (ico)
+				this.ico = icon_address + ico;
+			else this.ico = '';
+			this.type = type;
+			predownload(imager);
+			predownload(this.ico);
+			this.level = level;
+			this.number = number;
+			this.all = new Array();
+			this.total = 0;
+		}
+		container.prototype.add = function add(target){
+			this.total++;
+			this.all[this.total] = target.number;
+		}
+		container.prototype.showself = function showself(a){
+			var target = document.getElementById("content_bottom");
+			if (!target) return;
+			var title;
+			if (!this.ico)
+				if (this.level==3) title = "→ " + this.title;
+				else if (this.level==2) title = "√ " + this.title;
+				else if (this.level==1) title = "「 "+this.title+" 」";
+				else title = this.title;
+			else title = this.title;
+			if (a==1 && this.ico)	title = title.replace("(","<br/>(");
+			if (a==1){
+				if (this.ico){
+					$("#content_bottom").append("<span class='level2_content_bottom_in_ico' id='"+this.number+"_bottom_inner' onmouseover='movetitle(this.id,128,1)' onmouseout='movetitle(this.id,128,-1)'>"
+												+"<img class='level2_content_bottom_in_img' id='"+this.number+"_bottom_inner_img' src= '"+this.ico+"' alt= '"+this.title+"' width='128px' height='128px' style='cursor:pointer;' onclick='showit(this.id)'/>"
+												+"<div class='level2_content_bottom_in_icotxt' id='"+this.number+"_bottom_inner_txt' onclick='showit(this.id)'>"+title+ "</div>"
+										+"</span>");
+					$('#'+this.number+'_bottom_inner_txt').css("opacity",0.75).css("top","128").css("left",'0');
+					var target = document.getElementById(this.number+'_bottom_inner_txt');
+					var autoheight = (target.innerHeight || target.clientHeight || target.offsetHeight);
+					target.style.height = autoheight + 'px';
+					return 0;
+				}else{
+					return 1;
+				}
+			}else{
+				$("#content_bottom").append("<br/><span id='"+this.number+"_bottom_outer' class='level2_content_bottom_in_txt'>"
+									+"<span id='"+this.number+"_bottom_inner_txt' style='cursor:pointer; width:auto;' onclick='showit(this.id)'>"+title+ "</span>"
+								+"</span>");
+				$("#"+this.number+"_bottom_inner_txt").css({"font-size":"+=5","lineHeight":"1.5"});
+				$("#"+this.number+"_bottom_inner_txt").mouseenter(function(){
+					$(this).animate({'paddingLeft':'+='+20* !$.fx.off},100);
+				});
+				$("#"+this.number+"_bottom_inner_txt").mouseleave(function(){
+					$(this).animate({'paddingLeft':'-='+20* !$.fx.off},100);
+				});
+				return 0;
+			}
+		}
+		container.prototype.showdown = function showdown(a){
+			var tou=-1,wei=0,i,temp;
+			var list = new Array();
+			var status = new Array();
+			list[0] = this.number;
+			while (tou<wei){
+				tou++;
+				temp = allcon[list[tou]];
+				if (a==0 || a==1) status[tou] = temp.showself(a);
+				else status[tou] = 0;
+				for (i=1;i <= temp.total;i++){
+					list[++wei] = temp.all[i];
+				}
+			}
+			tou = wei;
+			while (a>1 && tou>=0){
+				do{
+					temp = Math.round(Math.random()*(tou+1));
+				}while (temp<0 || temp>tou)
+				if (allcon[list[temp]].level==3){
+					status[temp] = allcon[list[temp]].showself(1);
+					a--;
+				}
+				i = status[temp]; status[temp] = status[tou]; status[tou] = i;
+				i = list[temp]; list[temp] = list[tou]; list[tou] = i;
+				tou--;
+			}
+			if (a>=1)
+				for (i=0;i<=wei;i++)
+					if (status[i]==1){
+						allcon[list[i]].showself(0);
+					}	
+			changewidhei();
+		}
+		function movetitle(s,len,i){
+			var t = document.getElementById(s+"_txt");
+			var autoheight = (t.innerHeight || t.clientHeight || t.offsetHeight);
+			$("#"+s+'_txt').stop(true).animate({top:Math.max(0,len-i*autoheight)},100);
+		}
+		function getinnerHTML(id){
+			var temp=document.getElementById(id);
+			if (temp) return temp.innerHTML;
+			else return '';
+		}
+		function calc(a,t){
+			var i=0;
+			var total=0;
+			for (i=0;i< t;i++)
+				if (a[i]=='_') total++;
+			return total;
+		}
+		function predownload(src){
+			var img = new Image();
+			img.src = src;
+			return img.complete;
+		}
+		function finddown(father,list){
+			var lister = list.getElementsByTagName('dt');
+			var stack = new Array(10);
+			var ls,id,title,tot,detail,linker,ico,imager,type;
+			var i,tot=0;
+			stack[0] = father; allcon[0] = father;
+			for (i=0;lister[i];i++){
+				ls=lister[i];
+				id = ls.id;
+				title = ls.innerHTML;
+				tot = calc(id.split(''),id.split("").length);
+				detail = getinnerHTML(id + detail_id_suffix);
+				linker = getinnerHTML(id + linker_id_suffix);
+				ico = getinnerHTML(id + ico_id_suffix);
+				imager = getinnerHTML(id + imager_id_suffix);
+				type = getinnerHTML(id + type_id_suffix);
+				var c = new container(id,title,detail,linker,ico,imager,tot+1,i+1,type);
+				stack[tot].add(c);
+				stack[tot+1] = c;
+				allcon[i+1] = c;
+			}
+			title = "全文查找"; tot = 0; detail = ''; linker = ''; id = title;
+			ico = "SearchInAll.png" ;
+			var c = new container(id,title,detail,linker,ico,'',tot+1,i+1,'');
+			stack[tot].add(c);
+			stack[tot+1] = c;
+			allcon[i+1] = c;
+			alltot=i+2;
+			i++;
+			title = "返回首页"; tot = 0; detail = ''; linker = ''; id = title;
+			ico = "ReturnBack.png" ;
+			var c = new container(id,title,detail,linker,ico,'',tot+1,i+1,'');
+			stack[tot].add(c);
+			stack[tot+1] = c;
+			allcon[i+1] = c;
+			alltot=i+2;
+			i++;
+			$("#root").remove();
+			$("#left").remove();
+		}
+		$(document).ready(function(){
+			$("#left").css("display",'none');
+			$("#root").css("display",'none');
+			finddown(root,document.getElementById(root.id+"_next"));
+		});
+	</script>
+
+	<script type="text/JavaScript" language="JavaScript"> 	<!-- 层动画相关函数 -->
+		var prox;
+		var dx,dy,mx=0,my=0,breakx=0,breaky=0,mouseD=0,mouseout=1;
+		var mousedown_opacity = 0.6;
+		var mouseup_opacity = 0.9;
+		var border = 4;
+		var outtimer;
+		var divshowdelaytime = 13;
+		var divshowperdec = 11;
+		var opacitydelaytime = 41;
+		
+		var floatdivprehei = 0;
+		
+		function closeed(id){/*--关闭--*/
+			o = $("#floatdiv");
+			if (!o) return;
+			mouseupfloatdiv();
+			nowl3num = -1;
+			setallCookies();
+			if(o.css("display") == "block")
+			{
+				o.css("cursor","default").stop(true).fadeOut(300,function(){
+					$(this).css("display","none");
+				});
+			}
+		}
+		function outfloatdiv(){
+			mouseD = 0; mouseover = 0;
+			mouseupfloatdiv();
+		}
+		function mouseupfloatdiv(){
+			$("#floatdiv").css("opacity",mouseup_opacity);
+			//$("#floatdiv").fadeTo(50,mouseup_opacity);
+			mouseD = 0;
+		}
+		function mouseoutfloatdiv(){
+			outtimer = setTimeout(function(){outfloatdiv()},delaytime*7);
+		}
+		function mouseoverfloatdiv(){
+			clearTimeout(outtimer);
+			mouseover = 1;
+		}
+		function mousedownfloatdiv(id){
+			var od = document.getElementById("floatdiv");
+			if (!od) return;
+			$("#floatdiv").fadeTo(50,mousedown_opacity);
+			mouseD = id;
+			mx = x; my = y;
+			od.style.left = od.offsetLeft + "px";
+			od.style.top = od.offsetTop + "px";
+			floatdivprehei = od.offsetHeight-border;
+			floatdivprewid = od.offsetWidth-border;
+			moveto(od.id,0,0);
+		}
+		function changefloatinnerheight(){
+			var title = document.getElementById("floatdiv_title");
+			var linker = document.getElementById("floatdiv_linker");
+			var detail = document.getElementById("floatdiv_detail");
+			var htitle = 0;
+			if (title && title.offsetHeight) htitle = title.offsetHeight;
+			var hlinker = 0;
+			if (linker && linker.offsetHeight) hlinker = linker.offsetHeight;
+			var hdetail = floatdivprehei - htitle - hlinker;
+			if (hdetail<=0) hdetail = 0;
+			changeheight(detail.id,hdetail);
+			if (detail) detail.innerHTML = hdetail;
+		}
+		$(document).mousemove(function floatdivmove(){
+			var od = document.getElementById("floatdiv");
+			if (!od) return;
+			if (!od || mouseD==0 || mouseover==0) return;
+			var xinc=0,yinc=0;
+			var temp,out=0;
+			yinc = y-my;  xinc = x-mx;
+			mx = x; my = y;
+			var nowx = parseInt(od.style.pixelLeft || od.style.left);
+			var nowy = parseInt(od.style.pixelTop || od.style.top);
+			switch (mouseD){
+				case 7: case 8: case 9:		
+					temp = floatdivprehei+yinc;
+					if ((yinc<0 || temp+nowy<inheight-border ) && (heilowlimit<temp || yinc>0))
+						changeheight(od.id,floatdivprehei=temp);
+			}
+			switch (mouseD){
+				case 3: case 6: case 9:	
+					temp = floatdivprewid+xinc;
+					if ((xinc <0 || temp+nowx<inwidth-border )&& (widlowlimit<temp || xinc>0))
+						changewidth(od.id,floatdivprewid=temp);
+			}
+			switch (mouseD){
+				case 5: case 1: case 2: case 3:
+				if (nowy + yinc<=0) yinc = -nowy; 
+				if (nowy + yinc>=inheight-border) yinc = inheight-border-nowy; 
+				if (mouseD!=5){
+					temp = floatdivprehei-yinc;
+					if (heilowlimit<temp)
+						changeheight(od.id,floatdivprehei=temp);
+					else yinc = 0;
+				}
+				moveto(od.id,0,yinc);
+			}
+			switch (mouseD){
+				case 5: case 1: case 4: case 7:
+				if (nowx + xinc<=0) xinc = -nowx;
+				if (nowx + xinc>=inwidth-border) xinc = inwidth-border-nowx;
+				if (mouseD!=5){
+					temp = floatdivprewid-xinc;
+					if (widlowlimit<temp)
+						changewidth(od.id,floatdivprewid=temp);
+					else xinc = 0;
+				}
+				moveto(od.id,xinc,0);
+			}
+		});
+	</script>
+
+	<script type="text/JavaScript" language="JavaScript">  // 描述层相关函数
+		var clickcolor = "#0000FF";
+		var notitle = "无名";
+		var nodetail = "没有介绍。"
+		var nolinker = "无下载。";
+		
+		function buildtitle(number){
+			var s = allcon[number].title;
+			var pretext = "<div id='floatdiv_title' class='floatdiv_title'>";
+			if (s=='') return pretext+notitle+"</div>";
+			return pretext+s+"<hr/></div>";
+		}
+		function inserter(string,pointer,inser,times){
+			var ts = string.split(pointer);
+			var i;
+			var txt = '';
+			for (i=0;i<times;i++){
+				txt += inser;
+			}
+			for (i=0;i<ts.length;i++){
+				ts[i] = txt + ts[i];
+			}
+			string = ts.join(pointer);
+			return string;
+		}
+		function builddetail(number){
+			var s = allcon[number].detail;
+			var pretxt = "<div id='floatdiv_detail' class='floatdiv_detail'><b style='font-size:1.5em'>介绍:</b><br/>"
+			if (s=='') return pretxt+nodetail+"</div>";
+			s = inserter(s,"<br>","&nbsp;",3);
+			return pretxt+s+"</div>";
+		}
+		function buildlinker(number){
+			var s = allcon[number].linker;
+			var pretxt = "<div id='floatdiv_linker' class='floatdiv_linker'><b style='font-size:1.5em'><hr/>链接:</b><br/>";
+			if (s=='') return pretxt+nolinker+"</div>";
+			s = inserter(s,"<br>","&nbsp;",3);
+			return pretxt+s+"</div>";
+		}
+		function creatfloatdiv(){
+			$("#body").append("<div id='floatdiv' class='floatdiv' onDblClick='closeed(\"floatdiv\")' onmouseover='mouseoverfloatdiv()' onmouseout='mouseoutfloatdiv()'>"+
+									"<div id='floatdiv_button' onclick='closeed(\"floatdiv\")' class='floatdiv_button'>关闭</div>"+
+									"<div id='floatdiv_t_l' class='t_l' onmousedown='mousedownfloatdiv(1)' onmouseup='mouseupfloatdiv()'></div>"+
+									"<div id='floatdiv_t_m' class='t_m' onmousedown='mousedownfloatdiv(2)' onmouseup='mouseupfloatdiv()'></div>"+
+									"<div id='floatdiv_t_r' class='t_r' onmousedown='mousedownfloatdiv(3)' onmouseup='mouseupfloatdiv()'></div>"+
+									"<div id='floatdiv_m_l' class='m_l' onmousedown='mousedownfloatdiv(4)' onmouseup='mouseupfloatdiv()'></div>"+
+									"<div id='floatdiv_m_m' class='m_m' onmousedown='mousedownfloatdiv(5)' onmouseup='mouseupfloatdiv()'>"+
+									"</div>"+
+									"<div id='floatdiv_m_r' class='m_r' onmousedown='mousedownfloatdiv(6)' onmouseup='mouseupfloatdiv()'></div>"+
+									"<div id='floatdiv_b_l' class='b_l' onmousedown='mousedownfloatdiv(7)' onmouseup='mouseupfloatdiv()'></div>"+
+									"<div id='floatdiv_b_m' class='b_m' onmousedown='mousedownfloatdiv(8)' onmouseup='mouseupfloatdiv()'></div>"+
+									"<div id='floatdiv_b_r' class='b_r' onmousedown='mousedownfloatdiv(9)' onmouseup='mouseupfloatdiv()'></div>"+
+								"</div>");
+			var target = document.getElementById("floatdiv");
+			mouseupfloatdiv();
+			width=floatdivprewid;
+			if (inwidth<floatdivprewid) width = inwidth;
+			target.style.display = "none";
+			target.style.width = width+ 'px';
+			target.style.left = "0px";
+			target.style.top = "0px";
+			moveto(target.id,(inwidth-width)/2,inheight/2-200);
+			floatdivprehei = 300;
+			$("#floatdiv").css("height",floatdivprehei).css("overflow","hidden");
+		}
+		function changefloatdivinner(number){
+			if (allcon[number].ico){
+				$('#'+number+"_bottom_inner_img").fadeTo(200,0.20);
+			}else{
+				$("#"+number+"_bottom_outer").css({color:clickcolor});
+			}
+			var target = document.getElementById("floatdiv_m_m");
+			if (!target) return;
+			$("#floatdiv_m_m").empty().append(buildtitle(number) + builddetail(number) + buildlinker(number));
+			var linker=document.getElementById("floatdiv_linker");
+			var target=document.getElementById("floatdiv");
+			target.style.height = "auto";
+			target.style.display = "block";
+			floatdivprehei = (target.innerHeight || target.clientHeight || target.offsetHeight) + linker.offsetHeight;
+			target.style.display = "none";
+			$("#floatdiv").css("height",floatdivprehei);
+		}
+		function iframein(src){
+			var target = document.getElementById("floatdiv_m_m");
+			if (!target) return;
+			target.innerHTML = '';
+			target.innerHTML += "<iframe src='"+src+"' style='width:96%; height:96%; position:absolute; top:2%; left:2%;'></iframe>";
+		}
+		function showit(id){
+			var number = parseInt(id);
+			if (nowl3num==number) return;
+			nowl3num = number;
+			setallCookies();
+			var o = document.getElementById("floatdiv");
+			if (!o){
+				creatfloatdiv();
+			}
+			o = $("#floatdiv");
+			moveto("floatdiv",0,0);
+			if (o.css("display")=="block"){
+				o.slideUp(150,function(){
+					changefloatdivinner(number);
+					$(this).css("overflow","hidden").css("height",floatdivprehei);
+					$(this).slideDown(250,function(){
+						moveto("floatdiv",0,0);
+					});
+				});
+			}else{
+				changefloatdivinner(number);
+				prox = setInterval(function(){
+						moveto("floatdiv",0,0);
+				},20)
+				o.fadeIn(400,function(){
+					clearInterval(prox);
+				});
+			}
+		}
+	</script>
+
+	<script type="text/JavaScript" language="JavaScript">  // 全文查找相关函数
+		var listcon=new Array(),listscore=new Array();
+		var docost=7.0,limit = 7;
+		
+		function min(q,w,e){
+			var temp =q;
+			if (temp>w) temp = w;
+			if (temp>e) temp = e;
+			return temp;
+		}
+		function between(c1,c2){
+			if (c1 == c2) return docost / 73.0;
+			if (c1.toUpperCase()==c2.toUpperCase()) return docost / 71.0;
+			return docost;
+		}
+		function editdistance(s1,s2){
+			var f = new Array();
+			var i,ti,t,j,l1=s1.length,l2=s2.length;
+			if (!l1 || !l2) return 10000;
+			for (i=0;i<=1;i++){
+				f[i] = new Array();
+			}
+			for (i=0;i<=l2;i++){
+				f[0][i] = i*docost+limit;
+			}
+			for (i=1;i<=l1;i++){
+				ti = i & 1; f[ti][0] = i*docost+limit;
+				for (j=1;j<=l2;j++){
+					t = between(s1[i-1],s2[j-1]);
+					if (t<1 && i-1>0 && j-1>0 && between(s1[i-2],s2[j-2])<1) t -= 1;
+					f[ti][j] = min(f[1-ti][j-1]+t,f[1-ti][j]+docost, f[ti][j-1]+docost);
+				}
+			}
+			return f[l1 & 1][l2];	
+		}
+		function compare(number,s){
+			var temp = allcon[number];
+			var scoretitle = editdistance(temp.title,s) - Math.abs(temp.title.length-s.length)*docost+0.001;
+			var scoredetail = editdistance(temp.detail,s) - Math.abs(temp.detail.length-s.length)*docost+0.001;
+			if (!temp.detail) scoredetail = 54.3;
+			return scoretitle*scoretitle*scoretitle * scoredetail /1.0 /(temp.level);
+		}
+		function qsort(q,w){
+			var e=q,r=w,t=listscore[(q+w)>>1],y,u;
+			do{
+				while (listscore[e]<t) e++;
+				while (listscore[r]>t) r--;
+				if (e<=r){
+					y = listcon[e]; listcon[e] = listcon[r]; listcon[r] = y;
+					u = listscore[e]; listscore[e] = listscore[r]; listscore[r] = u;
+					e++; r--;
+				}
+			}while(e<r);
+			if (e<w) qsort(e,w);
+			if (q<r) qsort(q,r);
+		}
+		function findit(){
+			var target = document.getElementById("searchboxtext");
+			var bottom = document.getElementById("content_bottom");
+			if (!target || !target.value || !bottom) return;
+			var i=0;
+			if (target.value=="textarea" && searchmode==0){
+				searchmode = 1;
+				showlevel2(alltot-2,-1);
+				return;
+			}
+			if (target.value=="search" && searchmode==1){
+				searchmode = 0;
+				showlevel2(alltot-2,-1);
+				return;
+			}
+			if (searchmode==0){
+				$("#content_bottom").empty().append("搜索中..... 请稍候....<br/>");
+				for (i=1;i< alltot-2;i++){
+					listcon[i-1] = i;
+					listscore[i-1] = compare(i,target.value);
+				}
+				
+				qsort(0,listcon.length-1);
+				bottom.innerHTML = "";
+				for (i=0;i<listcon.length;i++){
+					allcon[listcon[i]].showself(0);
+					//bottom.innerHTML += "&nbsp;&nbsp;&nbsp;&nbsp;" + listscore[i] +"&nbsp;&nbsp;&nbsp;&nbsp;" + i +"&nbsp;&nbsp;&nbsp;&nbsp;" + listcon[i] + ' ' + allcon[listcon[i]].id ;
+				}
+				showtagup("content_bottom","span");
+			}
+			else{
+				$("#content_bottom").append("<hr/><pre>"+target.value+"</pre><br/>");
+				var result;
+				if (target.value=="help"){
+					result = "<br/>bottom 表示当前的窗口<br/> target 表示编辑窗口 <br/> root 为根节点<br/> ";
+				}else{
+					result = eval(target.value);
+				}
+				$("#content_bottom").append(result+"<br/>");
+			}
+			changewidhei();
+		}
+		var EnterSubmit = function(evt)
+		{
+			evt = window.event || evt;
+			if (evt.keyCode == 13)
+			{
+				if (nowlevel==2){
+					var target = document.getElementById("searchboxtext");
+					if (target && (!target.value || searchmode)){
+						target.focus(); return;
+					}
+					var target = document.getElementById("searchboxsubmit");
+					if (target && !searchmode) target.click();
+				}
+				else if (nowlevel==1){
+					showlevel2(alltot-2,-1);
+					var target = document.getElementById("searchboxtext");
+					if (target) target.focus();
+				}
+	　　    }
+		}
+		function clrsearchboxtext(){
+			var target = document.getElementById("searchboxtext");
+			if (!target) return;
+			target.value = '';
+			target.focus();
+		}
+	</script>
+
+	<script type="text/JavaScript" language="JavaScript">  //主界面相关函数
+		var leftimgwidth = 65;
+		var leftimgheight = 65;
+		var searchmode = 0;
+		var posincer = 4;
+		
+		function killall(level){
+			$("#content").remove();
+			$("#left").remove();
+			if (level==1){
+				$("#body").append("<div class='level1_out' id='content'></div>");
+			}
+			if (level==2){
+				$("#body").append("<div class='level2_left' id='left'></div>"+
+									"<div class='level2_content' id='content'>"+
+										"<div id='content_up' class='level2_content_up'>"+
+										"</div>"+
+										"<div id='content_bottom' class='level2_content_bottom'>"+
+											"<span style='font-size:3em; cursor:default;'>欢迎！</span>"+
+										"</div>"+
+									"</div>");
+			}
+			closeed("floatdiv");
+		}
+		function showtagup(id,tagname){
+			var target = document.getElementById(id+'');
+			if (!target) return;
+			target = target.getElementsByTagName(tagname+'');
+			if (target.length==0) return;
+			var deltime = Math.max(7,(300+target.length*delaytime*7)/target.length/target.length);
+			for (i=0;i<target.length;i++){
+				$("#"+target[i].id).css("opacity",0).delay(i*deltime*!$.fx.off).fadeTo(10*delaytime,1)
+			}
+		}
+		function showlevel2(l1num,l2num){
+			l1num = parseInt(l1num);
+			l2num = parseInt(l2num);
+			if (l1num==((alltot-1).toString())) {
+				showlevel1();
+				return ;
+			}
+			var i,moveevent;
+			killall(2);
+			nowlevel = 2; nowl1num = l1num;
+			nowl2num = l2num; nowl3num = -1;
+			setallCookies();
+			for (i=1;i<=root.total;i++) {
+				if (root.all[i]!=l1num) moveevent = "onmouseover='movetitle(this.id,60,1)' onmouseout='movetitle(this.id,60,-1)'";
+				else moveevent = '';
+				$("#left").append("<span class='level2_left_in' id='"+root.all[i]+"_left_inner'"+moveevent+">"
+										+"<img class='level2_left_in_img' id='"+root.all[i]+"_left_inner_img' src= '"+allcon[root.all[i]].ico+"' alt= '"+allcon[root.all[i]].title+"' width='60px' height='60px' style='cursor:pointer;' onclick='showlevel2(this.id,-1)'/>"
+										+"<div class='level2_left_in_txt' id='"+root.all[i]+"_left_inner_txt' onclick='showlevel2(this.id,-1)'>"+allcon[root.all[i]].title+ "</div>"
+									+"</span><br/>");
+				if (root.all[i]==l1num) movetitle(root.all[i]+'_left_inner',60,1);
+				$('#'+root.all[i]+'_left_inner_txt').css("left",0).css("opacity",0.5);
+			}
+			changewidhei();
+			target = document.getElementById("content_up");
+			var inhtml = '';
+			if (l1num==(alltot-2).toString()) {
+				if (searchmode == 0){
+					if (!isIE) {
+						inhtml = '<input type="text" id="searchboxtext" class="level2_content_up_searchboxinput"/>';
+						inhtml+= '<span class="level2_content_up_searchboxclr" onclick="clrsearchboxtext();">X</span>';
+					}
+					else
+						inhtml =  '<input rows="auto" cols="20" type="text" id="searchboxtext" class="level2_content_up_searchboxtextie" value=""/>';
+					inhtml+= '<input type="button" id="searchboxsubmit" class="level2_content_up_searchboxsubmit" value="搜索" onclick="findit();"/>';
+				}else{
+					if (!isIE) {
+						inhtml = '<textarea id="searchboxtext" class="level2_content_up_searchboxcode" value=""></textarea>';
+					}
+					else{
+						inhtml = '<textarea rows="5" id="searchboxtext" class="level2_content_up_searchboxtextie"></textarea>';
+						inhtml+= '<span class="level2_content_up_searchboxclr" onclick="clrsearchboxtext();">X</span>';
+					}
+					inhtml+= ' <input type="button" id="searchboxsubmit" class="level2_content_up_searchboxsubmit" value="运行" onclick="findit();"/>';
+				}
+				$("#content_up").append(inhtml);
+				document.getElementById("searchboxtext").focus();
+				showtagup("content_up","input");
+			}else{
+				var now = allcon[l1num];
+				var inhtml = '';
+				var classname='';
+				for (i=1;i<=now.total;i++){
+					if (now.all[i]!=l2num) classname = 'level2_content_up_in';
+					else classname = 'level2_content_up_in_choose';
+					$("#content_up").append("<span id='" + now.all[i]+ "' class='"+classname+"' onclick='showlevel2("+l1num+",this.id)'>"+ allcon[now.all[i]].title +"</span>");
+				}
+				if (now.total==0)	$("#content_up").append("<span class='level2_content_up_in' style='cursor:default;'>什么都没有哦！</span>");
+				if (l2num!=-1){
+					$("#content_bottom").empty();
+					allcon[l2num].showdown(1);
+				}else{
+					$("#content_bottom").empty().append("<span id='guess' style='font-size:2.5em; cursor:default;'>随便看看：</span><br/>");
+					allcon[l1num].showdown(11);
+					showtagup("content_up","span");
+				}
+				showtagup("content_bottom","img");
+				showtagup("content_bottom","span");
+			}
+			changewidhei();
+		}
+		function level1image(number,width){
+			var coner = allcon[number];
+			if (coner.ico=='') return;
+			var target = document.getElementById(coner.number.toString());
+			if (!target) return;
+			var height = width;
+			target.innerHTML = joininimage(coner.id+'_ico',coner.ico,coner.title,width,height);
+			target.innerHTML += coner.title;
+		}
+		function showlevel1(){
+			killall(1);
+			nowlevel = 1;
+			nowl1num = -1; nowl2num = -1; nowl3num = -1;
+			setallCookies();
+			$("#content").append("<div class='level1_out' id='content_mid'></div>");
+			var target = $("#content_mid");
+			for (i=1;i<=root.total;i++) { 
+				if (root.all[i]!=alltot-1){
+					target.append("<span id='" + root.all[i]+ "' class='level1_in' onclick='showlevel2(this.id,-1)'>"+ allcon[root.all[i]].title +"</span>");
+					$("#"+root.all[i]).mouseenter(function(){
+						$(this).css({"color":"#777777"}).animate({"paddingLeft":"+="+15* !$.fx.off,"paddingRight":"+="+15* !$.fx.off,"letterSpacing":'+=4'},500);
+					});
+					$("#"+root.all[i]).mouseleave(function(){
+						$(this).css({"color":"#000000"}).animate({"paddingLeft":"-="+15* !$.fx.off,"paddingRight":"-="+15* !$.fx.off,"letterSpacing":'-=4'},500);
+					});
+				}
+				level1image(root.all[i],100);
+			}
+			changewidhei();
+			showtagup("content_mid","span");
+		}
+		function reshowlevel(){
+			if (nowlevel!=2) showlevel1();
+			else {
+				if (nowl3num!=-1) {
+					setTimeout("showit("+nowl3num+")",500);
+				}
+				showlevel2(nowl1num,nowl2num);
+			}
+		}
+		$(document).ready(function(){
+			getallCookies();
+			reshowlevel();
+		});
+	</script>
+
+	<script type="text/JavaScript" language="JavaScript">	<!--背景缓存载入-->
+		var bg = new Image();
+		var bgimg= new Array();
+		var bgnum = 0;
+		bgimg[0] = 'http://www.pp3.cn/uploads/allimg/111110/14010AU3-0.jpg';
+		bgimg[bgimg.length] = 'http://www.kole8.com/desktop/desk_file-11/2/2/2012/10/201210314361319.jpg';
+		bgimg[bgimg.length] = 'http://desktop.inlishui.com/DesktopFiles/设计/桌面精选壁纸 2010-01-21/desktop.inlishui.com_060.jpg';
+		bgimg[bgimg.length] = 'http://www2.ppdesk.com/file/20100120/desk/2009/10/16/keai200910_73_1920x1440.jpg';
+		bgimg[bgimg.length] = 'http://dl.bizhi.sogou.com/images/2013/12/06/437033.jpg';
+		bgimg[bgimg.length] = 'http://dl.bizhi.sogou.com/images/2013/12/05/435145.jpg';
+		bgimg[bgimg.length] = 'http://dl.bizhi.sogou.com/images/2012/10/12/312777.jpg';
+		bgimg[bgimg.length] = 'http://dl.bizhi.sogou.com/images/2012/02/09/96359.jpg';
+		bgimg[bgimg.length] = 'http://dl.bizhi.sogou.com/images/2012/10/12/312805.jpg';
+		bgimg[bgimg.length] = 'http://dl.bizhi.sogou.com/images/2012/10/12/312825.jpg';
+		bgimg[bgimg.length] = 'http://dl.bizhi.sogou.com/images/2012/10/12/311223.jpg';
+		
+        function bgimager() {
+            if (!bg.complete){
+				bg.src = bgimg[bgnum];
+				setTimeout("bgimager()", 2000);
+			}else{			
+				var target = document.getElementById("bgdiv");
+				changeopacity("bgdiv",25);
+				showopacityup("bgdiv",25,50,2);
+				$("#bgdiv").css("background","#94BFCA url('"+bgimg[bgnum]+"') center fixed no-repeat");
+				$("#uplayout").css("background","#66CCFF url('"+bgimg[bgnum]+"') center fixed no-repeat");
+			}
         }
-        function MoveLayer(layerName) {
-            /*var x = document.documentElement.scrollWidth - 100 - AdLayer.style.posWidth; //  800;//浮动广告层固定于浏览器的x方向位置
-            //alert(x);
-            var y = 5; //浮动广告层固定于浏览器的y方向位置
-            var diff = (document.body.scrollTop + y - document.all.AdLayer.style.posTop) * .40;
-            var y = document.body.scrollTop + y - diff;
-            eval("document.all." + layerName + ".style.posTop = y");
-            eval("document.all." + layerName + ".style.posLeft = x"); //移动广告层
-            setTimeout("MoveLayer('AdLayer')", 20); //设置20毫秒后再调用函数MoveLayer()*/
-        }
-        function UpdateTime() {
-            var dq = new Date();
-            var hq, mq, sq, strq, yyq, mmq, ddq;
-            yyq = dq.getFullYear();
-            mmq = dq.getMonth() + 1;
-            ddq = dq.getDate();
-            hq = dq.getHours();
-            mq = dq.getMinutes();
-            sq = dq.getSeconds();
-            strq = "&nbsp;" + yyq + "年" + mmq + "月" + ddq + "日<br>&nbsp;";
-            if (hq < 10) strq += "0"; strq += hq; strq += ":";
-            if (mq < 10) strq += "0"; strq += mq; strq += ":";
-            if (sq < 10) strq += "0"; strq += sq;
-            document.getElementById("AdLayer").innerHTML = "<table border=0 cellSpacing=0 cellPadding=0 ><tr><td nowrap><font color=#110033 size=2><b>" + (strq) + "</b></font></td></tr></table>";
-            setTimeout("UpdateTime()", 507); //设置过1000毫秒就是1秒，调用UpdataTime方法
-        }
-        //-->
-        function showdata() {
-            var date = new Date(); //日期对象
-            var now = "";
-            now = date.getFullYear() + "-"; //读英文就行了
-            now = now + (date.getMonth() + 1) + "-"; //取月的时候取的是当前月-1如果想取当前月+1就可以了
-            now = now + date.getDate() + " ";
-            now = now + date.getHours() + ":";
-            now = now + date.getMinutes() + ":";
-            now = now + date.getSeconds() + "";
-            document.getElementById("AdLayer").innerHTML = "<table border=1 cellSpacing=0 cellPadding=0 width=100% borderColorDark=#ffcccc borderColorLight=whitesmoke height=100% style='BORDER-RIGHT-COLOR: #cccccc;BORDER-LEFT-COLOR: #cccccc;BORDER-TOP-COLOR: #cccccc;BORDER-BOTTOM-COLOR: #cccccc;'><tr><td valign=middle align=left nowrap><font color=#110033 size=3><b>" + (now) + "</b></font></td></tr></table>"; //div的html是now这个字符串
-            setTimeout("showdata()", 507); //设置过1000毫秒就是1秒，调用show方法
-        }
+		$(document).ready(function loader() {
+			$("#body").css("overflow",'hidden');
+			do
+				bgnum= Math.round(Math.random()*(bgimg.length-0.5));
+			while (bgnum<0 || bgnum>=bgimg.length);
+			bgimager();
+		});
     </script>
-	
+
+	<script type="text/JavaScript" language="JavaScript">	<!--载入函数、页面函数-->
+		$(document).ready(function loader() {
+			$("#check").remove();
+			if (document.layers) {
+				document.captureEvents(Event.MOUSEMOVE);
+			}
+			document.onkeydown = EnterSubmit;
+			bartobottom();
+			$("#uplayout").css("opacity",0.85).css("top",inheight).css("zIndex",299).css("display","block");
+			$("#selectbar").css("float","left").css("left",barleft).css("top",inheight+bartop).css("zIndex",300).css("display","block");
+			$("#selector").css("float","left").css("zIndex",301).css("display","block");
+			$("#TimeTicker").css("opacity",1);
+			$("#ch_effects").bind('change',function(e){
+				if ($(this).attr("checked")=='checked')
+					$.fx.off = false;
+				else $.fx.off = true;
+			});
+			$("body").css("overflow",'hidden');
+		});
+	</script>
+
+	<script type="text/javascript">
+        var dragging = false,mouseinselectbar=false;
+        var iX, iY;
+        var oX, oY;
+		var setbartop=0;
+		var bartop=-60,barleft=-40;
+		function bartotop(){
+			dragging = false;
+			$("#selectbar").stop(true).animate({top:bartop,left:barleft},"fast");
+			$("#selectbar").siblings().stop(true).animate({top:'0',left:'0'},"fast");
+			setbartop = 1;
+		}
+		function bartobottom(){
+			dragging = false;
+			$("#selectbar").stop(true).animate({top:inheight+bartop+'',left:barleft},"fast");
+			$("#selectbar").siblings().stop(true).animate({top:inheight+"",left:'0'},"fast");
+			setbartop = 0;
+		}
+        $(function(){
+            /*--------------拖曳效果----------------
+            *原理：标记拖曳状态dragging ,坐标位置iX, iY
+            *         mousedown:fn(){dragging = true, 记录起始坐标位置，设置鼠标捕获}
+            *         mouseover:fn(){判断如果dragging = true, 则当前坐标位置 - 记录起始坐标位置，绝对定位的元素获得差值}
+            *         mouseup:fn(){dragging = false, 释放鼠标捕获，防止冒泡}
+            */
+            $("#selectbar").mousedown(function(e) {
+				if (e.which == 3) return false;
+                dragging = true && !$.fx.off;
+                iX = x - this.offsetLeft;
+                iY = y - this.offsetTop;
+				oX = oY = 0;
+                this.setCapture && this.setCapture();
+				return false;
+            });
+            $("#uplayout").mousedown(function(e) {
+				if (e.which == 3) return false;
+                dragging = true  && !$.fx.off;
+                iX = x - this.offsetLeft;
+                iY = y - this.offsetTop;
+				oX = oY = 0;
+            });
+            $("#selectbar").mouseenter(function(e) {
+				mouseinselectbar=true;
+				$("#selectbar").animate({left:'0'},100);
+				if (!setbartop && !dragging && !$.fx.off){
+					$("#selectbar").animate({top:inheight+bartop-50+""},{duration: 100,queue:false});
+					$("#selectbar").siblings().stop(true).animate({top:inheight+bartop+10+"",left:'0'},100);
+				}
+			});
+            $("#selectbar").mouseleave(function(e) {
+				mouseinselectbar=false;
+				this.releaseCapture && this.releaseCapture();
+				$("#selectbar").animate({left:barleft},100);
+				if (!setbartop && !dragging  && !$.fx.off){
+					$("#selectbar").animate({top:inheight+bartop+""},{duration: 100,queue:false});
+					$("#selectbar").siblings().delay(2000).animate({top:inheight+"",left:'0'},100);
+				}
+			});
+            $(document).mouseup(function(e) {
+				if (oY<5 && mouseinselectbar) setbartop = 1-setbartop;
+				if (setbartop==1)	bartotop();
+				else	bartobottom();
+                e.cancelBubble = true;
+				this.releaseCapture && this.releaseCapture();
+				mouseupfloatdiv();
+            });
+        });
+        
+    </script>
+
+	<!--[if IE 6]>
+    <script type="text/javascript" src="JScode/DD_belatedPNG_0.0.8a-min.js"></script>
+    <script type="text/javascript">
+		DD_belatedPNG.fix('.tel,.head_content');
+		$(document).ready(function(){
+			$("#selectcontainer").remove();
+			$("#body").prepend("<div id='TimeTicker'></div>");
+		});
+    </script>
+	<![endif]-->
+</head>
+
+<body id='body' class="bgnoimg"  onmouseup="/*document.selection.empty();*/" onselectstart="return false">
+
 	<div id="check">		<!--JS检查-->
 		<p>对不起，你的浏览器不支持JavaScript！</p>
     </div>
-	
+
+	<div id='FloatWordDiv' class='nojs'><!--浮动文字-->
+		LM share
+	</div>
+
 	<div class='bgdiv'  id='bgdiv'> <!--背景层-->
 	</div>
-	
-	<div id='selectcontainer'>
+
+	<div id='selectcontainer'>  <!--底层-->
 		<div style='background:#66CCFF;' id='uplayout'>
-			<div id="AdLayer">		<!--右边时间-->
+			<div id="TimeTicker">		<!--右边时间-->
 				<p></p>
 			</div>
 			<div id='selector'>
@@ -468,7 +1174,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 		</div>
 		<div id='selectbar' > <img src='icon/updown_arrow.png' height="128" width="128" /></div>
 	</div>
-		
+
 	<div id='left' class='left'>	<!--左边目录-->
 	<ul id='gameoutline' class="preoutline">
 		<li><p><a target="_self" href="#Games" class="linker" >那些游戏</a></p><hr/></li>
@@ -493,7 +1199,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 		</ul></li>
 	</ul>
 	</div>
-	
+
 	<div id="root" class='content'>  <!--右边具体-->
 	<!--   格式
 		<dt id=''>name</dt>
@@ -1651,812 +2357,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 			</dl></dd>
 	</dl>
 	</div>
-	
-	<script type="text/JavaScript" language="JavaScript">   //<!-- 总信息的提取 -->
-		var allcon = new Array();
-		var showlist = new Array();
-		var titlesta = new Array();
-		var waittot = 0,showtot=0;
-		var alltot = 0;
-		var root = new container("root","根节点",'','','','',0,0,'');
-		var ico_id_suffix = "_ico";
-		var imager_id_suffix = "_imager";
-		var detail_id_suffix = "_detail";
-		var linker_id_suffix = "_linker";
-		var type_id_suffix = "_type";
-		var icon_address = "icon/";
-		
-		function container(id,title,detail,linker,ico,imager,level,number,type){
-			this.id = id;
-			this.title = title;
-			this.detail = detail;
-			this.linker = linker;
-			this.imager = imager;
-			if (ico)
-				this.ico = icon_address + ico;
-			else this.ico = '';
-			this.type = type;
-			predownload(imager);
-			predownload(this.ico);
-			this.level = level;
-			this.number = number;
-			this.all = new Array();
-			this.total = 0;
-		}
-		container.prototype.add = function add(target){
-				this.total++;
-				this.all[this.total] = target.number;
-		}
-		container.prototype.showself = function showself(a){
-			var target = document.getElementById("content_bottom");
-			if (!target) return;
-			var title;
-			if (!this.ico)
-				if (this.level==3) title = "→ " + this.title;
-				else if (this.level==2) title = "√ " + this.title;
-				else if (this.level==1) title = "「 "+this.title+" 」";
-				else title = this.title;
-			else title = this.title;
-			if (a==1){
-				if (this.ico){
-					$("#content_bottom").append("<span class='level2_content_bottom_in_ico' id='"+this.number+"_bottom_inner' onmouseover='movetitle(this.id,128,1)' onmouseout='movetitle(this.id,128,-1)'>"
-												+"<img class='level2_content_bottom_in_img' id='"+this.number+"_bottom_inner_img' src= '"+this.ico+"' alt= '"+this.title+"' width='128px' height='128px' style='cursor:pointer;' onclick='showit(this.id)'/>"
-												+"<div class='level2_content_bottom_in_icotxt' id='"+this.number+"_bottom_inner_txt' onclick='showit(this.id)'>"+title+ "</div>"
-										+"</span>");
-					$('#'+this.number+'_bottom_inner_txt').css("opacity",0.75).css("top","128").css("left",'0');
-					var target = document.getElementById(this.number+'_bottom_inner_txt');
-					var autoheight = (target.innerHeight || target.clientHeight || target.offsetHeight);
-					target.style.height = autoheight + 'px';
-					return 0;
-				}else{
-					return 1;
-				}
-			}else{
-				$("#content_bottom").append("<br/><span id='"+this.number+"_bottom_outer' class='level2_content_bottom_in_txt'>"
-									+"<span id='"+this.number+"_bottom_inner_txt' style='cursor:pointer; width:auto;' onclick='showit(this.id)'>"+title+ "</span>"
-								+"</span>");
-				return 0;
-			}
-		}
-		container.prototype.showdown = function showdown(a){
-			var tou=-1,wei=0,i,temp;
-			var list = new Array();
-			var status = new Array();
-			list[0] = this.number;
-			while (tou<wei){
-				tou++;
-				temp = allcon[list[tou]];
-				if (a==0 || a==1) status[tou] = temp.showself(a);
-				else status[tou] = 0;
-				for (i=1;i <= temp.total;i++){
-					list[++wei] = temp.all[i];
-				}
-			}
-			tou = wei;
-			while (a>1 && tou>=0){
-				do{
-					temp = Math.round(Math.random()*(tou+1));
-				}while (temp<0 || temp>tou) 
-				if (allcon[list[temp]].level==3){
-					status[temp] = allcon[list[temp]].showself(1);
-					a--;
-				}
-				i = status[temp]; status[temp] = status[tou]; status[tou] = i;
-				i = list[temp]; list[temp] = list[tou]; list[tou] = i;
-				tou--;
-			}
-			if (a>=1)
-				for (i=0;i<=wei;i++)
-					if (status[i]==1){
-						allcon[list[i]].showself(0);
-					}	
-			changewidhei();
-		}
-		function movetitle(s,len,i){
-			var t = document.getElementById(s+"_txt");
-			var autoheight = (t.innerHeight || t.clientHeight || t.offsetHeight);
-			$("#"+s+'_txt').stop(true).animate({top:len-i*autoheight},100);
-		}
-		function getinnerHTML(id){
-			var temp=document.getElementById(id);
-			if (temp) return temp.innerHTML;
-			else return '';
-		}
-		function calc(a,t){
-			var i=0;
-			var total=0;
-			for (i=0;i< t;i++)
-				if (a[i]=='_') total++;
-			return total;
-		}
-		function predownload(src){
-			var img = new Image();
-			img.src = src;
-			return img.complete;
-		}
-		function finddown(father,list){
-			var lister = list.getElementsByTagName('dt');
-			var stack = new Array(10);
-			var ls,id,title,tot,detail,linker,ico,imager,type;
-			var i,tot=0;
-			stack[0] = father; allcon[0] = father;
-			for (i=0;lister[i];i++){
-				ls=lister[i];
-				id = ls.id;
-				title = ls.innerHTML;
-				tot = calc(id.split(''),id.split("").length);
-				detail = getinnerHTML(id + detail_id_suffix);
-				linker = getinnerHTML(id + linker_id_suffix);
-				ico = getinnerHTML(id + ico_id_suffix);
-				imager = getinnerHTML(id + imager_id_suffix);
-				type = getinnerHTML(id + type_id_suffix);
-				var c = new container(id,title,detail,linker,ico,imager,tot+1,i+1,type);
-				stack[tot].add(c);
-				stack[tot+1] = c;
-				allcon[i+1] = c;
-			}
-			title = "全文查找"; tot = 0; detail = ''; linker = ''; id = title;
-			ico = "SearchInAll.png" ;
-			var c = new container(id,title,detail,linker,ico,'',tot+1,i+1,'');
-			stack[tot].add(c);
-			stack[tot+1] = c;
-			allcon[i+1] = c;
-			alltot=i+2;
-			i++;
-			title = "返回首页"; tot = 0; detail = ''; linker = ''; id = title;
-			ico = "ReturnBack.png" ;
-			var c = new container(id,title,detail,linker,ico,'',tot+1,i+1,'');
-			stack[tot].add(c);
-			stack[tot+1] = c;
-			allcon[i+1] = c;
-			alltot=i+2;
-			i++;
-			$("#root").remove();
-		}
-		document.getElementById("left").style.display = 'none';
-		document.getElementById("root").style.display = 'none';
-		finddown(root,document.getElementById(root.id+"_next"));
-	</script>
 
-	<script type="text/JavaScript" language="JavaScript">	<!--文字跟随鼠标-->
-        var step = 15; //字符显示间距，为了好看，step=0则字符显示没有间距
-		var charhei = 13,charwid = 15;
-        var timesx = step * 2;
-        var timesy = step * 2;  // 调整右侧和下方文字消失位置
-		var delaytime = 41;
-        var message = "LM share"; 	//跟随鼠标要显示的字符串
-        message = message.split(""); //将字符串分割为字符数组
-
-        var xpos = new Array(); 		//存储每个字符的x位置的数组
-        var ypos = new Array(); 		//存储每个字符的y位置的数组
-		var wid=1,hei=1;
-
-		function addmessage(){
-			$("#body").append("<div id='floatword'></div>");
-			for (var i = 0; i < message.length; i++) {  //动态生成显示每个字符span标记,
-				//使用span来标记字符，是为了方便使用CSS，并可以自由的绝对定位
-			//	body.innerHTML += "<span id='span" + i + "' class='prespanstyle'>" + message[i] + "</span>";
-				$("#floatword").append("<span id='span" + i + "' class='prespanstyle'>" + message[i] + "</span>")
-				xpos[i] = 0; ypos[i] = 0;
-			}
-		}
-        function makesnake() {
-            //下面的算法将保证，如果鼠标光标移动到新位置，连续调用makenake将会使这些字符一个接一个的移动到新位置。
-            // 该算法显示字符串就有点象人类的游行队伍一样， 
-			var i;
-			for (i = message.length - 1; i >= 1; i--) {
-				if (xpos[i - 1] + timesx < wid)
-					xpos[i] = xpos[i - 1] + step;
-                else
-					xpos[i] = xpos[i - 1] + timesx - inwidth;
-				ypos[i] = ypos[i - 1];
-            }
-            //从尾向头确定字符的位置，每个字符为前一个字符“历史”水平坐标+step间隔，
-            //这样随着光标移动事件，就能得到一个动态的波浪状的显示效果
-            //垂直坐标为前一字符的历史“垂直”坐标，后一个字符跟踪前一个字符运动
-			if (inwidth>charwid)
-				xpos[0] = sleft + (x + timesx - sleft) % (inwidth-charwid);
-			else xpos[0] = 0; 
-			if (inheight>charhei)
-				ypos[0] = stop + (y + timesy - stop) % (inheight-charhei);
-			else ypos[0] = 0;
-			for (i = 0; i < message.length; i++) {
-				movetoXY("span"+i,xpos[i],ypos[i]);
-			}
-        }
-    </script>
-	
-	<script type="text/JavaScript" language="JavaScript"> 	<!-- 层动画相关函数 -->
-		var prox;
-		var dx,dy,mx=0,my=0,breakx=0,breaky=0,mouseD=0,mouseout=1;
-		var mousedown_opacity = 0.6;
-		var mouseup_opacity = 0.9;
-		var border = 4;
-		var outtimer;
-		var divshowdelaytime = 13;
-		var divshowperdec = 11;
-		var opacitydelaytime = 41;
-		
-		var floatdivprehei = 0;
-		
-		function closeed(id){/*--关闭--*/
-			o = $("#floatdiv");
-			if (!o) return;
-			mouseupfloatdiv();
-			nowl3num = -1;
-			setallCookies();
-			if(o.css("display") == "block")
-			{
-				o.css("cursor","default").stop(true).fadeOut(300,function(){
-					$(this).css("display","none");
-				});
-			}
-		}
-		function outfloatdiv(){
-			mouseD = 0; mouseover = 0;
-			mouseupfloatdiv();
-		}
-		function mouseupfloatdiv(){
-			$("#floatdiv").css("opacity",mouseup_opacity);
-			//$("#floatdiv").fadeTo(50,mouseup_opacity);
-			mouseD = 0;
-		}
-		function mouseoutfloatdiv(){
-			outtimer = setTimeout(function(){outfloatdiv()},delaytime*7);
-		}
-		function mouseoverfloatdiv(){
-			clearTimeout(outtimer);
-			mouseover = 1;
-		}
-		function mousedownfloatdiv(id){
-			var od = document.getElementById("floatdiv");
-			if (!od) return;
-			$("#floatdiv").fadeTo(50,mousedown_opacity);
-			mouseD = id;
-			mx = x; my = y;
-			od.style.left = od.offsetLeft + "px";
-			od.style.top = od.offsetTop + "px";
-			floatdivprehei = od.offsetHeight-border;
-			floatdivprewid = od.offsetWidth-border;
-			moveto(od.id,0,0);
-		}
-		function changefloatinnerheight(){
-			var title = document.getElementById("floatdiv_title");
-			var linker = document.getElementById("floatdiv_linker");
-			var detail = document.getElementById("floatdiv_detail");
-			var htitle = 0;
-			if (title && title.offsetHeight) htitle = title.offsetHeight;
-			var hlinker = 0;
-			if (linker && linker.offsetHeight) hlinker = linker.offsetHeight;
-			var hdetail = floatdivprehei - htitle - hlinker;
-			if (hdetail<=0) hdetail = 0;
-			changeheight(detail.id,hdetail);
-			if (detail) detail.innerHTML = hdetail;
-		}
-		function mousemove(){
-			var od = document.getElementById("floatdiv");
-			if (!od) return;
-			if (!od || mouseD==0 || mouseover==0) return;
-			var xinc=0,yinc=0;
-			var temp,out=0;
-			yinc = y-my;  xinc = x-mx;
-			mx = x; my = y;
-			var nowx = parseInt(od.style.pixelLeft || od.style.left);
-			var nowy = parseInt(od.style.pixelTop || od.style.top);
-			switch (mouseD){
-				case 7: case 8: case 9:		
-					temp = floatdivprehei+yinc;
-					if ((yinc<0 || temp+nowy<inheight-border ) && (heilowlimit<temp || yinc>0))
-						changeheight(od.id,floatdivprehei=temp);
-			}
-			switch (mouseD){
-				case 3: case 6: case 9:	
-					temp = floatdivprewid+xinc;
-					if ((xinc <0 || temp+nowx<inwidth-border )&& (widlowlimit<temp || xinc>0))
-						changewidth(od.id,floatdivprewid=temp);
-			}
-			switch (mouseD){
-				case 5: case 1: case 2: case 3:
-				if (nowy + yinc<=0) yinc = -nowy; 
-				if (nowy + yinc>=inheight-border) yinc = inheight-border-nowy; 
-				if (mouseD!=5){
-					temp = floatdivprehei-yinc;
-					if (heilowlimit<temp)
-						changeheight(od.id,floatdivprehei=temp);
-					else yinc = 0;
-				}
-				moveto(od.id,0,yinc);
-			}
-			switch (mouseD){
-				case 5: case 1: case 4: case 7:
-				if (nowx + xinc<=0) xinc = -nowx;
-				if (nowx + xinc>=inwidth-border) xinc = inwidth-border-nowx;
-				if (mouseD!=5){
-					temp = floatdivprewid-xinc;
-					if (widlowlimit<temp)
-						changewidth(od.id,floatdivprewid=temp);
-					else xinc = 0;
-				}
-				moveto(od.id,xinc,0);
-			}
-		}
-	</script>
-	
-	<script type="text/JavaScript" language="JavaScript">  // 描述层相关函数
-		var clickcolor = "#0000FF";
-		var notitle = "无名";
-		var nodetail = "没有介绍。"
-		var nolinker = "无下载。";
-		
-		function buildtitle(number){
-			var s = allcon[number].title;
-			var pretext = "<div id='floatdiv_title' class='floatdiv_title'>";
-			if (s=='') return pretext+notitle+"</div>";
-			return pretext+s+"<hr/></div>";
-		}
-		function inserter(string,pointer,inser,times){
-			var ts = string.split(pointer);
-			var i;
-			var txt = '';
-			for (i=0;i<times;i++){
-				txt += inser;
-			}
-			for (i=0;i<ts.length;i++){
-				ts[i] = txt + ts[i];
-			}
-			string = ts.join(pointer);
-			return string;
-		}
-		function builddetail(number){
-			var s = allcon[number].detail;
-			var pretxt = "<div id='floatdiv_detail' class='floatdiv_detail'><b style='font-size:1.5em'>介绍:</b><br/>"
-			if (s=='') return pretxt+nodetail+"</div>";
-			s = inserter(s,"<br>","&nbsp;",3);
-			return pretxt+s+"</div>";
-		}
-		function buildlinker(number){
-			var s = allcon[number].linker;
-			var pretxt = "<div id='floatdiv_linker' class='floatdiv_linker'><b style='font-size:1.5em'><hr/>链接:</b><br/>";
-			if (s=='') return pretxt+nolinker+"</div>";
-			s = inserter(s,"<br>","&nbsp;",3);
-			return pretxt+s+"</div>";
-		}
-		function creatfloatdiv(){
-			$("#body").append("<div id='floatdiv' class='floatdiv' onDblClick='closeed(\"floatdiv\")' onmouseover='mouseoverfloatdiv()' onmouseout='mouseoutfloatdiv()'>"+
-									"<div id='floatdiv_button' onclick='closeed(\"floatdiv\")' class='floatdiv_button'>关闭</div>"+
-									"<div id='floatdiv_t_l' class='t_l' onmousedown='mousedownfloatdiv(1)' onmouseup='mouseupfloatdiv()'></div>"+
-									"<div id='floatdiv_t_m' class='t_m' onmousedown='mousedownfloatdiv(2)' onmouseup='mouseupfloatdiv()'></div>"+
-									"<div id='floatdiv_t_r' class='t_r' onmousedown='mousedownfloatdiv(3)' onmouseup='mouseupfloatdiv()'></div>"+
-									"<div id='floatdiv_m_l' class='m_l' onmousedown='mousedownfloatdiv(4)' onmouseup='mouseupfloatdiv()'></div>"+
-									"<div id='floatdiv_m_m' class='m_m' onmousedown='mousedownfloatdiv(5)' onmouseup='mouseupfloatdiv()'>"+
-									"</div>"+
-									"<div id='floatdiv_m_r' class='m_r' onmousedown='mousedownfloatdiv(6)' onmouseup='mouseupfloatdiv()'></div>"+
-									"<div id='floatdiv_b_l' class='b_l' onmousedown='mousedownfloatdiv(7)' onmouseup='mouseupfloatdiv()'></div>"+
-									"<div id='floatdiv_b_m' class='b_m' onmousedown='mousedownfloatdiv(8)' onmouseup='mouseupfloatdiv()'></div>"+
-									"<div id='floatdiv_b_r' class='b_r' onmousedown='mousedownfloatdiv(9)' onmouseup='mouseupfloatdiv()'></div>"+
-								"</div>");
-			var target = document.getElementById("floatdiv");
-			mouseupfloatdiv();
-			width=floatdivprewid;
-			if (inwidth<floatdivprewid) width = inwidth;
-			target.style.display = "none";
-			target.style.width = width+ 'px';
-			target.style.left = "0px";
-			target.style.top = "0px";
-			moveto(target.id,(inwidth-width)/2,inheight/2-200);
-			floatdivprehei = 300;
-			$("#floatdiv").css("height",floatdivprehei).css("overflow","hidden");
-		}
-		function changefloatdivinner(number){
-			if (allcon[number].ico){
-				$('#'+number+"_bottom_inner_img").fadeTo(200,0.20);
-			}else{
-				$("#"+number+"_bottom_outer").css({color:clickcolor});
-			}
-			var target = document.getElementById("floatdiv_m_m");
-			if (!target) return;
-			$("#floatdiv_m_m").empty().append(buildtitle(number) + builddetail(number) + buildlinker(number));
-			var linker=document.getElementById("floatdiv_linker");
-			var target=document.getElementById("floatdiv");
-			target.style.height = "auto";
-			target.style.display = "block";
-			floatdivprehei = (target.innerHeight || target.clientHeight || target.offsetHeight) + linker.offsetHeight;
-			target.style.display = "none";
-			$("#floatdiv").css("height",floatdivprehei);
-		}
-		function iframein(src){
-			var target = document.getElementById("floatdiv_m_m");
-			if (!target) return;
-			target.innerHTML = '';
-			target.innerHTML += "<iframe src='"+src+"' style='width:96%; height:96%; position:absolute; top:2%; left:2%;'></iframe>";
-		}
-		function showit(id){
-			var number = parseInt(id);
-			if (nowl3num==number) return;
-			nowl3num = number;
-			setallCookies();
-			var o = document.getElementById("floatdiv");
-			if (!o){
-				creatfloatdiv();
-			}
-			o = $("#floatdiv");
-			moveto("floatdiv",0,0);
-			if (o.css("display")=="block"){
-				o.slideUp(150,function(){
-					changefloatdivinner(number);
-					$(this).css("overflow","hidden").css("height",floatdivprehei);
-					$(this).slideDown(250,function(){
-						moveto("floatdiv",0,0);
-					});
-				});
-			}else{
-				changefloatdivinner(number);
-				prox = setInterval(function(){
-						moveto("floatdiv",0,0);
-				},20)
-				o.fadeIn(400,function(){
-					clearInterval(prox);
-				});
-			}
-		}
-	</script>
-
-	<script type="text/JavaScript" language="JavaScript">  // 全文查找相关函数
-		var listcon=new Array(),listscore=new Array();
-		var docost=7.0,limit = 7;
-		
-		function min(q,w,e){
-			var temp =q;
-			if (temp>w) temp = w;
-			if (temp>e) temp = e;
-			return temp;
-		}
-		function between(c1,c2){
-			if (c1 == c2) return docost / 73.0;
-			if (c1.toUpperCase()==c2.toUpperCase()) return docost / 71.0;
-			return docost;
-		}
-		function editdistance(s1,s2){
-			var f = new Array();
-			var i,ti,t,j,l1=s1.length,l2=s2.length;
-			if (!l1 || !l2) return 10000;
-			for (i=0;i<=1;i++){
-				f[i] = new Array();
-			}
-			for (i=0;i<=l2;i++){
-				f[0][i] = i*docost+limit;
-			}
-			for (i=1;i<=l1;i++){
-				ti = i & 1; f[ti][0] = i*docost+limit;
-				for (j=1;j<=l2;j++){
-					t = between(s1[i-1],s2[j-1]);
-					if (t<1 && i-1>0 && j-1>0 && between(s1[i-2],s2[j-2])<1) t -= 1;
-					f[ti][j] = min(f[1-ti][j-1]+t,f[1-ti][j]+docost, f[ti][j-1]+docost);
-				}
-			}
-			return f[l1 & 1][l2];	
-		}
-		function compare(number,s){
-			var temp = allcon[number];
-			var scoretitle = editdistance(temp.title,s) - Math.abs(temp.title.length-s.length)*docost+0.001;
-			var scoredetail = editdistance(temp.detail,s) - Math.abs(temp.detail.length-s.length)*docost+0.001;
-			if (!temp.detail) scoredetail = 54.3;
-			return scoretitle*scoretitle*scoretitle * scoredetail /1.0 /(temp.level);
-		}
-		function qsort(q,w){
-			var e=q,r=w,t=listscore[(q+w)>>1],y,u;
-			do{
-				while (listscore[e]<t) e++;
-				while (listscore[r]>t) r--;
-				if (e<=r){
-					y = listcon[e]; listcon[e] = listcon[r]; listcon[r] = y;
-					u = listscore[e]; listscore[e] = listscore[r]; listscore[r] = u;
-					e++; r--;
-				}
-			}while(e<r);
-			if (e<w) qsort(e,w);
-			if (q<r) qsort(q,r);
-		}
-		function findit(){
-			var target = document.getElementById("searchboxtext");
-			var bottom = document.getElementById("content_bottom");
-			if (!target || !target.value || !bottom) return;
-			var i=0;
-			if (target.value=="textarea" && searchmode==0){
-				searchmode = 1;
-				showlevel2(alltot-2,-1);
-				return;
-			}
-			if (target.value=="search" && searchmode==1){
-				searchmode = 0;
-				showlevel2(alltot-2,-1);
-				return;
-			}
-			if (searchmode==0){
-				$("#content_bottom").empty().append("搜索中..... 请稍候....<br/>");
-				for (i=1;i< alltot-2;i++){
-					listcon[i-1] = i;
-					listscore[i-1] = compare(i,target.value);
-				}
-				
-				qsort(0,listcon.length-1);
-				bottom.innerHTML = "";
-				for (i=0;i<listcon.length;i++){
-					allcon[listcon[i]].showself(0);
-					//bottom.innerHTML += "&nbsp;&nbsp;&nbsp;&nbsp;" + listscore[i] +"&nbsp;&nbsp;&nbsp;&nbsp;" + i +"&nbsp;&nbsp;&nbsp;&nbsp;" + listcon[i] + ' ' + allcon[listcon[i]].id ;
-				}
-				showtagup("content_bottom","span");
-			}
-			else{
-				$("#content_bottom").append("<hr/><pre>"+target.value+"</pre><br/>");
-				var result;
-				if (target.value=="help"){
-					result = "<br/>bottom 表示当前的窗口<br/> target 表示编辑窗口 <br/> root 为根节点<br/> ";
-				}else{
-					result = eval(target.value);
-				}
-				$("#content_bottom").append(result+"<br/>");
-			}
-			changewidhei();
-		}
-		var EnterSubmit = function(evt)
-		{
-			evt = window.event || evt;
-			if (evt.keyCode == 13)
-			{
-				if (nowlevel==2){
-					var target = document.getElementById("searchboxtext");
-					if (target && (!target.value || searchmode)){
-						target.focus(); return;
-					}
-					var target = document.getElementById("searchboxsubmit");
-					if (target && !searchmode) target.click();
-				}
-				else if (nowlevel==1){
-					showlevel2(alltot-2,-1);
-					var target = document.getElementById("searchboxtext");
-					if (target) target.focus();
-				}
-	　　    }
-		}
-		function clrsearchboxtext(){
-			var target = document.getElementById("searchboxtext");
-			if (!target) return;
-			target.value = '';
-			target.focus();
-		}
-	</script>
-
-	<script type="text/JavaScript" language="JavaScript">  //主界面相关函数
-		var leftimgwidth = 65;
-		var leftimgheight = 65;
-		var searchmode = 0;
-		var posincer = 4;
-		
-		function killall(level){
-			$("#content").remove();
-			$("#left").remove();
-			if (level==1){
-				$("#body").append("<div class='level1_out' id='content'></div>");
-			}
-			if (level==2){
-				$("#body").append("<div class='level2_left' id='left'></div>"+
-									"<div class='level2_content' id='content'>"+
-										"<div id='content_up' class='level2_content_up'>"+
-										"</div>"+
-										"<div id='content_bottom' class='level2_content_bottom'>"+
-											"<span style='font-size:3em; cursor:default;'>欢迎！</span>"+
-										"</div>"+
-									"</div>");
-			}
-			closeed("floatdiv");
-		}
-		function showtagup(id,tagname){
-			var target = document.getElementById(id+'');
-			if (!target) return;
-			target = target.getElementsByTagName(tagname+'');
-			if (target.length==0) return;
-			var deltime = (400+target.length*target.length*delaytime)/target.length/target.length;
-			for (i=0;i<target.length;i++){
-				changeopacity(target[i].id,0);
-				$("#"+target[i].id).css("opacity",0).delay(i*delaytime).fadeTo(10*delaytime,1)
-			}
-		}
-		function showlevel2(l1num,l2num){
-			l1num = parseInt(l1num);
-			l2num = parseInt(l2num);
-			if (l1num==((alltot-1).toString())) {
-				showlevel1();
-				return ;
-			}
-			var i,moveevent;
-			killall(2);
-			nowlevel = 2; nowl1num = l1num;
-			nowl2num = l2num; nowl3num = -1;
-			setallCookies();
-			for (i=1;i<=root.total;i++) {
-				if (root.all[i]!=l1num) moveevent = "onmouseover='movetitle(this.id,60,1)' onmouseout='movetitle(this.id,60,-1)'";
-				else moveevent = '';
-				$("#left").append("<span class='level2_left_in' id='"+root.all[i]+"_left_inner'"+moveevent+">"
-										+"<img class='level2_left_in_img' id='"+root.all[i]+"_left_inner_img' src= '"+allcon[root.all[i]].ico+"' alt= '"+allcon[root.all[i]].title+"' width='60px' height='60px' style='cursor:pointer;' onclick='showlevel2(this.id,-1)'/>"
-										+"<div class='level2_left_in_txt' id='"+root.all[i]+"_left_inner_txt' onclick='showlevel2(this.id,-1)'>"+allcon[root.all[i]].title+ "</div>"
-									+"</span><br/>");
-				if (root.all[i]==l1num) movetitle(root.all[i]+'_left_inner',60,1);
-				$('#'+root.all[i]+'_left_inner_txt').css("left",0).css("opacity",0.5);
-			}
-			changewidhei();
-			target = document.getElementById("content_up");
-			var inhtml = '';
-			if (l1num==(alltot-2).toString()) {
-				if (searchmode == 0){
-					if (!isIE) {
-						inhtml = '<input type="text" id="searchboxtext" class="level2_content_up_searchboxinput"/>';
-						inhtml+= '<span class="level2_content_up_searchboxclr" onclick="clrsearchboxtext();">X</span>';
-					}
-					else
-						inhtml =  '<input rows="auto" cols="20" type="text" id="searchboxtext" class="level2_content_up_searchboxtextie" value=""/>';
-					inhtml+= '<input type="button" id="searchboxsubmit" class="level2_content_up_searchboxsubmit" value="搜索" onclick="findit();"/>';
-				}else{
-					if (!isIE) {
-						inhtml = '<textarea id="searchboxtext" class="level2_content_up_searchboxcode" value=""></textarea>';
-					}
-					else{
-						inhtml = '<textarea rows="5" id="searchboxtext" class="level2_content_up_searchboxtextie"></textarea>';
-						inhtml+= '<span class="level2_content_up_searchboxclr" onclick="clrsearchboxtext();">X</span>';
-					}
-					inhtml+= ' <input type="button" id="searchboxsubmit" class="level2_content_up_searchboxsubmit" value="运行" onclick="findit();"/>';
-				}
-				$("#content_up").append(inhtml);
-				document.getElementById("searchboxtext").focus();
-				showtagup("content_up","input");
-			}else{
-				var now = allcon[l1num];
-				var inhtml = '';
-				var classname='';
-				for (i=1;i<=now.total;i++){
-					if (now.all[i]!=l2num) classname = 'level2_content_up_in';
-					else classname = 'level2_content_up_in_choose';
-					inhtml += "<span id='" + now.all[i]+ "' class='"+classname+"' onclick='showlevel2("+l1num+",this.id)'>"+ allcon[now.all[i]].title +"</span>";
-				}
-				if (now.total==0) inhtml = "<span class='level2_content_up_in' style='cursor:default;'>什么都没有哦！</span>";
-				$("#content_up").append(inhtml);
-				if (l2num!=-1){
-					$("#content_bottom").empty();
-					allcon[l2num].showdown(1);
-				}else{
-					$("#content_bottom").empty().append("<span id='guess' style='font-size:2.5em; cursor:default;'>随便看看：</span><br/>");
-					allcon[l1num].showdown(11);
-					showtagup("content_up","span");
-				}
-				showtagup("content_bottom","img");
-				showtagup("content_bottom","span");
-			}
-			changewidhei();
-		}
-		function level1image(number,width){
-			var coner = allcon[number];
-			if (coner.ico=='') return;
-			var target = document.getElementById(coner.number.toString());
-			if (!target) return;
-			var height = width;
-			target.innerHTML = joininimage(coner.id+'_ico',coner.ico,coner.title,width,height);
-			target.innerHTML += coner.title;
-		}
-		function showlevel1(){
-			killall(1);
-			nowlevel = 1;
-			nowl1num = -1; nowl2num = -1; nowl3num = -1;
-			setallCookies();
-			$("#content").append("<div class='level1_out' id='content_mid'></div>");
-			var target = $("#content_mid");
-			for (i=1;i<=root.total;i++) { 
-				if (root.all[i]!=alltot-1){
-					target.append("<span id='" + root.all[i]+ "' class='level1_in' onclick='showlevel2(this.id,-1)'>"+ allcon[root.all[i]].title +"</span>");
-				}
-				level1image(root.all[i],100);
-			}
-			changewidhei();
-			showtagup("content_mid","span");
-		}
-		function reshowlevel(){
-			if (nowlevel!=2) showlevel1();
-			else {
-				if (nowl3num!=-1) {
-					setTimeout("showit("+nowl3num+")",500);
-				}
-				showlevel2(nowl1num,nowl2num);
-			}
-		}
-		
-		getallCookies();
-		reshowlevel();
-	</script>
-	
-	<script type="text/JavaScript" language="JavaScript">	<!--背景缓存载入-->
-		var bg = new Image();
-		var bgimg= new Array();
-		var bgnum = 0;
-		bgimg[0] = 'http://www.pp3.cn/uploads/allimg/111110/14010AU3-0.jpg';
-		bgimg[bgimg.length] = 'http://www.kole8.com/desktop/desk_file-11/2/2/2012/10/201210314361319.jpg';
-		bgimg[bgimg.length] = 'http://desktop.inlishui.com/DesktopFiles/设计/桌面精选壁纸 2010-01-21/desktop.inlishui.com_060.jpg';
-		bgimg[bgimg.length] = 'http://www2.ppdesk.com/file/20100120/desk/2009/10/16/keai200910_73_1920x1440.jpg';
-		bgimg[bgimg.length] = 'http://dl.bizhi.sogou.com/images/2013/12/06/437033.jpg';
-		bgimg[bgimg.length] = 'http://dl.bizhi.sogou.com/images/2013/12/05/435145.jpg';
-		bgimg[bgimg.length] = 'http://dl.bizhi.sogou.com/images/2012/10/12/312777.jpg';
-		bgimg[bgimg.length] = 'http://dl.bizhi.sogou.com/images/2012/02/09/96359.jpg';
-		bgimg[bgimg.length] = 'http://dl.bizhi.sogou.com/images/2012/10/12/312805.jpg';
-		bgimg[bgimg.length] = 'http://dl.bizhi.sogou.com/images/2012/10/12/312825.jpg';
-		bgimg[bgimg.length] = 'http://dl.bizhi.sogou.com/images/2012/10/12/311223.jpg';
-		
-        function bgimager() {
-            if (!bg.complete){
-				bg.src = bgimg[bgnum];
-				setTimeout("bgimager()", 2000);
-			}else{			
-				var target = document.getElementById("bgdiv");
-				target.style.backgroundImage = "url('"+bgimg[bgnum]+"')";
-				changeopacity("bgdiv",25);
-				showopacityup("bgdiv",25,50,2);
-				for (var i=0;i<message.length;i++) {
-					document.getElementById('span' + i).className = "bgspanstyle";
-				}
-				target.style.backgroundPosition = "center";
-				target.style.backgroundRepeat = "no-repeat";
-				target.style.backgroundAttachment = "fixed";
-				body.className = 'bgimg';
-				$("#bgdiv").css("background","url('"+bgimg[bgnum]+"') center fixed no-repeat");
-				$("#uplayout").css("background","url('"+bgimg[bgnum]+"') center fixed no-repeat");
-			}
-        }
-    </script>
-
-	<script type="text/JavaScript" language="JavaScript">	<!--载入函数、页面函数-->
-		function timedo(){
-			innerpx();
-			//scrollxy();
-			makesnake();
-		}
-		function loader() {
-			addmessage();
-			$("#body").css("overflow",'hidden');
-			window.setTimeout(function(){
-					window.setInterval(function(){timedo()},delaytime)
-					for (var i=0;i<message.length;i++) {
-						changeopacity('span'+i,100);
-					}
-				},300);
-            initAd(); //载入页面后，调用函数initAd()
-            UpdateTime();
-			do
-				bgnum= Math.round(Math.random()*(bgimg.length-0.5));
-			while (bgnum<0 || bgnum>=bgimg.length);
-			bgimager();
-		}
-		if (document.layers) {
-			document.captureEvents(Event.MOUSEMOVE);
-		}
-		document.onmousemove = MouseXY;
-		document.onkeydown = EnterSubmit;
-		bartobottom();
-		$("#check").remove();
-		$("#uplayout").css("opacity",0.85).css("top",inheight).css("zIndex",299).css("display","block");
-		$("#selectbar").css("float","left").css("left",barleft).css("top",inheight+bartop).css("zIndex",300).css("display","block");
-		$("#selector").css("float","left").css("zIndex",301).css("display","block");
-		$("#AdLayer").css("opacity",1);
-		$("#ch_effects").bind('change',function(e){
-			if ($(this).attr("checked")=='checked')
-				$.fx.off = false;
-			else $.fx.off = true;
-		});
-		$("#body").css("overflow",'hidden');
-	</script>
-	<!--[if IE 6]>
-    <script type="text/javascript">
-		$("#body").append("<div id='AdLayer'></div>");
-		$("#selectcontainer").remove();
-    </script>
-	<![endif]-->
-	
 </body>
 
 </html>
