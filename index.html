@@ -8,9 +8,11 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
     <title>LM share</title>
 	<base target="_blank"/>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<link rel="stylesheet" type="text/css" href="css/jquery.tzCheckbox.css"/>
-	<link rel="stylesheet" type="text/css" href="css/styles.css"/>
-	<style type="text/css">  
+	<link rel="stylesheet" type="text/css" href="css/jquery.tzCheckbox.css" media="screen"/>
+	<link rel="stylesheet" type="text/css" href="css/styles.css" media="screen"/>
+	<link rel="stylesheet" type="text/css" href="css/lettering_logo.css" media="screen"/>
+
+	<style type="text/css" media="screen">  
 		/*浮动文字  时间 背景*/
 		html {overflow:visible}
         .FloatWordspan{ position:absolute; font-size:1em; font-weight:200; z-index:400; cursor:default;}
@@ -74,7 +76,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 		.level2_content_bottom_in_img {position:relative; left:0px; z-index:10; }
 	</style>
 
-	<style type="text/css">		
+	<style type="text/css" media="screen">		
 		/*浮动层*/
 		.floatdiv{	width:60%; height:auto; display:none;
 				background:#EDF1F8;	 border: 0.2em solid #849BCA; 
@@ -107,8 +109,19 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 
 	<script type="text/JavaScript" src="JScode/jquery-1.9.1.min.js"></script>
 	<script type="text/JavaScript" src="JScode/jquery.tzCheckbox.js"></script>
+	<script type="text/JavaScript" src="JScode/jquery.lettering-0.6.1.min.js"></script>
 	<script type="text/JavaScript" src="JScode/FloatWord.js"><!--文字跟随鼠标--></script>
 	<script type="text/JavaScript" src="JScode/TimeTicker.js"><!--时间跳动--></script>
+	<!--[if IE]>
+		<script src="JScode/html5shiv.min.js"></script><![endif]-->
+	<!--[if IE 6]>
+		<script type="text/javascript" src="JScode/DD_belatedPNG_0.0.8a-min.js"></script>
+		<script type="text/javascript">
+			DD_belatedPNG.fix('.tel,.head_content');
+			$(document).ready(function(){
+			});
+		</script>
+	<![endif]-->
 
 	<script type="text/javascript">
         var dragging = false,mouseinselectbar=false;
@@ -177,7 +190,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
         });
         
     </script>
-	
+
 	<script type="text/JavaScript" language="JavaScript"> // 全局变量及函数
 		var isIE = document.all ? true : false;
 		var preinwidth,preinheight;
@@ -261,8 +274,9 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 			else bartotop();
 			$("#selector").css("left",(inwidth-600)/2).css("paddingTop",(inheight-300)/2);
 			if (nowlevel==1){
-				var h = 300;
-				$("#content_mid").css({"paddingTop":(inheight - h) / 2});
+				var h = 350;
+				$("#logodiv").css({"paddingTop":(inheight - h*2) / 2});
+				$("#content_mid").css({"paddingTop":(inheight - h*1.5) / 2});
 			}else{
 				changeheight('left',inheight - bottomlimit);
 				changewidth('content',inwidth - rightlimit);
@@ -372,7 +386,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 		}
     </script>
 
-	<script type="text/JavaScript" language="JavaScript">  // tzCheckBox 函数
+	<script type="text/JavaScript" language="JavaScript">  // document ready 函数
 		$(document).ready(function(){
 			$('input[type=checkbox]').tzCheckbox({labels:['Enable','Disable']});
 			// To use tzCheckbox
@@ -927,7 +941,12 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 			$("#content").remove();
 			$("#left").remove();
 			if (level==1){
-				$("#body").prepend("<div class='level1_out' id='content'></div>");
+				$("#body").prepend("<div class='level1_out' id='content'>"+
+										"<div id='logodiv'>"+
+											"<h1 id='logo'>LM&nbsp;share</h1>"+
+										"</div>"+
+									"</div>");
+				$("#logo").lettering();
 			}
 			if (level==2){
 				$("#body").prepend("<div class='level2_left' id='left'></div>"+
@@ -1044,7 +1063,9 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 						$(this).css({"color":"#777777"}).animate({"paddingLeft":"+="+15* !$.fx.off,"paddingRight":"+="+15* !$.fx.off,"letterSpacing":'+=4'},500);
 					});
 					$("#"+root.all[i]).mouseleave(function(){
-						$(this).css({"color":"#000000"}).animate({"paddingLeft":"-="+15* !$.fx.off,"paddingRight":"-="+15* !$.fx.off,"letterSpacing":'-=4'},500);
+						$(this).css({"color":"#000000"}).animate({"paddingLeft":"-="+15* !$.fx.off,"paddingRight":"-="+15* !$.fx.off,"letterSpacing":'-=4'},500,function(){
+							$(this).css({"padding":"0 5%"});
+						});
 					});
 				}
 				level1image(root.all[i],100);
@@ -1066,7 +1087,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 			reshowlevel();
 		});
 	</script>
-	
+
 	<script type="text/JavaScript" language="JavaScript">
 		$(document).ready(function loader() {
 			$("#check").remove();
@@ -1125,14 +1146,6 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 		});
     </script>
 
-	<!--[if IE 6]>
-    <script type="text/javascript" src="JScode/DD_belatedPNG_0.0.8a-min.js"></script>
-    <script type="text/javascript">
-		DD_belatedPNG.fix('.tel,.head_content');
-		$(document).ready(function(){
-		});
-    </script>
-	<![endif]-->
 </head>
 
 <body id='body' class="bgnoimg"  onmouseup="/*document.selection.empty();*/" onselectstart="return false">
