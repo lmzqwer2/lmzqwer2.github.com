@@ -1,3 +1,10 @@
+V140831
+修改页面样式为自适应，减少js调整代码
+ie6+与chrome firefox整体页面样式统一
+添加了少量CSS3动画
+精简了一些js代码
+内容更新
+
 V140830
 使用lettering.js添加了首页logo
 首页图标动画bug修复

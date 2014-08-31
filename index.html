@@ -14,7 +14,8 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 
 	<style type="text/css" media="screen">  
 		/*浮动文字  时间 背景*/
-		html {overflow:visible}
+		html {overflow:visible; height:100%;}
+		body {height:100%;}
         .FloatWordspan{ position:absolute; font-size:1em; font-weight:200; z-index:400; cursor:default;}
 		#TimeTicker {color:blue; font-size:1.5em; position:absolute; float:right; display:inline-block; right:5px; z-index:3; cursor:default; padding:0.15em 0.25em 0 0;}
 		body.bgimg {font-size:0.75em; -moz-user-select:none; }
@@ -25,7 +26,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 		_height:expression(document.getElementById('uplayout').offsetHeight+"px");display:block;}
 		#selectbar {position:absolute; z-index:0; display:block; left:-50; top:1950px;}
 		#selector {position:absolute; z-index:0; display:block; margin-left:auto; margin-right:auto;}
-		#selectcontainer {width:100%; height:2000px;}
+		#selectcontainer {width:100%; height:100%;}
 		
 		
 		/*无js布局*/
@@ -51,17 +52,29 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 		.level1_out {padding:0 3% 0; top:300px; text-align:center; -moz-user-select:none; height:auto;}
 		.level1_in {display:inline-block; font-size:1.5em; font-weight:bold; padding:0 5%; text-align:center; width:100px; cursor:pointer; zoom:1;}
 		
-		.level2_left {position:absolute; display:block; top:0; left:0; width:70px; z-index:50; border-right:1px solid gray; text-align:center;}
+		.level2_left {position:absolute; display:block; top:0; left:0; width:70px; height:100%; z-index:50; border-right:1px solid gray; text-align:center;}
 		.level2_left_in {position:relative; display:inline-block; height:60px; width:60px; font-size:1.1em; text-align:left; overflow:hidden;}
 		.level2_left_in_img {position:relative; left:0px; z-index:10; }
-		.level2_left_in_txt {position:absolute; height:auto;top:60px; z-index:20; width:60px; background:#000000; color:#FFFFFF; text-align:center; font-weight:bold; line-height: 1.5em; cursor:pointer;}
-					
-		.level2_content{position:absolute; display:block; top:0; left:70px; padding:0; height:100%; width:90%; z-index:50; -moz-user-select:none;}
+		.level2_left_in_txt {position:absolute; height:auto;top:60px; z-index:20; left:0; width:60px; background:#000000; color:#FFFFFF; text-align:center; font-weight:bold; line-height: 1.5em; cursor:pointer;}
+		
+		.level2_right {position:absolute; display:block; top:0; left:0; width:100%; height:100%;}
+		.level2_content{position:relative; display:block; top:0; margin-left:70px;  padding:0;  height:100%; z-index:50; -moz-user-select:none;}
 		
 		.level2_content_up{display:block; top:0; padding:0; height:auto; width:100%; z-index:50; border-bottom:1px solid gray;}
 		.level2_content_up_in,.level2_content_up_in_choose{display:inline-block; font-weight:bold; font-size:1.3em; padding:0.5em 1em 0.5em 1em; text-align:left; width:auto;  border-right:1px solid gray; cursor:pointer; overflow:hidden;}
-		.level2_content_up_in {}
-		.level2_content_up_in_choose {background:#000000; color:#FFFFFF; filter:alpha(opacity=40);  opacity: 0.4;  -moz-opacity:0.4;  overflow:hidden;}
+		.level2_content_up_in:hover {
+			opacity: 0.4;
+			-webkit-opacity:0.4;
+			-o-opacity:0.4;
+			-moz-opacity:0.4;
+			filter:alpha(opacity=40);
+			color:white; background:black;
+			-moz-transition: all 0.3s ease;
+			-webkit-transition: all 0.3s ease;
+			-o-transition: all 0.3s ease;
+			transition: all 0.3s ease;
+		}
+		.level2_content_up_in_choose {background:#000000; color:#FFFFFF; filter:alpha(opacity=40);  opacity: 0.4;  -moz-opacity:0.4;  overflow:hidden;}		
 		
 		.level2_content_up_searchboxinput{width:50%; padding:0.25em 2em 0.25em 0.5em; margin:0.5em 0.5em 0.25em 1em; text-align:left;}
 		.level2_content_up_searchboxcode{width:50%; padding:0.25em 0.5em 0.25em 0.5em; margin:0.5em 0.5em -0.5em 1em; text-align:left;}
@@ -69,9 +82,10 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 		.level2_content_up_searchboxclr{width:auto; border-left:1px solid gray; font-size:1.2em; padding:0 0.5em 0 0.5em; margin:0 0 0 -2em; cursor:pointer;}
 		.level2_content_up_searchboxsubmit{width:auto; font-size:1.2em; padding:0.25em 0.5em 0.25em 0.5em; margin:0.5em 0.5em 0.25em 0.5em; text-align:left;}
 		
-		.level2_content_bottom {position:relative; display:block; padding:1em 0 0 3em; height:80%; width:100%; z-index:50; overflow-y:auto; overflow-x:hidden; cursor:default; }
-		.level2_content_bottom_in_txt,.level2_content_bottom_in_icotxt {display:inline-block; font-size:1.2em; width:90%; line-height: 1.7em;  padding: 0px; color:#3c3c3c;}
-		.level2_content_bottom_in_icotxt {position:absolute; padding:0.1em; height:auto; top:128px; z-index:20; display:block; width:128px; line-height: 1.5em; background:#000000; color:#FFFFFF; text-align:center; cursor:pointer;}
+		.level2_content_bottom {position:relative; display:block; padding:1em 0 0 3em; z-index:50; overflow-y:auto; overflow-x:hidden; cursor:default; }
+		#havealook {font-size:2.5em; cursor:default;}
+		.level2_content_bottom_in_txt,.level2_content_bottom_in_icotxt {display:inline-block; font-size:1.2em; width:100%; line-height: 1.7em;  padding: 0px; color:#3c3c3c;}
+		.level2_content_bottom_in_icotxt {position:absolute; padding:0.1em; height:auto; top:128px; left:0; z-index:20; display:block; width:128px; line-height: 1.5em; background:#000000; color:#FFFFFF; text-align:center; cursor:pointer;}
 		.level2_content_bottom_in_ico {position:relative; display:inline-block; height:128px; width:128px; font-size:1.2em; line-height: 1.7em; margin: 20px; text-align:center;  overflow:hidden;}
 		.level2_content_bottom_in_img {position:relative; left:0px; z-index:10; }
 	</style>
@@ -233,22 +247,6 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 			object.style.left = nowr+'px';
 			object.style.top = nowb+'px';
 		}
-		function changeopacity(id,n){
-			var object = document.getElementById(id+'');
-			if (!object) return;
-			return $("#"+id).fadeTo(0,n/100);
-			if(isIE)
-			{
-				//od.releaseCapture();
-				object.style.filter = 'alpha(Opacity='+n+')';
-				object.style.opacity = n/100.0;
-			}
-			else
-			{
-				//window.releaseEvents(od.MOUSEMOVE);
-				object.style.opacity = n/100.0;
-			}		
-		}
 		function showopacityup(id,now,uplimit,per){
 			now = parseInt(now);
 			uplimit = parseInt(uplimit);
@@ -257,42 +255,20 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 			changeopacity(id+'',now);
 			if (now < uplimit) setTimeout(function(){showopacityup(id,now+per,uplimit,per)},opacitydelaytime);
 		}
-		function changewidth(s,n){
-			var object = document.getElementById(s+'');
-			if (!object) return;
-			if (n<=0) n =0;
-			object.style.width = n + 'px';
-		}
-		function changeheight(s,n){
-			var object = document.getElementById(s+'');
-			if (!object) return;
-			if (n<=0) n =0;
-			object.style.height = n + 'px';
-		}
 		function changewidhei(){
 			if (setbartop==0) bartobottom();
 			else bartotop();
-			$("#selector").css("left",(inwidth-600)/2).css("paddingTop",(inheight-300)/2);
+			$("#selector").css("left",Math.max(0,(inwidth-600)/2)).css("paddingTop",Math.max(0,(inheight-300)/2));
 			if (nowlevel==1){
 				var h = 350;
-				$("#logodiv").css({"paddingTop":(inheight - h*2) / 2});
-				$("#content_mid").css({"paddingTop":(inheight - h*1.5) / 2});
+				$("#logodiv").css({"paddingTop":Math.max(0,(inheight - h*2) / 2)});
+				$("#content_mid").css({"paddingTop":Math.max(0,(inheight - h*1.5) / 2)});
 			}else{
-				changeheight('left',inheight - bottomlimit);
-				changewidth('content',inwidth - rightlimit);
-				changeheight('content',inheight - bottomlimit);
-				changewidth("content_up",inwidth - rightlimit);
-				changewidth("content_bottom",inwidth - rightlimit - 35);
 				var h = 0,up = document.getElementById("content_up");
 				if (up && up.offsetHeight>0) h = up.offsetHeight;
-				changeheight("content_bottom",inheight -bottomlimit - 10 - h );
-				
-				var forwid=inwidth;
-				if (forwid>floatdivprewid) forwid = floatdivprewid;
-				changewidth("floatdiv",forwid);
-				var forhei = inheight;
-				if (forhei>floatdivprehei) forhei = floatdivprehei;
-				changeheight("floatdiv",forhei);
+				$("#content_bottom").css("height",inheight -bottomlimit - 10 - h );	
+				$("#floatdiv").css({"width":Math.min(inwidth,floatdivprewid),
+					"height":Math.min(inheight,floatdivprehei)});
 				moveto("floatdiv",0,0);
 			}
 		}
@@ -386,13 +362,6 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 		}
     </script>
 
-	<script type="text/JavaScript" language="JavaScript">  // document ready 函数
-		$(document).ready(function(){
-			$('input[type=checkbox]').tzCheckbox({labels:['Enable','Disable']});
-			// To use tzCheckbox
-		});
-	</script>
-
 	<script type="text/JavaScript" language="JavaScript">   //<!-- 总信息的提取 -->
 		var allcon = new Array();
 		var showlist = new Array();
@@ -432,7 +401,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 			var target = document.getElementById("content_bottom");
 			if (!target) return;
 			var title;
-			if (!this.ico)
+			if (!this.ico || a==0)
 				if (this.level==3) title = "→ " + this.title;
 				else if (this.level==2) title = "√ " + this.title;
 				else if (this.level==1) title = "「 "+this.title+" 」";
@@ -445,7 +414,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 												+"<img class='level2_content_bottom_in_img' id='"+this.number+"_bottom_inner_img' src= '"+this.ico+"' alt= '"+this.title+"' width='128px' height='128px' style='cursor:pointer;' onclick='showit(this.id)'/>"
 												+"<div class='level2_content_bottom_in_icotxt' id='"+this.number+"_bottom_inner_txt' onclick='showit(this.id)'>"+title+ "</div>"
 										+"</span>");
-					$('#'+this.number+'_bottom_inner_txt').css("opacity",0.75).css("top","128").css("left",'0');
+					$('#'+this.number+'_bottom_inner_txt').css("opacity",0.75);
 					var target = document.getElementById(this.number+'_bottom_inner_txt');
 					var autoheight = (target.innerHeight || target.clientHeight || target.offsetHeight);
 					target.style.height = autoheight + 'px';
@@ -651,13 +620,13 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 				case 7: case 8: case 9:		
 					temp = floatdivprehei+yinc;
 					if ((yinc<0 || temp+nowy<inheight-border ) && (heilowlimit<temp || yinc>0))
-						changeheight(od.id,floatdivprehei=temp);
+						$("#"+od.id).css("height",floatdivprehei=temp);
 			}
 			switch (mouseD){
 				case 3: case 6: case 9:	
 					temp = floatdivprewid+xinc;
 					if ((xinc <0 || temp+nowx<inwidth-border )&& (widlowlimit<temp || xinc>0))
-						changewidth(od.id,floatdivprewid=temp);
+						$("#"+od.id).css("width",floatdivprewid=temp);
 			}
 			switch (mouseD){
 				case 5: case 1: case 2: case 3:
@@ -666,7 +635,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 				if (mouseD!=5){
 					temp = floatdivprehei-yinc;
 					if (heilowlimit<temp)
-						changeheight(od.id,floatdivprehei=temp);
+						$("#"+od.id).css("height",floatdivprehei=temp);
 					else yinc = 0;
 				}
 				moveto(od.id,0,yinc);
@@ -678,7 +647,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 				if (mouseD!=5){
 					temp = floatdivprewid-xinc;
 					if (widlowlimit<temp)
-						changewidth(od.id,floatdivprewid=temp);
+						$("#"+od.id).css("width",floatdivprewid=temp);
 					else xinc = 0;
 				}
 				moveto(od.id,xinc,0);
@@ -940,6 +909,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 		function killall(level){
 			$("#content").remove();
 			$("#left").remove();
+			$("#right").remove();
 			if (level==1){
 				$("#body").prepend("<div class='level1_out' id='content'>"+
 										"<div id='logodiv'>"+
@@ -950,13 +920,13 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 			}
 			if (level==2){
 				$("#body").prepend("<div class='level2_left' id='left'></div>"+
-									"<div class='level2_content' id='content'>"+
+									"<div class='level2_right' id='right'><div class='level2_content' id='content'>"+
 										"<div id='content_up' class='level2_content_up'>"+
 										"</div>"+
 										"<div id='content_bottom' class='level2_content_bottom'>"+
 											"<span style='font-size:3em; cursor:default;'>欢迎！</span>"+
 										"</div>"+
-									"</div>");
+									"</div></div>");
 			}
 			closeed("floatdiv");
 		}
@@ -967,13 +937,15 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 			if (target.length==0) return;
 			var deltime = Math.max(7,(300+target.length*delaytime*7)/target.length/target.length);
 			for (i=0;i<target.length;i++){
-				$("#"+target[i].id).css("opacity",0).delay(i*deltime*!$.fx.off).fadeTo(10*delaytime,1)
+				$("#"+target[i].id).css("opacity",0).delay(i*deltime*!$.fx.off).fadeTo(10*delaytime,1,function(){
+					$(this).css("opacity","");
+				});
 			}
 		}
 		function showlevel2(l1num,l2num){
 			l1num = parseInt(l1num);
 			l2num = parseInt(l2num);
-			if (l1num==((alltot-1).toString())) {
+			if (l1num==alltot-1) {
 				showlevel1();
 				return ;
 			}
@@ -990,10 +962,9 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 										+"<div class='level2_left_in_txt' id='"+root.all[i]+"_left_inner_txt' onclick='showlevel2(this.id,-1)'>"+allcon[root.all[i]].title+ "</div>"
 									+"</span><br/>");
 				if (root.all[i]==l1num) movetitle(root.all[i]+'_left_inner',60,1);
-				$('#'+root.all[i]+'_left_inner_txt').css("left",0).css("opacity",0.5);
+				$('#'+root.all[i]+'_left_inner_txt').css("opacity",0.5);
 			}
 			changewidhei();
-			target = document.getElementById("content_up");
 			var inhtml = '';
 			if (l1num==(alltot-2).toString()) {
 				if (searchmode == 0){
@@ -1024,20 +995,21 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 				for (i=1;i<=now.total;i++){
 					if (now.all[i]!=l2num) classname = 'level2_content_up_in';
 					else classname = 'level2_content_up_in_choose';
-					$("#content_up").append("<span id='" + now.all[i]+ "' class='"+classname+"' onclick='showlevel2("+l1num+",this.id)'>"+ allcon[now.all[i]].title +"</span>");
+					$("#content_up").append("<span id='" + now.all[i]+ "_content_up' class='"+classname+"' onclick='showlevel2("+l1num+",this.id)'>"+ allcon[now.all[i]].title +"</span>");
 				}
 				if (now.total==0)	$("#content_up").append("<span class='level2_content_up_in' style='cursor:default;'>什么都没有哦！</span>");
 				if (l2num!=-1){
 					$("#content_bottom").empty();
 					allcon[l2num].showdown(1);
 				}else{
-					$("#content_bottom").empty().append("<span id='guess' style='font-size:2.5em; cursor:default;'>随便看看：</span><br/>");
+					$("#content_bottom").empty().append("<span id='havealook'>随便看看：</span><br/>");
 					allcon[l1num].showdown(11);
 					showtagup("content_up","span");
 				}
 				showtagup("content_bottom","img");
 				showtagup("content_bottom","span");
 			}
+			$("#content_up").append("<br/><div style='width:100%; height:1px; position:absolute; top:0;'>&nbsp;</div>");
 			changewidhei();
 		}
 		function level1image(number,width){
@@ -1064,7 +1036,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 					});
 					$("#"+root.all[i]).mouseleave(function(){
 						$(this).css({"color":"#000000"}).animate({"paddingLeft":"-="+15* !$.fx.off,"paddingRight":"-="+15* !$.fx.off,"letterSpacing":'-=4'},500,function(){
-							$(this).css({"padding":"0 5%"});
+							$(this).removeAttr("style");
 						});
 					});
 				}
@@ -1088,27 +1060,6 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 		});
 	</script>
 
-	<script type="text/JavaScript" language="JavaScript">
-		$(document).ready(function loader() {
-			$("#check").remove();
-			if (document.layers) {
-				document.captureEvents(Event.MOUSEMOVE);
-			}
-			document.onkeydown = EnterSubmit;
-			bartobottom();
-			$("#uplayout").css("opacity",0.85).css("top",inheight).css("zIndex",299).css("display","block");
-			$("#selectbar").css("float","left").css("left",barleft).css("top",inheight+bartop).css("zIndex",300).css("display","block");
-			$("#selector").css("float","left").css("zIndex",301).css("display","block");
-			$("#TimeTicker").css("opacity",1);
-			$("#ch_effects").bind('change',function(e){
-				if ($(this).attr("checked")=='checked')
-					$.fx.off = false;
-				else $.fx.off = true;
-			});
-			$("body").css("overflow",'hidden');
-		});
-	</script>
-
 	<script type="text/JavaScript" language="JavaScript">	//背景缓存载入
 		var bg = new Image();
 		var bgimg= new Array();
@@ -1129,12 +1080,10 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
             if (!bg.complete){
 				bg.src = bgimg[bgnum];
 				setTimeout("bgimager()", 2000);
-			}else{			
-				var target = document.getElementById("bgdiv");
-				changeopacity("bgdiv",25);
-				showopacityup("bgdiv",25,50,2);
-				$("#bgdiv").css("background","#94BFCA url('"+bgimg[bgnum]+"') center fixed no-repeat");
-				$("#uplayout").css("background","#66CCFF url('"+bgimg[bgnum]+"') center fixed no-repeat");
+			}else{
+				$("#bgdiv").css({"opacity":"0"}).fadeTo(2000,0.5);
+				$("#bgdiv").css("background","url('"+bgimg[bgnum]+"') center fixed no-repeat");
+				$("#uplayout").css("background","url('"+bgimg[bgnum]+"') center fixed no-repeat");
 			}
         }
 		$(document).ready(function loader() {
@@ -1146,6 +1095,28 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 		});
     </script>
 
+	<script type="text/JavaScript" language="JavaScript">  // document ready 函数
+		$(document).ready(function(){
+			$("#check").remove();
+			if (document.layers) {
+				document.captureEvents(Event.MOUSEMOVE);
+			}
+			document.onkeydown = EnterSubmit;
+			bartobottom();
+			$("#uplayout").css("opacity",0.85).css("top",inheight).css("zIndex",299).css("display","block");
+			$("#selectbar").css("float","left").css("left",barleft).css("top",inheight+bartop).css("zIndex",300).css("display","block");
+			$("#selector").css("float","left").css("zIndex",301).css("display","block");
+			$("#TimeTicker").css("opacity",1);
+			$("#ch_effects").bind('change',function(e){
+				if ($(this).attr("checked")=='checked')
+					$.fx.off = false;
+				else $.fx.off = true;
+			});
+			$("body").css("overflow",'hidden');
+			$('input[type=checkbox]').tzCheckbox({labels:['Enable','Disable']});
+			// To use tzCheckbox
+		});
+	</script>
 </head>
 
 <body id='body' class="bgnoimg"  onmouseup="/*document.selection.empty();*/" onselectstart="return false">
@@ -2307,6 +2278,16 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 							<dd id='Online_Game_MarioCrossover_linker'>
 								<a href="http://dl.iplaysoft.com/flash/3.html">MarioCrossover</a>
 							</dd>
+						<dt id='Online_Game_HTML5-SNAKE'>HTML5-SNAKE (贪吃蛇)</dt>
+							<dd id='Online_Game_HTML5-SNAKE_ico' class="nojs"></dd>
+							<dd id='Online_Game_HTML5-SNAKE_imager' class="nojs"></dd>
+							<dd id='Online_Game_HTML5-SNAKE_detail'>
+								贪吃蛇这种经典的游戏也有HTML5版的啦！
+							</dd>
+							<dd id='Online_Game_HTML5-SNAKE_linker'>
+								<a href="http://flashmonkey.co.uk/html5/snake/">HTML5 SNAKE</a>
+							</dd>
+							
 					</dl></dd>
 			
 			<dt id='Online_webpage'>实用网站</dt>
@@ -2350,17 +2331,103 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 						<dd id='Online_webpage_silk_linker'>
 							<a href="http://www.moeacg.cc/silk/">光丝图谱</a>
 						</dd>
-					<dt id='Online_webpage_tinypng'>TinyPNG</dt>
-						<dd id='Online_webpage_tinypng_ico' class="nojs"></dd>
-						<dd id='Online_webpage_tinypng_imager' class="nojs"></dd>
-						<dd id='Online_webpage_tinypng_detail'>
-							这是国外一个非常实用的PNG图片压缩网站，为了考虑更快的页面加载速度以及优化用户体验，对于网站图片的大小与质量必须严格把关，而该网站就是专门压缩PNG图片的，压缩率基本上在50%左右，还可以保留透明通道，非常方便好用。
+					<dt id='Online_webpage_uisdc'>优设网</dt>
+						<dd id='Online_webpage_uisdc_ico' class="nojs"></dd>
+						<dd id='Online_webpage_uisdc_imager' class="nojs"></dd>
+						<dd id='Online_webpage_uisdc_detail'>
+							优秀网页设计联盟，SDC（Superior Design Consortium）简称“优设”，是国内最专业的网页设计师交流学习平台。<br/>
+							域名UISDC释义，原意为用户界面 优秀设计联盟，为了方便记忆，您可以将域名看为 “有爱（UI）上档次（SDC）”。<br/>
 						</dd>
-						<dd id='Online_webpage_tinypng_linker'>
-							<a href="http://tinypng.com">TinyPNG</a>
+						<dd id='Online_webpage_uisdc_linker'>
+							<a href="http://www.uisdc.com/">优设网首页</a>
+						</dd>
+					<dt id='Online_webpage_html5tricks'>HTML5 tricks</dt>
+						<dd id='Online_webpage_html5tricks_ico' class="nojs"></dd>
+						<dd id='Online_webpage_html5tricks_imager' class="nojs"></dd>
+						<dd id='Online_webpage_html5tricks_detail'>
+							一个 HTML5 学习交流平台。给了很多精美 HTML5 网页的演示以及源码。<br/>
+						</dd>
+						<dd id='Online_webpage_html5tricks_linker'>
+							<a href="http://www.html5tricks.com/">HTML5 tricks</a>
+						</dd>
+					<dt id='Online_webpage_ab-testing'>What-is-AB-testing</dt>
+						<dd id='Online_webpage_ab-testing_ico' class="nojs"></dd>
+						<dd id='Online_webpage_ab-testing_imager' class="nojs"></dd>
+						<dd id='Online_webpage_ab-testing_detail'>
+							A/B测试是一种新兴的网页优化方法，可以用于增加转化率注册率等网页指标。<br/>
+							而本页面形象得告诉你什么是ABtest。<br/>
+						</dd>
+						<dd id='Online_webpage_ab-testing_linker'>
+							<a href="https://vwo.com/what-is-ab-testing/">What-is-AB-testing</a>
+						</dd>
+					<dt id='Online_webpage_colachan'>可乐橙个人博客</dt>
+						<dd id='Online_webpage_colachan_ico' class="nojs"></dd>
+						<dd id='Online_webpage_colachan_imager' class="nojs"></dd>
+						<dd id='Online_webpage_colachan_detail'>
+							可乐橙爱好阅读、写作，爱听五月天、Simple Plan，爱看《这个男人来自地球》，还有什么呢……<br/>
+							我决定要做点有意义的事情，长期性的，什么都好。无意间想到一个绝妙的主意，我开始每周翻译一篇国外的设计文章，还为此专门开了微信公众号“可乐橙”，用来集中记录和传播。<br/>
+							<br/>
+							<a href="http://colachan.com/post/3080">设计师的自我提升</a><br/>
+						</dd>
+						<dd id='Online_webpage_colachan_linker'>
+							<a href="http://colachan.com/">可乐橙个人博客首页</a>
 						</dd>
 						
 				</dl></dd>
+			
+			<dt id='Online_development'>便捷开发</dt>
+				<dd id='Online_development_ico' class="nojs"></dd>
+				<dd><dl id='Online_development_next'>
+					<dt id='Online_development_tinypng'>TinyPNG</dt>
+						<dd id='Online_development_tinypng_ico' class="nojs"></dd>
+						<dd id='Online_development_tinypng_imager' class="nojs"></dd>
+						<dd id='Online_development_tinypng_detail'>
+							这是国外一个非常实用的PNG图片压缩网站，为了考虑更快的页面加载速度以及优化用户体验，对于网站图片的大小与质量必须严格把关，而该网站就是专门压缩PNG图片的，压缩率基本上在50%左右，还可以保留透明通道，非常方便好用。
+						</dd>
+						<dd id='Online_development_tinypng_linker'>
+							<a href="http://tinypng.com">TinyPNG</a>
+						</dd>
+					<dt id='Online_development_FlipSwitch'>On/Off FlipSwitch</dt>
+						<dd id='Online_development_FlipSwitch_ico' class="nojs"></dd>
+						<dd id='Online_development_FlipSwitch_imager' class="nojs"></dd>
+						<dd id='Online_development_FlipSwitch_detail'>
+							Generate pure CSS3 On/Off flipswitches with animated transitions.<br/>
+							使用了CSS3动画效果的开关按钮。在不支持CSS3的浏览器上需要使用js，但并没有给出！<br/>
+						</dd>
+						<dd id='Online_development_FlipSwitch_linker'>
+							<a href="http://proto.io/freebies/onoff/">On/Off FlipSwitch</a>
+						</dd>
+					<dt id='Online_development_liveweave'>Liveweave</dt>
+						<dd id='Online_development_liveweave_ico' class="nojs"></dd>
+						<dd id='Online_development_liveweave_imager' class="nojs"></dd>
+						<dd id='Online_development_liveweave_detail'>
+							Liveweave在HTML4/HTML5、CSS2/CSS3中含有内置的自动完成上下文特性，让你工作起来更加轻松。你只需输入HTML5和CSS3 标签/元素即可，就是这么简单。 <br/>
+						</dd>
+						<dd id='Online_development_liveweave_linker'>
+							<a href="http://liveweave.com/">Liveweave</a>
+						</dd>
+					<dt id='Online_development_CanvasLoader'>CanvasLoader</dt>
+						<dd id='Online_development_CanvasLoader_ico' class="nojs"></dd>
+						<dd id='Online_development_CanvasLoader_imager' class="nojs"></dd>
+						<dd id='Online_development_CanvasLoader_detail'>
+							The Heartcode CanvasLoader Creator is a free online tool which you can use to generate scripted preloaders (spinners or throbblers) for your HTML projects. The Creator is using the CanvasLoader UI Library.
+						</dd>
+						<dd id='Online_development_CanvasLoader_linker'>
+							<a href="http://heartcode.robertpataki.com/canvasloader/">CanvasLoader</a>
+						</dd>
+					<dt id='Online_development_Respond.js'>Respond.js unit test</dt>
+						<dd id='Online_development_Respond.js_ico' class="nojs"></dd>
+						<dd id='Online_development_Respond.js_imager' class="nojs"></dd>
+						<dd id='Online_development_Respond.js_detail'>
+							The media queries in the included CSS file simply change the body's background color depending on the browser width. If you see any colors aside from black, then the media queries are working in your browser. You can resize your browser window to see it change on the fly.
+						</dd>
+						<dd id='Online_development_Respond.js_linker'>
+							<a href="http://scottjehl.github.io/Respond/test/test.html">Respond.js unit test</a>
+						</dd>
+						
+				</dl></dd>
+			
+				
 			</dl></dd>
 	</dl>
 	</div>
