@@ -8,445 +8,47 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
     <title>LM share</title>
 	<base target="_blank"/>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="viewport" id="viewport" content="width=device-width, initial-scale=1">
+	
 	<link rel="stylesheet" type="text/css" href="css/UI_v2.css" media="screen"/>
 	<link rel="stylesheet" type="text/css" href="css/jquery.tzCheckbox.css" media="screen"/>
-	<link rel="stylesheet" type="text/css" href="css/styles.css" media="screen"/>
 	<link rel="stylesheet" type="text/css" href="css/lettering_logo.css" media="screen"/>
-
-	<style type="text/css" media="screen">		
-		/*浮动层*/
-		.floatdiv{	width:60%; height:auto; display:none;
-				background:#EDF1F8;	 border: 0.2em solid #849BCA; 
-				position:absolute;
-				z-index:100;  -moz-user-select:none;} 
-		.floatdiv_title {padding:1em 5% 0 5%; float:top; top:0; text-align:center; font-weight:bold; font-size:1.5em; width:90%; background:#EDF1F8; z-index:3;}
-		.floatdiv_detail {padding:0.5em 5% 1.5em 5%; width:90%; background:#EDF1F8; z-index:1; height:auto; overflow:auto;}
-		.floatdiv_detail > p {text-indent: 2em;}
-		.floatdiv_linker {padding:0.5em 5% 1.5em 5%; position:absolute; bottom:0; background:#EDF1F8; width:90%; z-index:2; }
-		.floatdiv_button {font-size:1em; top:0; right:0; position:absolute; padding:0.4em 0.4em 0 0; cursor:pointer; z-index:500; }
-		
-		.t_r,.t_l,.m_l,.m_r,.b_l,.b_r { width:10px; }
-		.t_l,.t_m,.t_r,.b_l,.b_m,.b_r {height:10px; }
-		
-		.t_l,.t_m,.t_r{position:absolute; top:0; z-index:20; font-size:0%; }
-		.t_l{left:0; cursor:nw-resize;}
-		.t_m{z-index:10; width:100%; cursor:n-resize;}
-		.t_r{right:0; cursor:ne-resize;}
-		
-		.m_l,.m_r{position:absolute;z-index:20;}
-		.m_l{top:0px; left:0; z-index:10; height:100%; cursor:w-resize;}
-		.m_r{top:0px; right:0; z-index:10; height:100%; cursor:e-resize;}
-		
-		.b_l,.b_m,.b_r{position:absolute; bottom:0; z-index:20; font-size:0%;}
-		.b_l{left:0; cursor:sw-resize;}
-		.b_m{z-index:10; width:100%; cursor:s-resize;}
-		.b_r{right:0; cursor:se-resize;}
-		
-		.m_m{width:100%; height:100%; font-size:12px; cursor:move;}
-	</style>
+	<link rel="stylesheet" type="text/css" href="css/floatdiv.css" media="screen"/>
+	<link rel="stylesheet" type="text/css" href="css/smallUI_v2.css" media="screen and (max-width: 650px)">
 
 	<script type="text/JavaScript" src="JScode/jquery-1.9.1.min.js"></script>
 	<!--[if lte IE 8]>
-		<script src="JScode/html5shiv.min.js"></script><![endif]-->
+		<script src="JScode/html5shiv.min.js"></script>
+	<![endif]-->
 	<!--[if IE 6]>
 		<script type="text/javascript" src="JScode/DD_belatedPNG_0.0.8a-min.js"></script>
 		<script type="text/javascript">
 			DD_belatedPNG.fix('.tel,.head_content');
-			$(document).ready(function(){
-			});
 		</script>
 	<![endif]-->
 
-	<script type="text/JavaScript" src="JScode/jquery.tzCheckbox.js"></script>
 	<script type="text/JavaScript" src="JScode/jquery.lettering-0.6.1.min.js"></script>
 	<script type="text/JavaScript" src="JScode/GetList.js"><!--总信息的获取--></script>
-	<script type="text/JavaScript" src="JScode/FloatWord.js"><!--文字跟随鼠标--></script>
-	<script type="text/JavaScript" src="JScode/TimeTicker.js"><!--时间跳动--></script>
+	<script type="text/JavaScript" src="JScode/RunSupport.js"><!--全局函数及变量--></script>
 	<script type="text/JavaScript" src="JScode/floatdiv.js"><!--浮动层函数--></script>
-
-	<script type="text/javascript">	//控制层抓取函数
-        var dragging = false,mouseinselectbar=false;
-        var iX, iY;
-        var oX, oY;
-		var setbartop=0;
-		var bartop=-60,barleft=-40,barfloatout=-50;
-		function bartotop(){
-			dragging = false;
-			$("#selectbar").stop(true).animate({top:bartop,left:barleft},"fast");
-			$("#selectbar").siblings().stop(true).animate({top:'0',left:'0'},"fast");
-			setbartop = 1;
-		}
-		function bartobottom(){
-			dragging = false;
-			$("#selectbar").stop(true).animate({top:inheight+bartop+'',left:barleft},"fast");
-			$("#selectbar").siblings().stop(true).animate({top:inheight+"",left:'0'},"fast");
-			setbartop = 0;
-		}
-        $(function(){
-            /*--------------拖曳效果----------------
-            *原理：标记拖曳状态dragging ,坐标位置iX, iY
-            *         mousedown:fn(){dragging = true, 记录起始坐标位置，设置鼠标捕获}
-            *         mouseover:fn(){判断如果dragging = true, 则当前坐标位置 - 记录起始坐标位置，绝对定位的元素获得差值}
-            *         mouseup:fn(){dragging = false, 释放鼠标捕获，防止冒泡}
-            */
-            $("#selectbar").mousedown(function(e) {
-				if (e.which == 3) return false;
-                dragging = true && !$.fx.off;
-                iX = x - this.offsetLeft;
-                iY = y - this.offsetTop;
-				oX = oY = 0;
-                this.setCapture && this.setCapture();
-				return false;
-            });
-            $("#uplayout").mousedown(function(e) {
-				if (e.which == 3) return false;
-                dragging = true  && !$.fx.off;
-                iX = x - this.offsetLeft;
-                iY = y - this.offsetTop;
-				oX = oY = 0;
-            });
-            $("#selectbar").mouseenter(function(e) {
-				mouseinselectbar=true;
-				$("#selectbar").stop(true).animate({left:'0',top:((inheight+barfloatout)*(1-setbartop)+bartop)},100);
-				if (!setbartop && !dragging && !$.fx.off){
-					$("#selectbar").siblings().stop(true).animate({top:inheight+barfloatout+"",left:'0'},100);
-				}
-			});
-            $("#selectbar").mouseleave(function(e) {
-				mouseinselectbar=false;
-				this.releaseCapture && this.releaseCapture();
-				$("#selectbar").delay(2000).animate({left:barleft,top:((inheight)*(1-setbartop)+bartop)},100);
-				if (!setbartop && !dragging  && !$.fx.off){
-					$("#selectbar").siblings().delay(2000).animate({top:inheight+"",left:'0'},100);
-				}
-			});
-            $(document).mouseup(function(e) {
-				if (oY<5 && mouseinselectbar) setbartop = 1-setbartop;
-				if (setbartop==1)	bartotop();
-				else	bartobottom();
-                e.cancelBubble = true;
-				this.releaseCapture && this.releaseCapture();
-				mouseupfloatdiv();
-            });
-        });
-        $(document).mousemove(function MouseXY(e) { //从事件得到鼠标光标在页面上的位置
-            if (dragging) {
-				var e = e || window.event;
-				oX = x - iX; oY = y - iY;
-				if ((oY<inheight/3.5*2 && setbartop==0)){
-					bartotop(); return;
-				}
-				if ((oY>inheight/3.5 && setbartop==1)){
-					bartobottom(); return;
-				}
-				if (setbartop==1 && oY<0) oY = oY /2.5;
-				$("#selectbar").css({"top":oY +bartop+30 + "px"});
-				$("#selectbar").siblings().css({"top":oY +bartop+90+ "px"});
-            }
-        });		
-    </script>
-	
-	<script type="text/JavaScript" language="JavaScript">	// 全局变量及函数
-		var isIE = document.all ? true : false;
-		var preinwidth,preinheight;
-		var rightlimit=71,bottomlimit=10;
-		var floatdivprewid=601;
-		var floatdivprehei=601;
-		var widlowlimit=301; heilowlimit=40;
-		var nowlevel = 0;
-		var nowl1num = -1;
-		var nowl2num = -1;
-		var nowl3num = -1;
-        var x,y;	//鼠标当前在页面上的位置
-		var inwidth = 1;
-		var inheight = 1;
-		var sleft=0,stop=0; //文档滚动条位置
-		var body = document.getElementById("body");
-		var delaytime = 41;
-		
-		function joininimage(id,url,alt,width,height,event){
-			width = width || "auto";
-			height = height || "auto";
-			event = event || '';
-			return "<img id='"+id+"' src= '"+url+"' alt= '"+alt+"' width='"+width+"px' height='"+height+"px' "+event+"/>";
-		}
-		function moveto(s,x,y){
-			var object = document.getElementById(s+"");
-			if (!object) return;
-			var nowx = parseInt(object.style.pixelLeft || object.style.left);
-			var nowy = parseInt(object.style.pixelTop || object.style.top);
-			var width = (object.innerWidth || object.clientWidth || object.offsetWidth);
-			var height = (object.innerHeight || object.clientHeight || object.offsetHeight);
-			var nowr = nowx+x;
-			var nowb = nowy+y;
-			if (nowr+width+border>=inwidth) nowr=inwidth-width-border;
-			if (nowb+height+border>=inheight) nowb=inheight-height-border;
-			if (nowr<1) nowr=0;
-			if (nowb<1) nowb=0;
-			object.style.pixelLeft = nowr+'px';
-			object.style.pixelTop = nowb+'px';
-			object.style.left = nowr+'px';
-			object.style.top = nowb+'px';
-		}
-		function showopacityup(id,now,uplimit,per){
-			now = parseInt(now);
-			uplimit = parseInt(uplimit);
-			per = parseInt(per);
-			if (now>uplimit) now = uplimit;
-			changeopacity(id+'',now);
-			if (now < uplimit) setTimeout(function(){showopacityup(id,now+per,uplimit,per)},opacitydelaytime);
-		}
-		function changewidhei(){
-			if (setbartop==0) bartobottom();
-			else bartotop();
-			$("#selector").css("left",Math.max(0,(inwidth-600)/2)).css("paddingTop",Math.max(0,(inheight-300)/2));
-			if (nowlevel==1){
-				var h = 350;
-				$("#logodiv").css({"paddingTop":Math.max(0,(inheight - h*2) / 2)});
-				$("#content_mid").css({"paddingTop":Math.max(0,(inheight - h*1.5) / 2)});
-			}else{
-				var h = 0,up = document.getElementById("content_up");
-				if (up && up.offsetHeight>0) h = up.offsetHeight;
-				$("#content_bottom").css("height",inheight -bottomlimit - 10 - h );	
-				$("#floatdiv").css({"width":Math.min(inwidth,floatdivprewid),
-					"height":Math.min(inheight,floatdivprehei)});
-				moveto("floatdiv",0,0);
-			}
-		}
-		function GetInnerLength(){
-			inwidth = window.innerWidth
-					|| document.documentElement.clientWidth
-					|| document.body.clientWidth
-					+1;
-			inheight = window.innerHeight
-					|| document.documentElement.clientHeight
-					|| document.body.clientHeight
-					+1;
-		}
-		function scrollxy(){
-			sleft = window.pageXOffset  //用于FF
-				|| document.documentElement.scrollLeft
-				|| document.body.scrollTop
-				|| 0;
-			stop = window.pageYOffset  //用于FF
-				|| document.documentElement.scrollTop  
-				|| document.body.scrollTop  
-				|| 0;
-		}
-		function innerpx(){
-			GetInnerLength();
-			if (preinwidth != inwidth || preinheight != inheight) {
-				changewidhei();
-				preinwidth = inwidth;
-				preinheight = inheight;
-			}
-			//wid = sleft + inwidth;
-			//hei = stop + inheight;
-		}
-		$(document).ready(function(){
-			setInterval(function(){
-				//scrollxy();
-				innerpx();
-			},41);
-		});
-        $(document).mousemove(function MouseXY(e) { //从事件得到鼠标光标在页面上的位置
-			e=e||window.event;
-			x = isIE ? sleft + e.clientX : e.pageX;
-			y = isIE ? stop + e.clientY : e.pageY ;
-        });		
-		
-		function getCookie(c_name) {
-			if (document.cookie.length>0) { 
-				c_start=document.cookie.indexOf(c_name + "=");
-				if (c_start!=-1) { 
-					c_start=c_start + c_name.length+1 ;
-					c_end=document.cookie.indexOf(";",c_start);
-					if (c_end==-1) c_end=document.cookie.length;
-					return unescape(document.cookie.substring(c_start,c_end));
-				} 
-			}
-			return "-";
-		}
-		function setCookie(c_name,value,expiredays) {
-			var exdate=new Date();
-			exdate.setDate(exdate.getDate()+expiredays);
-			document.cookie=c_name+ "=" +escape(value) + 
-				((expiredays==null) ? "" : ";expires="+exdate.toGMTString());
-		}
-		function setallCookies(){
-			setCookie("nowlevel",nowlevel);
-			setCookie("nowl1num",nowl1num);
-			setCookie("nowl2num",nowl2num);
-			setCookie("nowl3num",nowl3num);
-		}
-		function getallCookies(){
-			nowlevel = parseInt(getCookie("nowlevel"));
-			nowl1num = parseInt(getCookie("nowl1num"));
-			nowl2num = parseInt(getCookie("nowl2num"));
-			nowl3num = parseInt(getCookie("nowl3num"));
-		}
-    </script>
-
-	<script type="text/JavaScript" language="JavaScript">  // 全文查找相关函数
-		var listcon=new Array(),listscore=new Array();
-		var docost=7.0,limit = 7;
-		
-		function min(q,w,e){
-			var temp =q;
-			if (temp>w) temp = w;
-			if (temp>e) temp = e;
-			return temp;
-		}
-		function between(c1,c2){
-			if (c1 == c2) return docost / 73.0;
-			if (c1.toUpperCase()==c2.toUpperCase()) return docost / 71.0;
-			return docost;
-		}
-		function editdistance(s1,s2){
-			var f = new Array();
-			var i,ti,t,j,l1=s1.length,l2=s2.length;
-			if (!l1 || !l2) return 10000;
-			for (i=0;i<=1;i++){
-				f[i] = new Array();
-			}
-			for (i=0;i<=l2;i++){
-				f[0][i] = i*docost+limit;
-			}
-			for (i=1;i<=l1;i++){
-				ti = i & 1; f[ti][0] = i*docost+limit;
-				for (j=1;j<=l2;j++){
-					t = between(s1[i-1],s2[j-1]);
-					if (t<1 && i-1>0 && j-1>0 && between(s1[i-2],s2[j-2])<1) t -= 1;
-					f[ti][j] = min(f[1-ti][j-1]+t,f[1-ti][j]+docost, f[ti][j-1]+docost);
-				}
-			}
-			return f[l1 & 1][l2];
-		}
-		function compare(number,s){
-			var temp = allcon[number];
-			var scoretitle = editdistance(temp.title,s) - Math.abs(temp.title.length-s.length)*docost+0.001;
-			var scoredetail = 54.3;
-			if (temp.detail.length){
-				scoredetail = 1;
-				for (var i=0;i<temp.detail.length;i++)
-					scoredetail *= editdistance(temp.detail[i],s) - Math.abs(temp.detail[i].length-s.length)*docost+0.001;
-			}
-			return scoretitle*scoretitle*scoretitle * scoredetail /1.0 /(temp.level);
-		}
-		function qsort(q,w){
-			var e=q,r=w,t=listscore[(q+w)>>1],y,u;
-			do{
-				while (listscore[e]<t) e++;
-				while (listscore[r]>t) r--;
-				if (e<=r){
-					y = listcon[e]; listcon[e] = listcon[r]; listcon[r] = y;
-					u = listscore[e]; listscore[e] = listscore[r]; listscore[r] = u;
-					e++; r--;
-				}
-			}while(e<r);
-			if (e< w) qsort(e,w);
-			if (q< r) qsort(q,r);
-		}
-		function findit(){
-			var target = document.getElementById("searchboxtext");
-			var bottom = document.getElementById("content_bottom");
-			if (!target || !target.value || !bottom) return;
-			var i=0;
-			if (target.value=="textarea" && searchmode==0){
-				searchmode = 1;
-				showlevel2(alltot-2,-1);
-				return;
-			}
-			if (target.value=="search" && searchmode==1){
-				searchmode = 0;
-				showlevel2(alltot-2,-1);
-				return;
-			}
-			if (searchmode==0){
-				$("#content_bottom").empty().append("搜索中..... 请稍候....<br/>");
-				for (var i=1;i< alltot-2;i++){
-					listcon[i-1] = i;
-					listscore[i-1] = compare(i,target.value);
-				}
-				qsort(0,listcon.length-1);
-				bottom.innerHTML = "";
-				for (i=0;i<listcon.length;i++){
-					allcon[listcon[i]].showself(0,"content_bottom");
-					//bottom.innerHTML += "&nbsp;&nbsp;&nbsp;&nbsp;" + listscore[i] +"&nbsp;&nbsp;&nbsp;&nbsp;" + i +"&nbsp;&nbsp;&nbsp;&nbsp;" + listcon[i] + ' ' + allcon[listcon[i]].id ;
-				}
-				showtagup("content_bottom","span");
-			}
-			else{
-				$("#content_bottom").append("<hr/><pre>"+target.value+"</pre><br/>");
-				var result;
-				if (target.value=="help"){
-					result = "<br/>bottom 表示当前的窗口<br/> target 表示编辑窗口 <br/> root 为根节点<br/> ";
-				}else{
-					result = eval(target.value);
-				}
-				$("#content_bottom").append(result+"<br/>");
-			}
-			changewidhei();
-		}
-		var EnterSubmit = function(evt)
-		{
-			evt = window.event || evt;
-			if (evt.keyCode == 13)
-			{
-				if (nowlevel==2){
-					var target = document.getElementById("searchboxtext");
-					if (target && (!target.value || searchmode)){
-						target.focus(); return;
-					}
-					var target = document.getElementById("searchboxsubmit");
-					if (target && !searchmode) target.click();
-				}
-				else if (nowlevel==1){
-					showlevel2(alltot-2,-1);
-					var target = document.getElementById("searchboxtext");
-					if (target) target.focus();
-				}
-	　　    }
-		}
-		function clrsearchboxtext(){
-			var target = document.getElementById("searchboxtext");
-			if (!target) return;
-			target.value = '';
-			target.focus();
-		}
-	</script>
-
 	<script type="text/JavaScript" src="JScode/UI_v2.js"><!--主界面函数--></script>
+	<script type="text/JavaScript" src="JScode/plugin.js"><!--页面小插件--></script>
 
 	<script type="text/JavaScript" language="JavaScript">  // document ready 函数
 		$(document).ready(function(){
-			$("#check").remove();
-			if (document.layers) {
-				document.captureEvents(Event.MOUSEMOVE);
-			}
-			document.onkeydown = EnterSubmit;
-			bartobottom();
-			$("#uplayout").css("opacity",0.85).css("top",inheight).css("zIndex",299).css("display","block");
-			$("#selectbar").css("float","left").css("left",barleft).css("top",inheight+bartop).css("zIndex",300).css("display","block");
-			$("#selector").css("float","left").css("zIndex",301).css("display","block");
 			$("#TimeTicker").css("opacity",1);
-			$("#ch_effects").bind('change',function(e){
-				if ($(this).attr("checked")=='checked')
-					$.fx.off = false;
-				else $.fx.off = true;
-			});
-			$("body").css("overflow",'hidden');
-			$('input[type=checkbox]').tzCheckbox({labels:['Enable','Disable']});
-			// To use tzCheckbox
 		});
 	</script>
 </head>
 
-<body id='body' class="bgnoimg"  onmouseup="/*document.selection.empty();*/" onselectstart="return false">
+<body class="bgnoimg" onselectstart="return false">
 
 	<div id="check">		<!--JS检查-->
 		<p>对不起，你的浏览器不支持JavaScript！</p>
     </div>
+	<script type="text/JavaScript" language="JavaScript">
+		$("#check").remove();
+	</script>
 
 	<div id='FloatWordDiv' class='nojs'><!--浮动文字-->
 		LM share
@@ -475,7 +77,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 		</div>
 		<div id='selectbar' > <img src='icon/updown_arrow.png' height="128" width="128" /></div>
 	</div>
-
+	
 </body>
 
 </html>

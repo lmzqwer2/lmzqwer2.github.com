@@ -3,13 +3,53 @@ var leftimgwidth = 65;
 var leftimgheight = 65;
 var searchmode = 0;
 var posincer = 4;
+var rightlimit=71,bottomlimit=10;
+var nowlevel = 0;
+var nowl1num = -1;
+var nowl2num = -1;
+var nowl3num = -1;
+var viewmode = 1;
+var widthviewchange = 650;
 
+function joininimage(id,url,alt,width,height,event,align){
+	width = width || "auto";
+	height = height || "auto";
+	event = event || '';
+	return "<img id='"+id+"' src= '"+url+"' alt= '"+alt+"' width='"+width+"px' height='"+height+"px' align='"+align+"' "+event+"/>";
+}
+function changewidhei(){
+	if (setbartop==0) bartobottom();
+	else bartotop();
+	$("#selector").css("left",Math.max(0,(inwidth-600)/2)).css("paddingTop",Math.max(0,(inheight-300)/2));
+	if (viewmode){
+		$("#selectcontainer").css("display","block");
+		$("#left").children().css({"position":"relative"});
+	}
+	else{
+		$("#selectcontainer").css("display","none");
+		$("#left").children().css({"position":"relative"});
+	}
+	if (nowlevel==1){
+		var h = 350;
+		$("#logodiv").css({"paddingTop":Math.max(0,(inheight - h*2) / 2)});
+		$("#content_mid").css({"paddingTop":Math.max(0,(inheight - h*1.5) / 2)});
+	}else{
+		var h = 0,up = document.getElementById("content_up");
+		var hl = 0,left = document.getElementById("left");
+		if (up && up.offsetHeight>0) h = up.offsetHeight;
+		if (left && left.offsetHeight>0) hl = left.offsetHeight;
+		$("#content_bottom").css("height",inheight -bottomlimit - 10 - h - (1-viewmode)*25);
+		$("#floatdiv").css({"width":Math.min(inwidth,floatdivprewid),
+			"height":Math.min(inheight,floatdivprehei)});
+		moveto("floatdiv",0,0);
+	}
+}
 function killall(level){
 	$("#content").remove();
 	$("#left").remove();
 	$("#right").remove();
 	if (level==1){
-		$("#body").prepend("<div class='level1_out' id='content'>"+
+		$("body").prepend("<div class='level1_out' id='content'>"+
 								"<div id='logodiv'>"+
 									"<h1 id='logo'>LM&nbsp;share</h1>"+
 								"</div>"+
@@ -17,7 +57,7 @@ function killall(level){
 		$("#logo").lettering();
 	}
 	if (level==2){
-		$("#body").prepend("<div class='level2_left' id='left'></div>"+
+		$("body").prepend("<div class='level2_left' id='left'></div>"+
 							"<div class='level2_right' id='right'><div class='level2_content' id='content'>"+
 								"<div id='content_up' class='level2_content_up'>"+
 								"</div>"+
@@ -40,6 +80,69 @@ function showtagup(id,tagname){
 		});
 	}
 }
+function findit(get,target){
+	var bottom = document.getElementById(target);
+	var t = document.getElementById(get);
+	if (!t || !t.value || !bottom) return;
+	var i=0;
+	if (t.value=="textarea" && searchmode==0){
+		searchmode = 1;
+		showlevel2(alltot-2,-1);
+		return;
+	}
+	if (t.value=="search" && searchmode==1){
+		searchmode = 0;
+		showlevel2(alltot-2,-1);
+		return;
+	}
+	if (searchmode==0){
+		$("#"+target).empty().append("搜索中..... 请稍候....<br/>");
+		allcon[0].finddown(t.value,0);
+		$("#"+target).empty();
+		for (i=0;i< listcon.length;i++){
+			allcon[listcon[i]].showself(0,target);
+			//bottom.innerHTML += "&nbsp;&nbsp;&nbsp;&nbsp;" + listscore[i] +"&nbsp;&nbsp;&nbsp;&nbsp;" + i +"&nbsp;&nbsp;&nbsp;&nbsp;" + listcon[i] + ' ' + allcon[listcon[i]].id ;
+		}
+		showtagup(target,"span");
+	}
+	else{
+		$("#"+target).append("<hr/><pre>"+t.value+"</pre><br/>");
+		var result;
+		if (t.value=="help"){
+			result = "<br/>bottom 表示当前的窗口<br/> target 表示编辑窗口 <br/> root 为根节点<br/> ";
+		}else{
+			result = eval(t.value);
+		}
+		$("#"+target).append(result+"<br/>");
+	}
+	changewidhei();
+}
+var EnterSubmit = function(evt)
+{
+	evt = window.event || evt;
+	if (evt.keyCode == 13)
+	{
+		if (nowlevel==2){
+			var target = document.getElementById("searchboxtext");
+			if (target && (!target.value || searchmode)){
+				target.focus(); return;
+			}
+			var target = document.getElementById("searchboxsubmit");
+			if (target && !searchmode) target.click();
+		}
+		else if (nowlevel==1){
+			showlevel2(alltot-2,-1);
+			var target = document.getElementById("searchboxtext");
+			if (target) target.focus();
+		}
+　    }
+}
+function clrsearchboxtext(){
+	var target = document.getElementById("searchboxtext");
+	if (!target) return;
+	target.value = '';
+	target.focus();
+}
 function showlevel2(l1num,l2num){
 	l1num = parseInt(l1num);
 	l2num = parseInt(l2num);
@@ -52,15 +155,27 @@ function showlevel2(l1num,l2num){
 	nowlevel = 2; nowl1num = l1num;
 	nowl2num = l2num; nowl3num = -1;
 	setallCookies();
-	for (i=1;i<=root.total;i++) {
-		if (root.all[i]!=l1num) moveevent = "onmouseover='movetitle(this.id,60,1)' onmouseout='movetitle(this.id,60,-1)'";
-		else moveevent = '';
-		$("#left").append("<span class='level2_left_in' id='"+root.all[i]+"_left_inner'"+moveevent+">"
-								+"<img class='level2_left_in_img' id='"+root.all[i]+"_left_inner_img' src= '"+allcon[root.all[i]].ico+"' alt= '"+allcon[root.all[i]].title+"' width='60px' height='60px' style='cursor:pointer;' onclick='showlevel2(this.id,-1)'/>"
-								+"<div class='level2_left_in_txt' id='"+root.all[i]+"_left_inner_txt' onclick='showlevel2(this.id,-1)'>"+allcon[root.all[i]].title+ "</div>"
-							+"</span><br/>");
-		if (root.all[i]==l1num) movetitle(root.all[i]+'_left_inner',60,1);
-		$('#'+root.all[i]+'_left_inner_txt').css("opacity",0.5);
+	for (i=0;i<root.total;i++) {
+		var moveevent = '';
+		if (viewmode){
+			if (root.all[i]!=l1num) moveevent = "onmouseover='movetitle(this.id,60,1)' onmouseout='movetitle(this.id,60,-1)'";
+			else moveevent = '';
+			if (inwidth>widthviewchange)
+			$("#left").append("<span class='level2_left_in' id='"+root.all[i]+"_left_inner'"+moveevent+">"
+									+"<img class='level2_left_in_img' id='"+root.all[i]+"_left_inner_img' src= '"+allcon[root.all[i]].ico+"' alt= '"+allcon[root.all[i]].title+"' width='60px' height='60px' style='cursor:pointer;' onclick='showlevel2(this.id,-1)'/>"
+									+"<span class='level2_left_in_txt' id='"+root.all[i]+"_left_inner_txt' onclick='showlevel2(this.id,-1)'>"+allcon[root.all[i]].title+ "</span>"
+								+"</span>");
+			if (root.all[i]==l1num) movetitle(root.all[i]+'_left_inner',60,1);
+			$('#'+root.all[i]+'_left_inner_txt').css("opacity",0.5);
+		}else{
+			var classname='';
+			if (root.all[i]!=l1num) classname = 'level2_left_in_small';
+			else classname = 'level2_left_in_small_choose';
+			$("#left").append("<span class='"+classname+"' id='"+root.all[i]+"_left_inner'"+moveevent+">"
+									+"<span class='level2_left_in_txt' id='"+root.all[i]+"_left_inner_txt' onclick='showlevel2(this.id,-1)'>"+allcon[root.all[i]].title+ "</span>"
+								+"</span>");
+			movetitle(root.all[i]+'_left_inner',i*60,-1);
+		}
 	}
 	changewidhei();
 	var inhtml = '';
@@ -72,7 +187,7 @@ function showlevel2(l1num,l2num){
 			}
 			else
 				inhtml =  '<input rows="auto" cols="20" type="text" id="searchboxtext" class="level2_content_up_searchboxtextie" value=""/>';
-			inhtml+= '<input type="button" id="searchboxsubmit" class="level2_content_up_searchboxsubmit" value="搜索" onclick="findit();"/>';
+			inhtml+= '<input type="button" id="searchboxsubmit" class="level2_content_up_searchboxsubmit" value="搜索" onclick="findit(\'searchboxtext\',\'content_bottom\');"/>';
 		}else{
 			if (!isIE) {
 				inhtml = '<textarea id="searchboxtext" class="level2_content_up_searchboxcode" value=""></textarea>';
@@ -81,7 +196,7 @@ function showlevel2(l1num,l2num){
 				inhtml = '<textarea rows="5" id="searchboxtext" class="level2_content_up_searchboxtextie"></textarea>';
 				inhtml+= '<span class="level2_content_up_searchboxclr" onclick="clrsearchboxtext();">X</span>';
 			}
-			inhtml+= ' <input type="button" id="searchboxsubmit" class="level2_content_up_searchboxsubmit" value="运行" onclick="findit();"/>';
+			inhtml+= ' <input type="button" id="searchboxsubmit" class="level2_content_up_searchboxsubmit" value="运行" onclick="findit(\'searchboxtext\',\'content_bottom\');"/>';
 		}
 		$("#content_up").append(inhtml);
 		document.getElementById("searchboxtext").focus();
@@ -90,7 +205,7 @@ function showlevel2(l1num,l2num){
 		var now = allcon[l1num];
 		var inhtml = '';
 		var classname='';
-		for (i=1;i<=now.total;i++){
+		for (i=0;i<now.total;i++){
 			if (now.all[i]!=l2num) classname = 'level2_content_up_in';
 			else classname = 'level2_content_up_in_choose';
 			$("#content_up").append("<span id='" + now.all[i]+ "_content_up' class='"+classname+"' onclick='showlevel2("+l1num+",this.id)'>"+ allcon[now.all[i]].title +"</span>");
@@ -98,16 +213,16 @@ function showlevel2(l1num,l2num){
 		if (now.total==0)	$("#content_up").append("<span class='level2_content_up_in' style='cursor:default;'>什么都没有哦！</span>");
 		if (l2num!=-1){
 			$("#content_bottom").empty();
-			allcon[l2num].showdown(1,"content_bottom");
+			allcon[l2num].showdown('all',"content_bottom",viewmode);
 		}else{
 			$("#content_bottom").empty().append("<span id='havealook'>随便看看：</span><br/>");
-			allcon[l1num].showdown(11,"content_bottom");
+			allcon[l1num].showdown(10,"content_bottom",viewmode);
 			showtagup("content_up","span");
 		}
 		showtagup("content_bottom","img");
 		showtagup("content_bottom","span");
 	}
-	$("#content_up").append("<br/><div style='width:100%; height:1px; position:absolute; top:0;'>&nbsp;</div>");
+	$("#content_up").append("<br/><div style='width:100%; height:0; position:absolute; top:0;'>&nbsp;</div>");
 	changewidhei();
 }
 function level1image(number,width){
@@ -116,8 +231,8 @@ function level1image(number,width){
 	var target = document.getElementById(coner.number.toString());
 	if (!target) return;
 	var height = width;
-	target.innerHTML = joininimage(coner.id+'_ico',coner.ico,coner.title,width,height);
-	target.innerHTML += coner.title;
+	var align = viewmode ? "bottom" : "top";
+	$("#"+coner.number).prepend(joininimage(coner.id+'_ico',coner.ico,coner.title,width,height,"",align));
 }
 function showlevel1(){
 	killall(1);
@@ -126,9 +241,9 @@ function showlevel1(){
 	setallCookies();
 	$("#content").append("<div class='level1_out' id='content_mid'></div>");
 	var target = $("#content_mid");
-	for (i=1;i<=root.total;i++) { 
+	for (i=0;i<root.total;i++) { 
 		if (root.all[i]!=alltot-1){
-			target.append("<span id='" + root.all[i]+ "' class='level1_in' onclick='showlevel2(this.id,-1)'>"+ allcon[root.all[i]].title +"</span>");
+			target.append("<span id='" + root.all[i]+ "' class='level1_in' onclick='showlevel2(this.id,-1)'><span>"+ allcon[root.all[i]].title +"</span></span>");
 			$("#"+root.all[i]).mouseenter(function(){
 				$(this).css({"color":"#777777"}).animate({"paddingLeft":"+="+15* !$.fx.off,"paddingRight":"+="+15* !$.fx.off,"letterSpacing":'+=4'},500);
 			});
@@ -152,11 +267,20 @@ function reshowlevel(){
 		showlevel2(nowl1num,nowl2num);
 	}
 }
-function viewstart(){
-	getallCookies();
-	reshowlevel();
+function resizedwindow(){
+	if ((inwidth<=widthviewchange && viewmode==1 )|| (inwidth>widthviewchange && viewmode==0)){
+		viewmode = 1 - viewmode;
+		reshowlevel();
+	}
+	changewidhei();
 }
-
+function viewstart(){
+	innerpx();
+	getallCookies();
+	resizedwindow();
+	reshowlevel();
+	changewidhei();
+}
 //背景缓存载入
 var bg = new Image();
 var bgimg= new Array();
@@ -184,9 +308,16 @@ function bgimager() {
 	}
 }
 $(document).ready(function loader() {
-	$("#body").css("overflow",'hidden');
+	setbartop = 0;
+	$("body").css("overflow",'hidden');
 	do
 		bgnum= Math.round(Math.random()*(bgimg.length-0.5));
 	while (bgnum<0 || bgnum>=bgimg.length);
 	bgimager();
+	$(document).keydown(EnterSubmit);
+	if (document.layers) {
+		document.captureEvents(Event.MOUSEMOVE);
+	}
+	bartobottom();
+	$("body").css("overflow",'hidden');
 });

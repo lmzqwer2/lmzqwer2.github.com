@@ -1,4 +1,7 @@
 var prox;
+var floatdivprewid=601;
+var floatdivprehei=601;
+var widlowlimit=301; heilowlimit=110;
 var dx,dy,mx=0,my=0,breakx=0,breaky=0,mouseD=0,mouseout=1;
 var mousedown_opacity = 0.6;
 var mouseup_opacity = 0.9;
@@ -8,9 +11,39 @@ var divshowdelaytime = 13;
 var divshowperdec = 11;
 var opacitydelaytime = 41;
 var floatdivprehei = 0;
+var SupportsTouches = ("createTouch" in document);
+var mouseover = 0;
 
 /* 动画 */
 
+function GetInnerLength(){
+	inwidth = window.innerWidth
+			|| document.documentElement.clientWidth
+			|| document.body.clientWidth
+			+1;
+	inheight = window.innerHeight
+			|| document.documentElement.clientHeight
+			|| document.body.clientHeight
+			+1;
+}
+function moveto(s,x,y){
+	var object = document.getElementById(s+"");
+	if (!object) return;
+	var nowx = parseInt(object.style.pixelLeft || object.style.left);
+	var nowy = parseInt(object.style.pixelTop || object.style.top);
+	var width = (object.innerWidth || object.clientWidth || object.offsetWidth);
+	var height = (object.innerHeight || object.clientHeight || object.offsetHeight);
+	var nowr = nowx+x;
+	var nowb = nowy+y;
+	if (nowr+width+border>=inwidth) nowr=inwidth-width-border;
+	if (nowb+height+border>=inheight) nowb=inheight-height-border;
+	if (nowr<1) nowr=0;
+	if (nowb<1) nowb=0;
+	object.style.pixelLeft = nowr+'px';
+	object.style.pixelTop = nowb+'px';
+	object.style.left = nowr+'px';
+	object.style.top = nowb+'px';
+}
 function closeed(id){/*--关闭--*/
 	o = $("#floatdiv");
 	if (!o) return;
@@ -65,7 +98,7 @@ function changefloatinnerheight(){
 	changeheight(detail.id,hdetail);
 	if (detail) detail.innerHTML = hdetail;
 }
-$(document).mousemove(function floatdivmove(){
+function floatdivmove(){
 	var od = document.getElementById("floatdiv");
 	if (!od) return;
 	if (!od || mouseD==0 || mouseover==0) return;
@@ -111,6 +144,9 @@ $(document).mousemove(function floatdivmove(){
 		}
 		moveto(od.id,xinc,0);
 	}
+}
+$(document).mousemove(function(){
+	floatdivmove();
 });
 
 var clickcolor = "#0000FF";
@@ -160,7 +196,7 @@ function buildlinker(number){
 }
 function creatfloatdiv(){
 	if ($("#floatdiv").text()) return;
-	$("#body").append("<div id='floatdiv' class='floatdiv' onDblClick='closeed(\"floatdiv\")' onmouseover='mouseoverfloatdiv()' onmouseout='mouseoutfloatdiv()'>"+
+	$("body").append("<div id='floatdiv' class='floatdiv' onDblClick='closeed(\"floatdiv\")' onmouseover='mouseoverfloatdiv()' onmouseout='mouseoutfloatdiv()'>"+
 							"<div id='floatdiv_button' onclick='closeed(\"floatdiv\")' class='floatdiv_button'>关闭</div>"+
 							"<div id='floatdiv_t_l' class='t_l' onmousedown='mousedownfloatdiv(1)' onmouseup='mouseupfloatdiv()'></div>"+
 							"<div id='floatdiv_t_m' class='t_m' onmousedown='mousedownfloatdiv(2)' onmouseup='mouseupfloatdiv()'></div>"+
@@ -174,6 +210,15 @@ function creatfloatdiv(){
 							"<div id='floatdiv_b_r' class='b_r' onmousedown='mousedownfloatdiv(9)' onmouseup='mouseupfloatdiv()'></div>"+
 						"</div>");
 	var target = document.getElementById("floatdiv");
+	target.addEventListener('touchend',function(){
+		mouseupfloatdiv();
+    });
+	target.addEventListener('touchstart',function(){
+		mousedownfloatdiv(5);
+	});
+    target.addEventListener('touchmove',function(){
+		floatdivmove();
+	});
 	mouseupfloatdiv();
 	width=floatdivprewid;
 	if (inwidth<floatdivprewid) width = inwidth;
@@ -186,11 +231,8 @@ function creatfloatdiv(){
 	$("#floatdiv").css("height",floatdivprehei).css("overflow","hidden");
 }
 function changefloatdivinner(number){
-	if (allcon[number].ico){
-		$('#'+number+"_bottom_inner_img").fadeTo(200,0.20);
-	}else{
-		$("#"+number+"_bottom_outer").css({color:clickcolor});
-	}
+	$('#'+number+"_bottom_inner_img").fadeTo(200,0.20);
+	$("#"+number+"_bottom_outer").css({color:clickcolor});
 	var target = document.getElementById("floatdiv_m_m");
 	if (!target) return;
 	$("#floatdiv_m_m").empty().append(buildtitle(number) + builddetail(number) + buildlinker(number));

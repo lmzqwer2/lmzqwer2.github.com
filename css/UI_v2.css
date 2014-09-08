@@ -1,17 +1,24 @@
 /*浮动文字  时间 背景*/
 *{
 	margin:0; padding:0;
+	-moz-user-select:none;
 }
 html ,body{
 	overflow:visible;
 	height:100%;
-	-moz-user-select:none; 
 }
 body {
 	font-size:0.75em;
+	overflow: hidden;
 }
+#bgdiv{position:absolute;top:0; left:0;}
 body.bgnoimg {	background:#94BFCA;}
 
+#logo{
+	position:relative;
+	font-size:13em;
+	line-height:1em;
+}
 .FloatWordspan{
 	position:absolute;z-index:400;
 	font-size:1em; font-weight:200;
@@ -46,6 +53,10 @@ body.bgnoimg {	background:#94BFCA;}
 .level1_out {
 	padding:0 3% 0; top:300px; height:auto;
 	text-align:center;
+	-moz-transition: all 0.3s ease;
+	-webkit-transition: all 0.3s ease;
+	-o-transition: all 0.3s ease;
+	transition: all 0.3s ease;
 }
 .level1_in {
 	display:inline-block; padding:0 5%;  width:100px;
@@ -54,19 +65,27 @@ body.bgnoimg {	background:#94BFCA;}
 }
 
 .level2_left {
-	position:absolute; display:block; top:0; left:0; z-index:50;
+	position:relative; display:block; top:0; left:0; z-index:50;
 	width:70px; height:100%; border-right:1px solid gray;
 	text-align:center;
+	-moz-transition: all 0.3s ease;
+	-webkit-transition: all 0.3s ease;
+	-o-transition: all 0.3s ease;
+	transition: all 0.3s ease;
 }
 .level2_left_in {
 	position:relative; display:inline-block; height:60px; width:60px;
 	font-size:1.1em; text-align:left; overflow:hidden;
 }
+.level2_left_in_small {
+	float:left;
+}
 .level2_left_in_img {
 	position:relative; left:0px; z-index:10;
 }
 .level2_left_in_txt {
-position:absolute; height:auto;top:60px; z-index:20; left:0; width:60px;
+ top:60px;
+position:absolute; display:block; height:auto; z-index:20; left:0; width:60px;
 background:#000000; color:#FFFFFF; text-align:center; font-weight:bold;
 line-height: 1.5em; cursor:pointer;
 }
@@ -74,6 +93,10 @@ line-height: 1.5em; cursor:pointer;
 .level2_right {
 	position:absolute; display:block; top:0; left:0;
 	width:100%; height:100%;
+	-moz-transition: all 0.3s ease;
+	-webkit-transition: all 0.3s ease;
+	-o-transition: all 0.3s ease;
+	transition: all 0.3s ease;
 }
 .level2_content{
 	position:relative; display:block; top:0; margin-left:70px;
