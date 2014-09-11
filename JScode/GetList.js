@@ -19,7 +19,7 @@ function predownload(src){
 	img.src = src;
 	return img.complete;
 }
-function container(id,title,detail,linker,ico,imager,level,number,type,father){
+function container(id,title,detail,linker,ico,imager,level,number,type){
 	this.id = id;
 	this.title = title;
 	this.detail = detail;
@@ -33,41 +33,11 @@ function container(id,title,detail,linker,ico,imager,level,number,type,father){
 	predownload(this.ico);
 	this.level = level;
 	this.number = number;
-	this.father = father;
 	this.all = new Array();
 	this.total = 0;
 }
 function Trim(str){
 	return str.replace(/(^\s*)|(\s*$)/g, ""); 
-}
-container.prototype.toJson = function toJson(){
-	var str = '';
-	str += '{\n';
-	str += '\t"title":"'+this.title+'",\n';
-	str += '\t"ico":"'+this.ico+'",\n';
-	str += '\t"imager":"'+this.imager+'",\n';
-	str += '\t"level":'+this.level+',\n';
-	str += '\t"number":'+this.number+',\n';
-	str += '\t"father":'+this.father+',\n';
-	str += '\t"detail":[\n';
-	var det = this.detail.split("<br>");
-	for (var i=0; i< det.length;i++){
-		str+= '\t\t"'+Trim(det[i])+'"';
-		if (i+1!=det.length) str += ',\n';
-		else str += '\n';
-	}
-	str += '\t],\n';
-	var lnk = this.linker.split("<a href=");
-	str += '\t"linker":[\n';
-	for (var i=1; i< lnk.length;i++){
-		var tmp = lnk[i].split("\">")
-		str+= '\t\t{"name":"'+Trim(tmp[1])+'","src":'+tmp[0]+'"}';
-		if (i+1!=lnk.length) str += ',\n';
-		else str += '\n';
-	}
-	str += '\t]\n';
-	str += '},\n';
-	return str;
 }
 container.prototype.showself = function showself(a,tid){
 	if ($('#'+tid)==null) return;
@@ -80,16 +50,16 @@ container.prototype.showself = function showself(a,tid){
 	else title = this.title;
 	if (a==1 && this.ico){
 		title = title.replace("(","<br/>(");
-		$('#'+tid).append("<span class='level2_content_bottom_in_ico' id='"+this.number+"_bottom_inner' onmouseover='movetitle(this.id,128,1)' onmouseout='movetitle(this.id,128,-1)'>"
-									+"<img class='level2_content_bottom_in_img' id='"+this.number+"_bottom_inner_img' src= '"+this.ico+"' alt= '"+this.title+"' width='128px' height='128px' style='cursor:pointer;' onclick='showit(this.id)'/>"
-									+"<div class='level2_content_bottom_in_icotxt' id='"+this.number+"_bottom_inner_txt' onclick='showit(this.id)'>"+title+ "</div>"
+		$('#'+tid).append("<span class='level2_content_bottom_in_ico"+classSuffix+"' id='"+this.number+"_bottom_inner' onmouseover='movetitle(this.id,128,1)' onmouseout='movetitle(this.id,128,-1)'>"
+									+"<img class='level2_content_bottom_in_img"+classSuffix+"' id='"+this.number+"_bottom_inner_img' src= '"+this.ico+"' alt= '"+this.title+"' width='128px' height='128px' style='cursor:pointer;' onclick='showit(this.id)'/>"
+									+"<div class='level2_content_bottom_in_icotxt"+classSuffix+"' id='"+this.number+"_bottom_inner_txt' onclick='showit(this.id)'>"+title+ "</div>"
 								+"</span>");
 		$('#'+this.number+'_bottom_inner_txt').css("opacity",0.75);
 		var target = document.getElementById(this.number+'_bottom_inner_txt');
 		var autoheight = (target.innerHeight || target.clientHeight || target.offsetHeight);
 		target.style.height = autoheight + 'px';
 	}else{
-		$('#'+tid).append("<br/><span id='"+this.number+"_bottom_outer' class='level2_content_bottom_in_txt'>"
+		$('#'+tid).append("<br/><span id='"+this.number+"_bottom_outer' class='level2_content_bottom_in_txt"+classSuffix+"'>"
 							+"<span id='"+this.number+"_bottom_inner_txt' style='cursor:pointer; width:auto;' onclick='showit(this.id)'>"+title+ "</span>"
 						+"</span>");
 		$("#"+this.number+"_bottom_inner_txt").css({"font-size":"+=5","lineHeight":"1.5"});
@@ -203,6 +173,7 @@ container.prototype.finddown = function finddown(s,a){
 }
 function movetitle(s,len,i){
 	var t = document.getElementById(s+"_txt");
+	if (!t) return;
 	var autoheight = (t.innerHeight || t.clientHeight || t.offsetHeight);
 	$("#"+s+'_txt').stop(true).animate({top:Math.max(0,len-i*autoheight)},100);
 }
@@ -211,20 +182,21 @@ container.prototype.add = function add(target){
 }
 $(document).ready(function(){
 	$.getJSON("data/list.json", function(res){
+		var stack = new Array();
 		allcon[0] = root; alltot = 1;
+		stack[0] = 0;
+		var reg = new RegExp('_', 'g');
 		for (var i=1;i<res.all.length;i++){
-			title = res.all[i].title.replace(new RegExp('_', 'g')," ");
+			title = res.all[i].title.replace(reg," ");
 			id = title;
 			tot = res.all[i].level;
 			detail = res.all[i].detail;
 			linker = res.all[i].linker;
 			ico = res.all[i].ico;
 			imager = res.all[i].imager;
-			type = 0;
-			number = res.all[i].number;
-			father = res.all[i].father;
-			allcon[i] = new container(id,title,detail,linker,ico,imager,tot,number,type,father);
-			allcon[allcon[i].father].add(allcon[i]);
+			allcon[i] = new container(id,title,detail,linker,ico,imager,tot,i,0);
+			stack[tot] = i;
+			allcon[stack[tot-1]].add(allcon[i]);
 			alltot ++;
 		}
 		viewstart();

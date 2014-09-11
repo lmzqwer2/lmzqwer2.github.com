@@ -47,12 +47,6 @@ $(document).mousemove(function MouseXY(e) { //从事件得到鼠标光标在页�
 	x = isIE ? sleft + e.clientX : e.pageX;
 	y = isIE ? stop + e.clientY : e.pageY ;
 });
-document.addEventListener('touchmove',function(e){
-	x = e.touches[0].pageX;
-	y = e.touches[0].pageY;
-});  
-
-
 function getCookie(c_name) {
 	if (document.cookie.length>0) { 
 		c_start=document.cookie.indexOf(c_name + "=");

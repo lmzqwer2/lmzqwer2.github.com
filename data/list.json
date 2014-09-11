@@ -5,8 +5,6 @@
             "ico": "",
             "imager": "",
             "level": 0,
-            "number": 0,
-            "father": 0,
             "detail": [],
             "linker": []
         },
@@ -15,8 +13,6 @@
             "ico": "Games.png",
             "imager": "",
             "level": 1,
-            "number": 1,
-            "father": 0,
             "detail": [],
             "linker": [
                 {
@@ -34,8 +30,6 @@
             "ico": "FreebirdGames.png",
             "imager": "",
             "level": 2,
-            "number": 2,
-            "father": 1,
             "detail": [],
             "linker": [
                 {
@@ -53,8 +47,6 @@
             "ico": "To_The_Moon.jpg",
             "imager": "",
             "level": 3,
-            "number": 3,
-            "father": 2,
             "detail": [
                 "故事讲述一个博士专门为弥留之际的人们完成最后的心愿，而这回这位约翰尼老人最后的心愿竟然是——去月球。",
                 "它被定义为游戏，经过几个小时的“游戏”之后，或许会更觉得自己是读了一部感人至深的小说，它就是《To the Moon》。",
@@ -80,8 +72,6 @@
             "ico": "Do_You_Remember_My_Lullaby.png",
             "imager": "",
             "level": 3,
-            "number": 4,
-            "father": 2,
             "detail": [
                 "很温情的一个小故事。"
             ],
@@ -101,8 +91,6 @@
             "ico": "Quintessence-The_Blighted_Venom.png",
             "imager": "",
             "level": 3,
-            "number": 5,
-            "father": 2,
             "detail": [
                 "即时类的RPG，而且游戏流程一共14章，作者现已出11章。"
             ],
@@ -122,8 +110,6 @@
             "ico": "The_Mirror_Lied.png",
             "imager": "",
             "level": 3,
-            "number": 6,
-            "father": 2,
             "detail": [
                 "故事具体剧情隐晦，但并不是恐怖片。"
             ],
@@ -143,8 +129,6 @@
             "ico": "Amanita_Design.png",
             "imager": "",
             "level": 2,
-            "number": 7,
-            "father": 1,
             "detail": [],
             "linker": [
                 {
@@ -162,8 +146,6 @@
             "ico": "Machinarium.png",
             "imager": "",
             "level": 3,
-            "number": 8,
-            "father": 7,
             "detail": [
                 "以独特的水墨风格展现给玩家的是一款含有大量工业元素的冒险解谜游戏，Machinarium中每个人都是机器人。"
             ],
@@ -183,8 +165,6 @@
             "ico": "Botanicula.png",
             "imager": "",
             "level": 3,
-            "number": 9,
-            "father": 7,
             "detail": [
                 "《植物精灵》有着色彩华丽的治愈系风格，同时该作也被称作环保题材游戏，描述有害的生物威胁森林的生态，5位精灵战士前来保护森林，守护植物种子。被有害生物污染的植物会以黑白来表现，非常细腻的艺术风格。"
             ],
@@ -204,8 +184,6 @@
             "ico": "1_Samorost.png",
             "imager": "",
             "level": 3,
-            "number": 10,
-            "father": 7,
             "detail": [],
             "linker": [
                 {
@@ -223,8 +201,6 @@
             "ico": "2_Samorost.png",
             "imager": "",
             "level": 3,
-            "number": 11,
-            "father": 7,
             "detail": [],
             "linker": [
                 {
@@ -242,8 +218,6 @@
             "ico": "3_Questionaut.png",
             "imager": "",
             "level": 3,
-            "number": 12,
-            "father": 7,
             "detail": [],
             "linker": [
                 {
@@ -261,8 +235,6 @@
             "ico": "Amanita_Design.png",
             "imager": "",
             "level": 3,
-            "number": 13,
-            "father": 7,
             "detail": [
                 "AmanitaDesign公司其他作品。"
             ],
@@ -282,8 +254,6 @@
             "ico": "FlashGame.png",
             "imager": "",
             "level": 2,
-            "number": 14,
-            "father": 1,
             "detail": [],
             "linker": [
                 {
@@ -301,8 +271,6 @@
             "ico": "Windosill.png",
             "imager": "",
             "level": 3,
-            "number": 15,
-            "father": 14,
             "detail": [],
             "linker": [
                 {
@@ -320,8 +288,6 @@
             "ico": "mirrorshot.jpg",
             "imager": "",
             "level": 3,
-            "number": 16,
-            "father": 14,
             "detail": [],
             "linker": [
                 {
@@ -339,8 +305,6 @@
             "ico": "The_Miller_Estate.png",
             "imager": "",
             "level": 3,
-            "number": 17,
-            "father": 14,
             "detail": [],
             "linker": [
                 {
@@ -358,8 +322,6 @@
             "ico": "Room_Escape.png",
             "imager": "",
             "level": 3,
-            "number": 18,
-            "father": 14,
             "detail": [],
             "linker": [
                 {
@@ -377,8 +339,6 @@
             "ico": "Matchstick_man.png",
             "imager": "",
             "level": 3,
-            "number": 19,
-            "father": 14,
             "detail": [],
             "linker": [
                 {
@@ -396,8 +356,6 @@
             "ico": "Snoozleberg.png",
             "imager": "",
             "level": 3,
-            "number": 20,
-            "father": 14,
             "detail": [],
             "linker": [
                 {
@@ -415,8 +373,6 @@
             "ico": "Mini_Adventure_Island.png",
             "imager": "",
             "level": 3,
-            "number": 21,
-            "father": 14,
             "detail": [],
             "linker": [
                 {
@@ -434,8 +390,6 @@
             "ico": "FlashGame.png",
             "imager": "",
             "level": 3,
-            "number": 22,
-            "father": 14,
             "detail": [],
             "linker": [
                 {
@@ -453,8 +407,6 @@
             "ico": "Small_but_Delicate.jpg",
             "imager": "",
             "level": 2,
-            "number": 23,
-            "father": 1,
             "detail": [],
             "linker": [
                 {
@@ -472,8 +424,6 @@
             "ico": "Braid.png",
             "imager": "",
             "level": 3,
-            "number": 24,
-            "father": 23,
             "detail": [
                 "谁见到过风？",
                 "你没有，我也没有。",
@@ -502,8 +452,6 @@
             "ico": "FEZ.png",
             "imager": "",
             "level": 3,
-            "number": 25,
-            "father": 23,
             "detail": [
                 "由PolytronCorp.开发的，曾获得GDC2012（游戏开发者大会）最佳独立游戏奖项的《Fez》是一款极具创意的利用视角的转换来改变关卡舞台，结合2D和3D的关卡的平台动作游戏全面展现游戏清新画面、复古音效背后创意玩法所能能给玩家带来的无限乐趣。",
                 "《Fez(菲斯)》那充满智慧灵感的关卡设计，海量的关卡和谜题，惊人的艺术风格综合起来，已经完全超过了曾经出现过的任何向老风格致敬的其他游戏。《Fez(菲斯)》是个出于对游戏的爱意的结晶。它表现了作者对于经典的致敬和对自己的自信。制作组Polytron力图通过本作将玩家带回那个对于游戏满是爱意的纯真年代。",
@@ -525,8 +473,6 @@
             "ico": "Death_Rabbit.jpg",
             "imager": "",
             "level": 3,
-            "number": 26,
-            "father": 23,
             "detail": [
                 "半年磨一Game，死兔无生路！",
                 "四只迥然不同的兔子要联手逃出这个可怕的DR实验室。",
@@ -552,8 +498,6 @@
             "ico": "LIMBO.png",
             "imager": "",
             "level": 3,
-            "number": 27,
-            "father": 23,
             "detail": [
                 "老电影修饰手法下的黑白配，层次感清晰分明，无需音乐的渲染，只用逼真的环境音效便可将那种死亡边境下的阴郁氛围烘托得淋漓尽致。角色的每一步行动，场景的每一次变化，配合模糊的雾气及恰到好处的镜头拉伸，无不牵动着玩家的心。看似平凡却不平凡，看似简约却不简单。",
                 "幽暗的森林，黑白的世界，在这地狱的边境，一场充满未知危险的旅途即将上演。这里没有任何的剧情，也没有任何的对白，迫使小男孩唯一前进的信念，就是寻找地狱彼端的姐姐。一路上，孤独、恐惧、无助始终伴随玩家左右，虽说少了剧情的润色，不过环环相扣的流程同样引人入胜。"
@@ -574,8 +518,6 @@
             "ico": "Cave_Story.jpg",
             "imager": "",
             "level": 3,
-            "number": 28,
-            "father": 23,
             "detail": [
                 "在一段神秘的通讯后，主角在一个积水的洞窟醒来。这里是哪里？自己是谁？一切都不清楚。随着前行，大量的信息接踵而至：神秘的通讯、兔子一样的生物咪咪卡、可怕的赤之花、行踪神秘又不合群的咪咪卡“数”、残暴的博士和他的手下……唯有不断前行，才能解开所有谜团。而等待着主角的，是科幻与奇幻相交汇的壮大世界，以及梦幻而残酷的现实……",
                 "能否阻止战争？能否拯救重要的人？能否了解到真相？一切都在玩家手中。",
@@ -598,8 +540,6 @@
             "ico": "Tower_of_Heaven.png",
             "imager": "",
             "level": 3,
-            "number": 29,
-            "father": 23,
             "detail": [
                 "《TowerofHeaven》游戏中你要爬上天梯去找寻心灵的启示，一路上的艰难远超过你的想象。企图登上天堂塔，这是对众神公然的挑衅，你能否如愿呢？"
             ],
@@ -619,8 +559,6 @@
             "ico": "Cryon.jpg",
             "imager": "",
             "level": 3,
-            "number": 30,
-            "father": 23,
             "detail": [
                 "蜡笔物理学是一款基于2D物理引擎的解谜游戏。用手中蜡笔绘制出任意图形，它会奇迹般的变成实际物体，利用真实的物理原理将小球推到目标点即可过关。解决谜题需要你运用带有艺术性和创造性的思维来完成。"
             ],
@@ -640,8 +578,6 @@
             "ico": "VVVVVV.jpg",
             "imager": "",
             "level": 3,
-            "number": 31,
-            "father": 23,
             "detail": [
                 "弹弹跳跳闪避人（VVVVVV）是TerryCavanagh——一个创作了数十个免费游戏的开发者制作的复古风格的2D横版过关游戏。在游戏中，玩家要扮演一队测量探险科学家的无畏的领袖，这队科学家因为意外的事故而失散。在游戏中，玩家要探索自己无意中进入的陌生世界，并且要重新将朋友们组织起来。",
                 "在弹弹跳跳闪避人的探险中，游戏设定非常简单：玩家不能跳跃——不过，玩家只按一个键就能将自身重力反转。游戏中依靠这个设定，拥有了很多有趣的游戏方式。",
@@ -663,8 +599,6 @@
             "ico": "Unepic.jpg",
             "imager": "",
             "level": 3,
-            "number": 32,
-            "father": 23,
             "detail": [
                 "《Unepic》是融合动作与角色扮演类型的游戏，当然还有许多的幽默；整个游戏发生在中古世纪奇幻背景的一座大城堡里。游戏氛围定调在八零年代的风格，但是加上了许多当代的技术，所以Unepic一点儿也不像是个老旧的游戏，而是全新的冒险游戏。",
                 "《Unepic》在分类上是个以动作为主、角色扮演为辅的游戏，玩家操纵主角探索超过两百个不同场景，闪躲、跳跃、挥砍、解谜。这并不是个繁重的大型游戏，但是玩完一轮可能也要二十小时以上；当你进入游戏、开始操作主角时，第一个印象可能是「好小啊！」游戏中的人物确实很小巧，但很快地你就会发现《Unepic》的精致之处。每一个小动作都恰如其分，使用不同武器、更换不同装备时，人物外型也会有所不同，加上十足称职的光影系统，营造出非常完美的氛围，即便游戏画面刻意仿造八零年代的经典风格，却一点也不显得老旧。",
@@ -686,8 +620,6 @@
             "ico": "Akuji.png",
             "imager": "",
             "level": 3,
-            "number": 33,
-            "father": 23,
             "detail": [
                 "这是一款可爱的免费的迷你的平台过关游戏，特点在于主角刚开始时只会慢爬和小跳，找到分布于迷宫各处的水晶球后可获得新的技能，如攻击，快跑等等。游戏的操作感很强，需要一定的技巧，难度方面循序渐进，上手简单，越到后面越有挑战性。"
             ],
@@ -707,8 +639,6 @@
             "ico": "Evoland.png",
             "imager": "",
             "level": 3,
-            "number": 34,
-            "father": 23,
             "detail": [
                 "《Evoland》是一部用游戏讲述历史的游戏，参考了塞尔达传说和最终幻想等RPG的进化过程，让玩家从游戏中纵观整个RPG游戏的进化史。那些一幕幕熟悉的画面，是否也会让你收获些许感动呢？",
                 "游戏以复古的像素画面为开始，没有色差也没有声音。然后慢慢画面变成了32位色的图片，你还可以听的到游戏的音效，接着，玩家拿到了宝剑，开始与怪物开始搏斗，再然后你开始接受任务，完成任务，得到金币开始进行交易等等。游戏就这样带领你从FC时代走到如今的3D动作游戏中，20多年的RPG成长史，让你一次在游戏中亲身体验。"
@@ -729,8 +659,6 @@
             "ico": "Voxatron.jpg",
             "imager": "",
             "level": 3,
-            "number": 35,
-            "father": 23,
             "detail": [
                 "游戏中容量小和画面抽象并不是一个游戏是否好玩的关键，关键要看是否能从游戏中获得乐趣，点阵核心这款游戏就是相当有诚意的一款小游戏，它会带给你简单的乐趣和想象的空间。",
                 "用方块堆造自己想象中的世界，你能想到的就能构建出来，这是《Voxatron》现在大受欢迎的主要原因，旨在开发及鼓动玩家的创造性，你一定会对自己的成果非常满意！"
@@ -751,8 +679,6 @@
             "ico": "CatMario.png",
             "imager": "",
             "level": 3,
-            "number": 36,
-            "father": 23,
             "detail": [
                 "《猫里奥》（Catmario，原名SyobonAction）是日本的一款2D平台游戏，被称位史上最BT的游戏，是由一名日本民间自己制作的小游戏，发行于2007年2月。就像图中的一样，它的结构类似于《超级马里奥》，只是人物和怪以及游戏内容改变，所以也有人称之为《超级玛丽变态版》，同时网上也产生了许多该游戏的改版。",
                 "《猫里奥》一款由日本民间玩家自己制作的单机小游戏，和《超级马里奥》比较相似，我国玩家又称其为《超级玛丽变态版》，英文名字叫《SyobonAction》(《Catmario》)。开局看起来和FC的《超级玛丽》没有很大区别，只是主角变成了一个可爱的小白猫，怪物变成了和馒头差不多的东西。游戏中有很多让人意想不到的陷阱，比如跳跃壕沟的时候头顶上会莫名其妙的多出一个砖块而让玩家掉进壕沟、好好的地面突然会塌陷下去、眼看过关了又有个不明飞行物将玩家砸死...而且其中充满了各种让人意想不到的解谜。"
@@ -773,8 +699,6 @@
             "ico": "Teleportower.png",
             "imager": "",
             "level": 3,
-            "number": 37,
-            "father": 23,
             "detail": [
                 "在Teleportower里面有左右两座塔，它们就是游戏里的平行世界。我们可以控制主角在两个世界自由穿梭，目的是获得宝石。"
             ],
@@ -794,8 +718,6 @@
             "ico": "Tag_The_Power_Of_Paint.jpg",
             "imager": "",
             "level": 3,
-            "number": 38,
-            "father": 23,
             "detail": [
                 "Tag是一款标新立异的脱逃类动作游戏，不同于以往的纯解谜或者动作类的脱逃，Tag使用了非常新颖的系统，那就是“水枪涂鸦”。游戏中玩家共可以得到三种喷漆，每种都各有不同的功能，通过水枪把它们喷到墙、高台、地面甚至是火车上，从而完成各种匪夷所思的动作和行进路线。"
             ],
@@ -815,8 +737,6 @@
             "ico": "Proun.jpg",
             "imager": "",
             "level": 3,
-            "number": 39,
-            "father": 23,
             "detail": [
                 "《Proun》是一款抽象的赛车游戏，在这里面玩家要驾驶着一辆出租车来躲避前面出现的各种物体。支持2至4人分屏游戏、支持手柄、在线分数榜，可以记录自己的比赛轨迹。支持玩家自己创建赛道。"
             ],
@@ -836,8 +756,6 @@
             "ico": "RagDollMasters.png",
             "imager": "",
             "level": 3,
-            "number": 40,
-            "father": 23,
             "detail": [
                 "这绝对是一个不同于你认识的格斗游戏，没有想象中的重拳轻拳，也没有印象中的出招表，玩家要做的就是依靠惯性用拳头和脚去碰到对面的脑袋。",
                 "在这场格斗游戏中，你要控制白方人偶,经过移动和强劲的打击，展示高超的技巧，击败越来越多和强大的对手。本作真实的模拟出打斗中的各种动作，不仅有着游戏的趣味性，还可以使一些制作者获得灵感的启发。"
@@ -858,8 +776,6 @@
             "ico": "Snapshot.jpg",
             "imager": "",
             "level": 3,
-            "number": 41,
-            "father": 23,
             "detail": [],
             "linker": [
                 {
@@ -877,8 +793,6 @@
             "ico": "Opus_Pocus.png",
             "imager": "",
             "level": 3,
-            "number": 42,
-            "father": 23,
             "detail": [],
             "linker": [
                 {
@@ -896,8 +810,6 @@
             "ico": "Dyson.png",
             "imager": "",
             "level": 3,
-            "number": 43,
-            "father": 23,
             "detail": [],
             "linker": [
                 {
@@ -915,8 +827,6 @@
             "ico": "CS1.6.png",
             "imager": "",
             "level": 3,
-            "number": 44,
-            "father": 23,
             "detail": [],
             "linker": [
                 {
@@ -934,8 +844,6 @@
             "ico": "CubeWorld.png",
             "imager": "",
             "level": 3,
-            "number": 45,
-            "father": 23,
             "detail": [],
             "linker": [
                 {
@@ -953,8 +861,6 @@
             "ico": "GeometryWars.png",
             "imager": "",
             "level": 3,
-            "number": 46,
-            "father": 23,
             "detail": [],
             "linker": [
                 {
@@ -972,8 +878,6 @@
             "ico": "Grief.png",
             "imager": "",
             "level": 3,
-            "number": 47,
-            "father": 23,
             "detail": [],
             "linker": [
                 {
@@ -991,8 +895,6 @@
             "ico": "NightSky.png",
             "imager": "",
             "level": 3,
-            "number": 48,
-            "father": 23,
             "detail": [],
             "linker": [
                 {
@@ -1010,8 +912,6 @@
             "ico": "Rich4.jpg",
             "imager": "",
             "level": 3,
-            "number": 49,
-            "father": 23,
             "detail": [],
             "linker": [
                 {
@@ -1029,8 +929,6 @@
             "ico": "Samurai_II.jpg",
             "imager": "",
             "level": 3,
-            "number": 50,
-            "father": 23,
             "detail": [],
             "linker": [
                 {
@@ -1048,8 +946,6 @@
             "ico": "ZenBound2.jpg",
             "imager": "",
             "level": 3,
-            "number": 51,
-            "father": 23,
             "detail": [],
             "linker": [
                 {
@@ -1067,8 +963,6 @@
             "ico": "ganjingzi.png",
             "imager": "",
             "level": 3,
-            "number": 52,
-            "father": 23,
             "detail": [],
             "linker": [
                 {
@@ -1086,8 +980,6 @@
             "ico": "Metal_Slug.png",
             "imager": "",
             "level": 3,
-            "number": 53,
-            "father": 23,
             "detail": [],
             "linker": [
                 {
@@ -1105,8 +997,6 @@
             "ico": "Silence_in_the_Mist.png",
             "imager": "",
             "level": 3,
-            "number": 54,
-            "father": 23,
             "detail": [],
             "linker": [
                 {
@@ -1124,8 +1014,6 @@
             "ico": "Raiden.png",
             "imager": "",
             "level": 3,
-            "number": 55,
-            "father": 23,
             "detail": [],
             "linker": [
                 {
@@ -1143,8 +1031,6 @@
             "ico": "KOF98.png",
             "imager": "",
             "level": 3,
-            "number": 56,
-            "father": 23,
             "detail": [],
             "linker": [
                 {
@@ -1162,8 +1048,6 @@
             "ico": "Mummy_Maze_Deluxe.jpg",
             "imager": "",
             "level": 3,
-            "number": 57,
-            "father": 23,
             "detail": [],
             "linker": [
                 {
@@ -1181,8 +1065,6 @@
             "ico": "Counter_ClockWise.png",
             "imager": "",
             "level": 3,
-            "number": 58,
-            "father": 23,
             "detail": [],
             "linker": [
                 {
@@ -1200,8 +1082,6 @@
             "ico": "a_Fistful_of_Gun_Trailer.png",
             "imager": "",
             "level": 3,
-            "number": 59,
-            "father": 23,
             "detail": [],
             "linker": [
                 {
@@ -1219,8 +1099,6 @@
             "ico": "Eddy_purple.png",
             "imager": "",
             "level": 3,
-            "number": 60,
-            "father": 23,
             "detail": [],
             "linker": [
                 {
@@ -1238,8 +1116,6 @@
             "ico": "Beat_Hazard.png",
             "imager": "",
             "level": 3,
-            "number": 61,
-            "father": 23,
             "detail": [],
             "linker": [
                 {
@@ -1257,8 +1133,6 @@
             "ico": "Monaco_Whats_Yours_Is_Mine.png",
             "imager": "",
             "level": 3,
-            "number": 62,
-            "father": 23,
             "detail": [],
             "linker": [
                 {
@@ -1276,8 +1150,6 @@
             "ico": "Binding_of_Isaac.jpg",
             "imager": "",
             "level": 3,
-            "number": 63,
-            "father": 23,
             "detail": [],
             "linker": [
                 {
@@ -1295,8 +1167,6 @@
             "ico": "Trauma.png",
             "imager": "",
             "level": 3,
-            "number": 64,
-            "father": 23,
             "detail": [],
             "linker": [
                 {
@@ -1314,8 +1184,6 @@
             "ico": "Aquaria.png",
             "imager": "",
             "level": 3,
-            "number": 65,
-            "father": 23,
             "detail": [],
             "linker": [
                 {
@@ -1333,8 +1201,6 @@
             "ico": "Grand_and_Magnificent.jpg",
             "imager": "",
             "level": 2,
-            "number": 66,
-            "father": 1,
             "detail": [],
             "linker": [
                 {
@@ -1352,8 +1218,6 @@
             "ico": "o2jam.jpg",
             "imager": "",
             "level": 3,
-            "number": 67,
-            "father": 66,
             "detail": [
                 "o2jam是韩国O2Media游戏公司开发的一款MMOMPG(MassiveMultiOnlineMusicPlayGame)游戏。它是世界上第一款以MP3音乐为游戏平台的休闲音乐游戏，巧妙地结合了音乐与娱乐，让你在弹奏歌曲时不知不觉融入到无限音乐美好中。"
             ],
@@ -1373,8 +1237,6 @@
             "ico": "Bastion.png",
             "imager": "",
             "level": 3,
-            "number": 68,
-            "father": 66,
             "detail": [
                 "堡垒（Bastion）是一款拥有全新叙述方式的动作角色扮演游戏，游戏里将会有反应灵敏的叙述者来记录您的一举一动。在玩家不段探索的过程中，玩家将会发现Calamity世界的众多秘密，一场足以粉碎世界的离奇灾难。",
                 "在全1080p分辨率下令人惊讶的手绘画面",
@@ -1402,8 +1264,6 @@
             "ico": "Magicka.png",
             "imager": "",
             "level": 3,
-            "number": 69,
-            "father": 66,
             "detail": [
                 "《魔能》是一款基于挪威神话幻想世界的动作冒险RPG，玩家要扮演巫师去被赋予神圣的使命，阻止黑暗男巫利用他召唤的恶魔将这个世界带入混乱。游戏使用了近几年非常流行的欧式卡通奇幻风格，画面效果出众、整体表现协调，各类法术效果十分抢眼。同时还支持单机下的最高四人联机和在线多人合作，能让玩家从中得到更多的娱乐体验。",
                 "《魔能》最精华的地方在于它独创的法术吟唱系统——玩家需要灵活搭配使用其提供的各种基本元素以释放不同效果的法术来打击敌人。游戏里玩家能够通过法术书学会二十余种法术，同时还能通过多种不同的法术组合造成完全不同的效果，绚丽的法术效果、多变的玩法让人欲罢不能，爽快感爆表!"
@@ -1424,8 +1284,6 @@
             "ico": "Warcraft3.png",
             "imager": "",
             "level": 3,
-            "number": 70,
-            "father": 66,
             "detail": [],
             "linker": [
                 {
@@ -1443,8 +1301,6 @@
             "ico": "Spore.jpg",
             "imager": "",
             "level": 3,
-            "number": 71,
-            "father": 66,
             "detail": [
                 "《孢子》(Spore)发行于2008年9月7日，游戏让玩家能打造属于自己的世界。游戏需要玩家从数十亿年前的单细胞生物逐步向前发展，随着时间的推移进化成多细胞生物，再进一步发展大脑功能，最后产生出群集生物，这个时候再体验生命成长的过程。",
                 "除了模拟成分外，这款游戏还具备重要的战略要素和简易编辑器。玩家在这里可以控制生物发展文明，如果喜欢征战，使用强大的武力还可以征服其它星球。至于游戏编辑器方面，是方便玩家根据自己喜好来设计游戏内容。"
@@ -1465,8 +1321,6 @@
             "ico": "TorchLight2.png",
             "imager": "",
             "level": 3,
-            "number": 72,
-            "father": 66,
             "detail": [],
             "linker": [
                 {
@@ -1484,8 +1338,6 @@
             "ico": "The_Cave.jpg",
             "imager": "",
             "level": 3,
-            "number": 73,
-            "father": 66,
             "detail": [],
             "linker": [
                 {
@@ -1503,8 +1355,6 @@
             "ico": "The_Swapper.png",
             "imager": "",
             "level": 3,
-            "number": 74,
-            "father": 66,
             "detail": [],
             "linker": [
                 {
@@ -1522,8 +1372,6 @@
             "ico": "DeathSpank.jpg",
             "imager": "",
             "level": 3,
-            "number": 75,
-            "father": 66,
             "detail": [],
             "linker": [
                 {
@@ -1541,8 +1389,6 @@
             "ico": "documents.jpg",
             "imager": "",
             "level": 2,
-            "number": 76,
-            "father": 1,
             "detail": [],
             "linker": [
                 {
@@ -1560,8 +1406,6 @@
             "ico": "Software.png",
             "imager": "",
             "level": 1,
-            "number": 77,
-            "father": 0,
             "detail": [],
             "linker": [
                 {
@@ -1579,8 +1423,6 @@
             "ico": "",
             "imager": "",
             "level": 2,
-            "number": 78,
-            "father": 77,
             "detail": [],
             "linker": [
                 {
@@ -1598,8 +1440,6 @@
             "ico": "",
             "imager": "",
             "level": 3,
-            "number": 79,
-            "father": 78,
             "detail": [],
             "linker": [
                 {
@@ -1625,8 +1465,6 @@
             "ico": "",
             "imager": "",
             "level": 3,
-            "number": 80,
-            "father": 78,
             "detail": [],
             "linker": [
                 {
@@ -1644,8 +1482,6 @@
             "ico": "",
             "imager": "",
             "level": 3,
-            "number": 81,
-            "father": 78,
             "detail": [],
             "linker": [
                 {
@@ -1663,8 +1499,6 @@
             "ico": "",
             "imager": "",
             "level": 3,
-            "number": 82,
-            "father": 78,
             "detail": [],
             "linker": [
                 {
@@ -1682,8 +1516,6 @@
             "ico": "",
             "imager": "",
             "level": 3,
-            "number": 83,
-            "father": 78,
             "detail": [],
             "linker": [
                 {
@@ -1701,8 +1533,6 @@
             "ico": "",
             "imager": "",
             "level": 3,
-            "number": 84,
-            "father": 78,
             "detail": [],
             "linker": [
                 {
@@ -1720,8 +1550,6 @@
             "ico": "",
             "imager": "",
             "level": 3,
-            "number": 85,
-            "father": 78,
             "detail": [],
             "linker": [
                 {
@@ -1739,8 +1567,6 @@
             "ico": "",
             "imager": "",
             "level": 3,
-            "number": 86,
-            "father": 78,
             "detail": [],
             "linker": [
                 {
@@ -1758,8 +1584,6 @@
             "ico": "",
             "imager": "",
             "level": 3,
-            "number": 87,
-            "father": 78,
             "detail": [],
             "linker": [
                 {
@@ -1777,8 +1601,6 @@
             "ico": "",
             "imager": "",
             "level": 3,
-            "number": 88,
-            "father": 78,
             "detail": [],
             "linker": [
                 {
@@ -1796,8 +1618,6 @@
             "ico": "",
             "imager": "",
             "level": 3,
-            "number": 89,
-            "father": 78,
             "detail": [],
             "linker": [
                 {
@@ -1815,8 +1635,6 @@
             "ico": "",
             "imager": "",
             "level": 3,
-            "number": 90,
-            "father": 78,
             "detail": [],
             "linker": [
                 {
@@ -1834,8 +1652,6 @@
             "ico": "",
             "imager": "",
             "level": 3,
-            "number": 91,
-            "father": 78,
             "detail": [],
             "linker": [
                 {
@@ -1853,8 +1669,6 @@
             "ico": "",
             "imager": "",
             "level": 3,
-            "number": 92,
-            "father": 78,
             "detail": [],
             "linker": [
                 {
@@ -1872,8 +1686,6 @@
             "ico": "",
             "imager": "",
             "level": 3,
-            "number": 93,
-            "father": 78,
             "detail": [],
             "linker": [
                 {
@@ -1891,8 +1703,6 @@
             "ico": "",
             "imager": "",
             "level": 3,
-            "number": 94,
-            "father": 78,
             "detail": [],
             "linker": [
                 {
@@ -1910,8 +1720,6 @@
             "ico": "",
             "imager": "",
             "level": 3,
-            "number": 95,
-            "father": 78,
             "detail": [
                 "在n年前的一天，当时图形界面做得相当酷的WinAMP音乐播放器还正红火地流行着，一款有别于一般播放器的Foobar2000悄悄地来到了这个世界上。可后来，这个只有“逆潮流”般极其简陋界面的播放器却吸引了世界各地无数的粉丝为止疯狂，完美地诠释了“简约而不简单”的魅力！",
                 "Foobar2000有相当大量的功能插件，可以实现各种各样的需求；也有着无数皮肤，绝对能满足你一切对于播放器的要求。虽说默认的fb2k很简陋，但经过配置后有些皮肤简直是华丽得一塌糊涂的哟～"
@@ -1932,8 +1740,6 @@
             "ico": "",
             "imager": "",
             "level": 3,
-            "number": 96,
-            "father": 78,
             "detail": [],
             "linker": [
                 {
@@ -1951,8 +1757,6 @@
             "ico": "",
             "imager": "",
             "level": 3,
-            "number": 97,
-            "father": 78,
             "detail": [],
             "linker": [
                 {
@@ -1970,8 +1774,6 @@
             "ico": "",
             "imager": "",
             "level": 3,
-            "number": 98,
-            "father": 78,
             "detail": [
                 "注册码: ",
                 "王涛",
@@ -1993,8 +1795,6 @@
             "ico": "",
             "imager": "",
             "level": 3,
-            "number": 99,
-            "father": 78,
             "detail": [],
             "linker": [
                 {
@@ -2012,8 +1812,6 @@
             "ico": "",
             "imager": "",
             "level": 3,
-            "number": 100,
-            "father": 78,
             "detail": [],
             "linker": [
                 {
@@ -2031,8 +1829,6 @@
             "ico": "",
             "imager": "",
             "level": 3,
-            "number": 101,
-            "father": 78,
             "detail": [],
             "linker": [
                 {
@@ -2050,8 +1846,6 @@
             "ico": "",
             "imager": "",
             "level": 3,
-            "number": 102,
-            "father": 78,
             "detail": [],
             "linker": [
                 {
@@ -2069,8 +1863,6 @@
             "ico": "",
             "imager": "",
             "level": 3,
-            "number": 103,
-            "father": 78,
             "detail": [],
             "linker": [
                 {
@@ -2088,8 +1880,6 @@
             "ico": "",
             "imager": "",
             "level": 2,
-            "number": 104,
-            "father": 77,
             "detail": [],
             "linker": [
                 {
@@ -2107,8 +1897,6 @@
             "ico": "",
             "imager": "",
             "level": 3,
-            "number": 105,
-            "father": 104,
             "detail": [],
             "linker": [
                 {
@@ -2126,8 +1914,6 @@
             "ico": "",
             "imager": "",
             "level": 3,
-            "number": 106,
-            "father": 104,
             "detail": [],
             "linker": [
                 {
@@ -2153,8 +1939,6 @@
             "ico": "",
             "imager": "",
             "level": 3,
-            "number": 107,
-            "father": 104,
             "detail": [
                 "注册码: ",
                 "JV695-DR0D3-LZUC0-H8852-CAWJ4"
@@ -2175,8 +1959,6 @@
             "ico": "",
             "imager": "",
             "level": 3,
-            "number": 108,
-            "father": 104,
             "detail": [
                 "注册码: ",
                 "YCFHQ-9DWCY-DKV88-T2TMH-G7BHP"
@@ -2197,8 +1979,6 @@
             "ico": "",
             "imager": "",
             "level": 3,
-            "number": 109,
-            "father": 104,
             "detail": [],
             "linker": [
                 {
@@ -2212,8 +1992,6 @@
             "ico": "",
             "imager": "",
             "level": 3,
-            "number": 110,
-            "father": 104,
             "detail": [
                 "AutoCad2012",
                 "序列号: 666-69696969|667-98989898|400-45454545",
@@ -2248,8 +2026,6 @@
             "ico": "",
             "imager": "",
             "level": 3,
-            "number": 111,
-            "father": 104,
             "detail": [
                 "此为微软原装安装包。",
                 "注册码: ",
@@ -2271,8 +2047,6 @@
             "ico": "",
             "imager": "",
             "level": 3,
-            "number": 112,
-            "father": 104,
             "detail": [
                 "此为微软原装安装包。",
                 "注册码：<a href='http://www.nruan.com/win-key.html'>N软winkey</a>"
@@ -2289,8 +2063,6 @@
             "ico": "",
             "imager": "",
             "level": 3,
-            "number": 113,
-            "father": 104,
             "detail": [],
             "linker": [
                 {
@@ -2308,8 +2080,6 @@
             "ico": "Online.png",
             "imager": "",
             "level": 1,
-            "number": 114,
-            "father": 0,
             "detail": [],
             "linker": []
         },
@@ -2328,8 +2098,6 @@
             "ico": "z-type.png",
             "imager": "",
             "level": 3,
-            "number": 116,
-            "father": 115,
             "detail": [
                 "打飞字(Z-Type)是有史以来最酷的一款练习盲打的游戏。视觉效果、射击爆破效果和声音效果都非常的刺激。这款游戏是用HTML5做成的，曾经获得MozillaGameOn游戏大赛的CommunityChoiceAward大奖。玩家可以选择关闭游戏音效，轻按ESC按键便可以暂停游戏。"
             ],
@@ -2349,8 +2117,6 @@
             "ico": "X-Type.png",
             "imager": "",
             "level": 3,
-            "number": 117,
-            "father": 115,
             "detail": [
                 "XType与ZType具有一样的视觉效果、射击爆破效果和声音效果。同样也是用HTML5做成的，玩家可以选择关闭游戏音效，轻按ESC按键便可以暂停游戏。如雷电一般的玩法，你所需的只是杀伤对手的同时活下去。"
             ],
@@ -2366,8 +2132,6 @@
             "ico": "Entanglement.png",
             "imager": "",
             "level": 3,
-            "number": 118,
-            "father": 115,
             "detail": [
                 "六边拼图(Entanglement)是一款由GopherwoodStudios公司开发的益智类拼图游戏，游戏与其它拼图游戏不同的地方就在于六边方块。"
             ],
@@ -2383,8 +2147,6 @@
             "ico": "Canvas_Pinball.png",
             "imager": "",
             "level": 3,
-            "number": 119,
-            "father": 115,
             "detail": [
                 "一个简单的弹球游戏，使用HTML5的Box2D的物理引擎。"
             ],
@@ -2400,8 +2162,6 @@
             "ico": "Bejeweled.jpg",
             "imager": "",
             "level": 3,
-            "number": 120,
-            "father": 115,
             "detail": [
                 "Bejeweled是一款非常杀时间且极其容易使人成瘾的消除类休闲小游戏。",
                 "HTML5网页版的宝石迷阵支持经典（Classic）和计时（Speed）两种模式，虽然没有PC版的宝石迷阵3中有花样繁多的选择，但是玩起来已经非常爽了。"
@@ -2418,8 +2178,6 @@
             "ico": "Cut_The_Rope.png",
             "imager": "",
             "level": 3,
-            "number": 121,
-            "father": 115,
             "detail": [
                 "CutTheRope(割绳子)是苹果iOS/Android平台上一款非常非常受欢迎的休闲游戏，制作得很精美，而且游戏耐玩度非常高，绝对值得一玩！",
                 "游戏制作方与微软展开合作，发布了该游戏的免费网页HTML5版本，也就是说，你就能在任何地方免费在线玩这款游戏。对此，只有一句忠告：千万别上瘾哦……"
@@ -2436,8 +2194,6 @@
             "ico": "MarioCrossover.png",
             "imager": "",
             "level": 3,
-            "number": 122,
-            "father": 115,
             "detail": [
                 "如果魂斗罗、洛克人、塞尔达传说的主角林克、恶魔城的主角西蒙等等红白机(FC)时代的明星游戏人物都穿越到超级玛丽的世界，用它们来玩超级玛丽会怎样呢？？下面这个《FC游戏明星穿越版超级玛丽》小游戏可谓是超级无敌的经典！！如果这些游戏角色你都熟悉，估计玩下来你会感动到肉牛满面的！"
             ],
@@ -2453,8 +2209,6 @@
             "ico": "",
             "imager": "",
             "level": 3,
-            "number": 123,
-            "father": 115,
             "detail": [
                 "贪吃蛇这种经典的游戏也有HTML5版的啦！"
             ],
@@ -2470,8 +2224,6 @@
             "ico": "Online_webpage.png",
             "imager": "",
             "level": 2,
-            "number": 124,
-            "father": 114,
             "detail": [],
             "linker": []
         },
@@ -2480,8 +2232,6 @@
             "ico": "ProcessOn.png",
             "imager": "",
             "level": 3,
-            "number": 125,
-            "father": 124,
             "detail": [
                 "ProcessOn是一款用HTML5开发的在线网页版作图工具(类似之前介绍过的iPresst在线PPT制作工具)，使用起来非常傻瓜简单，你只需在工具栏拖放对应的图形到画布中即可进行编辑。当然，既然它是免费的在线作图工具，使用它自然无需下载安装，更不用到处找破解激活了，打开浏览器就可以开始。",
                 "目前ProcessOn支持Flowchart、EVC、EPC、BPMN、UML等不同类型图；ProcessOn采用实时保存机制，每一步操作之后都自动保存，",
@@ -2499,8 +2249,6 @@
             "ico": "Jing.fm.png",
             "imager": "",
             "level": 3,
-            "number": 126,
-            "father": 124,
             "detail": [
                 "Jing.fm是一款颠覆传统音乐搜索模式的新型智能电台，它不像其他音乐产品一样仅有数十个“华语”、“摇滚”、“流行”等分类，而是首创可以让你用语言描述出你想听怎样的歌，譬如“深情安静的中文歌”或者“酒吧爵士乐”，然后你就等着Jing.fm给你带来惊喜吧！",
                 "无论是歌手名、地区、语言、情绪、风格、乐器、场景、感觉，几乎用户可以想象到的每一种用来描述音乐的词句，在Jing.fm都可以转化为歌曲。这些标签也可以随意组合，来进行搜索。"
@@ -2517,8 +2265,6 @@
             "ico": "Ubuntu_Online_Tour.png",
             "imager": "",
             "level": 3,
-            "number": 127,
-            "father": 124,
             "detail": [
                 "只要简单地用浏览器访问它，就能在线体验一番Ubuntu操作系统的魅力！"
             ],
@@ -2534,8 +2280,6 @@
             "ico": "",
             "imager": "",
             "level": 3,
-            "number": 128,
-            "father": 124,
             "detail": [
                 "一个神奇的画画工具。"
             ],
@@ -2551,8 +2295,6 @@
             "ico": "",
             "imager": "",
             "level": 3,
-            "number": 129,
-            "father": 124,
             "detail": [
                 "优秀网页设计联盟，SDC（SuperiorDesignConsortium）简称“优设”，是国内最专业的网页设计师交流学习平台。",
                 "域名UISDC释义，原意为用户界面优秀设计联盟，为了方便记忆，您可以将域名看为“有爱（UI）上档次（SDC）”。"
@@ -2569,8 +2311,6 @@
             "ico": "",
             "imager": "",
             "level": 3,
-            "number": 130,
-            "father": 124,
             "detail": [
                 "一个HTML5学习交流平台。给了很多精美HTML5网页的演示以及源码。"
             ],
@@ -2586,8 +2326,6 @@
             "ico": "",
             "imager": "",
             "level": 3,
-            "number": 131,
-            "father": 124,
             "detail": [
                 "A/B测试是一种新兴的网页优化方法，可以用于增加转化率注册率等网页指标。",
                 "而本页面形象得告诉你什么是ABtest。"
@@ -2604,8 +2342,6 @@
             "ico": "",
             "imager": "",
             "level": 3,
-            "number": 132,
-            "father": 124,
             "detail": [
                 "可乐橙爱好阅读、写作，爱听五月天、SimplePlan，爱看《这个男人来自地球》，还有什么呢……",
                 "我决定要做点有意义的事情，长期性的，什么都好。无意间想到一个绝妙的主意，我开始每周翻译一篇国外的设计文章，还为此专门开了微信公众号“可乐橙”，用来集中记录和传播。",
@@ -2624,8 +2360,6 @@
             "ico": "",
             "imager": "",
             "level": 2,
-            "number": 133,
-            "father": 114,
             "detail": [],
             "linker": []
         },
@@ -2634,8 +2368,6 @@
             "ico": "",
             "imager": "",
             "level": 3,
-            "number": 134,
-            "father": 133,
             "detail": [
                 "这是国外一个非常实用的PNG图片压缩网站，为了考虑更快的页面加载速度以及优化用户体验，对于网站图片的大小与质量必须严格把关，而该网站就是专门压缩PNG图片的，压缩率基本上在50%左右，还可以保留透明通道，非常方便好用。"
             ],
@@ -2651,8 +2383,6 @@
             "ico": "",
             "imager": "",
             "level": 3,
-            "number": 135,
-            "father": 133,
             "detail": [
                 "GeneratepureCSS3On/Offflipswitcheswithanimatedtransitions.",
                 "使用了CSS3动画效果的开关按钮。在不支持CSS3的浏览器上需要使用js，但并没有给出！"
@@ -2669,8 +2399,6 @@
             "ico": "",
             "imager": "",
             "level": 3,
-            "number": 136,
-            "father": 133,
             "detail": [
                 "Liveweave在HTML4/HTML5、CSS2/CSS3中含有内置的自动完成上下文特性，让你工作起来更加轻松。你只需输入HTML5和CSS3标签/元素即可，就是这么简单。"
             ],
@@ -2686,8 +2414,6 @@
             "ico": "",
             "imager": "",
             "level": 3,
-            "number": 137,
-            "father": 133,
             "detail": [
                 "The Heartcode CanvasLoader Creator is a free online tool which you can use to generate scripted preloaders (spinners or throbblers) for your HTML projects. The Creator is using the CanvasLoader UI Library."
             ],
@@ -2703,8 +2429,6 @@
             "ico": "",
             "imager": "",
             "level": 3,
-            "number": 138,
-            "father": 133,
             "detail": [
                 "The media queries in the included CSS file simply change the body's background color depending on the browser width. If you see any colors aside from black, then the media queries are working in your browser. You can resize your browser window to see it change on the fly."
             ],
@@ -2720,8 +2444,6 @@
             "ico": "SearchInAll.png",
             "imager": "",
             "level": 1,
-            "number": 139,
-            "father": 0,
             "detail": [],
             "linker": []
         },
@@ -2730,8 +2452,6 @@
             "ico": "ReturnBack.png",
             "imager": "",
             "level": 1,
-            "number": 140,
-            "father": 0,
             "detail": [],
             "linker": []
         }

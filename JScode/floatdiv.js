@@ -210,15 +210,21 @@ function creatfloatdiv(){
 							"<div id='floatdiv_b_r' class='b_r' onmousedown='mousedownfloatdiv(9)' onmouseup='mouseupfloatdiv()'></div>"+
 						"</div>");
 	var target = document.getElementById("floatdiv");
-	target.addEventListener('touchend',function(){
-		mouseupfloatdiv();
-    });
-	target.addEventListener('touchstart',function(){
-		mousedownfloatdiv(5);
-	});
-    target.addEventListener('touchmove',function(){
-		floatdivmove();
-	});
+	try{
+		document.addEventListener('touchmove',function(e){
+			x = e.touches[0].pageX;
+			y = e.touches[0].pageY;
+		});  
+		target.addEventListener('touchend',function(){
+			mouseupfloatdiv();
+		});
+		target.addEventListener('touchstart',function(){
+			mousedownfloatdiv(5);
+		});
+		target.addEventListener('touchmove',function(){
+			floatdivmove();
+		});
+	}catch(e){};
 	mouseupfloatdiv();
 	width=floatdivprewid;
 	if (inwidth<floatdivprewid) width = inwidth;
