@@ -1,0 +1,86 @@
+<!DOCTYPE html
+PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html>
+
+<head>
+    <title>LM share</title>
+	<base target="_blank"/>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="viewport" id="viewport" content="width=device-width, initial-scale=1">
+	
+
+	<script type="text/JavaScript" src="JScode/jquery-1.9.1.min.js"></script>
+	<!--[if lte IE 8]>
+		<script src="JScode/html5shiv.min.js"></script>
+	<![endif]-->
+	<!--[if IE 6]>
+		<script type="text/javascript" src="JScode/DD_belatedPNG_0.0.8a-min.js"></script>
+		<script type="text/javascript">
+			DD_belatedPNG.fix('.tel,.head_content');
+		</script>
+	<![endif]-->
+
+	<script type="text/javaScript" src="JScode/respond.min.js"></script>
+	<script type="text/JavaScript" src="JScode/jquery.lettering-0.6.1.min.js"></script>
+	<script type="text/JavaScript" src="JScode/GetList.js"><!--总信息的获取--></script>
+	<script type="text/JavaScript" src="JScode/RunSupport.js"><!--全局函数及变量--></script>
+	<script type="text/JavaScript" src="JScode/floatdiv.js"><!--浮动层函数--></script>
+	<script type="text/JavaScript" src="JScode/UI_v2.js"><!--主界面函数--></script>
+	<script type="text/JavaScript" src="JScode/plugin.js"><!--页面小插件--></script>
+	
+	
+	<link rel="stylesheet" type="text/css" href="css/UI_v2.css" media="screen"/>
+	<link rel="stylesheet" type="text/css" href="css/jquery.tzCheckbox.css" media="screen"/>
+	<link rel="stylesheet" type="text/css" href="css/lettering_logo.css" media="screen"/>
+	<link rel="stylesheet" type="text/css" href="css/floatdiv.css" media="screen"/>
+	<link href="css/smallUI_v2.css" media="screen and (max-width: 650px)" rel="stylesheet"/>
+
+	<script type="text/JavaScript" language="JavaScript">  // document ready 函数
+		$(document).ready(function(){
+			$("#TimeTicker").css("opacity",1);
+		});
+	</script>
+</head>
+
+<body class="bgnoimg" onselectstart="return false">
+
+	<div id="check">		<!--JS检查-->
+		<p>对不起，你的浏览器不支持JavaScript！</p>
+    </div>
+	<script type="text/JavaScript" language="JavaScript">
+		$("#check").remove();
+	</script>
+
+	<div id='FloatWordDiv' class='nojs'><!--浮动文字-->
+		LM share
+	</div>
+
+	<div class='bgdiv'  id='bgdiv'> <!--背景层-->
+	</div>
+
+	<div id='selectcontainer'>  <!--底层-->
+		<div style='background:#66CCFF;' id='uplayout'>
+			<div id="TimeTicker">		<!--右边时间-->
+				<p></p>
+			</div>
+			<div id='selector'>
+				<form method="get" action="./">
+					<ul>
+						<li><label for="ch_effects">动画效果: </label><input type="checkbox" id="ch_effects" name="ch_effects" data-on="开启" data-off="关闭" autocomplete="off"  checked /></li>
+						<!--
+						<li><label for="ch_location">Enable location tracking: </label><input type="checkbox" id="ch_location" name="ch_location" checked /></li>
+						<li><label for="ch_showsearch">Include me in search results: </label><input type="checkbox" id="ch_showsearch" name="ch_showsearch" /></li>
+						<li><label for="ch_emails">Email notifications: </label><input type="checkbox" id="ch_emails" name="ch_emails" data-on="ON" data-off="OFF" /></li>
+						-->
+					</ul>
+				</form>
+			</div>
+		</div>
+		<div id='selectbar' > <img src='icon/updown_arrow.png' height="128" width="128" /></div>
+	</div>
+	
+</body>
+
+</html>
