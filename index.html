@@ -32,11 +32,6 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 	<script type="text/JavaScript" src="JScode/floatdiv.js"><!--浮动层函数--></script>
 	<script type="text/JavaScript" src="JScode/plugin.js"><!--页面小插件--></script>
 	<script type="text/JavaScript" src="JScode/UI_v2.js"><!--主界面函数--></script>
-	<script type="text/JavaScript" language="JavaScript">  // document ready 函数
-		$(document).ready(function(){
-			$("#TimeTicker").css("opacity",1);
-		});
-	</script>
 </head>
 
 <body class="bgnoimg" onselectstart="return false">
@@ -53,27 +48,6 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 	</div>
 
 	<div class='bgdiv'  id='bgdiv'> <!--背景层-->
-	</div>
-
-	<div id='selectcontainer'>  <!--底层-->
-		<div style='background:#66CCFF;' id='uplayout'>
-			<div id="TimeTicker">		<!--右边时间-->
-				<p></p>
-			</div>
-			<div id='selector'>
-				<form method="get" action="./">
-					<ul>
-						<li><label for="ch_effects">动画效果: </label><input type="checkbox" id="ch_effects" name="ch_effects" data-on="开启" data-off="关闭" autocomplete="off"  checked /></li>
-						<!--
-						<li><label for="ch_location">Enable location tracking: </label><input type="checkbox" id="ch_location" name="ch_location" checked /></li>
-						<li><label for="ch_showsearch">Include me in search results: </label><input type="checkbox" id="ch_showsearch" name="ch_showsearch" /></li>
-						<li><label for="ch_emails">Email notifications: </label><input type="checkbox" id="ch_emails" name="ch_emails" data-on="ON" data-off="OFF" /></li>
-						-->
-					</ul>
-				</form>
-			</div>
-		</div>
-		<div id='selectbar' > <img src='icon/updown_arrow.png' height="128" width="128" /></div>
 	</div>
 	
 </body>

@@ -5,7 +5,8 @@
 }
 
 /* For transition */
-.level1_out, .level2_left{
+.level1_out, .level2_left,
+.level2_content_up_in_s:hover,.level2_content_up_in_n:hover{
 	-moz-transition: all 0.3s ease; -webkit-transition: all 0.3s ease; -o-transition: all 0.3s ease; transition: all 0.3s ease;
 }
 
@@ -23,25 +24,13 @@ body {
 	font-size:1em; font-weight:200; cursor:default;
 }
 #TimeTicker {
-	color:blue; font-size:1.5em;
-	position:absolute; float:right; right:5px; z-index:3;
+	font-size:1.1em;
+	position:absolute; right:5px; top:0;
+	z-index:3;
 	display:inline-block; padding:0.15em 0.25em 0 0; cursor:default;
 }
 .bgdiv {position:absolute; top:0; left:0; height:100%; width:100%; background-size:cover; overflow:hidden; z-index :-100;}
-#uplayout {
-	position:absolute; width:100%; height:100%; left:0; top:2000px; z-index:0;
-	_height:expression(document.getElementById('uplayout').offsetHeight+"px");
-	display:block;
-}
-#selectbar {
-	position:absolute; z-index:0; display:block; left:-50; top:1950px;
-}
-#selector {
-	position:absolute; z-index:0; display:block; margin-left:auto; margin-right:auto;
-}
-#selectcontainer {
-	width:100%; height:100%;
-}
+
 /* level 1 css */
 #logo_s{
 	line-height:1.5em;
@@ -170,6 +159,7 @@ body {
 	padding:0.25em 2em 0.25em 0.5em; margin:0.5em 0.5em 0.25em 1em;
 }
 .level2_content_up_searchboxcode_s,.level2_content_up_searchboxcode_n{
+	width:50%;
 	padding:0.25em 0.5em 0.25em 0.5em; margin:0.5em 0.5em -0.5em 1em;
 }
 .level2_content_up_searchboxtextie_s,.level2_content_up_searchboxtextie_n{
