@@ -1461,6 +1461,19 @@
             ]
         },
         {
+            "title": "Res_LeapFTP v2.7.6.613",
+            "ico": "",
+            "imager": "",
+            "level": 3,
+            "detail": [],
+            "linker": [
+                {
+                    "name": "百度网盘 kuq8",
+                    "src": "http://pan.baidu.com/s/1sjAuuWd"
+                }
+            ]
+        },
+        {
             "title": "SpaceSniffer1.1.201",
             "ico": "",
             "imager": "",
@@ -2245,21 +2258,6 @@
             ]
         },
         {
-            "title": "WolframAlpha",
-            "ico": "",
-            "imager": "",
-            "level": 3,
-            "detail": [
-                "自从有了 WolframAlpha，妈妈再也不用担心我的学习了！"
-            ],
-            "linker": [
-                {
-                    "name": "wolframalpha",
-                    "src": "http://www.wolframalpha.com/"
-                }
-            ]
-        },
-        {
             "title": "Jing.fm",
             "ico": "Jing.fm.png",
             "imager": "",
@@ -2287,6 +2285,21 @@
                 {
                     "name": "Ubuntu_Online_Tour",
                     "src": "http://www.ubuntu.com/tour/"
+                }
+            ]
+        },
+        {
+            "title": "WolframAlpha",
+            "ico": "",
+            "imager": "",
+            "level": 3,
+            "detail": [
+                "自从有了 WolframAlpha，妈妈再也不用担心我的学习了！"
+            ],
+            "linker": [
+                {
+                    "name": "wolframalpha",
+                    "src": "http://www.wolframalpha.com/"
                 }
             ]
         },
