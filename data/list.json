@@ -1525,6 +1525,23 @@
             ]
         },
         {
+            "title": "Battery Mon 笔记本电池测试",
+            "ico": "",
+            "imager": "",
+            "level": 3,
+            "detail": [],
+            "linker": [
+                {
+                    "name": "360云盘 6d15",
+                    "src": "http://yunpan.cn/cseFtdhG7NzjH"
+                },
+                {
+                    "name": "百度网盘 qqh7",
+                    "src": "http://pan.baidu.com/s/1pJr2dIV"
+                }
+            ]
+        },
+        {
             "title": "DocxViewer",
             "ico": "",
             "imager": "",
