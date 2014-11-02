@@ -772,6 +772,23 @@
             ]
         },
         {
+            "title": "Thomas_Was_Alone(孤独的托马斯)",
+            "ico": "",
+            "imager": "",
+            "level": 3,
+            "detail": [],
+            "linker": [
+                {
+                    "name": "360云盘e1ba",
+                    "src": "http://yunpan.cn/cstfKzKMkIRRe"
+                },
+                {
+                    "name": "百度网盘9e1n",
+                    "src": "http://pan.baidu.com/s/1c0zWbOO"
+                }
+            ]
+        },
+        {
             "title": "Snapshot(快照)",
             "ico": "Snapshot.jpg",
             "imager": "",
@@ -1293,6 +1310,23 @@
                 {
                     "name": "百度网盘",
                     "src": "http://pan.baidu.com/s/1EaQKR"
+                }
+            ]
+        },
+        {
+            "title": "The_Stanley_Parable(史丹利的寓言)",
+            "ico": "",
+            "imager": "",
+            "level": 3,
+            "detail": [],
+            "linker": [
+                {
+                    "name": "360云盘ac5e",
+                    "src": "http://yunpan.cn/cstAUA7mBYcNW"
+                },
+                {
+                    "name": "百度网盘pvs2",
+                    "src": "http://pan.baidu.com/s/1sjmEvNZ"
                 }
             ]
         },
