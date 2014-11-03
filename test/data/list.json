@@ -772,6 +772,23 @@
             ]
         },
         {
+            "title": "Thomas_Was_Alone(孤独的托马斯)",
+            "ico": "",
+            "imager": "",
+            "level": 3,
+            "detail": [],
+            "linker": [
+                {
+                    "name": "360云盘e1ba",
+                    "src": "http://yunpan.cn/cstfKzKMkIRRe"
+                },
+                {
+                    "name": "百度网盘9e1n",
+                    "src": "http://pan.baidu.com/s/1c0zWbOO"
+                }
+            ]
+        },
+        {
             "title": "Snapshot(快照)",
             "ico": "Snapshot.jpg",
             "imager": "",
@@ -1297,6 +1314,23 @@
             ]
         },
         {
+            "title": "The_Stanley_Parable(史丹利的寓言)",
+            "ico": "",
+            "imager": "",
+            "level": 3,
+            "detail": [],
+            "linker": [
+                {
+                    "name": "360云盘ac5e",
+                    "src": "http://yunpan.cn/cstAUA7mBYcNW"
+                },
+                {
+                    "name": "百度网盘pvs2",
+                    "src": "http://pan.baidu.com/s/1sjmEvNZ"
+                }
+            ]
+        },
+        {
             "title": "Spore(孢子)",
             "ico": "Spore.jpg",
             "imager": "",
@@ -1461,6 +1495,19 @@
             ]
         },
         {
+            "title": "Res_LeapFTP v2.7.6.613",
+            "ico": "",
+            "imager": "",
+            "level": 3,
+            "detail": [],
+            "linker": [
+                {
+                    "name": "百度网盘 kuq8",
+                    "src": "http://pan.baidu.com/s/1sjAuuWd"
+                }
+            ]
+        },
+        {
             "title": "SpaceSniffer1.1.201",
             "ico": "",
             "imager": "",
@@ -1508,6 +1555,23 @@
                 {
                     "name": "百度网盘",
                     "src": "http://pan.baidu.com/s/1vf4Ih"
+                }
+            ]
+        },
+        {
+            "title": "Battery Mon 笔记本电池测试",
+            "ico": "",
+            "imager": "",
+            "level": 3,
+            "detail": [],
+            "linker": [
+                {
+                    "name": "360云盘 6d15",
+                    "src": "http://yunpan.cn/cseFtdhG7NzjH"
+                },
+                {
+                    "name": "百度网盘 qqh7",
+                    "src": "http://pan.baidu.com/s/1pJr2dIV"
                 }
             ]
         },
@@ -2276,6 +2340,21 @@
             ]
         },
         {
+            "title": "WolframAlpha",
+            "ico": "",
+            "imager": "",
+            "level": 3,
+            "detail": [
+                "自从有了 WolframAlpha，妈妈再也不用担心我的学习了！"
+            ],
+            "linker": [
+                {
+                    "name": "wolframalpha",
+                    "src": "http://www.wolframalpha.com/"
+                }
+            ]
+        },
+        {
             "title": "光丝图谱",
             "ico": "",
             "imager": "",
@@ -2425,17 +2504,115 @@
             ]
         },
         {
-            "title": "Respond.js_unit_test",
+            "title": "浙大网站",
+            "ico": "",
+            "imager": "",
+            "level": 2,
+            "detail": [],
+            "linker": []
+        },
+        {
+            "title": "逻辑与计算机设计基础",
+            "ico": "",
+            "imager": "",
+            "level": 3,
+            "detail": [],
+            "linker": [
+                {
+                    "name": "教学平台",
+                    "src": "http://10.78.18.200:8080/Platform/"
+                },
+                {
+                    "name": "刘海风的个人主页",
+                    "src": "http://mypage.zju.edu.cn/hfliu"
+                }
+            ]
+        },
+        {
+            "title": "大物实验",
+            "ico": "",
+            "imager": "",
+            "level": 3,
+            "detail": [],
+            "linker": [
+                {
+                    "name": "教学中心",
+                    "src": "http://10.71.23.61/"
+                }
+            ]
+        },
+        {
+            "title": "大学物理",
             "ico": "",
             "imager": "",
             "level": 3,
             "detail": [
-                "The media queries in the included CSS file simply change the body's background color depending on the browser width. If you see any colors aside from black, then the media queries are working in your browser. You can resize your browser window to see it change on the fly."
-            ],
+				"薛大建",
+				"Tel:13064701319 Email:xuedajian@126.com"
+			],
             "linker": [
                 {
-                    "name": "Respond.js_unit_test",
-                    "src": "http://scottjehl.github.io/Respond/test/test.html"
+                    "name": "课件下载 ID:xdj PW:xls",
+                    "src": "http://10.14.122.222/gp"
+                }
+            ]
+        },
+        {
+            "title": "工程训练",
+            "ico": "",
+            "imager": "",
+            "level": 3,
+            "detail": [],
+            "linker": [
+                {
+                    "name": "自学网站",
+                    "src": "http://www.icourses.cn/coursestatic/course_4279.html"
+                },
+                {
+                    "name": "学校网站",
+                    "src": "http://10.71.32.157/home.asp"
+                }
+            ]
+        },
+        {
+            "title": "数据结构基础",
+            "ico": "",
+            "imager": "",
+            "level": 3,
+            "detail": [],
+            "linker": [
+                {
+                    "name": "主页",
+                    "src": "http://www.cs.zju.edu.cn/ds"
+                }
+            ]
+        },
+        {
+            "title": "校内网页",
+            "ico": "",
+            "imager": "",
+            "level": 3,
+            "detail": [],
+            "linker": [
+                {
+                    "name": "云峰学园",
+                    "src": "http://yunfeng.zju.edu.cn/"
+                },
+                {
+                    "name": "考试中心",
+                    "src": "http://kszx.zju.edu.cn/"
+                },
+                {
+                    "name": "本科生院",
+                    "src": "http://bksy.zju.edu.cn/"
+                },
+                {
+                    "name": "体育与艺术部",
+                    "src": "http://www.tyys.zju.edu.cn/"
+                },
+                {
+                    "name": "统一登陆",
+                    "src": "http://zuinfo.zju.edu.cn/index.do"
                 }
             ]
         },

@@ -39,36 +39,7 @@ function container(id,title,detail,linker,ico,imager,level,number,type){
 function Trim(str){
 	return str.replace(/(^\s*)|(\s*$)/g, ""); 
 }
-container.prototype.toJson = function toJson(){
-	var str = '';
-	str += '{\n';
-	str += '\t"title":"'+this.title+'",\n';
-	str += '\t"ico":"'+this.ico+'",\n';
-	str += '\t"imager":"'+this.imager+'",\n';
-	str += '\t"level":'+this.level+',\n';
-	str += '\t"number":'+this.number+',\n';
-	str += '\t"father":'+this.father+',\n';
-	str += '\t"detail":[\n';
-	var det = this.detail.split("<br>");
-	for (var i=0; i< det.length;i++){
-		str+= '\t\t"'+Trim(det[i])+'"';
-		if (i+1!=det.length) str += ',\n';
-		else str += '\n';
-	}
-	str += '\t],\n';
-	var lnk = this.linker.split("<a href=");
-	str += '\t"linker":[\n';
-	for (var i=1; i< lnk.length;i++){
-		var tmp = lnk[i].split("\">")
-		str+= '\t\t{"name":"'+Trim(tmp[1])+'","src":'+tmp[0]+'"}';
-		if (i+1!=lnk.length) str += ',\n';
-		else str += '\n';
-	}
-	str += '\t]\n';
-	str += '},\n';
-	return str;
-}
-container.prototype.showself = function showself(a,tid){
+container.prototype.showself = function showself(a,tid,from){
 	if ($('#'+tid)==null) return;
 	var title;
 	if (!this.ico || a==0)
@@ -77,29 +48,32 @@ container.prototype.showself = function showself(a,tid){
 		else if (this.level==1) title = "「 "+this.title+" 」";
 		else title = this.title;
 	else title = this.title;
-	if (a==1 && this.ico){
+	if (a==1){
+		if (!this.ico) return 1
 		title = title.replace("(","<br/>(");
-		$('#'+tid).append("<span class='level2_content_bottom_in_ico' id='"+this.number+"_bottom_inner' onmouseover='movetitle(this.id,128,1)' onmouseout='movetitle(this.id,128,-1)'>"
-									+"<img class='level2_content_bottom_in_img' id='"+this.number+"_bottom_inner_img' src= '"+this.ico+"' alt= '"+this.title+"' width='128px' height='128px' style='cursor:pointer;' onclick='showit(this.id)'/>"
-									+"<div class='level2_content_bottom_in_icotxt' id='"+this.number+"_bottom_inner_txt' onclick='showit(this.id)'>"+title+ "</div>"
+		$('#'+tid).append("<span class='level2_content_bottom_in_ico"+classSuffix+"' id='"+this.number+from+"_bottom_inner' onmouseover='movetitle(this.id,128,1)' onmouseout='movetitle(this.id,128,-1)'>"
+									+"<img class='level2_content_bottom_in_img"+classSuffix+"' id='"+this.number+from+"_bottom_inner_img' src= '"+this.ico+"' alt= '"+this.title+"' width='128px' height='128px' style='cursor:pointer;' onclick='showit(this.id)'/>"
+									+"<div class='level2_content_bottom_in_icotxt"+classSuffix+"' id='"+this.number+from+"_bottom_inner_txt' onclick='showit(this.id)'>"+title+ "</div>"
 								+"</span>");
-		$('#'+this.number+'_bottom_inner_txt').css("opacity",0.75);
-		var target = document.getElementById(this.number+'_bottom_inner_txt');
+		var targetid = this.number+from+"_bottom_inner_txt";
+		$('#'+targetid).css("opacity",0.75);
+		var target = document.getElementById(targetid);
 		var autoheight = (target.innerHeight || target.clientHeight || target.offsetHeight);
 		target.style.height = autoheight + 'px';
 	}else{
-		$('#'+tid).append("<br/><span id='"+this.number+"_bottom_outer' class='level2_content_bottom_in_txt'>"
-							+"<span id='"+this.number+"_bottom_inner_txt' style='cursor:pointer; width:auto;' onclick='showit(this.id)'>"+title+ "</span>"
+		$('#'+tid).append("<br/><span id='"+this.number+from+"_bottom_outer' class='level2_content_bottom_in_txt"+classSuffix+"'>"
+							+"<span id='"+this.number+from+"_bottom_inner_txt' style='cursor:pointer; width:auto;' onclick='showit(this.id)'>"+title+ "</span>"
 						+"</span>");
-		$("#"+this.number+"_bottom_inner_txt").css({"font-size":"+=5","lineHeight":"1.5"});
-		$("#"+this.number+"_bottom_inner_txt").mouseenter(function(){
+		var targetid = this.number+from+"_bottom_inner_txt";
+		$("#"+targetid).css({"font-size":"+=5","lineHeight":"1.5"});
+		$("#"+targetid).mouseenter(function(){
 			$(this).animate({'paddingLeft':'+='+20* !$.fx.off},100);
 		});
-		$("#"+this.number+"_bottom_inner_txt").mouseleave(function(){
+		$("#"+targetid).mouseleave(function(){
 			$(this).animate({'paddingLeft':'-='+20* !$.fx.off},100);
 		});
-		return 0;
 	}
+	return 0;
 }
 container.prototype.showdown = function showdown(a,tid,mode){
 	var list = new Array(),status= new Array();
@@ -108,12 +82,18 @@ container.prototype.showdown = function showdown(a,tid,mode){
 		tou ++;
 		if (allcon[list[tou]].total){
 			for (var i=0;i<allcon[list[tou]].total;i++)
-				list[++wei] = allcon[allcon[list[tou]].all[i]].number;
+				list[++wei] = allcon[list[tou]].all[i];
 		}
 	}
 	if (a=='all'){
-		for (var i=0;i<=wei;i++)
-			allcon[list[i]].showself(mode,tid);
+		var lim = wei;
+		for (var i=0;i<=lim;i++)
+			if (allcon[list[i]].showself(mode,tid,'all')==1){
+				var t = list[lim]; list[lim] = list[i]; list[i] = t;
+				lim--; i--;
+			}
+		for (var i=lim+1;i<=wei;i++)
+			allcon[list[i]].showself(0,tid,'all');
 	}else{
 		tc = 1; tw = wei;
 		while (tc<=tw){
@@ -127,8 +107,8 @@ container.prototype.showdown = function showdown(a,tid,mode){
 			}
 			if (--a==0) break;
 		}
-		for (var i=1;i<tc;i++) allcon[list[i]].showself(mode,tid);
-		for (var i=tw+1;i<=wei;i++) allcon[list[i]].showself(mode,tid);
+		for (var i=1;i<tc;i++) allcon[list[i]].showself(mode,tid,'rd');
+		for (var i=tw+1;i<=wei;i++) allcon[list[i]].showself(0,tid,'rd');
 	}
 }
 		
