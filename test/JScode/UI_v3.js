@@ -101,6 +101,9 @@ function resizedwindow(){
 	if (nowViewMode!=viewmode){
 		viewmode = nowViewMode;
 		classSuffix = viewModesSuffix[viewmode];
+		$("#header").remove();
+		$("#content").remove();
+		viewstart();
 	}
 }
 
@@ -251,12 +254,12 @@ function viewstart(){
 							"<div class='mid' id='content_"+tmp.number+"'></div>"+
 							"</div>"+
 						"</div>");
-			tmp.showdown(10,"content_"+tmp.number,1);
+			tmp.showdown(10,"content_"+tmp.number,viewmode);
 			for (var j=0;j<tmp.total;j++){
 				$("#section_"+tmp.number).append("<div class='slide' id='slide_"+tmp.all[j]+"'>"+
 									"<div class='mid' id='content_"+tmp.all[j]+"'></div>"+
 								"</div>");
-				allcon[tmp.all[j]].showdown("all","content_"+tmp.all[j],1);
+				allcon[tmp.all[j]].showdown("all","content_"+tmp.all[j],viewmode);
 			}
 		}else if (i==root.total-2){
 			$("#content").append("<div class='section' id='section_"+tmp.number+"'>"+
@@ -265,7 +268,7 @@ function viewstart(){
 		}
 	}
 	fullpagemaker();
-	$(window).resize()
+	$(window).resize();
 }
 
 //背景缓存载入
