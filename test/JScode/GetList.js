@@ -39,6 +39,12 @@ function container(id,title,detail,linker,ico,imager,level,number,type){
 function Trim(str){
 	return str.replace(/(^\s*)|(\s*$)/g, ""); 
 }
+function movetitle(s,len,i){
+	var t = document.getElementById(s+"_txt");
+	if (!t)	return;
+	var autoheight = (t.innerHeight || t.clientHeight || t.offsetHeight);
+	$("#"+s+"_txt").stop(true).animate({"top":Math.max(0,len-i*autoheight)},100);
+}
 container.prototype.showself = function showself(a,tid,from){
 	if ($('#'+tid)==null) return;
 	var title;
@@ -51,11 +57,11 @@ container.prototype.showself = function showself(a,tid,from){
 	if (a>=1){
 		if (!this.ico) return 1
 		title = title.replace("(","<br/>(");
-		$('#'+tid).append("<span class='in_ico"+classSuffix+"' id='"+this.number+from+"_bottom_inner' onmouseover='movetitle(this.id,128,1)' onmouseout='movetitle(this.id,128,-1)'>"
-									+"<img class='in_img"+classSuffix+"' id='"+this.number+from+"_bottom_inner_img' src= '"+this.ico+"' alt= '"+this.title+"' width='128px' height='128px' style='cursor:pointer;' onclick='showit(this.id)'/>"
-									+"<div class='in_icotxt"+classSuffix+"' id='"+this.number+from+"_bottom_inner_txt' onclick='showit(this.id)'>"+title+ "</div>"
+		$('#'+tid).append("<span class='in_ico"+classSuffix+"' id='"+this.number+'_'+from+"_bottom_inner' onmouseover='movetitle(this.id,128,1)' onmouseout='movetitle(this.id,128,-1)'>"
+									+"<img class='in_img"+classSuffix+"' id='"+this.number+'_'+from+"_bottom_inner_img' src= '"+this.ico+"' alt= '"+this.title+"' width='128px' height='128px' style='cursor:pointer;' onclick='showit(this.id)'/>"
+									+"<div class='in_icotxt"+classSuffix+"' id='"+this.number+'_'+from+"_bottom_inner_txt' onclick='showit(this.id)'>"+title+ "</div>"
 								+"</span>");
-		var targetid = this.number+from+"_bottom_inner_txt";
+		var targetid = this.number+'_'+from+"_bottom_inner_txt";
 		$('#'+targetid).css("opacity",0.75);
 		var target = document.getElementById(targetid);
 		var autoheight = (target.innerHeight || target.clientHeight || target.offsetHeight);
@@ -77,7 +83,9 @@ container.prototype.showself = function showself(a,tid,from){
 }
 container.prototype.showdown = function showdown(a,tid,mode){
 	var list = new Array(),status= new Array();
-	tou = -1; wei = 0; list[wei] = this.number;
+	tou = -1; wei = -1;
+	for (var i=0;i<allcon[this.number].total;i++)
+		list[++wei] = allcon[this.number].all[i];
 	while (tou!=wei){
 		tou ++;
 		if (allcon[list[tou]].total){
@@ -179,12 +187,6 @@ container.prototype.finddown = function finddown(s,a){
 	if (a==0){
 		qsort(0,listtot-1);
 	}
-}
-function movetitle(s,len,i){
-	var t = document.getElementById(s+"_txt");
-	if (!t) return;
-	var autoheight = (t.innerHeight || t.clientHeight || t.offsetHeight);
-	$("#"+s+'_txt').stop(true).animate({top:Math.max(0,len-i*autoheight)},100);
 }
 container.prototype.add = function add(target){
 	this.all[this.total++] = target.number;

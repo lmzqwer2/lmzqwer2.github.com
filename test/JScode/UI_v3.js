@@ -206,7 +206,7 @@ function fullpagemaker(){
 				var beg = Math.min(slideIndex, willslideto);
 				var end = Math.max(slideIndex, willslideto);
 				debugit(beg + ' ' + end, "beg and end");
-				for (var i=beg;i<=end;i++)
+				for (var i=beg-1;i<=end+1;i++)
 					showoutline(index, i-1);
 				$.fn.fullpage.reBuild();
 			}
@@ -309,6 +309,7 @@ function viewstart(){
 				$("#section_"+tmp.number).append("<div class='slide' id='slide_"+tmp.all[j]+"'>"+
 									"<div class='mid' id='content_"+tmp.all[j]+"'></div>"+
 								"</div>");
+				allcon[tmp.all[j]].showself(viewmode,"content_"+tmp.all[j],'all');
 			}
 		}else if (i==root.total-2){
 			$("#content").append("<div class='section' id='section_"+tmp.number+"'>"+

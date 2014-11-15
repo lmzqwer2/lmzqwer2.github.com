@@ -194,7 +194,7 @@ padding:0.25em 0.5em 0.25em 0.5em; margin:0.5em 0.5em 0.25em 0.5em;
 	font-size:1.2em; line-height: 1.7em; color:#3c3c3c;
 }
 .in_icotxt.pad,.in_icotxt.pad,
-.in_icotxt.computer,.in_icotxt.computer, {
+.in_icotxt.computer,.in_icotxt.computer {
 	position:absolute; display:block; width:128px; height:auto; top:128px; left:0;
 	padding:0.1em; z-index:20;
 	line-height: 1.5em; color:#FFFFFF; text-align:center;
