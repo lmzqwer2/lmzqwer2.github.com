@@ -126,6 +126,7 @@ html, body {
 	left:0px;
 	width:100%;
 	border-bottom: 1px solid #000;
+	border-top: 1px solid #474747;
 }
 .fp-slidesNav.bottom {
     bottom: 0.5em;
@@ -134,45 +135,33 @@ html, body {
     top: 34px;
 }
 .fp-slidesNav li {
-    border-right: 1px solid #000;
+    border_right: 1px solid #000;
 	float:left;
     display: block;
     position:relative;
 	left:5px;
-	padding:10px;
 }
 .fp-slidesNav.active li {
     border: 3px solid #000;
 }
 .fp-slidesNav li a {
     display: block;
+	float:left;
     z-index: 1;
     cursor: pointer;
 	color:black;
+	padding:10px;
     text-decoration: none;
 }
-.fp-slidesNav :hover{
-	background:#66CCFF;
+.fp-slidesNav li:hover{
+	background:#7f8c8d;
 }
-.fp-slidesNav .active :before,.fp-slidesNav .active :after{
-	content:"";
-	position:relative;
-	display:block;
-    z-index: 4;
-	margin-top:0;
-	height:0; width:0;
-	padding:0 0.5em;
-    border-style: solid;
+.fp-slidesNav li:hover a{
+	color:white;
 }
-.fp-slidesNav .active :before{
-	float:left;
-    border-width: 0.5em 0 0.5em 0.5em;
-    border-color: transparent transparent transparent blue;
-}
-.fp-slidesNav .active :after{
-	float:right;
-    border-width: 0.5em 0.5em 0.5em 0;
-    border-color: transparent blue transparent transparent;
+.fp-slidesNav li a.active{
+	padding:10px 10px 7px;
+	border-bottom: 3px solid #7f8c8d;
 }
 .fp-slidesNav span {
     width: auto;

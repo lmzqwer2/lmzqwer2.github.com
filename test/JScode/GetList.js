@@ -48,12 +48,12 @@ container.prototype.showself = function showself(a,tid,from){
 		else if (this.level==1) title = "「 "+this.title+" 」";
 		else title = this.title;
 	else title = this.title;
-	if (a==1){
+	if (a>=1){
 		if (!this.ico) return 1
 		title = title.replace("(","<br/>(");
-		$('#'+tid).append("<span class='level2_content_bottom_in_ico"+classSuffix+"' id='"+this.number+from+"_bottom_inner' onmouseover='movetitle(this.id,128,1)' onmouseout='movetitle(this.id,128,-1)'>"
-									+"<img class='level2_content_bottom_in_img"+classSuffix+"' id='"+this.number+from+"_bottom_inner_img' src= '"+this.ico+"' alt= '"+this.title+"' width='128px' height='128px' style='cursor:pointer;' onclick='showit(this.id)'/>"
-									+"<div class='level2_content_bottom_in_icotxt"+classSuffix+"' id='"+this.number+from+"_bottom_inner_txt' onclick='showit(this.id)'>"+title+ "</div>"
+		$('#'+tid).append("<span class='in_ico"+classSuffix+"' id='"+this.number+from+"_bottom_inner' onmouseover='movetitle(this.id,128,1)' onmouseout='movetitle(this.id,128,-1)'>"
+									+"<img class='in_img"+classSuffix+"' id='"+this.number+from+"_bottom_inner_img' src= '"+this.ico+"' alt= '"+this.title+"' width='128px' height='128px' style='cursor:pointer;' onclick='showit(this.id)'/>"
+									+"<div class='in_icotxt"+classSuffix+"' id='"+this.number+from+"_bottom_inner_txt' onclick='showit(this.id)'>"+title+ "</div>"
 								+"</span>");
 		var targetid = this.number+from+"_bottom_inner_txt";
 		$('#'+targetid).css("opacity",0.75);
@@ -61,7 +61,7 @@ container.prototype.showself = function showself(a,tid,from){
 		var autoheight = (target.innerHeight || target.clientHeight || target.offsetHeight);
 		target.style.height = autoheight + 'px';
 	}else{
-		$('#'+tid).append("<br/><span id='"+this.number+from+"_bottom_outer' class='level2_content_bottom_in_txt"+classSuffix+"'>"
+		$('#'+tid).append("<br/><span id='"+this.number+from+"_bottom_outer' class='in_txt"+classSuffix+"'>"
 							+"<span id='"+this.number+from+"_bottom_inner_txt' style='cursor:pointer; width:auto;' onclick='showit(this.id)'>"+title+ "</span>"
 						+"</span>");
 		var targetid = this.number+from+"_bottom_inner_txt";
