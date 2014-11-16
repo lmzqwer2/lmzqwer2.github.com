@@ -137,7 +137,7 @@ function searchboxmaker(){
 
 var nowsection = 0;
 var nowslide = 0;
-var willslide = 0;
+var willslideto = 0;
 var befslide = new Array();
 var showed = new Array();
 function showoutline(index,slideIndex){

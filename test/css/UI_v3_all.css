@@ -36,6 +36,10 @@ body {
 #logo,#logoMain{
 	text-align:center;
 }
+#logoMain{
+	margin-left:-10px;
+	width:100%;
+}
 #logo.mobile{
 	float:left;
 	font-size: 2em;
