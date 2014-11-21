@@ -84,7 +84,7 @@ body {
 #header{
 	background:#474747;
 	background:rgba(47,47,47,0.75); color:white;
-	height:34px; position:absolute; width:100%; top:0; left:0; z-index:1000;
+	height:34px; position:absolute; width:100%; top:0; left:0; z-index:99;
 }
 #section{
 	float:right; width:auto;
