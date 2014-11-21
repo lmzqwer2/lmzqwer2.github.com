@@ -150,9 +150,9 @@ $(document).mousemove(function(){
 });
 
 var clickcolor = "#0000FF";
-var notitle = "无名";
-var nodetail = "没有介绍。"
-var	nolinker = "无下载。";
+var notitle = "<p>无名</p>";
+var nodetail = "<p>没有介绍。</p>";
+var	nolinker = "<p>无下载。</p>";
 
 /* 内容 */
 
@@ -160,7 +160,7 @@ function buildtitle(number){
 	var s = allcon[number].title;
 	var pretext = "<div id='floatdiv_title' class='floatdiv_title'>";
 	if (s=='') return pretext+notitle+"</div>";
-	return pretext+s+"<hr/></div>";
+	return pretext+s+"</div><hr/>";
 }
 function inserter(string,pointer,inser,times){
 	var ts = string.split(pointer);
@@ -189,7 +189,7 @@ function buildlinker(number){
 	for (var i=0;i<allcon[number].linker.length;i++){
 		s += "<a href='"+allcon[number].linker[i].src+"'>"+allcon[number].linker[i].name+"</a> ";
 	}
-	var pretxt = "<div id='floatdiv_linker' class='floatdiv_linker'><b style='font-size:1.5em'><hr/>链接:</b><br/>";
+	var pretxt = "<hr/><div id='floatdiv_linker' class='floatdiv_linker'><b style='font-size:1.5em'>链接:</b><br/>";
 	if (s=='') return pretxt+nolinker+"</div>";
 	s = inserter(s,"<br>","&nbsp;",3);
 	return pretxt+s+"</div>";

@@ -2601,6 +2601,32 @@
             ]
         },
         {
+            "title": "数值分析",
+            "ico": "",
+            "imager": "",
+            "level": 3,
+            "detail": [],
+            "linker": [
+                {
+                    "name": "主页",
+                    "src": "http://acm.zju.edu.cn/dsaa/na/"
+                }
+            ]
+        },
+        {
+            "title": "源网bt",
+            "ico": "",
+            "imager": "",
+            "level": 3,
+            "detail": [],
+            "linker": [
+                {
+                    "name": "主页",
+                    "src": "http://luckweb.057101.com/bt2/index.asp"
+                }
+            ]
+        },
+        {
             "title": "校内网页",
             "ico": "",
             "imager": "",

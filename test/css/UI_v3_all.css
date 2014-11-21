@@ -7,7 +7,8 @@
 /* For transition */
 .level1_out, .level2_left,
 .level2_content_up_in.mobile:hover,.level2_content_up_in.pad:hover,
-.sectioninner,.sectionselector{
+.sectioninner,.sectionselector,
+.floatdiv_linker a,.floatdiv_button{
 	-moz-transition: all 0.3s ease; -webkit-transition: all 0.3s ease; -o-transition: all 0.3s ease; transition: all 0.3s ease;
 }
 
@@ -213,4 +214,19 @@ padding:0.25em 0.5em 0.25em 0.5em; margin:0.5em 0.5em 0.25em 0.5em;
 }
 .in_img.mobile,.in_img.pad,.in_img.computer{
 	position:relative; left:0px; z-index:10;
+}
+
+.floatdiv hr{
+	width:90%; margin:0 5%;
+}
+.floatdiv_linker a{
+	display:block; float:left;
+	padding:8px;
+	margin-left:10px;
+}
+.floatdiv_linker a:hover,.floatdiv_button:hover{
+	color:white; background:#849BCA;
+}
+.floatdiv a:hover{
+	text-decoration: none;
 }
