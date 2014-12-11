@@ -12,6 +12,18 @@
 	-moz-transition: all 0.3s ease; -webkit-transition: all 0.3s ease; -o-transition: all 0.3s ease; transition: all 0.3s ease;
 }
 
+@font-face {
+    font-family: "fantique-four";
+    src: url('../fonts/fantique_four/fantique-four-webfont.eot');
+    src: url('../fonts/fantique_four/fantique-four-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/fantique_four/fantique-four-webfont.woff2') format('woff2'),
+         url('../fonts/fantique_four/fantique-four-webfont.woff') format('woff'),
+         url('../fonts/fantique_four/fantique-four-webfont.ttf') format('truetype'),
+         url('../fonts/fantique_four/fantique-four-webfont.svg#fantique_fourregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
 /* overall set */
 .nojs {display:none;}
 html ,body{
@@ -35,7 +47,12 @@ body {
 
 /* level 1 css */
 #logo,#logoMain{
-	text-align:center;
+	font-family: "fantique-four",Arial Narrow,monospace;
+	text-align: center;
+	cursor: default;
+}
+#logo{
+	color: white;
 }
 #logoMain{
 	margin-left:-10px;
@@ -49,12 +66,17 @@ body {
 	float:left;
 	font-size:2em;
 }
+#logoMain.mobile{
+	font-size: 5em;
+}
+#logoMain.pad{
+	font-size: 10em;
+}
 #logoMain.mobile,#logoMain.pad{
-	font-size: 6em;
-	font-size: 15vw;
+	font-size: 18vw;
 }
 #logoMain.computer{
-	font-size: 13em;
+	font-size: 18em;
 }
 .level1_out.mobile, .level1_out.pad, .level1_out.computer{
 	padding:10% 3% 0; height:auto;

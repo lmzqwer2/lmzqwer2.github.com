@@ -54,6 +54,17 @@ container.prototype.showself = function showself(a,tid,from){
 		else if (this.level==1) title = "「 "+this.title+" 」";
 		else title = this.title;
 	else title = this.title;
+	/*
+	title = title.replace("(","<br/>(");
+	$('#'+tid).append("<div style='height:100px; width:33%; float:left; border:1px solid black; position:relative;' id='"+this.number+'_'+from+"_bottom_inner' onclick='showit(this.id)'>"+
+							(this.ico?"<div style='width:20%; float:left;'>"+
+										"<img id='"+this.number+'_'+from+"_bottom_inner_img' src= '"+this.ico+"' alt= '"+this.title+"' width='100%' height='100%' style='cursor:pointer;' onclick='showit(this.id)'/>"
+									+"</div>":"")+
+							"<div style='width:80%;float:left; left:100px; top:0;' id='"+this.number+'_'+from+"_bottom_inner_txt' onclick='showit(this.id)'>"+title+
+							"</div>"+
+						"</div>"
+					);*/
+
 	if (a>=1){
 		if (!this.ico) return 1
 		title = title.replace("(","<br/>(");

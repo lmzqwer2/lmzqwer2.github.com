@@ -33,6 +33,7 @@ function showtagup(id,tagname){
 		});
 	}
 }
+var preSearchString = '';
 function findit(get,target){
 	var bottom = document.getElementById(target);
 	var t = document.getElementById(get);
@@ -41,14 +42,16 @@ function findit(get,target){
 	if (t.value=="textarea" && searchmode==0){
 		searchmode = 1;
 		searchboxmaker();
-		return;
+		return false;
 	}
 	if (t.value=="search" && searchmode==1){
 		searchmode = 0;
 		searchboxmaker();
-		return;
+		return false;
 	}
 	if (searchmode==0){
+		if (t.value == preSearchString) return false;
+		preSearchString = t.value;
 		$("#"+target).empty().append("搜索中..... 请稍候....<br/>");
 		allcon[0].finddown(t.value,0);
 		$("#"+target).empty();
@@ -69,6 +72,7 @@ function findit(get,target){
 		$("#"+target).append(result+"<br/>");
 	}
 	$(window).resize();
+	return false;
 }
 var EnterSubmit = function(evt){
 	evt = window.event || evt;
@@ -76,13 +80,9 @@ var EnterSubmit = function(evt){
 	{
 		if (nowsection==root.total-2){
 			var target = document.getElementById("searchboxtext");
-			if (target && (!target.value || searchmode)){
+			if (target){
 				target.focus();
 				return;
-			}
-			var target = document.getElementById("searchboxsubmit");
-			if (target && !searchmode){
-				target.click();
 			}
 		}
 		else{
@@ -111,25 +111,26 @@ function resizedwindow(){
 }
 
 function searchboxmaker(){
-	var inhtml = '';
+	var inhtml = "<form id='searchbox' method='post' target='_self' onsubmit='findit(\"searchboxtext\",\"content_bottom\"); return false;' >";
 	if (searchmode == 0){
 		if (!isIE) {
-			inhtml = "<input type='text' id='searchboxtext' class='searchboxinput"+classSuffix+"'/>";
-			inhtml+= "<span class='searchboxclr"+classSuffix+"' onclick='clrsearchboxtext();'>X</span>";
+			inhtml += "<input type='text' id='searchboxtext' class='searchboxinput"+classSuffix+"'/>";
 		}
 		else
-			inhtml =  "<input rows='auto' cols='20' type='text' id='searchboxtext' class='searchboxtextie"+classSuffix+"' value=''/>";
-		inhtml+= "<input type='button' id='searchboxsubmit' class='searchboxsubmit"+classSuffix+"' value='搜索' onclick='findit(\"searchboxtext\",\"content_bottom\");'/>";
+			inhtml +=  "<input rows='auto' cols='20' type='text' id='searchboxtext' class='searchboxtextie"+classSuffix+"' value=''/>";
+		inhtml+= "<input type='button' id='searchboxsubmit' class='searchboxsubmit"+classSuffix+"' value='搜索' />";
 	}else{
 		if (!isIE) {
-			inhtml = "<textarea id='searchboxtext' class='searchboxcode"+classSuffix+"' value=''></textarea>";
+			inhtml += "<textarea id='searchboxtext' class='searchboxcode"+classSuffix+"' value=''></textarea>";
 		}
 		else{
-			inhtml = "<textarea rows='5' id='searchboxtext' class='searchboxtextie"+classSuffix+"'></textarea>";
+			inhtml += "<textarea rows='5' id='searchboxtext' class='searchboxtextie"+classSuffix+"'></textarea>";
 			inhtml+= "<span class='searchboxclr"+classSuffix+"' onclick='clrsearchboxtext();'>X</span>";
 		}
-		inhtml+= " <input type='button' id='searchboxsubmit' class='searchboxsubmit"+classSuffix+"' value='运行' onclick='findit(\"searchboxtext\",\"content_bottom\");'/>";
+		inhtml+= " <input type='button' id='searchboxsubmit' class='searchboxsubmit"+classSuffix+"' value='运行' />";
+		//onclick='findit(\"searchboxtext\",\"content_bottom\");'
 	}
+	inhtml += "</form>";
 	$("#content_up").html('').append(inhtml);
 	$("#content_bottom").html('');
 	$(window).resize();
