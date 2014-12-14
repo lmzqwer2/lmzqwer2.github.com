@@ -8,10 +8,14 @@ var nowlevel = 0;
 var nowl1num = -1;
 var nowl2num = -1;
 var nowl3num = -1;
-var viewChangeWidth=new Array(0,640,1024,10000);
-var viewModesSuffix=new Array(" mobile"," pad"," computer");
+var viewChangeWidth=new Array(0,350,640,1024,10000);
+var viewModesSuffix=new Array("small","mobile","pad","computer");
+var boxChangeWidth=new Array(0,250,350,400,750,1100,1500,10000000);
+var boxModesSuffix=new Array("bxf2","bxf3","bx1","bx2","bx3","bx4","bx5");
 var viewmode = 0;
-var classSuffix=' mobile';
+var classSuffix= ' ' + viewModesSuffix[viewmode];
+var boxmode = 0;
+var boxSuffix= ' ' +boxModesSuffix[boxmode];
 
 function debugit(x,name){
 	$("#debugger").append("<p>" + name + ' ' + x + "</p>");
@@ -59,7 +63,7 @@ function findit(get,target){
 			allcon[listcon[i]].showself(0,target,'sch');
 			//bottom.innerHTML += "&nbsp;&nbsp;&nbsp;&nbsp;" + listscore[i] +"&nbsp;&nbsp;&nbsp;&nbsp;" + i +"&nbsp;&nbsp;&nbsp;&nbsp;" + listcon[i] +"&nbsp;&nbsp;&nbsp;&nbsp;" + allcon[listcon[i]].id ;
 		}
-		showtagup(target,"span");
+		//showtagup(target,"div");
 	}
 	else{
 		$("#"+target).append("<hr/><pre>"+t.value+"</pre><br/>");
@@ -90,23 +94,35 @@ function resizedwindow(){
 	var nowViewMode=0;
 	while (viewChangeWidth[nowViewMode+1]<inwidth) nowViewMode++;
 	if (nowViewMode!=viewmode){
+		var all = $("."+viewModesSuffix[viewmode]);
+		all.removeClass(viewModesSuffix[viewmode]).addClass(viewModesSuffix[nowViewMode]);
 		viewmode = nowViewMode;
-		classSuffix = viewModesSuffix[viewmode];
-		$("#header").remove();
-		$("#content").remove();
-		viewstart();
+		classSuffix = ' ' + viewModesSuffix[viewmode];
 	}
+	var nowBoxMode=0;
+	while (boxChangeWidth[nowBoxMode+1]<inwidth) nowBoxMode++;
+	if (nowBoxMode!=boxmode){
+		var all = $("."+boxModesSuffix[boxmode]);
+		all.removeClass(boxModesSuffix[boxmode]).addClass(boxModesSuffix[nowBoxMode]);
+		boxmode = nowBoxMode;
+		boxSuffix = ' ' + boxModesSuffix[boxmode];
+	}
+		/*$("#header").remove();
+		$("#content").remove();
+		viewstart();*/
 }
 
 function searchboxmaker(){
-	var inhtml = "<form id='searchbox' method='post' target='_self' onsubmit='findit(\"searchboxtext\",\"content_bottom\"); return false;' >";
+	var inhtml ='';
 	if (searchmode == 0){
+		inhtml += "<form id='searchbox' method='post' target='_self' onsubmit='findit(\"searchboxtext\",\"content_bottom\"); return false;' >";
 		if (!isIE) {
 			inhtml += "<input type='text' id='searchboxtext' class='searchboxinput"+classSuffix+"'/>";
 		}
 		else
 			inhtml +=  "<input rows='auto' cols='20' type='text' id='searchboxtext' class='searchboxtextie"+classSuffix+"' value=''/>";
 		inhtml+= "<input type='submit' id='searchboxsubmit' class='searchboxsubmit"+classSuffix+"' value='搜索' />";
+		inhtml += "</form>";
 	}else{
 		if (!isIE) {
 			inhtml += "<textarea id='searchboxtext' class='searchboxcode"+classSuffix+"' value=''></textarea>";
@@ -115,10 +131,8 @@ function searchboxmaker(){
 			inhtml += "<textarea rows='5' id='searchboxtext' class='searchboxtextie"+classSuffix+"'></textarea>";
 			inhtml+= "<span class='searchboxclr"+classSuffix+"' onclick='clrsearchboxtext();'>X</span>";
 		}
-		inhtml+= " <input type='submit' id='searchboxsubmit' class='searchboxsubmit"+classSuffix+"' value='运行' />";
-		//onclick='findit(\"searchboxtext\",\"content_bottom\");'
+		inhtml+= " <input type='submit' id='searchboxsubmit' class='searchboxsubmit"+classSuffix+"' value='运行'	onclick='findit(\"searchboxtext\",\"content_bottom\");' />";
 	}
-	inhtml += "</form>";
 	$("#content_up").html('').append(inhtml);
 	$("#content_bottom").html('');
 	$(window).resize();
@@ -207,7 +221,7 @@ function fullpagemaker(){
 				var paddingheight = slidebar.height()+$("#header").height()+'px';
 				$("#section_"+tmp.number).css("paddingTop",paddingheight);
 			}
-			$(".slimScrollBar").css("right","10px");
+			//$(".slimScrollBar").css("right","10px");
 		}
 	});	
 	for (var i=0;i<root.total-1;i++){
@@ -290,13 +304,13 @@ function viewstart(){
 		if (i+2<root.total){
 			$("#content").append("<div class='section' id='section_"+tmp.number+"'>"+
 							"<div class='slide' id='slide_"+tmp.number+"'>"+
-							"<div class='mid' id='content_"+tmp.number+"'></div>"+
+							"<div class='mid"+classSuffix+"' id='content_"+tmp.number+"'></div>"+
 							"</div>"+
 						"</div>");
 			tmp.showdown(10,"content_"+tmp.number,viewmode);
 			for (var j=0;j<tmp.total;j++){
 				$("#section_"+tmp.number).append("<div class='slide' id='slide_"+tmp.all[j]+"'>"+
-									"<div class='mid' id='content_"+tmp.all[j]+"'></div>"+
+									"<div class='mid"+classSuffix+"' id='content_"+tmp.all[j]+"'></div>"+
 								"</div>");
 				allcon[tmp.all[j]].showself(viewmode,"content_"+tmp.all[j],'all');
 			}
@@ -314,17 +328,7 @@ function viewstart(){
 var bg = new Image();
 var bgimg= new Array();
 var bgnum = 0;
-bgimg[0] = 'http://www.pp3.cn/uploads/allimg/111110/14010AU3-0.jpg';
-bgimg[bgimg.length] = 'http://www.kole8.com/desktop/desk_file-11/2/2/2012/10/201210314361319.jpg';
-bgimg[bgimg.length] = 'http://desktop.inlishui.com/DesktopFiles/设计/桌面精选壁纸 2010-01-21/desktop.inlishui.com_060.jpg';
-bgimg[bgimg.length] = 'http://www2.ppdesk.com/file/20100120/desk/2009/10/16/keai200910_73_1920x1440.jpg';
-bgimg[bgimg.length] = 'http://dl.bizhi.sogou.com/images/2013/12/06/437033.jpg';
-bgimg[bgimg.length] = 'http://dl.bizhi.sogou.com/images/2013/12/05/435145.jpg';
-bgimg[bgimg.length] = 'http://dl.bizhi.sogou.com/images/2012/10/12/312777.jpg';
 bgimg[bgimg.length] = 'http://dl.bizhi.sogou.com/images/2012/02/09/96359.jpg';
-bgimg[bgimg.length] = 'http://dl.bizhi.sogou.com/images/2012/10/12/312805.jpg';
-bgimg[bgimg.length] = 'http://dl.bizhi.sogou.com/images/2012/10/12/312825.jpg';
-bgimg[bgimg.length] = 'http://dl.bizhi.sogou.com/images/2012/10/12/311223.jpg';
 
 function bgimager() {
 	if (!bg.complete){

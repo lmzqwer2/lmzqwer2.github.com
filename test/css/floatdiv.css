@@ -9,6 +9,23 @@
 .floatdiv_linker {padding:0.5em 5% 1.5em 5%; position:absolute; bottom:0; background:#EDF1F8; width:90%; z-index:2; }
 .floatdiv_button {font-size:1em; top:0; right:0; position:absolute; padding:0.5em; cursor:pointer; z-index:500; }
 
+
+.floatdiv hr{
+	width:90%; margin:0 5%;
+}
+.floatdiv_linker a{
+	display:block; float:left;
+	padding:8px;
+	margin-left:10px;
+}
+.floatdiv_linker a:hover,.floatdiv_button:hover{
+	color:white; background:#849BCA;
+}
+.floatdiv a:hover{
+	text-decoration: none;
+}
+
+
 .t_r,.t_l,.m_l,.m_r,.b_l,.b_r { width:10px; }
 .t_l,.t_m,.t_r,.b_l,.b_m,.b_r {height:10px; }
 

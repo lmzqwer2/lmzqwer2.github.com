@@ -48,23 +48,27 @@ function movetitle(s,len,i){
 container.prototype.showself = function showself(a,tid,from){
 	if ($('#'+tid)==null) return;
 	var title;
-	if (!this.ico || a==0)
-		if (this.level==3) title = "→ " + this.title;
-		else if (this.level==2) title = "√ " + this.title;
-		else if (this.level==1) title = "「 "+this.title+" 」";
+	if (!this.ico){
+		if (this.level==3) title = "『 "+this.title+" 』";
+		else if (this.level==2) title = "〖 " + this.title + " 〗";
+		else if (this.level==1) title = this.title;
 		else title = this.title;
-	else title = this.title;
-	/*
+	}
+	else{
+		title = this.title;
+	}
+	
 	title = title.replace("(","<br/>(");
-	$('#'+tid).append("<div style='height:100px; width:33%; float:left; border:1px solid black; position:relative;' id='"+this.number+'_'+from+"_bottom_inner' onclick='showit(this.id)'>"+
-							(this.ico?"<div style='width:20%; float:left;'>"+
-										"<img id='"+this.number+'_'+from+"_bottom_inner_img' src= '"+this.ico+"' alt= '"+this.title+"' width='100%' height='100%' style='cursor:pointer;' onclick='showit(this.id)'/>"
+	$('#'+tid).append("<div class='show-box"+boxSuffix+"' id='"+this.number+'_'+from+"_show_box' onclick='showit(this.id)'>"+
+							(this.ico?"<div class='show-imgbox"+boxSuffix+"'>"+
+										"<img id='"+this.number+'_'+from+"_show_img' class='show-img"+boxSuffix+"' src= '"+this.ico+"' alt= '"+this.title+"' style='cursor:pointer;' />"
 									+"</div>":"")+
-							"<div style='width:80%;float:left; left:100px; top:0;' id='"+this.number+'_'+from+"_bottom_inner_txt' onclick='showit(this.id)'>"+title+
+							"<div id='"+this.number+'_'+from+"_show_txt' class='show-txt"+boxSuffix+(this.ico?" pdl":"")+"' >"+
+								title+
 							"</div>"+
 						"</div>"
-					);*/
-
+					);
+/*
 	if (a>=1){
 		if (!this.ico) return 1
 		title = title.replace("(","<br/>(");
@@ -89,7 +93,7 @@ container.prototype.showself = function showself(a,tid,from){
 		$("#"+targetid).mouseleave(function(){
 			$(this).animate({'paddingLeft':'-='+20* !$.fx.off},100);
 		});
-	}
+	}*/
 	return 0;
 }
 container.prototype.showdown = function showdown(a,tid,mode){
@@ -104,31 +108,20 @@ container.prototype.showdown = function showdown(a,tid,mode){
 				list[++wei] = allcon[list[tou]].all[i];
 		}
 	}
+	var mode,tc;
 	if (a=='all'){
-		var lim = wei;
-		for (var i=0;i<=lim;i++)
-			if (allcon[list[i]].showself(mode,tid,'all')==1){
-				var t = list[lim]; list[lim] = list[i]; list[i] = t;
-				lim--; i--;
-			}
-		for (var i=lim+1;i<=wei;i++)
-			allcon[list[i]].showself(0,tid,'all');
+		tc = wei; mode = "all";
 	}else{
-		tc = 1; tw = wei;
-		while (tc<=tw){
-			var i=Math.round(Math.random()*(tw-tc+1)+0.5)+tc-1;
-			if (allcon[list[i]].ico){
-				var t = list[tc]; list[tc] = list[i]; list[i] = t;
-				tc++;
-			}else{
-				var t = list[tw]; list[tw] = list[i]; list[i] = t;
-				tw--;
-			}
+		tc = 1;
+		while (tc<=wei){
+			var i=Math.round(Math.random()*(wei-tc+1)+0.5)+tc-1;
+			var t = list[tc]; list[tc] = list[i]; list[i] = t;
+			tc++;
 			if (--a==0) break;
 		}
-		for (var i=1;i<tc;i++) allcon[list[i]].showself(mode,tid,'rd');
-		for (var i=tw+1;i<=wei;i++) allcon[list[i]].showself(0,tid,'rd');
+		mode = "rd";
 	}
+	for (var i=1;i<tc;i++) allcon[list[i]].showself(mode,tid,mode);
 }
 		
 function min(q,w,e){

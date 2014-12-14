@@ -9,11 +9,14 @@
 .logo span{display:inline-block;position:relative;letter-spacing:-0.01em;-webkit-transition:all 0.2s ease-out;
 	font-size:1em;}
 .logo span:hover{top:0.05em}
-.logo .char2, .logo .char11{color:#e36b23;text-shadow:#9b4d1f;}
-.logo .char3, .logo .char10{z-index:10; color:#e6c92e; text-shadow:#9c8b26; } 
-.logo .char4, .logo .char9{color:#5da028;text-shadow:#427021;}
-.logo .char5, .logo .char8{color:#4584be;text-shadow:#2f597f;}
-.logo .char6, .logo .char7{color:#7073cf;text-shadow:#4a4d88;}
+.logo .char1,.logo .char2,.logo .char3,.logo .char4,.logo .char5,.logo .char6,.logo .char7{
+	text-shadow:#863027 -0.02em 0.02em 0;
+}
+.logo .char2, .logo .char11{color:#e36b23;text-shadow-color:#9b4d1f;}
+.logo .char3, .logo .char10{z-index:10; color:#e6c92e; text-shadow-color:#9c8b26; } 
+.logo .char4, .logo .char9{color:#5da028;text-shadow-color:#427021;}
+.logo .char5, .logo .char8{color:#4584be;text-shadow-color:#2f597f;}
+.logo .char6, .logo .char7{color:#7073cf;text-shadow-color:#4a4d88;}
 .logo .char1{-webkit-transform:rotate(-3deg)}
 .logo .char3{top:-0.05em;-webkit-transform:rotate(2deg)}
 .logo .char4{top:-0.05em}
