@@ -112,16 +112,16 @@ container.prototype.showdown = function showdown(a,tid,mode){
 	if (a=='all'){
 		tc = wei; mode = "all";
 	}else{
-		tc = 1;
-		while (tc<=wei){
+		tc = -1;
+		while (tc<wei){
+			tc++;
 			var i=Math.round(Math.random()*(wei-tc+1)+0.5)+tc-1;
 			var t = list[tc]; list[tc] = list[i]; list[i] = t;
-			tc++;
 			if (--a==0) break;
 		}
 		mode = "rd";
 	}
-	for (var i=1;i<tc;i++) allcon[list[i]].showself(mode,tid,mode);
+	for (var i=0;i<=tc;i++) allcon[list[i]].showself(mode,tid,mode);
 }
 		
 function min(q,w,e){

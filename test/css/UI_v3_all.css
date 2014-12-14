@@ -243,10 +243,10 @@ padding:0 0.5em; margin:0.5em 0.5em 0.5em -0.55em;
 .show-box{
 	height:40px; width:80%; border:1px solid red;
 	margin:0.5em 0.5%; padding:0.5em 1%; float:left;position:relative;
-	cursor:pointer; background:#dcdcdc; border-radius:5px;
+	cursor:pointer; background:#dfdfdf; border-radius:5px;
 }
 .show-box:hover{
-	background:#5cb85c; border-radius:10px;
+	background:#fcfcfc; border-radius:10px;
 }
 .show-box.bxf2{
 	margin:0.5em 0 0 10px; padding:0.5em 0;
