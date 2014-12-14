@@ -160,7 +160,7 @@ function buildtitle(number){
 	var s = allcon[number].title;
 	var pretext = "<div id='floatdiv_title' class='floatdiv_title'>";
 	if (s=='') return pretext+notitle+"</div>";
-	return pretext+s+"</div><hr/>";
+	return pretext+s+"</div>";
 }
 function inserter(string,pointer,inser,times){
 	var ts = string.split(pointer);
@@ -189,7 +189,7 @@ function buildlinker(number){
 	for (var i=0;i<allcon[number].linker.length;i++){
 		s += "<a href='"+allcon[number].linker[i].src+"'>"+allcon[number].linker[i].name+"</a> ";
 	}
-	var pretxt = "<hr/><div id='floatdiv_linker' class='floatdiv_linker'><b style='font-size:1.5em'>链接:</b><br/>";
+	var pretxt = "<div id='floatdiv_linker' class='floatdiv_linker'><b style='font-size:1.5em'>链接:</b><br/>";
 	if (s=='') return pretxt+nolinker+"</div>";
 	s = inserter(s,"<br>","&nbsp;",3);
 	return pretxt+s+"</div>";

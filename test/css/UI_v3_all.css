@@ -241,7 +241,7 @@ padding:0 0.5em; margin:0.5em 0.5em 0.5em -0.55em;
 	right:0px; display:block;
 }
 .show-box{
-	height:40px; width:80%; border:1px solid red;
+	height:40px; width:80%; border:1px dashed red;
 	margin:0.5em 0.5%; padding:0.5em 1%; float:left;position:relative;
 	cursor:pointer; background:#dfdfdf; border-radius:5px;
 }
@@ -274,20 +274,21 @@ padding:0 0.5em; margin:0.5em 0.5em 0.5em -0.55em;
 .show-imgbox{
 	text-align:center; position:absolute;
 	height:100%; float:left; left:10px;
+	border-radius:8px; overflow:hidden;
 }
-.show-img{
+.show-img,.show-imgbox{
 	height:40px; width:40px;
 }
-.show-img.bx2{
+.show-img.bx2,.show-imgbox.bx2{
 	height:60px; width:60px;
 }
-.show-img.bx3{
+.show-img.bx3,.show-imgbox.bx3{
 	height:80px; width:80px;
 }
-.show-img.bx4{
+.show-img.bx4,.show-imgbox.bx4{
 	height:100px; width:100px;
 }
-.show-img.bx5{
+.show-img.bx5,.show-imgbox.bx5{
 	height:100px; width:100px;
 }
 .show-txt{
