@@ -116,13 +116,13 @@ body {
 .sectionmain{
 	display:block;
 }
-.sectionmain.small,.sectionmain.mobile,.sectionmain.pad{
+.sectionmain.small,.sectionmain.mobile{
 	display:none;
 }
-.sectionselector.small,.sectionselector.mobile,.sectionselector.pad{
+.sectionselector.small,.sectionselector.mobile{
 	display:block;
 }
-#section:hover .sectionmain.small,#section:hover .sectionmain.mobile,#section:hover .sectionmain.pad{
+#section:hover .sectionmain.small,#section:hover .sectionmain.mobile{
 	display:block;
 	position:absolute;
 	top:34px; right:0;
