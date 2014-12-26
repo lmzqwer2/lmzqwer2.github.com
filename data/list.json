@@ -2423,14 +2423,16 @@
             "level": 3,
             "detail": [
                 "可乐橙爱好阅读、写作，爱听五月天、SimplePlan，爱看《这个男人来自地球》，还有什么呢……",
-                "我决定要做点有意义的事情，长期性的，什么都好。无意间想到一个绝妙的主意，我开始每周翻译一篇国外的设计文章，还为此专门开了微信公众号“可乐橙”，用来集中记录和传播。",
-                "",
-                "<a href='http://colachan.com/post/3080'>设计师的自我提升</a>"
+                "我决定要做点有意义的事情，长期性的，什么都好。无意间想到一个绝妙的主意，我开始每周翻译一篇国外的设计文章，还为此专门开了微信公众号“可乐橙”，用来集中记录和传播。"
             ],
             "linker": [
                 {
-                    "name": "可乐橙个人博客首页",
+                    "name": "博客首页",
                     "src": "http://colachan.com/"
+                },
+                {
+                    "name": "设计师的自我提升",
+                    "src": "http://colachan.com/post/3080"
                 }
             ]
         },
@@ -2444,6 +2446,19 @@
                 {
                     "name": "主页",
                     "src": "http://www.o2v3.imotor.com/?fromuid=6591"
+                }
+            ]
+        },
+        {
+            "title": "炫音音乐论坛",
+            "ico": "",
+            "imager": "",
+            "level": 3,
+            "detail": [],
+            "linker": [
+                {
+                    "name": "主页",
+                    "src": "http://bbs.musicool.cn/?fromuid=1613170"
                 }
             ]
         },
@@ -2636,6 +2651,10 @@
                 {
                     "name": "云峰学园",
                     "src": "http://yunfeng.zju.edu.cn/"
+                },
+                {
+                    "name": "教务管理系统",
+                    "src": "http://jwbinfosys.zju.edu.cn/"
                 },
                 {
                     "name": "考试中心",
